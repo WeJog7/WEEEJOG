@@ -1,0 +1,96 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <title>Account Creation</title>
+   </head>
+
+	<body>
+
+		<header>
+			<a id="logo" href="Go_Facebook" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<table id="not_connected" class="alignement">
+				<tr>
+					<th><a id="bouton_connexion" href="Sign_in" class="bouton_Non_Connecte">Sign In</a></th>
+					<th><a id="bouton_register" href="Register" class="bouton_Non_Connecte">Register</a><th>
+				</tr>
+			</table>
+
+		<nav>
+			<ul>
+				<li class="alignement"><a href="Home.html">Home</a></li>
+				<li class="alignement"><a href="About.html">About</a></li>
+				<li class="alignement"><a href="News.html">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+			</ul>
+		</nav>
+
+		</header>
+
+		<section id="sectionCreationCompte">
+
+			<form action="" method="POST" id="creationCompte">
+
+			<h2>Create an account</h2>
+
+			<div id="sex">
+		    	<label for ="sex">Sex</label>
+   				<input type="radio" name="reponse1" value="Male" />Male
+    			<input type="radio" name="reponse2" value="Female" checked="Female" />Female
+			</div>
+
+			<div>
+				<label for ="name">Name</label>
+		    	<input type="text/plain" id="name" name="name" placeholder="Please enter your name" required />
+		    </div>
+
+			<div>
+				<label for ="lastName">Last Name</label>
+		    	<input type="text/plain" id="lastName" name="lastName" placeholder="Please enter your last name" required />
+		    </div>
+
+		    <div>
+		    	<label for ="birth">Birth Date</label>
+		    	<input type="date" id="birth" name="birth" required />
+		    </div>
+
+			<div>
+		    	<label for ="mail">Email</label>
+		    	<input type="email" name="mail" id="mail" placeholder="Enter your email" required >
+		    </div>
+
+			<div>
+		    	<label for ="ConfirmMail">Confirm Email</label>
+		    	<input type="email" name="ConfirmMail" id="ConfirmMail" placeholder="Confirm your email" required >
+		    </div>
+
+			<div>
+				<label for ="password">Password</label>
+		    	<input type="text/plain" id="password" name="password" placeholder="Please enter your password" required />
+		    </div>
+
+		    <div>
+				<label for ="confirmPassword">Password Confirmation</label>
+		    	<input type="text/plain" id="confirmPassword" name="confirmPassword" placeholder="Please confirm your password" required />
+		    </div>
+
+		   <div  id="register" >
+		   		<input type="submit" value="Register" />
+		   	</div>
+		    
+			</form>
+		</section>
+
+		<footer>
+			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
+		</footer>
+
+	</body>
+
+</html>

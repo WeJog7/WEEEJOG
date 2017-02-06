@@ -1,0 +1,91 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <title>Add Performance</title>
+    
+   </head>
+
+	<body>
+
+		<header>
+			<a id="logo" href="Go_Facebook" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<div id ="informations" class="alignement">
+				<a id = "photoProfil" href="Go_Profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<h4 class="alignement">Mr. XX</h4>
+				<a id = "logo_deconnexion" class="alignement" href="Exit"><img src ="Images/Logout.png" alt="Deconnexion"></a>
+			</div>
+
+		<nav>
+			<ul>
+				<li class="alignement"><a href="Home.html">Home</a></li>
+				<li class="alignement"><a href="About.html">About</a></li>
+				<li class="alignement"><a href="News.html">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+			</ul>
+		</nav>
+
+		</header>
+
+		<section id ="ajout_performance">
+			<h2>Add a performance</h2>
+
+			<form action="" method="POST" id="formulaire_performance">
+
+			<div>
+		    	<h3>Date</h3>
+		   		<input type="date" id="date_performance" name ="date_performance" class="donnees" required />
+		   	</div>
+
+		   	<div>
+		    	<h3>Hour</h3>
+		   		<input type="time" id="hour" name="hour" class="donnees" required />
+		   	</div>
+
+		    <div>
+		    	<h3>Adress</h3>
+		    	<input type="text/plain" id="adress" name="adress" placeholder="Please enter the adress of your performance" class="donnees" required />
+		    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69327234186!2d-0.3817812833279029!3d51.52830797353152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C+Royaume-Uni!5e0!3m2!1sfr!2sfr!4v1485516956677" frameborder="0" style="border:0"></iframe>
+		    </div>
+
+		    <div>
+		    	<h3>Duration</h3>
+		    	<input type="number" id="duration" name="duration" class="donnees" placeholder="Please enter the duration in minutes" required />
+		    </div>
+
+		    <div>
+		    	<h3>Distance</h3>
+		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" required />
+		    </div>
+
+		    <div>
+		    	<h3>Average</h3>
+		    	<input type="number" id="average" name="average" class="donnees" placeholder="Please enter your average in Kph" required />
+		    </div>
+
+		    <div>
+		    	<h3>Calories</h3>
+		    	<input type="number" id="calories" name="calories" class="donnees" placeholder="Please enter the calories in kcal" required />
+		    </div>
+
+		   <div>
+		   		<input type="submit" id="validation" value="Submit your performance" />
+		   	</div>
+		    
+		</form>
+		</section>
+
+
+		<footer>
+			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
+		</footer>
+
+	</body>
+
+</html>

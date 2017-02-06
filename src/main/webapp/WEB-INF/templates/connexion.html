@@ -1,0 +1,73 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <title>Connexion</title>
+   </head>
+
+	<body>
+
+		<header>
+			<a id="logo" href="Go_Facebook" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<table id="not_connected" class="alignement">
+				<tr>
+					<th><a id="bouton_connexion" href="Sign_in" class="bouton_Non_Connecte">Sign In</a></th>
+					<th><a id="bouton_register" href="Register" class="bouton_Non_Connecte">Register</a><th>
+				</tr>
+			</table>
+
+		<nav>
+			<ul>
+				<li class="alignement"><a href="Home.html">Home</a></li>
+				<li class="alignement"><a href="About.html">About</a></li>
+				<li class="alignement"><a href="News.html">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+			</ul>
+		</nav>
+
+		</header>
+
+		<section id="sectionCreationCompte">
+
+			<form action="" method="POST" id="connexionCompte">
+
+			<h1>Sign in</h1>
+
+			<div>
+		    	<label for ="mail">Email</label>
+		    	<input type="email" name="mail" id="mail" placeholder="Enter your email" required >
+		    </div>
+
+			<div>
+				<label for ="password">Password</label>
+		    	<input type="text/plain" id="password" name="password" placeholder="Please enter your password" required />
+		    </div>
+
+		    <div id="rememberMe">
+   				<input type="checkbox" name="reponse1" value="Male" />Remember Me
+			</div>
+
+		    <div  id="sign_in" class="alignement">
+		   		<input type="submit" value="Sign In" />
+		   	</div>
+
+		   	 <div id="forget_password">
+		   		<a href="back_home">Forget password</a>
+		   	</div>
+		    
+			</form>
+		</section>
+
+		<footer>
+			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
+		</footer>
+
+	</body>
+
+</html>
