@@ -358,9 +358,11 @@ form#connexionCompte input[type="checkbox"]{
     border-radius: 5px;
 }
 
+
 form#connexionCompte{
     margin-top: 10%;
 }
+
 
 #back_home{
     text-decoration: none;
@@ -375,6 +377,7 @@ form#connexionCompte{
     width: 80px;
 }
 
+
 div#forget_password a{
     text-decoration: none;
     color: white;
@@ -388,6 +391,7 @@ div#forget_password a{
     vertical-align: middle;
 }
 
+
 #forget_password{
     height: 40px;
     display: inline-block;
@@ -397,7 +401,279 @@ div#forget_password a{
 
 /* Page myNetwork */
 
+.network{
+    width: 33%;
+    text-align: center;
+    display: inline-block;
+}
+
+
+table.network td{
+    width: 33%;
+}
+
 
 #image_reseau{
+    width: 250px;
+    height: 250px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+}
+
+
+.boutons_ami img{
+    width : 30px;
+    height: 30px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+    vertical-align: middle;
+    margin-right : 5px;
+}
+
+
+.boutons_ami{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 10px 9px 10px;
+    font-weight: bold;
+}
+
+
+#ajout_performance a:hover{
+    color : #1A7A50;
+    text-decoration: none;
+    background-color:white;
+    border-color: #1A7A50;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+
+#ajout_ami{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+#bouton_ajout_ami{
+    padding : 5px 100px 9px 100px;
+}
+
+
+/* Page Home */
+
+
+#menu_home{
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 20%;
+    margin-right : 20%;
+}
+
+.liens{
     width: 33%;
+    display: inline-block;
+}
+
+
+.boutons_home{
+    background-color: #1A7A50;
+    border-radius: 5px;
+    color : white;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a:hover.boutons_home{
+    color : #1A7A50;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
+.boutons_home img{
+    width : 30px;
+    height: 30px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+    vertical-align: middle;
+    margin-right : 5px;
+}
+
+
+.actuality{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+
+.actuality img{
+    width: 100%;
+}
+
+
+td.image_actuality{
+    width: 30%
+}
+
+
+/* Page profil*/
+
+#profil{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15px;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 15px;
+}
+
+
+.bouton_profil{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 1px;
+    display: block;
+    border-style: solid;
+    border-color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom : 3px;
+}
+
+
+.bouton_profil:hover{
+    background-color: white;
+    color: #1A7A50;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
+.boutons_profil{
+    width: 49%;
+    display: inline-block;
+}
+
+
+#utilisateur{
+    width: 20%;
+    display: inline-block;
+}
+
+
+#utilisateur img{
+    width: 100%;
+}
+
+
+#description_profil{
+    width: 79%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+#description_profil p{
+    display: block;
+}
+
+
+.bouton_photo{
+    display: inline-block;
+    width: 50%;
+}
+
+
+.tableaux_performance{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15px;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+
+.tableau_performance_totale{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    text-align: center;
+    width: 32%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.boutons_performance{
+    background-color: #1A7A50;
+    border-radius: 5px;
+    color : white;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.tableau_performance{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    text-align: center;
+    width: 15%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+/* Page Ajout Ami */
+
+#liste_utilisateurs{
+    margin-top: 120px;
+    text-align: center;
+}
+
+
+#friendFound{
+    padding-top: 30px;
+    margin: auto;
+}
+
+
+#friendIdentity{
+    font-weight: bold;
 }
