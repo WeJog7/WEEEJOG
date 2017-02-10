@@ -5,45 +5,37 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylesWeJog.css" rel="stylesheet">
   </head>
   
   <body>
   
   	<header th:fragment="header">
-<div id="bandeau"><h1>Les carabiniers de Billy-montigny 
-    <img src="img/logocbm.jpg" alt="logo"> </h1>
-         
+					<a id="logo" href="home.html" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<div id ="informations" class="alignement">
+				<a id = "photoProfil" href="profil.html" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<h4 class="alignement">Mr. XX</h4>
+				<a id = "logo_deconnexion" class="alignement" href="Exit"><img src ="Images/Logout.png" alt="Deconnexion"></a>
+			</div>
 
-
-     
-     </table>
-     </form>
-     </div>
-  	</header>
-  	
-    <nav th:fragment="nav">		
-       	
-    	  <ul>
-                
-                <li><a href="home">presentation de l'equipe</a></li>
-                <li><a href="joueur">les joueurs</a></li>
-                <li><a href="video">videos des matchs</a></li>
-                
-            </ul>
-            <a href="https://www.facebook.com/carabiniersbillymontignyhandball/?fref=ts" title= »Suivez-moi sur facebook ! »><img src= "img/facebook-2.png" /></a>
-
-
-     
-            
-    	
-    </nav>
-
+		<nav>
+			<ul>
+				<li class="alignement" id="active"><a href="home">Home</a></li>
+				<li class="alignement"><a href="about">About</a></li>
+				<li class="alignement"><a href="news">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+			</ul>
+		</nav>
+		
+		</header>
 	
 	<footer th:fragment="footer">
-	 <div id="footer">
-		<a href="http://cbmhandball.fr/club.html">Acces au site du club</a>
-		</div>
+		<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
+		<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
+		<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
+		<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
 	</footer>
 	
   </body>
