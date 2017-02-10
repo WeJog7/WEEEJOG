@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Fragments</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  
+  <body>
+  
+  	<header th:fragment="header">
+<div id="bandeau"><h1>Les carabiniers de Billy-montigny 
+    <img src="img/logocbm.jpg" alt="logo"> </h1>
+         
+
+
+     
+     </table>
+     </form>
+     </div>
+  	</header>
+  	
+    <nav th:fragment="nav">		
+       	
+    	  <ul>
+                
+                <li><a href="home">presentation de l'equipe</a></li>
+                <li><a href="joueur">les joueurs</a></li>
+                <li><a href="video">videos des matchs</a></li>
+                
+            </ul>
+            <a href="https://www.facebook.com/carabiniersbillymontignyhandball/?fref=ts" title= »Suivez-moi sur facebook ! »><img src= "img/facebook-2.png" /></a>
+
+
+     
+            
+    	
+    </nav>
+
+	
+	<footer th:fragment="footer">
+	 <div id="footer">
+		<a href="http://cbmhandball.fr/club.html">Acces au site du club</a>
+		</div>
+	</footer>
+	
+  </body>
+  
+</html>
