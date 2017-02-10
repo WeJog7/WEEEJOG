@@ -3,36 +3,98 @@
   <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <title>Profil</title>
     
    </head>
 
 	<body>
 
-		<header th:replace="~{fragments :: header}"></header>
+		<header th:replace="~{fragments :: headerConnected}"></header>
 
 		<section>
 
-			<table id="profil">
-				<tr>
-					<td class="image_profil" colspan="2"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></td>
-					<td class="description_profil">
-						<h1>Mr.XX</h1>
-						<h3>Description</h3>
-						<p>Test de longueur. ------------------------------------------------------------------------------------------------------------------------------------------------------- Fin du test de longueur</p>
-					</td>
-				</tr>
-				<tr>
-					<td class="boutons_profil"><a class="bouton_profil" href="voir_plus">Photo</a></td>
-					<td class="boutons_profil"><a class="bouton_profil" href="supprimer_ami">Informations</a></td>
-				</tr>
-				<tr>
-					<td><a class="bouton_profil" href="voir_plus">My Network</a></td>
-				</tr>
+			<div id="profil">
+				<div id="utilisateur">
+					<div><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></div>
+					<div class="boutons_profil"><a class="bouton_profil" href="voir_plus">Picture</a></div>
+					<div class="boutons_profil"><a class="bouton_profil" href="supprimer_ami">Informations</a></div>
+					<div><a class="bouton_profil" href="myNetwork">My Network</a></div>
+				</div>	
 
-			</table>
+				<div id="description_profil">
+					<h1>Mr.XX</h1>
+					<h3>Description</h3>
+					<p>Test de longueur. ------------------------------------------------------------------------------------------------------------------------------------------------------- Fin du test de longueur</p>
+				</div>
+					
+			</div>
+
+			<div class="tableaux_performance">
+				<div class="tableau_performance_totale">
+					<h3>Total distance :</h3>
+					<h1>5 KM</h1>
+				</div>
+
+				<div class="tableau_performance_totale">
+					<h3>Total duration :</h3>
+					<h1>00:32:54</h1>
+				</div>
+
+				<div class="tableau_performance_totale">
+					<h3>Number of races :</h3>
+					<h1>1</h1>
+				</div>
+
+			</div>
+
+			<div id="menu_home">
+				<div>
+					<div class="liens"><a class="boutons_performance" href="">Week</a></div>
+					<div class="liens"><a class="boutons_performance" href="">Month</a></div>
+					<div class="liens"><a class="boutons_performance" href="">Year</a></div>
+				</div>
+			</div>
+
+			<div class="tableaux_performance">
+				<div class="tableau_performance">
+					<h3>Fastest :</h3>
+					<h1>1 KM</h1>
+					<h1>00:03:29</h1>
+				</div>
+
+				<div class="tableau_performance">
+					<h3>Longuest :</h3>
+					<h1>1 KM</h1>
+					<h1>01:32:54</h1>
+				</div>
+
+				<div class="tableau_performance">
+					<h3>IN :</h3>
+					<h1>1 KM</h1>
+					<h1>01:32:54</h1>
+				</div>
+
+				<div class="tableau_performance">
+					<h3>IN :</h3>
+					<h1>1 KM</h1>
+					<h1>01:32:54</h1>
+				</div>
+
+				<div class="tableau_performance">
+					<h3>IN :</h3>
+					<h1>1 KM</h1>
+					<h1>01:32:54</h1>
+				</div>
+
+				<div class="tableau_performance">
+					<h3>IN :</h3>
+					<h1>1 KM</h1>
+					<h1>01:32:54</h1>
+				</div>
+
+			</div>
 
 		</section>
-
 
 		<footer th:replace="~{fragments :: footer}"></footer>
 

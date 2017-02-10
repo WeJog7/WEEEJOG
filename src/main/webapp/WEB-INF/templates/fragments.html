@@ -4,20 +4,42 @@
     <title>Fragments</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
+    
     <link href="css/stylesWeJog.css" rel="stylesheet">
   </head>
   
   <body>
   
-  	<header th:fragment="header">
-					<a id="logo" href="home.html" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+  	<header th:fragment="headerConnected">
+			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
 			
 			<div id ="informations" class="alignement">
-				<a id = "photoProfil" href="profil.html" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<a id = "photoProfil" href="profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
 				<h4 class="alignement">Mr. XX</h4>
-				<a id = "logo_deconnexion" class="alignement" href="Exit"><img src ="Images/Logout.png" alt="Deconnexion"></a>
+				<a id = "logo_deconnexion" class="alignement" href="connexion"><img src ="Images/Logout.png" alt="Deconnexion"></a>
 			</div>
+
+		<nav>
+			<ul>
+				<li class="alignement" id="active"><a href="home">Home</a></li>
+				<li class="alignement"><a href="about">About</a></li>
+				<li class="alignement"><a href="news">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+			</ul>
+		</nav>
+		
+		</header>
+		
+		<header th:fragment="headerNotConnected">
+			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<table id="not_connected" class="alignement">
+				<tr>
+					<th><a id="bouton_connexion" href="connexion" class="bouton_Non_Connecte">Sign In</a></th>
+					<th><a id="bouton_register" href="createAccount" class="bouton_Non_Connecte">Register</a><th>
+				</tr>
+			</table>
 
 		<nav>
 			<ul>
@@ -35,7 +57,7 @@
 		<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
 		<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
 		<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
-		<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
+		<a id="Contact_Us" href="contact" class="alignement">Contact Us</a>
 	</footer>
 	
   </body>

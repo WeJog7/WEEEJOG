@@ -9,16 +9,44 @@
 
 	<body>
 
-		<header th:replace="~{fragments :: header}"></header>
+		<header th:replace="~{fragments :: headerConnected}"></header>
 
 		<section id ="ajout_performance">
 			<h2>My friends Network</h2>
 
-			<table id="network">
-		    	<th>
-		    		<tr><img id="image_reseau" src ="Images/PhotoProfil.jpg" alt="Photo de profil"></tr>
-		   			<tr><h3>Mon pote !</h3></tr>
-		   		</th>
+			<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a friend</a></div>
+
+			<table class="network">
+		    	<tr>
+		    		<td><img id="image_reseau" src ="Images/PhotoProfil.jpg" alt="Photo de profil"></td>
+		   		</tr>
+		   		<tr><td><h3>Habib BENALLAL</h3></td></tr>
+		   		<tr><td><a class="boutons_ami" href="voir_plus"><img src ="Images/voir_plus.jpg" alt="icone_voir_plus">Profile</a>
+						<a class="boutons_ami" href="supprimer_ami"><img src ="Images/icone_suppression.png" alt="icone_suppression">Delete</a>
+					</td>
+				</tr>
+		   	</table>
+
+		   	<table class="network">
+		    	<tr>
+		    		<td><img id="image_reseau" src ="Images/PhotoProfil.jpg" alt="Photo de profil"></td>
+		   		</tr>
+		   		<tr><td><h3>Guillaume MINAUD</h3></td></tr>
+		   		<tr><td><a class="boutons_ami" href="voir_plus"><img src ="Images/voir_plus.jpg" alt="icone_voir_plus">Profile</a>
+						<a class="boutons_ami" href="supprimer_ami"><img src ="Images/icone_suppression.png" alt="icone_suppression">Delete</a>
+					</td>
+				</tr>
+		   	</table>
+
+		   	<table class="network">
+		    	<tr>
+		    		<td><img id="image_reseau" src ="Images/PhotoProfil.jpg" alt="Photo de profil"></td>
+		   		</tr>
+		   		<tr><td><h3>Habib BENALLAL</h3></td></tr>
+		   		<tr><td><a class="boutons_ami" href="voir_plus"><img src ="Images/voir_plus.jpg" alt="icone_voir_plus">Profile</a>
+						<a class="boutons_ami" href="supprimer_ami"><img src ="Images/icone_suppression.png" alt="icone_suppression">Delete</a>
+					</td>
+				</tr>
 		   	</table>
 
 		</section>
