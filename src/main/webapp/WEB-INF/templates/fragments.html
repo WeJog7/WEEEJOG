@@ -10,7 +10,7 @@
   
   <body>
   
-  	<header th:fragment="headerConnected">
+  	<header th:fragment="headerConnected(selectedMenu)">
 			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
 			
 			<div id ="informations" class="alignement">
@@ -21,9 +21,9 @@
 
 		<nav>
 			<ul>
-				<li class="alignement" id="active"><a href="home">Home</a></li>
-				<li class="alignement"><a href="about">About</a></li>
-				<li class="alignement"><a href="news">News</a></li>
+				<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="home">Home</a></li>
+				<li th:class="${selectedMenu == 'about'} ? 'active'"><a href="about">About</a></li>
+				<li th:class="${selectedMenu == 'news'} ? 'active'"><a href="news">News</a></li>
 				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
 				<input type="submit" id="boutonSearch" class="alignement" value="Go">
 			</ul>
