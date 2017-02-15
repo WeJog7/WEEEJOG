@@ -8,26 +8,7 @@
 
 	<body>
 
-		<header>
-			<a id="logo" href="home.html" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
-			
-			<div id ="informations" class="alignement">
-				<a id = "photoProfil" href="Go_Profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
-				<h4 class="alignement">Mr. XX</h4>
-				<a id = "logo_deconnexion" class="alignement" href="Exit"><img src ="Images/Logout.png" alt="Deconnexion"></a>
-			</div>
-
-		<nav>
-			<ul>
-				<li class="alignement"><a href="Home.html">Home</a></li>
-				<li class="alignement"><a href="About.html">About</a></li>
-				<li class="alignement"><a href="News.html">News</a></li>
-				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
-				<input type="submit" id="boutonSearch" class="alignement" value="Go">
-			</ul>
-		</nav>
-
-		</header>
+		<header th:replace="~{fragments :: headerConnected}"></header>
 
 		<form action="" method="POST" id="picture">
 
@@ -44,12 +25,7 @@
 		</form>	
 
 
-		<footer>
-			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
-			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
-			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
-			<a id="Contact_Us" href="Contact_Us" class="alignement">Contact Us</a>
-		</footer>
+		<footer th:replace="~{fragments :: footer}"></footer>
 
 	</body>
 
