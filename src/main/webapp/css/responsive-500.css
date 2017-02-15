@@ -1,4 +1,4 @@
-@media screen and (max-width: 500px)
+@media screen and (max-width: 1500px)
 {
 
 /* Page Home, Header et Footer */
@@ -85,6 +85,12 @@ nav input{
 
 footer{
 	position: relative;
+}
+
+#footer{
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -206,6 +212,7 @@ form#connexionCompte label {
 	text-align: center;
 }
 
+
 #sectionCreationCompte {
 	padding-top: 10px;
 	margin-bottom: 10px;
@@ -241,6 +248,7 @@ label {
 div#sex input{
 	width: 20%;
 }
+
 
 
 
