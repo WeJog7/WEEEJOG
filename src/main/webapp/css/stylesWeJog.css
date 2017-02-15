@@ -705,3 +705,21 @@ input#image{
 #presentation{
     text-align: center;
 }
+
+/* Page description */
+
+#description{
+    text-align: center;
+}
+
+
+#description textarea{
+    width: 65%;
+    height: 20%;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-width: 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
