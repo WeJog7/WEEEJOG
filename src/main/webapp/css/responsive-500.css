@@ -1,7 +1,7 @@
 @media screen and (max-width: 500px)
 {
 
-/* Page Home */
+/* Page Home, Header et Footer */
 
 #logo{
 	width: 100%;
@@ -50,12 +50,13 @@ nav input{
 
 
 #search{
-	width: 100%;
+	width: 98%;
 }
 
 
 #boutonSearch{
 	margin-top: 10px;
+	width: 95%;
 }
 
 
@@ -80,5 +81,167 @@ nav input{
 #Contact_Us{
 	display: none;
 }
+
+
+footer{
+	position: relative;
+}
+
+
+/* Page ajout evenement, article, performance */
+
+#ajout_performance{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+#validation{
+	width: 100%;
+	margin-left: 0;
+}
+
+
+#boutonValidation{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* Page profil */
+
+#profil{
+	margin-left:0;
+	margin-right: 0;
+}
+
+
+#utilisateur {
+	display: block;
+	width: 100%;
+}
+
+
+#description_profil{
+	width: 100%;
+}
+
+
+.tableaux_performance {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+.tableau_performance_totale {
+	display: block;
+	width: 100%;
+	margin-top: 5px;
+}
+
+
+.tableau_performance {
+	display: block;
+	width: 100%;
+	margin-top: 5px;
+}
+
+/* Page myNetwork */
+
+#ajout_ami {
+	padding: 0;
+}
+
+
+.network {
+	display: block;
+	width: 100%;
+}
+
+
+/* Page ajout ami */
+
+#liste_utilisateurs {
+	margin-top: 0px;
+}
+
+
+#email {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+
+#friendFound {
+	padding-bottom: 30px;
+}
+
+
+/* Page connexion et register */
+
+#not_connected {
+	display: block;
+	padding-right: 0;
+	float: none;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.bouton_Non_Connecte {
+	margin-top: 0;
+}
+
+
+#bouton_connexion {
+	margin-left: 0;
+}
+
+
+form#connexionCompte label {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+#sectionCreationCompte {
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+#connexionCompte {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+#creationCompte {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+form#creationCompte input{
+	width: 90%;
+}
+
+
+label {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+
+div#sex input{
+	width: 20%;
+}
+
+
 
 }
