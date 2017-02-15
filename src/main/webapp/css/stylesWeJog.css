@@ -77,7 +77,7 @@ nav a{
 }
 
 
-nav li#active {
+nav li.active {
     border-radius: 5px;
     border-width: 3px;
     border-style: solid;
