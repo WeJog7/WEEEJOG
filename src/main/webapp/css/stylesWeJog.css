@@ -698,3 +698,10 @@ input#image{
     border-style: solid;
     border-color: #1A7A50;
 }
+
+
+/* Page about */
+
+#presentation{
+    text-align: center;
+}
