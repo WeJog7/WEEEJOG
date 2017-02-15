@@ -2,10 +2,11 @@ package hei.devweb.wejog.entities;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Event {
 	private Integer idevent;
-	private LocalDate dateevent;
+	private Date dateevent;
 	private Time horaireevent;
 	private Double dureeevent;
 	private Double distanceevent;
@@ -14,7 +15,7 @@ public class Event {
 	private Integer userparticipant;
 	
 	
-	public Event (Integer idevent, LocalDate dateevent, Time horaireevent, double dureeevent, Double distanceevent,String lieuevent, Integer usergestion, Integer userparticipant) {
+	public Event (int idevent, Date dateevent, Time horaireevent, double dureeevent, double distanceevent,String lieuevent, int usergestion, int userparticipant) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
@@ -28,6 +29,8 @@ public class Event {
 	}
 
 
+	
+
 	public Integer getIdevent() {
 		return idevent;
 	}
@@ -38,12 +41,12 @@ public class Event {
 	}
 
 
-	public LocalDate getDateevent() {
+	public Date getDateevent() {
 		return dateevent;
 	}
 
 
-	public void setDateevent(LocalDate dateevent) {
+	public void setDateevent(Date dateevent) {
 		this.dateevent = dateevent;
 	}
 

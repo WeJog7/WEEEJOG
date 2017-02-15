@@ -1,14 +1,22 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+
+import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.managers.EventService;
 
 /**
  * Servlet implementation class HomeServlet
@@ -28,5 +36,24 @@ public class AddEventServlet extends AbstractGenericServlet{
 		templateEngine.process("ajouterEvenement", context, resp.getWriter());
 	}
 
-
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String dateAsString=req.getParameter("dateevent");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate date = LocalDate.parse(dateAsString,formatter);
+		
+		String horaireAsString=req.getParameter("horaireevent");
+		DateTimeFormatter formater = DateTimeFormatter.ofPattern("00:00:00");
+		LocalDate horaire = LocalDate.parse(horaireAsString,formater);
+		
+		Double dureeevent=Double.parseDouble(req.getParameter("dureeevent"));
+		Double distanceevent=Double.parseDouble(req.getParameter("distanceevent"));
+		String lieuevent = req.getParameter("lieuevent");
+		
+		
+	
+	
+		Event newEvent = new Event(null,date,horaire,dureeevent,distanceevent,lieuevent,null,null);
+		EventService.getInstance().AddEvent(newEvent);
+		resp.sendRedirect("home");
+	}
 }

@@ -13,23 +13,28 @@ import hei.devweb.wejog.entities.Event;
 
 public class EventDaoImpl {
 	
-	public List<Event> ListJoueurToDo(){
-		List<Event> joueur = new ArrayList<>();
+	public List<Event> ListEventToDo(){
+		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 				Statement statement = connection.createStatement();
-				 ResultSet resultSet= statement.executeQuery("SELECT * FROM event  ")){
+				 ResultSet resultSet= statement.executeQuery("SELECT * FROM event ")){
 			while ( resultSet.next()){
-				joueur.add(new Event(resultSet.getInt("idjoueur"),
-						resultSet.getString("nom"),
-						resultSet.getString("prenom"),
-						resultSet.getString("poste")) );
+				event.add(new Event(
+						resultSet.getInt("idevent"),
+						resultSet.getDate("dateevent"),
+						resultSet.getTime("horaireevent"),
+						resultSet.getDouble("dureeevent"),
+						resultSet.getDouble("distanceevent"),
+						resultSet.getString("lieuevent"),
+						resultSet.getInt("usergestion"),
+						resultSet.getInt("userparticipant")) );
 			}
 			statement.close();
 			connection.close();
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-		return joueur;
+		return event ;
 	}
 
 }
