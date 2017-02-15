@@ -677,3 +677,24 @@ td.image_actuality{
 #friendIdentity{
     font-weight: bold;
 }
+
+
+/* Page ajout image*/
+
+#picture{
+    text-align: center;
+}
+
+
+form#picture div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+input#image{
+    border-radius : 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #1A7A50;
+}

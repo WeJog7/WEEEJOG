@@ -1,0 +1,32 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/RecoveryPassword.css"/>
+   </head>
+
+	<body>
+
+		<header th:replace="~{fragments :: headerConnected}"></header>
+
+		<form action="" method="POST" id="picture">
+
+			<h1>Change your picture</h1>
+
+			<div>
+		   		<input type="file" name="image" id="image" accept="image/*">
+		   	</div>			
+		    
+		   <div>
+		   		<input type="submit" value="Post your new photo">
+		   	</div>
+		
+		</form>	
+
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+</html>
