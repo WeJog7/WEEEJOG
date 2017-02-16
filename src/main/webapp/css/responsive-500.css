@@ -1,4 +1,4 @@
-@media screen and (max-width: 1500px)
+@media screen and (max-width: 500px)
 {
 
 /* Page Home, Header et Footer */
@@ -199,8 +199,6 @@ footer{
 /* Page connexion et register */
 
 #not_connected {
-	display: block;
-	padding-right: 0;
 	float: none;
 	width: 80%;
 	margin-left: auto;
@@ -210,11 +208,7 @@ footer{
 
 .bouton_Non_Connecte {
 	margin-top: 0;
-}
-
-
-#bouton_connexion {
-	margin-left: 0;
+	width: 48%;
 }
 
 
@@ -261,7 +255,6 @@ label {
 div#sex input{
 	width: 20%;
 }
-
 
 
 

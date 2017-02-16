@@ -32,12 +32,14 @@
 		<header th:fragment="headerNotConnected">
 			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
 			
-			<table id="not_connected" class="alignement">
-				<tr>
-					<th><a id="bouton_connexion" href="connexion" class="bouton_Non_Connecte">Sign In</a></th>
-					<th><a id="bouton_register" href="createAccount" class="bouton_Non_Connecte">Register</a></th>
-				</tr>
-			</table>
+			<div id="not_connected">
+				<div id="bouton_connexion" class="bouton_Non_Connecte">
+					<a class="bouton_lien" href="connexion.html">Sign In</a>
+				</div>
+				<div id="bouton_register" class="bouton_Non_Connecte">
+					<a class="bouton_lien" href="creationCompte.html">Register</a>
+				</div>
+			</div>
 
 		<nav>
 				<li class="alignement" id="active"><a href="home">Home</a></li>

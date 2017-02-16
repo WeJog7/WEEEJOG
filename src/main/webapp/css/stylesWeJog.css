@@ -276,19 +276,22 @@ div#register input{
 
 
 .bouton_Non_Connecte{
-    position: relative;
-    float: right;
-    text-decoration: none;
-    color: white;
+    display: inline-block;
     border-radius: 5px;
     border-width: 2px;
     border-style: solid;
     border-color: white;
-    padding : 5px 10px 5px 10px;
     margin-top: 15px;
-    margin-left : 15px;
     height: 20px;
-    width: 80px;
+    text-align: center;
+    width: 48%;
+}
+
+
+.bouton_lien{
+    display: block;
+    text-decoration: none;
+    color: white;
 }
 
 
@@ -298,7 +301,6 @@ div#register input{
 
 
 #bouton_register{
-    text-decoration: none;
     background-color: blue;
 }
 
@@ -306,7 +308,8 @@ div#register input{
 #not_connected{
     position: relative;
     float: right;
-    padding-right: 15px;
+    margin-right: 15px;
+    width: 25%;
 }
 
 
