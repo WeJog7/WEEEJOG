@@ -23,6 +23,12 @@ public class EventService {
 	public  List<Event> ListEventToDo(){
 		return eventDao.ListEventToDo();
 		
+	}
+
+	
+	public void AddEvent(Event newEvent) {
+		// TODO Auto-generated method stub
+		
 	} 
 
 }

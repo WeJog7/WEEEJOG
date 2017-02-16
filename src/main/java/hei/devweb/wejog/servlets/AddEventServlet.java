@@ -3,17 +3,18 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+
 
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.managers.EventService;
@@ -32,7 +33,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+		context.setVariable("events",EventService.getInstance().ListEventToDo());
 		templateEngine.process("ajouterEvenement", context, resp.getWriter());
 	}
 
@@ -52,8 +53,8 @@ public class AddEventServlet extends AbstractGenericServlet{
 		
 	
 	
-		Event newEvent = new Event(null,date,horaire,dureeevent,distanceevent,lieuevent,null,null);
-		EventService.getInstance().AddEvent(newEvent);
+		Event newEvent = new Event(0, date,horaire,dureeevent,distanceevent,lieuevent, 0, 0);
+		 EventService.getInstance().AddEvent(newEvent); 
 		resp.sendRedirect("home");
-	}
+}
 }

@@ -21,8 +21,8 @@ public class EventDaoImpl {
 			while ( resultSet.next()){
 				event.add(new Event(
 						resultSet.getInt("idevent"),
-						resultSet.getDate("dateevent"),
-						resultSet.getTime("horaireevent"),
+						resultSet.getDate("dateevent").toLocalDate(),
+						resultSet.getDate("horaireevent").toLocalDate(),
 						resultSet.getDouble("dureeevent"),
 						resultSet.getDouble("distanceevent"),
 						resultSet.getString("lieuevent"),
