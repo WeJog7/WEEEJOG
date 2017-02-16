@@ -17,7 +17,7 @@ import hei.devweb.wejog.impl.EventDaoImpl;
 
 public class EventDaoTestCase {
 	
-	private EventDaoImpl videodao= new EventDaoImpl();
+/**	private EventDaoImpl videodao= new EventDaoImpl();
 	@Before
 	public void initDatabase() throws Exception{
 		try ( Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -37,6 +37,6 @@ public class EventDaoTestCase {
 		
 		);
 		
-	}
+	}**/
 
 }
