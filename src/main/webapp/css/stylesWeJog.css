@@ -251,8 +251,7 @@ form#creationCompte input{
 #sectionCreationCompte{
     background-image: url("../Images/fondConnexion.jpg");
     background-size: cover;
-    background-position: center;
-    background-attachment : fixed;
+    background-position: center;  
     padding-top: 150px;
 }
 
