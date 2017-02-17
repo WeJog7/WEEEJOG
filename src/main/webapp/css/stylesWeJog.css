@@ -252,8 +252,7 @@ form#creationCompte input{
     background-image: url("../Images/fondConnexion.jpg");
     background-size: cover;
     background-position: center;
-    width: 100%;
-    height: 100%;
+    background-attachment : fixed;
     padding-top: 150px;
 }
 
@@ -284,7 +283,7 @@ div#register input{
     margin-top: 15px;
     height: 20px;
     text-align: center;
-    width: 48%;
+    width: 100px;
 }
 
 
@@ -309,7 +308,7 @@ div#register input{
     position: relative;
     float: right;
     margin-right: 15px;
-    width: 25%;
+    width: 220px;
 }
 
 
