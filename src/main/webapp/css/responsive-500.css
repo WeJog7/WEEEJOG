@@ -218,14 +218,16 @@ form#connexionCompte label {
 
 
 #sectionCreationCompte {
-	padding-top: 10px;
 	margin-bottom: 10px;
+	padding-top: 10px;
+	height: auto;
 }
 
 
 #connexionCompte {
 	margin-left: 0;
 	margin-right: 0;
+	margin-top: 0;
 }
 
 
