@@ -18,11 +18,11 @@ public class DataSourceProvider {
 	public static DataSource getDataSource() {
 		if (dataSource == null) {
 			dataSource = new MysqlDataSource();
-			dataSource.setServerName("localhost");
+			dataSource.setServerName("localhost3");
 			dataSource.setPort(3306);
-			dataSource.setDatabaseName("y2676mi8yyl5zwmr");
-			dataSource.setUser("lozc5foy2vx2n16n");
-			dataSource.setPassword("gkdrho5mubz59i7h");
+			dataSource.setDatabaseName("ay3bszwzcjnh8o4f");
+			dataSource.setUser("hu0wxyiygj0zecbn");
+			dataSource.setPassword("d6fk4iz52aokpj57");
 		}
 		return dataSource;
 	}

@@ -17,17 +17,17 @@ import hei.devweb.wejog.impl.EventDaoImpl;
 
 public class EventDaoTestCase {
 	
-/**	private EventDaoImpl videodao= new EventDaoImpl();
+	private EventDaoImpl videodao= new EventDaoImpl();
 	@Before
 	public void initDatabase() throws Exception{
 		try ( Connection connection = DataSourceProvider.getDataSource().getConnection();
 		   Statement statement = connection.createStatement()){
 			statement.executeUpdate("DELETE FROM event");
-			statement.executeUpdate("INSERT INTO event(idevent,nom, date, duree ) VALUES ( 1, 'billyPSG','2016-11-20','20.0')");
+			statement.executeUpdate("INSERT INTO event(idevent,dateevent, horaireevent, dureeevent,distanceevent,lieuevent,user1,user2 ) VALUES ( 1, '2016-11-20','12:12:00','20.0','5.0','billy', '1','2')");
 			
 		   }
 		   }
-	@Test
+/*	@Test
 	public void shouldListEventToDo() throws Exception {
 		
 		List<Event> video = videodao.ListEventToDo();
@@ -37,6 +37,6 @@ public class EventDaoTestCase {
 		
 		);
 		
-	}**/
+	}*/
 
 }
