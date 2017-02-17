@@ -534,6 +534,12 @@ td.image_actuality{
 }
 
 
+#littlePicture{
+    width: 50px;
+    border-radius: 10px;
+}
+
+
 /* Page profil*/
 
 #profil{
