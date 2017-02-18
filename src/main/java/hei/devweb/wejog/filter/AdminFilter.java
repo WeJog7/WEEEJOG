@@ -1,4 +1,4 @@
-/*package hei.devweb.wejog.filter;
+package hei.devweb.wejog.filter;
 
 import java.io.IOException;
 
@@ -11,6 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.devweb.wejog.entities.User;
+
 
 
 public class AdminFilter implements Filter {
@@ -20,8 +22,8 @@ public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		Utilisateur utilisateur = (Utilisateur) httpRequest.getSession().getAttribute("utilisateur");
-		if (utilisateur == null || !utilisateur.isAdmin()) {
+		User user = (User) httpRequest.getSession().getAttribute("users");
+		if (user == null || !user.isAdmin()) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("../connexion");
 			return;
@@ -32,4 +34,4 @@ public class AdminFilter implements Filter {
 	public void destroy() {
 	}
 
-}*/
+}

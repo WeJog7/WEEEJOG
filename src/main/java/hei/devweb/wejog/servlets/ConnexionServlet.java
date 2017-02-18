@@ -1,32 +1,49 @@
 package hei.devweb.wejog.servlets;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-/**
- * Servlet implementation class HomeServlet
- */
+import hei.devweb.wejog.exceptions.WejogSecuriteException;
+import hei.devweb.wejog.managers.UserService;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @WebServlet("/connexion")
-public class ConnexionServlet extends AbstractGenericServlet{
-	private static final long serialVersionUID = 1L;
-      
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
-	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		TemplateEngine templateEngine = this.createTemplateEngine(req);
-		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
-		templateEngine.process("connexion", context, resp.getWriter());
+public class ConnexionServlet extends GenericLearningsServlet {
+	private static final long serialVersionUID = 3038302649713866775L;
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession().getAttribute("user") == null) {
+			TemplateEngine engine = this.createTemplateEngine(request);
+			engine.process("/connexion", new WebContext(request, response, getServletContext()), response.getWriter());
+		} else {
+			response.sendRedirect("home/");
+		}
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String identifiant = request.getParameter("mail");
+		String motDePasse = request.getParameter("motdepasse");
+		try {
+			if (UserService.getInstance().validerMotDePasse(identifiant, motDePasse)) {
+				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
+			} else {
+				this.ajouterMessageErreur(request, "Le mot de passe renseigné est faux.");
+			}
+		} catch (IllegalArgumentException e) {
+			this.ajouterMessageErreur(request, e.getMessage());
+		} catch (WejogSecuriteException e) {
+			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
+		}
+
+		response.sendRedirect("connexion");
+	}
 
 }

@@ -1,4 +1,4 @@
-package hei.devweb.wejog.servlets;
+/*package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,14 +22,14 @@ import hei.devweb.wejog.managers.EventService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/addevent")
+/*@WebServlet("/addevent")
 public class AddEventServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	/*protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -57,4 +57,4 @@ public class AddEventServlet extends AbstractGenericServlet{
 		 EventService.getInstance().AddEvent(newEvent); 
 		resp.sendRedirect("home");
 }
-}
+}*/
