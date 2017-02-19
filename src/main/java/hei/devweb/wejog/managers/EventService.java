@@ -26,8 +26,8 @@ public class EventService {
 	}
 
 	
-	public void AddEvent(Event newEvent) {
-		// TODO Auto-generated method stub
+	public void addEvent(Event newEvent) {
+		eventDao.addEvent(newEvent);
 		
 	} 
 

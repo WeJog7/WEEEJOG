@@ -56,7 +56,7 @@
 				</table>
 			</div>
 
-			<div class="actuality">
+			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
 						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
@@ -64,8 +64,8 @@
 							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
 							<h1>Event</h1>
-							<h3>Today at 5 p.m.</h3>
-							<p>Departure : Big Ben</p>
+							<h3>Today at [[${#temporals.format(event.dateevent,'dd/MM/yyyy')}]]</h3>
+							<p>Departure : [[${event.lieuevent}]]</p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Subscribe to the event</a></div>
 						</td>

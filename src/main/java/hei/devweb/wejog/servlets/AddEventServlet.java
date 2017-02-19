@@ -1,4 +1,4 @@
-/*package hei.devweb.wejog.servlets;
+package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,14 +22,14 @@ import hei.devweb.wejog.managers.EventService;
 /**
  * Servlet implementation class HomeServlet
  */
-/*@WebServlet("/addevent")
+@WebServlet("/addevent")
 public class AddEventServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
-	/*protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -38,23 +38,24 @@ public class AddEventServlet extends AbstractGenericServlet{
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String dateAsString=req.getParameter("dateevent");
+		String dateAsString=req.getParameter("date_performance");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate date = LocalDate.parse(dateAsString,formatter);
 		
-		String horaireAsString=req.getParameter("horaireevent");
+		String horaireAsString=req.getParameter("hour");
 		DateTimeFormatter formater = DateTimeFormatter.ofPattern("00:00:00");
 		LocalDate horaire = LocalDate.parse(horaireAsString,formater);
 		
-		Double dureeevent=Double.parseDouble(req.getParameter("dureeevent"));
-		Double distanceevent=Double.parseDouble(req.getParameter("distanceevent"));
-		String lieuevent = req.getParameter("lieuevent");
+		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
+		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
+		String lieuevent = req.getParameter("adress");
 		
 		
 	
 	
 		Event newEvent = new Event(0, date,horaire,dureeevent,distanceevent,lieuevent, 0, 0);
-		 EventService.getInstance().AddEvent(newEvent); 
+		 EventService.getInstance().addEvent(newEvent); 
 		resp.sendRedirect("home");
 }
-}*/
+}
+
