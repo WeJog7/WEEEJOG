@@ -16,9 +16,9 @@ public class EventDaoImpl {
 	
 	public List<Event> ListEventToDo(){
 		List<Event> event = new ArrayList<>();
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				Statement statement = connection.createStatement();
-				 ResultSet resultSet= statement.executeQuery("SELECT * FROM event ")){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(Statement statement = connection.createStatement()){
+				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event ")){
 			while ( resultSet.next()){
 				event.add(new Event(
 						resultSet.getInt("idevent"),
@@ -32,16 +32,22 @@ public class EventDaoImpl {
 			}
 			statement.close();
 			connection.close();
-		} catch (SQLException e){
+		}}}
+		catch (SQLException e){
 			e.printStackTrace();
+		
 		}
-		return event ;
-	}
+				
+
+				return event;
+			}
+		
 	
 	
 	public Event addEvent(Event newEvent){
-		try ( Connection connection=DataSourceProvider.getDataSource().getConnection(); 
-				PreparedStatement statement = connection.prepareStatement("INSERT INTO Event(dateevent, horaireevent , dureeevent,distanceevent,lieuevent) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)){
+		try {
+			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO Event(dateevent, horaireevent , dureeevent,distanceevent,lieuevent) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 		statement.setDate(1,Date.valueOf(newEvent.getDateevent()));
 		statement.setDate(2,Date.valueOf(newEvent.getHoraireevent()));
 		statement.setDouble(3,newEvent.getDureeevent());
@@ -63,7 +69,7 @@ public class EventDaoImpl {
  catch (SQLException e){
 	e.printStackTrace();
 
-}
+ }
 	return newEvent;
 }
 

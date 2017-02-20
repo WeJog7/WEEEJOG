@@ -34,7 +34,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		context.setVariable("events",EventService.getInstance().ListEventToDo());
-		templateEngine.process("ajouterEvenement", context, resp.getWriter());
+		templateEngine.process("home", context, resp.getWriter());
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

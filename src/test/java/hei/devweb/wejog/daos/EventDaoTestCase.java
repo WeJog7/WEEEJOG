@@ -17,7 +17,7 @@ import hei.devweb.wejog.impl.EventDaoImpl;
 
 public class EventDaoTestCase {
 	
-	private EventDaoImpl videodao= new EventDaoImpl();
+	/*private EventDaoImpl videodao= new EventDaoImpl();
 	@Before
 	public void initDatabase() throws Exception{
 		try ( Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -26,7 +26,7 @@ public class EventDaoTestCase {
 			statement.executeUpdate("INSERT INTO event(idevent,dateevent, horaireevent, dureeevent,distanceevent,lieuevent,user1,user2 ) VALUES ( 1, '2016-11-20','12:12:00','20.0','5.0','billy', '1','2')");
 			
 		   }
-		   }
+		   }*/
 /*	@Test
 	public void shouldListEventToDo() throws Exception {
 		

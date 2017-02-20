@@ -17,10 +17,9 @@ public class UserDaoImpl {
 	
 	public List<User> listerUsers() {
 		List<User> users = new ArrayList<User>();
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-		Statement statement = connection.createStatement();
-		ResultSet resultSet= statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(Statement statement = connection.createStatement()){
+				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail")){
 			while (resultSet.next()) {
 
 				users.add(new User(
@@ -35,7 +34,7 @@ public class UserDaoImpl {
 			}
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 		return users;
@@ -43,9 +42,8 @@ public class UserDaoImpl {
 	
 	public User getUser(long idusers) {
 		User user = null;
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaisse, mail, sexe, admin FROM users WHERE idusers=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaisse, mail, sexe, admin FROM users WHERE idusers=?")){
 		    statement.setLong(1, idusers);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -53,7 +51,7 @@ public class UserDaoImpl {
 			}
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 		return user;
@@ -61,8 +59,8 @@ public class UserDaoImpl {
 
 	public User getUser(String mail) {
 		User user = null;
-		try {Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe, admin FROM user WHERE mail=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe, admin FROM user WHERE mail=?")){
 			 statement.setString(1, mail);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -70,7 +68,7 @@ public class UserDaoImpl {
 			}
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 
@@ -80,8 +78,8 @@ public class UserDaoImpl {
 	
 	public String getmotdepasse(String mail) {
 		String motdepasse = null;
-		try {Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("SELECT motdepasse FROM users WHERE mail=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT motdepasse FROM users WHERE mail=?")){
 		statement.setString(1, motdepasse);
 		ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -89,7 +87,7 @@ public class UserDaoImpl {
 			}
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 
@@ -98,53 +96,49 @@ public class UserDaoImpl {
 
 	
 	public void modifiermotdepasse(long idusers, String motdepasse) {
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("UPDATE users SET motdepasse=? WHERE idusers=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET motdepasse=? WHERE idusers=?")){
 			statement.setString(1, motdepasse);
 			statement.setLong(2, idusers);
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 	}
 
 	public void supprimerusers(long idusers) {
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("DELETE FROM  users WHERE idusers=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE FROM  users WHERE idusers=?")){
 			statement.setLong(1, idusers);
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 	}
 
 	
 	public void modifierroleadmin(Long idusers, boolean admin) {
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("UPDATE users SET admin=? WHERE idusers=?");
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET admin=? WHERE idusers=?")){
 			statement.setBoolean(1, admin);
 			statement.setLong(2, idusers);
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
 	}
 
 	
 	public User addUser(User newuser, String motdepasse) {
-		try {
-				Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement statement = connection.prepareStatement("INSERT INTO users(nom, prenom,datedenaissance, mail, sexe, motdepasse, admin) VALUES(?, ?, ?, ?, ?, ?,?)",
-					Statement.RETURN_GENERATED_KEYS) ;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO users(nom, prenom,datedenaissance, mail, sexe, motdepasse, admin) VALUES(?, ?, ?, ?, ?, ?,?)",
+					Statement.RETURN_GENERATED_KEYS)){
 				{
 				statement.setString(1, newuser.getNom());
 				statement.setString(2, newuser.getPrenom());
@@ -161,7 +155,7 @@ public class UserDaoImpl {
 				}
 			}
 
-		} catch (SQLException e) {
+		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		
 		

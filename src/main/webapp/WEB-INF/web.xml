@@ -4,5 +4,12 @@
     <welcome-file>home</welcome-file>
   </welcome-file-list>
   
- 
+ <filter>
+  	<filter-name>authentificationFilter</filter-name>
+  	<filter-class>hei.devweb.wejog.AuthentificationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>authentificationFilter</filter-name>
+  	<url-pattern>/about</url-pattern>
+  </filter-mapping>
 </web-app>

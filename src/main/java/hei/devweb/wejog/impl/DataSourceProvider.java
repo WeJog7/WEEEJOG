@@ -1,10 +1,8 @@
 package hei.devweb.wejog.impl;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javax.sql.DataSource;
 
@@ -13,20 +11,38 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class DataSourceProvider {
 	
-	private static MysqlDataSource dataSource;
-
-	public static DataSource getDataSource() {
-		if (dataSource == null) {
-			dataSource = new MysqlDataSource();
-			dataSource.setServerName("localhost4");
-			dataSource.setPort(3306);
-			dataSource.setDatabaseName("ay3bszwzcjnh8o4f");
-			dataSource.setUser("root");
-			dataSource.setPassword("root");
-		}
-		return dataSource;
+	private static class DataSourceProviderHolder {
+		private final static DataSourceProvider instance = new DataSourceProvider();
+	}
+	
+	public static DataSourceProvider getInstance() {
+		return DataSourceProviderHolder.instance;
 	}
 
-	
+	private MysqlDataSource dataSource;
 
+	private DataSourceProvider() {
+		initDataSource();
+	}
+
+	private void initDataSource() {
+		Properties jdbcProperties = new Properties();
+		InputStream configFileStream = getClass().getClassLoader().getResourceAsStream("jdbc.properties");
+		try {
+			jdbcProperties.load(configFileStream);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		dataSource = new MysqlDataSource();
+		dataSource.setServerName(jdbcProperties.getProperty("servername"));
+		dataSource.setPort(Integer.parseInt(jdbcProperties.getProperty("port")));
+		dataSource.setDatabaseName(jdbcProperties.getProperty("databasename"));
+		dataSource.setUser(jdbcProperties.getProperty("user"));
+		dataSource.setPassword(jdbcProperties.getProperty("password"));
+	}
+
+	public DataSource getDataSource() {
+		return dataSource;
+	}
 }
