@@ -32,7 +32,7 @@ public class ConnexionServlet extends AbstractGenericServlet  {
 	@Override
 	public void init() throws ServletException {
 		utilisateursAutorises = new HashMap<>();
-		utilisateursAutorises.put("habib", "fc859cdc0c5fff3178da076e767acddcabaf187447bccc45:37819be8b0bc0c93e4baf89faa5676d9317e54ef2e6742d9");
+		utilisateursAutorises.put("habib@hei.fr", "fc859cdc0c5fff3178da076e767acddcabaf187447bccc45:37819be8b0bc0c93e4baf89faa5676d9317e54ef2e6742d9");
 	}
 
 	@Override

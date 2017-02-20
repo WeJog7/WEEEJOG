@@ -38,16 +38,16 @@
 				</table>
 			</div>
 
-			<div class="actuality">
+			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
 						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
 						<td>
 							<h1>My friend's performance</h1>
-							<h1>yesterday at 7pm</h1>
-							<p>Distance : 3 km</p>
-							<p>Calories : 771 cal</p>
-							<p>Average 12.3 mph</p>
+							<h1 th:text="${performance.dateperformance}"> yesterday at </h1>
+							<p th:text="${performance.horaireperformance}">Distance : 3 km</p>
+							<p th:text="${performance.calories}">Calories : 771 cal</p>
+							<p th:text="${performance.vitesseperformance}">Average 12.3 mph</p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
 						</td>
