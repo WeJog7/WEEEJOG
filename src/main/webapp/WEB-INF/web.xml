@@ -12,6 +12,6 @@
   
   <filter-mapping>
   	<filter-name>authentificationFilter</filter-name>
-  	<url-pattern>user/*</url-pattern>
+  	<url-pattern>/home</url-pattern>
   </filter-mapping>
 </web-app>
