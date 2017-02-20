@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   
   <head>
     <meta charset="utf-8"/>
@@ -16,7 +16,7 @@
 		<section id ="ajout_performance">
 			<h2>Add an Event</h2>
 
-			<form action="" method="POST" id="formulaire_performance">
+			<form action="addevent" method="POST" id="formulaire_performance">
 
 			<div>
 		    	<h3>Date</h3>
@@ -44,11 +44,13 @@
 		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" required />
 		    </div>
 		    
-		</form>
-		
-			<div id="boutonValidation">
+		    <div id="boutonValidation">
 		   		<input type="submit" id="validation" value="Post your event" />
 		   	</div>
+		    
+		</form>
+		
+			
 		   	
 		</section>
 

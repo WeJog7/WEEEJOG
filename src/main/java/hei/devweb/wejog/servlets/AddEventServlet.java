@@ -33,8 +33,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		context.setVariable("events",EventService.getInstance().ListEventToDo());
-		templateEngine.process("home", context, resp.getWriter());
+				templateEngine.process("ajouterEvenement", context, resp.getWriter());
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,7 +42,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		LocalDate date = LocalDate.parse(dateAsString,formatter);
 		
 		String horaireAsString=req.getParameter("hour");
-		DateTimeFormatter formater = DateTimeFormatter.ofPattern("00:00:00");
+		DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate horaire = LocalDate.parse(horaireAsString,formater);
 		
 		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
