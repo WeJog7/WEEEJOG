@@ -53,7 +53,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		
 	
 	
-		Event newEvent = new Event(0, date,horaire,dureeevent,distanceevent,lieuevent, 0, 0);
+		Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, null, null);
 		 EventService.getInstance().addEvent(newEvent); 
 		resp.sendRedirect("home");
 }

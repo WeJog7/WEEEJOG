@@ -47,7 +47,7 @@ public class EventDaoImpl {
 	public Event addEvent(Event newEvent){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO Event(dateevent, horaireevent , dureeevent,distanceevent,lieuevent) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(`dateevent`,`horaireevent`,`dureeevent`,`distanceevent`,`lieuevent`)VALUES(?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 		statement.setDate(1,Date.valueOf(newEvent.getDateevent()));
 		statement.setDate(2,Date.valueOf(newEvent.getHoraireevent()));
 		statement.setDouble(3,newEvent.getDureeevent());

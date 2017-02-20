@@ -15,7 +15,7 @@ public class Event {
 	private Integer userparticipant;
 	
 	
-	public Event (int idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, int usergestion, int userparticipant) {
+	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, Integer usergestion, Integer userparticipant) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;

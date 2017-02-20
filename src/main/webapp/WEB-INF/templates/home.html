@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   
   <head>
     <meta charset="utf-8"/>
@@ -64,8 +64,8 @@
 							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
 							<h1>Event</h1>
-							<h3>Today at [[${#temporals.format(event.dateevent,'dd/MM/yyyy')}]]</h3>
-							<p>Departure : [[${event.lieuevent}]]</p>
+							<h3 th:text="${event.dateevent}"> </h3>
+							<p th:text="${event.lieuevent}"></p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Subscribe to the event</a></div>
 						</td>
