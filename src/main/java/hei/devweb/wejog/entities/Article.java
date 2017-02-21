@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Article {
 	private Integer idarticle;
 	private String nomarticle;
-	private LocalDate datearticle;
+
 	private String contenuarticle;
 	private String lien;
 	private Integer user;
@@ -13,11 +13,11 @@ public class Article {
 	
 	
 	
-	public Article(Integer idarticle, String nomarticle,LocalDate datearticle,String contenuarticle,String lien,Integer user) {
+	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Integer user) {
 		super();
 		this.idarticle=idarticle;
 		this.nomarticle=nomarticle;
-		this.datearticle=datearticle;
+		
 		this.contenuarticle=contenuarticle;
 		this.lien=lien;
 		this.user=user;
@@ -37,12 +37,7 @@ public class Article {
 	public void setNomarticle(String nomarticle) {
 		this.nomarticle = nomarticle;
 	}
-	public LocalDate getDatearticle() {
-		return datearticle;
-	}
-	public void setDatearticle(LocalDate datearticle) {
-		this.datearticle = datearticle;
-	}
+	
 	public String getContenuarticle() {
 		return contenuarticle;
 	}

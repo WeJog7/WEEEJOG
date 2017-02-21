@@ -1,9 +1,6 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.Event;
-import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.entities.Article;
+import hei.devweb.wejog.managers.ArticleService;
+
 
 /**
  * Servlet implementation class HomeServlet
@@ -35,23 +33,12 @@ public class AddArticleServlet extends AbstractGenericServlet{
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nomarticle = req.getParameter("titre_article");
-		String dateAsString=req.getParameter("date_performance");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		LocalDate date = LocalDate.parse(dateAsString,formatter);
-		
-		String horaireAsString=req.getParameter("hour");
-		DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		LocalDate horaire = LocalDate.parse(horaireAsString,formater);
-		
-		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
-		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
+		String contenuarticle = req.getParameter("synopsis");	
 		String lien = req.getParameter("lien_source");
 		
-		
 	
-	
-		Event newEvent = new Event(null, nomarticle ,horaire,dureeevent,distanceevent,lien , null, null);
-		 EventService.getInstance().addEvent(newEvent); 
+		Article newArticle = new Article(null, nomarticle,contenuarticle,lien, null);
+		ArticleService.getInstance().addArticle(newArticle); 
 		resp.sendRedirect("home");
 }
 }

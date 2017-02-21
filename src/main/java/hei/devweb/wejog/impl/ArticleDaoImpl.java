@@ -1,7 +1,6 @@
 package hei.devweb.wejog.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,10 +21,9 @@ public class ArticleDaoImpl {
 			while ( resultSet.next()){
 				article.add(new Article(
 						resultSet.getInt("idarticle"),
-						resultSet.getString("lieuarticle"),
-						resultSet.getDate("datearticle").toLocalDate(),
+						resultSet.getString("nomarticle"),
 						resultSet.getString("contenuarticle"),					
-						resultSet.getString("lienevent"),
+						resultSet.getString("lien"),
 						resultSet.getInt("user")));
 			}
 			statement.close();
@@ -45,11 +43,10 @@ public class ArticleDaoImpl {
 	public Article addArticle(Article newArticle){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`dateartcile`,`contenuarticle`,`lien`)VALUES(?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`)VALUES(?,?,?);", Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1,newArticle.getNomarticle());
-		statement.setDate(2,Date.valueOf(newArticle.getDatearticle()));
-		statement.setString(3,newArticle.getContenuarticle());
-	    statement.setString(4,newArticle.getLien());
+		statement.setString(2,newArticle.getContenuarticle());
+	    statement.setString(3,newArticle.getLien());
 		
 		
 				statement.executeUpdate();
