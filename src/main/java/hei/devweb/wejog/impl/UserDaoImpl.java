@@ -11,6 +11,7 @@ import java.util.List;
 
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
+import learnings.exceptions.LearningsSQLException;
 
 
 public class UserDaoImpl {
@@ -162,6 +163,25 @@ public class UserDaoImpl {
 	}
 		return newuser;
 	}
+	
+	public String getMotDePasseUtilisateurHashe(String identifiant) {
+		String motDePasse = null;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT motdepasse FROM users WHERE mail=?")){
+			statement.setString(1, identifiant);
+			ResultSet results = statement.executeQuery();
+			if (results.next()) {
+				motDePasse = results.getString("motdepasse");
+			}
+			statement.close();
+			connection.close();
+		} }catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+
+		return motDePasse;
+	}
+
 }
 
 

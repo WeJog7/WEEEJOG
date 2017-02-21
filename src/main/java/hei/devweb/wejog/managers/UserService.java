@@ -1,11 +1,13 @@
 package hei.devweb.wejog.managers;
 
+import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.logging.Logger;
 
 import hei.devweb.wejog.entities.User;
-
+import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.impl.UserDaoImpl;
+import learnings.exceptions.LearningsSecuriteException;
 
 
 
@@ -38,10 +40,6 @@ public class UserService {
     }
     
     
-    
-    
-    
-    
     public void supprimerUser(Long idusers) {
         if (idusers == null) {
             throw new IllegalArgumentException("L'id de l'user ne peut pas être null.");
@@ -66,5 +64,24 @@ public class UserService {
         UserDao.modifierroleadmin(idusers, true);
         LOGGER.info(String.format("Utilisateur|donnerDroitsAdmin|id=%d", idusers));
     }
+    
+    public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
+        if (email == null || "".equals(email)) {
+            throw new IllegalArgumentException("L'identifiant doit être renseigné.");
+        }
+        if (motDePasseAVerifier == null || "".equals(motDePasseAVerifier)) {
+            throw new IllegalArgumentException("Le mot de passe doit être renseigné.");
+        }
+        String motDePasseHashe = UserDao.getMotDePasseUtilisateurHashe(email);
+        if (motDePasseHashe == null) {
+            throw new IllegalArgumentException("L'identifiant n'est pas connu.");
+        }
+        try {
+            return MotDePasseManager.validerMotDePasse(motDePasseAVerifier, motDePasseHashe);
+        } catch (GeneralSecurityException e) {
+            throw new WejogSecuriteException("Problème dans la vérification du mot de passe.", e);
+        }
+    }
+
 
 }

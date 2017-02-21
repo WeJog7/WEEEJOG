@@ -11,11 +11,10 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 /**
- * Servlet implementation class HomeAdmin
+ * Servlet implementation class HomeAdminServlet
  */
-@WebServlet("admin/HomeAdmin")
-public class HomeAdminServlet extends AbstractGenericServlet {
-	
+@WebServlet("/homeadmin")
+public class HomeAdminServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**

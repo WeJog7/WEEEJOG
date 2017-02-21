@@ -11,14 +11,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AuthentificationFilter implements Filter {
+import hei.devweb.wejog.entities.User;
+
+
+public class AdminFilter implements Filter {
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if (httpRequest.getSession().getAttribute("utilisateur") == null) {
+		User utilisateur = (User) httpRequest.getSession().getAttribute("utilisateur");
+		if (utilisateur == null || !utilisateur.isAdmin()) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("/connexion");
 			return;
