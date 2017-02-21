@@ -64,7 +64,7 @@
 							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
 							<h1>Event</h1>
-							<h3 th:text="${event.dateevent}"> </h3>
+							<h3 th:text="${event.dateevent}">[[${#temporals.format(event.dateevent,'dd/MM/yyyy')}]] </h3>
 							<p th:text="${event.lieuevent}"></p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Subscribe to the event</a></div>
