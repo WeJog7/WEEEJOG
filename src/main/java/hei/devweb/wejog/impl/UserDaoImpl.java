@@ -158,7 +158,7 @@ public class UserDaoImpl {
 
 		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
-		
+			
 		
 	}
 		return newuser;

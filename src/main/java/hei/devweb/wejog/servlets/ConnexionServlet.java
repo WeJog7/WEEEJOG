@@ -1,7 +1,5 @@
 package hei.devweb.wejog.servlets;
 
-
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -20,7 +18,7 @@ public class ConnexionServlet extends GenericWejogServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("mail") == null) {
+		if (request.getSession().getAttribute("users") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			engine.process("/connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		} else {
