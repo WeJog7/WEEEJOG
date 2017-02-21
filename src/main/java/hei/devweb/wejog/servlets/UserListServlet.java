@@ -11,11 +11,11 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 /**
- * Servlet implementation class HomeAdmin
+ * Servlet implementation class UserListServlet
  */
-@WebServlet("admin/HomeAdmin")
-public class HomeAdmin extends AbstractGenericServlet {
-	
+@WebServlet("/UserListServlet")
+public class UserListServlet extends AbstractGenericServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -26,7 +26,7 @@ public class HomeAdmin extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("homeAdmin", context, resp.getWriter());
+		templateEngine.process("userList", context, resp.getWriter());
 	}
 
 
