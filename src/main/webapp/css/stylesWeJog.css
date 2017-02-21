@@ -248,11 +248,15 @@ form#creationCompte input{
 }
 
 
-#sectionCreationCompte{
+.sectionCreationCompte{
     background-image: url("../Images/fondConnexion.jpg");
     background-size: cover;
     background-position: center;  
     padding-top: 10%;
+}
+
+
+#sectionConnexionCompte{
     height: 100%;
 }
 
@@ -532,6 +536,11 @@ td.image_actuality{
 #littlePicture{
     width: 50px;
     border-radius: 10px;
+}
+
+#suppressionAdmin{
+    width: 40px;
+    text-align: middle;
 }
 
 

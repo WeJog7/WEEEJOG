@@ -1,0 +1,101 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <meta name="viewport" content="height=device-height"/>
+    <title>HomeAdmin</title>
+    
+   </head>
+
+	<body>
+
+		<header th:replace="~{fragments :: headerConnected('home')}"></header>
+
+		<section>
+			<h2>Actuality</h2>
+
+			<div id="menu_home">
+				<div class="liens"><a class="boutons_home" href="ajouterEvenement.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new event</a></div>
+				<div class="liens"><a class="boutons_home" href="ajouterArticle.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new article</a></div>
+				<div class="liens"><a class="boutons_home" href="ajouterPerformance.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Share your performance</a></div>
+			</div>
+
+			<div class="actuality">
+				<table>
+					<tr>
+						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td>
+							<h1>Sante magazine</h1>
+							<h1>Course a pied, running</h1>
+							<h3>Les bonnes raisons pour s'y mettre</h3>
+							<p>Synopsis : </p>
+							<p>Un esprit sain dans un corps sain.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<h3 class="alignement">Delete this post</h3>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+			<div class="actuality">
+				<table>
+					<tr>
+						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td>
+							<h1>My friend's performance</h1>
+							<h1>yesterday at 7pm</h1>
+							<p>Distance : 3 km</p>
+							<p>Calories : 771 cal</p>
+							<p>Average 12.3 mph</p>
+							<p>More information : </p>
+							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<h3 class="alignement">Delete this post</h3>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+			<div class="actuality">
+				<table>
+					<tr>
+						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td>
+							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
+							<h1 class="alignement">Mr XX.</h1>
+							<h1>Event</h1>
+							<h3>Today at 5 p.m.</h3>
+							<p>Departure : Big Ben</p>
+							<p>More information : </p>
+							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Subscribe to the event</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<h3 class="alignement">Delete this post</h3>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+		</section>
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+</html>
