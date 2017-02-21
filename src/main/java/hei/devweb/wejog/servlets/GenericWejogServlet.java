@@ -17,7 +17,7 @@ import hei.devweb.wejog.pojos.MessageContainer.Niveau;
 
 
 
-public abstract class GenericLearningsServlet extends HttpServlet {
+public abstract class GenericWejogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 8250982756065318974L;
 

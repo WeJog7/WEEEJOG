@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class AboutServlet
  */
 @WebServlet("/about")
-public class AboutServlet extends AbstractGenericServlet{
+public class AboutServlet extends GenericWejogServlet{
 	
 	private static final long serialVersionUID = 1L;
 

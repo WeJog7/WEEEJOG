@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class HomeServlet
  */
 @WebServlet("/recoveryPassword")
-public class RecoverypassewordServlet extends AbstractGenericServlet{
+public class RecoverypassewordServlet extends GenericWejogServlet  {
 	private static final long serialVersionUID = 1L;
       
 	/**

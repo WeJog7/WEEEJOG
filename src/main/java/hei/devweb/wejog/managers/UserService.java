@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.impl.UserDaoImpl;
-import learnings.exceptions.LearningsSecuriteException;
+
+
 
 
 
@@ -15,6 +16,7 @@ public class UserService {
 	
 	 private static Logger LOGGER = Logger.getLogger(UserService.class.getName());
 	private UserDaoImpl UserDao = new UserDaoImpl();
+	   private MotDePasseManager motDePasseManager = new MotDePasseManager();
 	
 	
     private static class UserServiceHolder {
@@ -77,7 +79,7 @@ public class UserService {
             throw new IllegalArgumentException("L'identifiant n'est pas connu.");
         }
         try {
-            return MotDePasseManager.validerMotDePasse(motDePasseAVerifier, motDePasseHashe);
+            return motDePasseManager.validerMotDePasse(motDePasseAVerifier, motDePasseHashe);
         } catch (GeneralSecurityException e) {
             throw new WejogSecuriteException("Problème dans la vérification du mot de passe.", e);
         }

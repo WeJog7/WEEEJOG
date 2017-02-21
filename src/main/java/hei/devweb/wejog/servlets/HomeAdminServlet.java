@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class HomeAdminServlet
  */
 @WebServlet("/homeadmin")
-public class HomeAdminServlet extends AbstractGenericServlet{
+public class HomeAdminServlet extends GenericWejogServlet{
 	
 	private static final long serialVersionUID = 1L;
 

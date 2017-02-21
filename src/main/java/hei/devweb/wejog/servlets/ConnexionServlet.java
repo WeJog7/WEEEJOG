@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/connexion")
-public class ConnexionServlet extends GenericLearningsServlet {
+public class ConnexionServlet extends GenericWejogServlet {
 	private static final long serialVersionUID = 3038302649713866775L;
 
 	@Override
@@ -34,7 +34,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 		String motDePasse = request.getParameter("password");
 		try {
 			if (UserService.getInstance().validerMotDePasse(identifiant, motDePasse)) {
-				request.getSession().setAttribute("utilisateur", UserService.getInstance().getUser(identifiant));
+				request.getSession().setAttribute("users", UserService.getInstance().getUser(identifiant));
 			} else {
 				this.ajouterMessageErreur(request, "Le mot de passe renseigné est faux.");
 			}

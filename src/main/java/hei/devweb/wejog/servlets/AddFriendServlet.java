@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class AddFriend
  */
 @WebServlet("/addFriend")
-public class AddFriendServlet extends AbstractGenericServlet{
+public class AddFriendServlet extends GenericWejogServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**

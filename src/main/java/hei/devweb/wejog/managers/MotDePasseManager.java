@@ -30,7 +30,7 @@ public class MotDePasseManager {
 		return toHex(sel) + ":" + toHex(hash);
 	}
 
-	public static boolean validerMotDePasse(String motDePasse, String hashCorrect) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public  boolean validerMotDePasse(String motDePasse, String hashCorrect) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		// Séparation du hash et du sel
 		String[] params = hashCorrect.split(":");
 		byte[] sel = fromHex(params[0]);
@@ -42,13 +42,13 @@ public class MotDePasseManager {
 		return Arrays.equals(hash, hashAValider);
 	}
 
-	private static byte[] genererHash(String motDePasse, byte[] sel) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	private  byte[] genererHash(String motDePasse, byte[] sel) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		PBEKeySpec spec = new PBEKeySpec(motDePasse.toCharArray(), sel, PBKDF2_ITERATIONS, HASH_BYTE_SIZE * 8);
 		SecretKeyFactory skf = SecretKeyFactory.getInstance(PBKDF2_ALGORITHM);
 		return skf.generateSecret(spec).getEncoded();
 	}
 
-	private static byte[] fromHex(String hex) {
+	private  byte[] fromHex(String hex) {
 		byte[] binary = new byte[hex.length() / 2];
 		for (int i = 0; i < binary.length; i++) {
 			binary[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);

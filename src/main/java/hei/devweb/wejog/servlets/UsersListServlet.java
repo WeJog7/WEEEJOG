@@ -11,7 +11,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 @WebServlet("/userslistadmin")
-public class UsersListServlet extends AbstractGenericServlet{
+public class UsersListServlet extends GenericWejogServlet {
 	
 	private static final long serialVersionUID = 1L;
 	

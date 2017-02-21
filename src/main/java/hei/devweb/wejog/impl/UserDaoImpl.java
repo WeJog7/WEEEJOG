@@ -11,7 +11,7 @@ import java.util.List;
 
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
-import learnings.exceptions.LearningsSQLException;
+
 
 
 public class UserDaoImpl {
