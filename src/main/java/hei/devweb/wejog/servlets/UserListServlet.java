@@ -26,7 +26,7 @@ public class UserListServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("userList", context, resp.getWriter());
+		templateEngine.process("usersList", context, resp.getWriter());
 	}
 
 
