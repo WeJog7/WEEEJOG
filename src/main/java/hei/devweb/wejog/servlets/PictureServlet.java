@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class PictureServlet
  */
 @WebServlet("/picture")
-public class PictureServlet extends GenericWejogServlet {
+public class PictureServlet extends AbstractGenericServlet {
 	
 	private static final long serialVersionUID = 1L;
 
