@@ -26,7 +26,7 @@ public class ConnexionServlet extends AbstractGenericServlet  {
 		resp.setCharacterEncoding("UTF-8");
 		TemplateEngine templateEngine =this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		templateEngine.process("connexion", context, resp.getWriter());
+		templateEngine.process("/wejog/connexion", context, resp.getWriter());
 	}
 	
 	@Override
