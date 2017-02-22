@@ -14,7 +14,7 @@ import org.thymeleaf.context.WebContext;
  * Servlet implementation class HomeServlet
  */
 @WebServlet("/createAccount")
-public class CreateAccountServlet extends GenericWejogServlet{
+public class CreateAccountServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       
 	/**

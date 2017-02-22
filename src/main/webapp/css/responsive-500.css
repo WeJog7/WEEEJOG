@@ -217,14 +217,10 @@ form#connexionCompte label {
 }
 
 
-#sectionConnexionCompte{
-	height: auto;
-}
-
-
-.sectionCreationCompte {
+#sectionCreationCompte {
 	margin-bottom: 10px;
 	padding-top: 10px;
+	height: auto;
 }
 
 
