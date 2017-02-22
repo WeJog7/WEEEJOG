@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Fragments</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="css/stylesWeJog.css" rel="stylesheet">
+  </head>
+  
+  <body>
+  
+  	<header th:fragment="headerConnected(selectedMenu)">
+			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<div id ="informations" class="alignement">
+				<a id = "photoProfil" href="profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<h4 class="alignement">Mr. XX</h4>
+				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img src ="Images/Logout.png" alt="Deconnexion"></a>
+			</div>
+
+		<nav>
+			<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="home">Home</a></li>
+			<li th:class="${selectedMenu == 'about'} ? 'active'"><a href="about">About</a></li>
+			<li th:class="${selectedMenu == 'news'} ? 'active'"><a href="news">News</a></li>
+			<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+			<input type="submit" id="boutonSearch" class="alignement" value="Go">
+		</nav>
+		
+		</header>
+		
+		<header th:fragment="headerNotConnected">
+			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			
+			<div id="not_connected">
+				<div id="bouton_connexion" class="bouton_Non_Connecte">
+					<a class="bouton_lien" href="connexion">Sign In</a>
+				</div>
+				<div id="bouton_register" class="bouton_Non_Connecte">
+					<a class="bouton_lien" href="createAccount">Register</a>
+				</div>
+			</div>
+
+		<nav>
+				<li class="alignement" id="active"><a href="home">Home</a></li>
+				<li class="alignement"><a href="about">About</a></li>
+				<li class="alignement"><a href="news">News</a></li>
+				<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+				<input type="submit" id="boutonSearch" class="alignement" value="Go">
+		</nav>
+		
+		</header>
+	
+	<footer th:fragment="footer">
+		<div id="footer">
+			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.jpg" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="contact" class="alignement">Contact Us</a>
+		</div>
+	</footer>
+	
+  </body>
+  
+</html>
