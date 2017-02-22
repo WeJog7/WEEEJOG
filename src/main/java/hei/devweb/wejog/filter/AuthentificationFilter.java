@@ -1,4 +1,4 @@
-package learnings.web.filters;
+package hei.devweb.wejog.filter;
 
 import java.io.IOException;
 

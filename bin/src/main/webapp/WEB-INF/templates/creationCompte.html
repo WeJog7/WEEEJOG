@@ -1,0 +1,73 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <meta name="viewport" content="height=device-height"/>
+    <title>Account Creation</title>
+   </head>
+
+	<body>
+
+		<header th:replace="~{fragments :: headerNotConnected}"></header>
+
+		<section id="sectionCreationCompte">
+
+			<form action="" method="POST" id="creationCompte">
+
+			<h2>Create an account</h2>
+
+			<div id="sex">
+		    	<label for ="sex">Sex</label>
+   				<input type="radio" name="reponse1" value="Male" />Male
+    			<input type="radio" name="reponse2" value="Female" checked="Female" />Female
+			</div>
+
+			<div>
+				<label for ="name">Name</label>
+		    	<input type="text/plain" id="name" name="name" placeholder="Please enter your name" required />
+		    </div>
+
+			<div>
+				<label for ="lastName">Last Name</label>
+		    	<input type="text/plain" id="lastName" name="lastName" placeholder="Please enter your last name" required />
+		    </div>
+
+		    <div>
+		    	<label for ="birth">Birth Date</label>
+		    	<input type="date" id="birth" name="birth" required />
+		    </div>
+
+			<div>
+		    	<label for ="mail">Email</label>
+		    	<input type="email" name="mail" id="mail" placeholder="Enter your email" required >
+		    </div>
+
+			<div>
+		    	<label for ="ConfirmMail">Confirm Email</label>
+		    	<input type="email" name="ConfirmMail" id="ConfirmMail" placeholder="Confirm your email" required >
+		    </div>
+
+			<div>
+				<label for ="password">Password</label>
+		    	<input type="text/plain" id="password" name="password" placeholder="Please enter your password" required />
+		    </div>
+
+		    <div>
+				<label for ="confirmPassword">Password Confirmation</label>
+		    	<input type="text/plain" id="confirmPassword" name="confirmPassword" placeholder="Please confirm your password" required />
+		    </div>
+
+		   <div  id="register" >
+		   		<input type="submit" value="Register" />
+		   	</div>
+		    
+			</form>
+		</section>
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+</html>

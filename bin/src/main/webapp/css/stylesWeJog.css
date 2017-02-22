@@ -1,0 +1,763 @@
+
+/* Corps page de base */
+
+header{
+	background-color: #1A7A50;
+    padding-bottom: 5px;
+}
+
+
+#logo img{
+	width: 100%;
+}
+
+#logo{
+	width: 15%;
+}
+
+
+#photoProfil img{
+	width: 90px;
+    height: 90px;
+	margin-top: 5px;
+    overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+}
+
+
+#logo_deconnexion img{
+	width: 40px;
+}
+
+
+.alignement{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+#informations{
+    position: relative;
+    float: right;
+    margin-right: 30px;
+}
+
+
+h4{
+	color: white;
+}
+
+
+nav{
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+
+nav li {
+    display: inline-block;
+    margin-left: 9%;
+    margin-right: 9%;
+    font-size: 35px;
+}
+
+
+nav a{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+
+nav li.active {
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 50px 5px 50px;
+}
+
+
+input[type=submit]{
+    height : 40px;
+    border-radius: 10px;
+    background-color : #1A7A50;
+    color: white;
+    font-size: 17px;
+}
+
+
+#boutonSearch{
+    background-color : white;
+    color : black;
+}
+
+
+#search{
+    width : 200px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+}
+
+
+footer{
+	background-color: #1A7A50;
+}
+
+footer img{
+	width: 40px;
+	margin: 10px;
+}
+
+
+#Contact_Us{
+    position: relative;
+    float: right;
+    margin-top: 12px;
+    margin-right: 200px;
+	text-decoration: none;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 10px 5px 10px;
+}
+
+#facebook{
+	margin-left: 5%;
+}
+
+
+input{
+    height : 35px;
+}
+
+
+/* Page Récupération de mot de passe */
+
+.recovery{
+    text-align: center;
+    font-family: verdana;
+    margin-top: 10%;
+}
+
+#submit{
+    background-color : #1A7A50;
+    color : white;
+}
+
+#email{
+    width: 350px;
+    border-radius: 5px;
+}
+
+
+/* Page Ajout de performance, d'événements, d'article, de contact */
+
+h2{
+    text-align: center;
+}
+
+
+#ajout_performance{
+    margin : 10px 150px 10px 150px;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+
+#formulaire_performance{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+
+label {
+  width: 50px;
+  display: inline-block;
+  margin-top: 6px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+.donnees{
+    width: 95%;
+}
+
+
+#validation{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+iframe{
+    width: 95%;
+    height : 500px;
+    margin-top: 10px;
+}
+
+
+/* Page Création de compte */
+
+label {
+  width: 30%;
+  display: inline-block;
+  margin: 6px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+
+textarea {
+  height: 70px;
+  vertical-align: middle;
+}
+
+
+#creationCompte{
+    text-align: center;
+    background-color: white;
+    margin-left: 29%;
+    margin-right: 29%;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-width: 2px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+form#creationCompte input{
+    width: 65%;
+    margin: 6px;
+    border-radius: 5px;
+}
+
+
+.sectionCreationCompte{
+    background-image: url("../Images/fondConnexion.jpg");
+    background-size: cover;
+    background-position: center;  
+    padding-top: 10%;
+}
+
+
+#sectionConnexionCompte{
+    height: 100%;
+}
+
+
+div#sex {
+    text-align: left;
+}
+
+
+div#sex input{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+
+div#register input{
+    width: 50%;
+}
+
+
+.bouton_Non_Connecte{
+    display: inline-block;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    margin-top: 15px;
+    height: 20px;
+    text-align: center;
+    width: 100px;
+}
+
+
+.bouton_lien{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+
+#bouton_connexion{
+    background-color: red;
+}
+
+
+#bouton_register{
+    background-color: blue;
+}
+
+
+#not_connected{
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    width: 220px;
+}
+
+
+/* Page de connexion */
+
+#connexionCompte{
+    text-align: center;
+    background-color: white;
+    margin-left: 29%;
+    margin-right: 29%;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-width: 2px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+form#connexionCompte input{
+    width: 85%;
+    margin: 6px;
+    border-radius: 5px;
+}
+
+
+form#connexionCompte label{
+  width: 10%;
+  display: inline-block;
+  margin: 6px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+
+form#connexionCompte input[type="submit"]{
+    margin: 6px;
+    border-radius: 5px;
+}
+
+
+form#connexionCompte input[type="checkbox"]{
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+}
+
+
+#back_home{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 10px 5px 10px;
+    height: 20px;
+    width: 80px;
+}
+
+
+div#forget_password a{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 10px 5px 10px;
+    font-size: 17px;
+    vertical-align: middle;
+}
+
+
+#forget_password{
+    height: 40px;
+    display: inline-block;
+    margin: 6px;
+}
+
+
+/* Page myNetwork */
+
+.network{
+    width: 33%;
+    text-align: center;
+    display: inline-block;
+}
+
+
+table.network td{
+    width: 33%;
+}
+
+
+#image_reseau{
+    width: 250px;
+    height: 250px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+}
+
+
+.boutons_ami img{
+    width : 30px;
+    height: 30px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+    vertical-align: middle;
+    margin-right : 5px;
+}
+
+
+.boutons_ami{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    padding : 5px 10px 9px 10px;
+    font-weight: bold;
+}
+
+
+#ajout_performance a:hover{
+    color : #1A7A50;
+    text-decoration: none;
+    background-color:white;
+    border-color: #1A7A50;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+
+#ajout_ami{
+    text-align: center;
+    margin-bottom: 15px;
+    padding : 5px 100px 9px 100px;
+}
+
+
+/* Page Home */
+
+
+#menu_home{
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 20%;
+    margin-right : 20%;
+}
+
+.liens{
+    width: 33%;
+    display: inline-block;
+}
+
+
+.boutons_home{
+    background-color: #1A7A50;
+    border-radius: 5px;
+    color : white;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a:hover.boutons_home{
+    color : #1A7A50;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
+.boutons_home img{
+    width : 30px;
+    height: 30px;
+    overflow:hidden;
+    -webkit-border-radius:90px;
+    -moz-border-radius:90px;
+    border-radius:90px;
+    vertical-align: middle;
+    margin-right : 5px;
+}
+
+
+.actuality{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+
+.actuality img{
+    width: 100%;
+}
+
+
+td.image_actuality{
+    width: 30%
+}
+
+
+#littlePicture{
+    width: 50px;
+    border-radius: 10px;
+}
+
+#suppressionAdmin{
+    width: 40px;
+    text-align: middle;
+}
+
+
+/* Page profil*/
+
+#profil{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15px;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 15px;
+}
+
+
+.bouton_profil{
+    text-decoration: none;
+    color: white;
+    background-color: #1A7A50;
+    border-radius: 5px;
+    border-width: 1px;
+    display: block;
+    border-style: solid;
+    border-color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom : 3px;
+}
+
+
+.bouton_profil:hover{
+    background-color: white;
+    color: #1A7A50;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
+.boutons_profil{
+    width: 49%;
+    display: inline-block;
+}
+
+
+#utilisateur{
+    width: 20%;
+    display: inline-block;
+}
+
+
+#utilisateur img{
+    width: 100%;
+}
+
+
+#description_profil{
+    width: 79%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+#description_profil p{
+    display: block;
+}
+
+
+.bouton_photo{
+    display: inline-block;
+    width: 50%;
+}
+
+
+.tableaux_performance{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15px;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+
+.tableau_performance_totale{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    text-align: center;
+    width: 32%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.boutons_performance{
+    background-color: #1A7A50;
+    border-radius: 5px;
+    color : white;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.tableau_performance{
+    border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+    text-align: center;
+    width: 15%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+/* Page Ajout Ami */
+
+#liste_utilisateurs{
+    margin-top: 120px;
+    text-align: center;
+}
+
+
+#friendFound{
+    padding-top: 30px;
+    margin: auto;
+}
+
+
+#friendIdentity{
+    font-weight: bold;
+}
+
+
+/* Page ajout image*/
+
+#picture{
+    text-align: center;
+}
+
+
+form#picture div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+input#image{
+    border-radius : 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
+/* Page about */
+
+#presentation{
+    text-align: center;
+}
+
+/* Page description */
+
+#description{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+#description textarea{
+    width: 65%;
+    height: 20%;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-width: 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* Page Liste utilisateurs */
+
+table#userList{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: #1A7A50;
+    border-style: solid;
+    text-align: center;
+}
+
+
+#userList th{
+    border-color: #1A7A50;
+    border-style: solid;
+}
+
+
+#userList td{
+    width: 15%;
+    border-color: #1A7A50;
+    border-style: solid;
+}
+
+
+.userPicture img{
+    width: 25%;
+}

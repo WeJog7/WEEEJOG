@@ -1,4 +1,4 @@
-package learnings.web.filters;
+package hei.devweb.wejog.filter;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import learnings.model.Utilisateur;
+import hei.devweb.wejog.entities.Utilisateur;
 
 public class AdminFilter implements Filter {
 

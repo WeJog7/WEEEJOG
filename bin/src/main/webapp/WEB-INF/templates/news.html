@@ -1,0 +1,62 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <meta name="viewport" content="height=device-height"/>
+    <title>News</title>
+    
+   </head>
+
+	<body>
+
+		<header th:replace="~{fragments :: headerConnected('news')}"></header>
+
+		<section>
+			<h2>News</h2>
+
+			<div id="menu_home">
+				<div class="liens"><a class="boutons_home" href="addevent"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new event</a></div>
+				<div class="liens"><a class="boutons_home" href="addarticle"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new article</a></div>
+				<div class="liens"><a class="boutons_home" href="addperformance"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Share your performance</a></div>
+			</div>
+
+			<div class="actuality">
+				<table>
+					<tr>
+						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td>
+							<h1>Sante magazine</h1>
+							<h1>Course a pied, running</h1>
+							<h3>Les bonnes raisons pour s'y mettre</h3>
+							<p>Synopsis : </p>
+							<p>Un esprit sain dans un corps sain.</p>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+			<div class="actuality">
+				<table>
+					<tr>
+						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td>
+							<h1>Active</h1>
+							<h1>6 Benefits of Running</h1>
+							<p>Synopsis : </p>
+							<p>Les 6 arguments pour vous convaincre de courir.</p>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+		</section>
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+</html>

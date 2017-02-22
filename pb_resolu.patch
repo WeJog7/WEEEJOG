@@ -1,0 +1,97 @@
+diff --git a/.classpath b/.classpath
+index d4a5125..abfacc1 100644
+--- a/.classpath
++++ b/.classpath
+@@ -28,7 +28,7 @@
+ 			<attribute name="maven.pomderived" value="true"/>
+ 		</attributes>
+ 	</classpathentry>
+-	<classpathentry kind="lib" path="/Users/benallalhabib/mysql-connector-java-5.1.40-bin.jar"/>
++	<classpathentry kind="lib" path="C:/Users/Jaden/git/WEEEJOG/mysql-connector-java-5.1.40-bin.jar"/>
+ 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+ 		<attributes>
+ 			<attribute name="maven.pomderived" value="true"/>
+diff --git a/src/main/java/hei/devweb/wejog/filter/AdminFilter.java b/src/main/java/hei/devweb/wejog/filter/AdminFilter.java
+index 3b0c202..5c73c32 100755
+--- a/src/main/java/hei/devweb/wejog/filter/AdminFilter.java
++++ b/src/main/java/hei/devweb/wejog/filter/AdminFilter.java
+@@ -1,4 +1,4 @@
+-package learnings.web.filters;
++package hei.devweb.wejog.filter;
+ 
+ import java.io.IOException;
+ 
+@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+ 
+-import learnings.model.Utilisateur;
++import hei.devweb.wejog.entities.Utilisateur;
+ 
+ public class AdminFilter implements Filter {
+ 
+diff --git a/src/main/java/hei/devweb/wejog/filter/AuthentificationFilter.java b/src/main/java/hei/devweb/wejog/filter/AuthentificationFilter.java
+index 7bc1f8d..dc89e25 100755
+--- a/src/main/java/hei/devweb/wejog/filter/AuthentificationFilter.java
++++ b/src/main/java/hei/devweb/wejog/filter/AuthentificationFilter.java
+@@ -1,4 +1,4 @@
+-package learnings.web.filters;
++package hei.devweb.wejog.filter;
+ 
+ import java.io.IOException;
+ 
+diff --git a/src/main/java/hei/devweb/wejog/filter/EncodingFilter.java b/src/main/java/hei/devweb/wejog/filter/EncodingFilter.java
+index db3b4d8..d3c219b 100755
+--- a/src/main/java/hei/devweb/wejog/filter/EncodingFilter.java
++++ b/src/main/java/hei/devweb/wejog/filter/EncodingFilter.java
+@@ -1,4 +1,4 @@
+-package learnings.web.filters;
++package hei.devweb.wejog.filter;
+ 
+ import javax.servlet.*;
+ import java.io.IOException;
+diff --git a/src/main/java/hei/devweb/wejog/filter/MessageFilter.java b/src/main/java/hei/devweb/wejog/filter/MessageFilter.java
+index 00ec200..2912ce9 100755
+--- a/src/main/java/hei/devweb/wejog/filter/MessageFilter.java
++++ b/src/main/java/hei/devweb/wejog/filter/MessageFilter.java
+@@ -1,4 +1,4 @@
+-package learnings.web.filters;
++package hei.devweb.wejog.filter;
+ 
+ import java.io.IOException;
+ 
+@@ -10,8 +10,8 @@ import javax.servlet.ServletRequest;
+ import javax.servlet.ServletResponse;
+ import javax.servlet.http.HttpServletRequest;
+ 
+-import learnings.pojos.MessageContainer;
+-import learnings.pojos.MessageContainer.Niveau;
++import hei.devweb.wejog.pojos.MessageContainer;
++import hei.devweb.wejog.pojos.MessageContainer.Niveau;
+ 
+ public class MessageFilter implements Filter {
+ 
+diff --git a/src/main/java/hei/devweb/wejog/servlets/GenericWejogServlet.java b/src/main/java/hei/devweb/wejog/servlets/GenericWejogServlet.java
+index 952855d..18dc3d2 100755
+--- a/src/main/java/hei/devweb/wejog/servlets/GenericWejogServlet.java
++++ b/src/main/java/hei/devweb/wejog/servlets/GenericWejogServlet.java
+@@ -11,7 +11,7 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+ import org.thymeleaf.templatemode.TemplateMode;
+ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+ 
+-import hei.devweb.wejog.entities.User;
++import hei.devweb.wejog.entities.Utilisateur;
+ import hei.devweb.wejog.pojos.MessageContainer;
+ import hei.devweb.wejog.pojos.MessageContainer.Niveau;
+ 
+@@ -42,8 +42,8 @@ public abstract class GenericWejogServlet extends HttpServlet {
+ 		container.ajouterMessage(niveau, message);
+ 	}
+ 
+-	protected User getUtilisateurCourant(HttpServletRequest request) {
+-		return (User) request.getSession().getAttribute("mail");
++	protected Utilisateur getUtilisateurCourant(HttpServletRequest request) {
++		return (Utilisateur) request.getSession().getAttribute("mail");
+ 	}
+ 
+ 	protected TemplateEngine createTemplateEngine(HttpServletRequest request) {

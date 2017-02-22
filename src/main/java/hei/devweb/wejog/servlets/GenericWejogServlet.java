@@ -11,7 +11,7 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.entities.Utilisateur;
 import hei.devweb.wejog.pojos.MessageContainer;
 import hei.devweb.wejog.pojos.MessageContainer.Niveau;
 
@@ -42,8 +42,8 @@ public abstract class GenericWejogServlet extends HttpServlet {
 		container.ajouterMessage(niveau, message);
 	}
 
-	protected User getUtilisateurCourant(HttpServletRequest request) {
-		return (User) request.getSession().getAttribute("mail");
+	protected Utilisateur getUtilisateurCourant(HttpServletRequest request) {
+		return (Utilisateur) request.getSession().getAttribute("mail");
 	}
 
 	protected TemplateEngine createTemplateEngine(HttpServletRequest request) {

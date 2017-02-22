@@ -1,0 +1,40 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/RecoveryPassword.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <meta name="viewport" content="height=device-height"/>
+    <title>Add a friend</title>
+    
+   </head>
+
+	<body>
+
+		<header th:replace="~{fragments :: headerConnected('valueWithoutImportance')}"></header>
+
+		<section id="liste_utilisateurs">
+
+			<h2>Add a friend to your network</h2>
+
+		    <input type="text/plain" name="friendSearch" id="email" class="alignement" placeholder="Enter the first name or the last name of your friend" required >
+
+		   	<input type="submit" id="submit" class="alignement" value="Submit">
+
+		   	<table id="friendFound">
+		   		<tr>
+		   			<td id="friendIdentity">Friend Found : </td>
+		   			<td>Elizabeth II</td>
+		   			<td><input type="submit" id="submit" value="Add"></td>
+		   		</tr>
+		   	</table>
+
+		</section>
+
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+</html>
