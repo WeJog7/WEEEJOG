@@ -26,7 +26,7 @@ public class AuthentificationFilter implements Filter{
 		String identifiant = (String) httpRequest.getSession().getAttribute("utilisateurConnecte");   
 		if(identifiant == null || "".equals(identifiant)) {        
 			HttpServletResponse httpResponse = (HttpServletResponse) response;     
-			httpResponse.sendRedirect("/connexion");
+			httpResponse.sendRedirect("connexion");
 			return;   
 			}     
 		chain.doFilter(request, response); 
