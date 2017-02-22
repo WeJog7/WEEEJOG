@@ -9,11 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import hei.devweb.wejog.dao.Userdao;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 
-public class UserDaoImpl {
+
+public class UserDaoImpl implements Userdao {
 	
 	public List<User> listerUsers() {
 		List<User> users = new ArrayList<User>();
@@ -22,15 +24,7 @@ public class UserDaoImpl {
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail")){
 			while (resultSet.next()) {
 
-				users.add(new User(
-						resultSet.getLong("idusers"),
-						resultSet.getString("nom"),
-						resultSet.getString("prenom"),
-						resultSet.getString("mail"),
-						resultSet.getDate("datedenaissance").toLocalDate(),
-						resultSet.getString("motdepasse"),
-						resultSet.getBoolean("sexe"),
-		                resultSet.getBoolean("admin")));
+				users.add(mapperVersUser(resultSet));
 			}
 			statement.close();
 			connection.close();
@@ -40,6 +34,18 @@ public class UserDaoImpl {
 		return users;
 	}
 	
+	private User mapperVersUser(ResultSet resultSet) throws SQLException {
+		
+		return new User (resultSet.getLong("idusers"),
+				resultSet.getString("nom"),
+				resultSet.getString("prenom"),
+				resultSet.getString("mail"),
+				resultSet.getDate("datedenaissance").toLocalDate(),
+				resultSet.getString("motdepasse"),
+				resultSet.getBoolean("sexe"),
+                resultSet.getBoolean("admin"));
+	}
+	
 	public User getUser(long idusers) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -47,7 +53,7 @@ public class UserDaoImpl {
 		    statement.setLong(1, idusers);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				user = (User) listerUsers();
+				user = mapperVersUser(resultSet);
 			}
 			statement.close();
 			connection.close();
@@ -60,11 +66,11 @@ public class UserDaoImpl {
 	public User getUser(String mail) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe, admin FROM user WHERE mail=?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe, admin FROM users WHERE mail=?")){
 			 statement.setString(1, mail);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				user = (User) listerUsers();
+				user = mapperVersUser(resultSet);
 			}
 			statement.close();
 			connection.close();
@@ -161,6 +167,36 @@ public class UserDaoImpl {
 		
 	}
 		return newuser;
+	}
+
+	@Override
+	public User getUser(Long idusers) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void supprimerUser(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifierRoleAdmin(Long id, boolean admin) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifierMotDePasse(Long id, String motDePasse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User ajouterUser(User nouvelUser, String motDePasse) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
