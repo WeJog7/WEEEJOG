@@ -1,10 +1,11 @@
 package hei.devweb.wejog.servlets;
 
+import learnings.exceptions.LearningsSecuriteException;
+
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.exceptions.WejogSecuriteException;
-import hei.devweb.wejog.managers.UserService;
+import hei.devweb.wejog.managers.UtilisateurManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ public class ConnexionServlet extends GenericWejogServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("users") == null) {
+		if (request.getSession().getAttribute("utilisateur") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			engine.process("/connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		} else {
@@ -31,14 +32,14 @@ public class ConnexionServlet extends GenericWejogServlet {
 		String identifiant = request.getParameter("mail");
 		String motDePasse = request.getParameter("password");
 		try {
-			if (UserService.getInstance().validerMotDePasse(identifiant, motDePasse)) {
-				request.getSession().setAttribute("users", UserService.getInstance().getUser(identifiant));
+			if (UtilisateurManager.getInstance().validerMotDePasse(identifiant, motDePasse)) {
+				request.getSession().setAttribute("utilisateur", UtilisateurManager.getInstance().getUtilisateur(identifiant));
 			} else {
 				this.ajouterMessageErreur(request, "Le mot de passe renseigné est faux.");
 			}
 		} catch (IllegalArgumentException e) {
 			this.ajouterMessageErreur(request, e.getMessage());
-		} catch (WejogSecuriteException e) {
+		} catch (LearningsSecuriteException e) {
 			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
 		}
 

@@ -1,4 +1,4 @@
-package hei.devweb.wejog.filter;
+package learnings.web.filters;
 
 import java.io.IOException;
 
@@ -18,9 +18,9 @@ public class AuthentificationFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if (httpRequest.getSession().getAttribute("users") == null) {
+		if (httpRequest.getSession().getAttribute("utilisateur") == null) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect("/connexion");
+			httpResponse.sendRedirect("../connexion");
 			return;
 		}
 		chain.doFilter(request, response);

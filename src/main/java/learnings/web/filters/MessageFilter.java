@@ -1,4 +1,4 @@
-package hei.devweb.wejog.filter;
+package learnings.web.filters;
 
 import java.io.IOException;
 
@@ -10,9 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import hei.devweb.wejog.pojos.MessageContainer;
-import hei.devweb.wejog.pojos.MessageContainer.Niveau;
-
+import learnings.pojos.MessageContainer;
+import learnings.pojos.MessageContainer.Niveau;
 
 public class MessageFilter implements Filter {
 
