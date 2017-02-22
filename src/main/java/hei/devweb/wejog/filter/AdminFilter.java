@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hei.devweb.wejog.entities.Utilisateur;
+import hei.devweb.wejog.entities.User;
 
 public class AdminFilter implements Filter {
 
@@ -20,7 +20,7 @@ public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		Utilisateur utilisateur = (Utilisateur) httpRequest.getSession().getAttribute("utilisateur");
+		User utilisateur = (User) httpRequest.getSession().getAttribute("utilisateur");
 		if (utilisateur == null || !utilisateur.isAdmin()) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("../connexion");
