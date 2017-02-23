@@ -26,7 +26,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		} else {
-			response.sendRedirect("/home");
+			response.sendRedirect("home");
 		}
 	}
 
