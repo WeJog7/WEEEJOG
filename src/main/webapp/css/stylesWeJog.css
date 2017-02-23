@@ -248,11 +248,15 @@ form#creationCompte input{
 }
 
 
-#sectionCreationCompte{
+.sectionCreationCompte{
     background-image: url("../Images/fondConnexion.jpg");
     background-size: cover;
     background-position: center;  
     padding-top: 10%;
+}
+
+
+#sectionConnexionCompte{
     height: 100%;
 }
 
@@ -534,6 +538,11 @@ td.image_actuality{
     border-radius: 10px;
 }
 
+#suppressionAdmin{
+    width: 40px;
+    text-align: middle;
+}
+
 
 /* Page profil*/
 
@@ -720,3 +729,35 @@ input#image{
     margin-bottom: 10px;
 }
 
+
+/* Page Liste utilisateurs */
+
+table#userList{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: #1A7A50;
+    border-style: solid;
+    text-align: center;
+}
+
+
+#userList th{
+    border-color: #1A7A50;
+    border-style: solid;
+}
+
+
+#userList td{
+    width: 15%;
+    border-color: #1A7A50;
+    border-style: solid;
+}
+
+
+.userPicture img{
+    width: 25%;
+}

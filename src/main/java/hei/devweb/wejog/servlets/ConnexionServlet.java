@@ -49,7 +49,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
 		}
 
-		response.sendRedirect("connexion");
+		response.sendRedirect("home");
 	}
 
 }
