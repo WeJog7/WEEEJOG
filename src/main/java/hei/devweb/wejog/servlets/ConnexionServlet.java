@@ -2,10 +2,7 @@ package hei.devweb.wejog.servlets;
 
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +26,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		} else {
-			response.sendRedirect("home");
+			response.sendRedirect("/home");
 		}
 	}
 
@@ -49,7 +46,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
 		}
 
-		response.sendRedirect("home");
+		response.sendRedirect("connexion");
 	}
 
 }
