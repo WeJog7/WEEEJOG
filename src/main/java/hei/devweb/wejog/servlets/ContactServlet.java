@@ -1,6 +1,9 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,9 +49,18 @@ public class ContactServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-        envoiMessage.main(email, name, message);
+		if(verify){
+			envoiMessage.main(email, name, message);
+			System.out.println("The user is not a robot. Permission to send message granted.");
+			response.sendRedirect("home");
+		}
+		
+		else{
+			System.out.println("User not verified, permission not granted.");
+			PrintWriter out = response.getWriter();
+			out.println("<font color=red>You missed the Captcha.</font>");
+		}
         
-        response.sendRedirect("home");
         
     }
 
