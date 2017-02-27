@@ -40,7 +40,7 @@ public class ContactServlet extends AbstractGenericServlet{
 	
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // reads form fields
+        
         String email = request.getParameter("email_contact");
         String name = request.getParameter("name");
         String message = request.getParameter("message");
@@ -53,6 +53,7 @@ public class ContactServlet extends AbstractGenericServlet{
 			envoiMessage.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("home");
+			
 		}
 		
 		else{

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/RecoveryPassword.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
     <meta name="viewport" content="height=device-height"/>
-    <title>Recovery Password</title>
+    <title>Message Confirmation</title>
     
    </head>
 
@@ -15,22 +15,14 @@
 		<header th:replace="~{fragments :: headerNotConnected}"></header>
 
 		<section class="recovery">
-			<h1>Recovery of your password</h1>
-			<p>You will receive a new password by mail, please follow the instructions</p>
-			
-			<form action="" method="POST">
-		   		<div class="alignement">
-		    		<input type="email" name="email" id="email" placeholder="Enter your email" required >
-		    	</div>
-		    	<div class="alignement">
-		   		<input type="submit" id="submit" value="Submit">
-		   		</div>
-			</form>
+			<h1>Your message has been sent to the administrator.</h1>
+			<p>We will answer you as fast as possible</p>
+			<a id="back_home" href="home">Back Home</a>
 		</section>
 
 
 		<footer th:replace="~{fragments :: footer}"></footer>
-
+		
 	</body>
 
 </html>
