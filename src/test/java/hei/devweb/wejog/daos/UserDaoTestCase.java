@@ -1,4 +1,4 @@
-package hei.devweb.wejog.daos;
+/*package hei.devweb.wejog.daos;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -35,4 +35,4 @@ public void shouldListUserToDo() throws Exception {
 	);
 	
 }
-}
+}*/
