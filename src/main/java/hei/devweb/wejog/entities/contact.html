@@ -11,7 +11,7 @@
 
 	<body>
 
-		<header th:replace="~{fragments :: headerNotConnected}"></header>
+		<header th:replace="~{fragments :: headerConnected('valueWithoutImportance')}"></header>
 
 		<section id ="ajout_performance">
 			<h2>Contact Us</h2>
@@ -30,7 +30,7 @@
 
 			<div>
 		    	<h3>Your message</h3>
-		   		<textarea type="text/plain" id="message" name ="message" class="donnees" placeholder="Please write your message" maxlength="140" required /></textarea>
+		   		<input type="text/plain" id="message" name ="message" class="donnees" placeholder="Please write your message" maxlength="140" required />
 		   	</div>
 
 		   	<div>

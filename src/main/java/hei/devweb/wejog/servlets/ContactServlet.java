@@ -6,9 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import hei.devweb.wejog.entities.envoiMessage;
+
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 /**
  * Servlet implementation class HomeServlet
@@ -27,6 +31,18 @@ public class ContactServlet extends AbstractGenericServlet{
 		
 		templateEngine.process("contact", context, resp.getWriter());
 	}
-
+	
+	protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        // reads form fields
+        String email = request.getParameter("email_contact");
+        String name = request.getParameter("name");
+        String message = request.getParameter("message");
+        
+        envoiMessage.main(email, name, message);
+        
+        response.sendRedirect("home");
+        
+    }
 
 }

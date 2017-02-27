@@ -25,9 +25,10 @@ public class ConnexionServlet extends GenericLearningsServlet {
 		if (request.getSession().getAttribute("user") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
-		} else {
+		} 
+		/*else {
 			response.sendRedirect("home");
-		}
+		}*/
 	}
 
 	@Override

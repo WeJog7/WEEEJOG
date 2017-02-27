@@ -35,5 +35,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Jaden/Documents/Java/Java JEE/apache-tomcat-8.0.38/apache-tomcat-8.0.38/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jaden/git/WEEEJOG/mail-1.4.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
