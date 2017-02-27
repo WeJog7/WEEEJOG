@@ -52,7 +52,7 @@ public class ContactServlet extends AbstractGenericServlet{
 		if(verify){
 			envoiMessage.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
-			response.sendRedirect("home");
+			response.sendRedirect("contactMessageConfirmation");
 			
 		}
 		
