@@ -33,7 +33,7 @@ public class envoiMessage{
 
 	         mess.setSubject("Message from website");
 
-	         mess.setText("Mail adresse : "+email+"\n"+"\n"+"Person's name : "+name+"\n"+"\n"+" Message : "+message);
+	         mess.setText("Mail adresse : "+email+"\n"+"\n"+"Person's name : "+name+"\n"+"\n"+"Message : "+message);
 
 	         Transport trans = session.getTransport("smtp");
 	         trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
