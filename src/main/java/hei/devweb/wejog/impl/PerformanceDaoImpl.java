@@ -55,9 +55,9 @@ public Performance addPerformance(Performance newPerformance){
 	statement.setTime(2,Time.valueOf(newPerformance.getHoraireperformance()));
 	statement.setDouble(3,newPerformance.getDureeperformance());
     statement.setDouble(4,newPerformance.getDistanceperformance());
-    statement.setDouble(3,newPerformance.getVitesseperformance());
-    statement.setDouble(4,newPerformance.getCalories());
-    statement.setString(5,newPerformance.getLieuperformance());
+    statement.setDouble(5,newPerformance.getVitesseperformance());
+    statement.setDouble(6,newPerformance.getCalories());
+    statement.setString(7,newPerformance.getLieuperformance());
 	
 	
 			statement.executeUpdate();
