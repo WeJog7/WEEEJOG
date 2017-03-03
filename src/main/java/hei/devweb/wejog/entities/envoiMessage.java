@@ -4,8 +4,6 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import hei.devweb.wejog.servlets.ContactServlet;
-
 public class envoiMessage{
 	
 	public static void main(String email, String name, String message){

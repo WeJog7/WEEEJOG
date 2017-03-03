@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,14 +38,24 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         
+        String name = request.getParameter("name");
+        String lastName = request.getParameter("lastName");
+        
+        String dateOfBirth = request.getParameter("birth");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(dateOfBirth,formatter);
+        
+        String email = request.getParameter("mail");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+        
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
-        
+		 
 		if(verify){
-			
-			System.out.println("The user is not a robot. Permission to send message granted.");
-			response.sendRedirect("contactMessageConfirmation");
+			System.out.println("The user is not a robot. Permission to create account granted.");
+			response.sendRedirect("creationAccountConfirmation");
 			
 		}
 		
@@ -53,8 +65,6 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			out.println("<font color=red>You missed the Captcha.</font>");
 		}
         
-        
     }
-
 
 }

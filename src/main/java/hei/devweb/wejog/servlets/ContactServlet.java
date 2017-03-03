@@ -3,7 +3,6 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +13,6 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.entities.envoiMessage;
-
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
 
 
 /**

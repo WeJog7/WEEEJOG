@@ -10,20 +10,19 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 /**
- * Servlet implementation class ContactMessageConfirmationServlet
+ * Servlet implementation class CreationCompteConfirmationServlet
  */
-@WebServlet("/contactMessageConfirmation")
-public class ContactMessageConfirmationServlet extends AbstractGenericServlet{
+@WebServlet("/creationCompteConfirmation")
+public class CreationCompteConfirmationServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
-      
+
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		templateEngine.process("contactMessageConfirmation", context, resp.getWriter());
+		templateEngine.process("creationCompteConfirmation", context, resp.getWriter());
 	}
-
 
 }
