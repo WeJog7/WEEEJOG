@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
     <meta name="viewport" content="height=device-height"/>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <title>Connexion</title>
    </head>
 
@@ -12,7 +13,7 @@
 
 		<header th:replace="~{fragments :: headerNotConnected}"></header>
 
-		<section id="sectionCreationCompte" class="sectionCreationCompte">
+		<section id="sectionCreationCompte">
 
 			<form action="" method="POST" id="connexionCompte">
 
@@ -27,6 +28,8 @@
 				<label for ="password">Password</label>
 		    	<input type="password" id="password" name="password" placeholder="Please enter your password" required />
 		    </div>
+		    
+		    <div class="g-recaptcha" data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
 
 		    <div  id="sign_in" class="alignement">
 		   		<input type="submit" value="Sign In" />

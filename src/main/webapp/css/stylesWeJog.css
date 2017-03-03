@@ -202,14 +202,12 @@ label {
 }
 
 
-#validationWithRecaptcha{
-    margin-top: 20px;
-    margin-left: 20px;
-}
-
-
 .g-recaptcha iframe{
     height: 80px;
+}
+
+.g-recaptcha{
+	margin-bottom: 10px;
 }
 
 
@@ -220,7 +218,12 @@ iframe{
 }
 
 
-/* Page Création de compte */
+/* Page Creation de compte */
+
+#recaptchaCenter{
+	margin-left: 35%;
+}
+
 
 label {
   width: 30%;
@@ -259,11 +262,12 @@ form#creationCompte input{
 }
 
 
-.sectionCreationCompte{
+#sectionCreationCompte{
     background-image: url("../Images/fondConnexion.jpg");
     background-size: cover;
     background-position: center;  
-    padding-top: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 
