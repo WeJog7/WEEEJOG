@@ -271,11 +271,6 @@ form#creationCompte input{
 }
 
 
-#sectionConnexionCompte{
-    height: 100%;
-}
-
-
 div#sex {
     text-align: left;
 }
@@ -775,4 +770,37 @@ table#userList{
 
 .userPicture img{
     width: 25%;
+}
+
+
+/* Page */
+
+#changePassword{
+    text-align: center;
+    background-color: white;
+    margin-left: 29%;
+    margin-right: 29%;
+    border-style: solid;
+    border-color: #1A7A50;
+    border-width: 2px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+form#changePassword input{
+    width: 75%;
+    margin: 6px;
+    border-radius: 5px;
+}
+
+form#changePassword label{
+    width: 20%;
+}
+
+#changePasswordInput{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 }
