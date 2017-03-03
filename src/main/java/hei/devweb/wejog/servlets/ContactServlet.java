@@ -49,7 +49,7 @@ public class ContactServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(verify & email != null & name != null & message != null){
+		if(verify && email != null && name != null && message != null){
 			envoiMessage.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactMessageConfirmation");
