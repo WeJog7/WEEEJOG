@@ -9,6 +9,7 @@ import java.util.Arrays;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+
 public class MotDePasseManager {
 
 	public static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
@@ -41,7 +42,8 @@ public class MotDePasseManager {
 		// Comparaison des deux hash
 		return Arrays.equals(hash, hashAValider);
 	}
-
+	
+		
 	private byte[] genererHash(String motDePasse, byte[] sel) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		PBEKeySpec spec = new PBEKeySpec(motDePasse.toCharArray(), sel, PBKDF2_ITERATIONS, HASH_BYTE_SIZE * 8);
 		SecretKeyFactory skf = SecretKeyFactory.getInstance(PBKDF2_ALGORITHM);

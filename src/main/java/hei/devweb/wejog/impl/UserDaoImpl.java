@@ -21,7 +21,7 @@ public class UserDaoImpl implements Userdao {
 		List<User> users = new ArrayList<User>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe,motdepasse, admin FROM users ORDER BY mail")){
+				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail")){
 			while (resultSet.next()) {
 
 				users.add(mapperVersUser(resultSet));
@@ -41,7 +41,6 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getString("prenom"),
 				resultSet.getString("mail"),
 				resultSet.getDate("datedenaissance").toLocalDate(),
-				resultSet.getString("motdepasse"),
 				resultSet.getBoolean("sexe"),
                 resultSet.getBoolean("admin"));
 	}
@@ -86,7 +85,7 @@ public class UserDaoImpl implements Userdao {
 		String motdepasse = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT motdepasse FROM users WHERE mail=?")){
-		statement.setString(1, motdepasse);
+		statement.setString(1, mail);
 		ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				motdepasse = resultSet.getString("motdepasse");

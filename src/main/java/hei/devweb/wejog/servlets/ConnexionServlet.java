@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.dao.Userdao;
 import hei.devweb.wejog.exceptions.WejogSecuriteException;
+import hei.devweb.wejog.impl.UserDaoImpl;
 import hei.devweb.wejog.managers.UserService;
 
 
@@ -27,7 +29,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			engine.process("public/connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		} 
 		else {
-			response.sendRedirect("user/home");
+			response.sendRedirect("user/");
 		}
 	}
 
@@ -38,16 +40,17 @@ public class ConnexionServlet extends GenericLearningsServlet {
 		try {
 			if (UserService.getInstance().validerMotDePasse(identifiant, motDePasse)) {
 				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
+				response.sendRedirect("user/home");
 			} else {
 				this.ajouterMessageErreur(request, "Le mot de passe renseigné est faux.");
+				response.sendRedirect("connexion");
 			}
 		} catch (IllegalArgumentException e) {
 			this.ajouterMessageErreur(request, e.getMessage());
-		} catch (WejogSecuriteException e) {
+		} /*catch (WejogSecuriteException e) {
 			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
-		}
+		}*/
 
-		response.sendRedirect("connexion");
 	}
 
 }

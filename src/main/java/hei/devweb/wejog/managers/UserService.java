@@ -10,10 +10,18 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.impl.UserDaoImpl;
 import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.managers.MotDePasseManager;
-
+import hei.devweb.wejog.managers.UserService;
 
 
 public class UserService {
+	
+    private static class UserManagerHolder {
+        private static UserService instance = new UserService();
+    }
+
+    public static UserService getInstance() {
+        return UserManagerHolder.instance;
+    }
 
 	private static Logger LOGGER = Logger.getLogger(UserService.class.getName());
 	private Userdao UserDao = new UserDaoImpl();
@@ -22,10 +30,6 @@ public class UserService {
 
 	private static class UserServiceHolder {
 		private static UserService instance = new UserService();
-	}
-
-	public static UserService getInstance() {
-		return UserServiceHolder.instance;
 	}
 
 	private UserService() {
@@ -42,7 +46,7 @@ public class UserService {
 		return UserDao.getUser(mail);
 	}
 
-	public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
+	/*public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
 		if (email == null || "".equals(email)) {
 			throw new IllegalArgumentException("L'identifiant doit être renseigné.");
 		}
@@ -54,10 +58,36 @@ public class UserService {
 			throw new IllegalArgumentException("L'identifiant n'est pas connu.");
 		}
 		try {
-			return motDePasseManager.validerMotDePasse(motDePasseAVerifier, motDePasseHashe);
+			return motDePasseManager.validerMotDePasse(email, motDePasseAVerifier);
 		} catch (GeneralSecurityException e) {
 			throw new WejogSecuriteException("Problème dans la vérification du mot de passe.", e);
 		}
+
+	}*/
+	
+	public boolean validerMotDePasse(String identifiant, String motDePasse){ // a changer
+		Userdao UserDao = new UserDaoImpl();
+		
+		boolean reponse;
+
+		/*if(motDePasse == UserDao.getmotdepasse(identifiant)){
+			reponse = true;
+		}*/
+		System.out.println("identifiant : "+identifiant);
+		System.out.println("mdp : "+motDePasse);
+		System.out.println("UserDao.getmotdepasse('test@test.fr'): "+UserDao.getmotdepasse("test@test.fr"));
+		
+		if (motDePasse.equals(UserDao.getmotdepasse("test@test.fr"))){
+			reponse = true;
+		}
+		else{
+			reponse = false;
+		}
+		
+		System.out.println(reponse);
+		
+		return reponse;
+		
 	}
 
 	public void supprimerUser(Long idusers) {

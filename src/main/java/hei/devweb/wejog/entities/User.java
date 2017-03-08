@@ -29,8 +29,21 @@ public class User implements Serializable {
 		this.motdepasse= motdepasse;
 		this.sexe=sexe;
 		this.admin = admin;
-
 	}
+	
+	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin) {
+		super();
+		this.idusers = idusers;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.datedenaissance = datedenaissance;
+		this.sexe=sexe;
+		this.admin = admin;
+	}
+	
+	
+	
 	public Long getIdusers() {
 		return idusers;
 	}
