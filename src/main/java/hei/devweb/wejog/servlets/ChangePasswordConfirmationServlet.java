@@ -13,7 +13,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class ChangePasswordConfirmationServlet
  */
-@WebServlet("/changePasswordConfirmation")
+@WebServlet("/user/changePasswordConfirmation")
 public class ChangePasswordConfirmationServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
        

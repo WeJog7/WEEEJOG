@@ -8,19 +8,19 @@
   
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
-		<filter-class>learnings.web.filters.EncodingFilter</filter-class>
+		<filter-class>hei.devweb.wejog.filter.EncodingFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>MessageFilter</filter-name>
-		<filter-class>learnings.web.filters.MessageFilter</filter-class>
+		<filter-class>hei.devweb.wejog.filter.MessageFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>AuthentificationFilter</filter-name>
-		<filter-class>learnings.web.filters.AuthentificationFilter</filter-class>
+		<filter-class>hei.devweb.wejog.filter.AuthentificationFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>AdminFilter</filter-name>
-		<filter-class>learnings.web.filters.AdminFilter</filter-class>
+		<filter-class>hei.devweb.wejog.filter.AdminFilter</filter-class>
 	</filter>
 
 
@@ -34,7 +34,7 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>AuthentificationFilter</filter-name>
-		<url-pattern>/eleve/*</url-pattern>
+		<url-pattern>/user/*</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>AdminFilter</filter-name>

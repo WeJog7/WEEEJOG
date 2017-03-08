@@ -18,7 +18,7 @@ import hei.devweb.wejog.managers.PerformanceService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/home")
+@WebServlet("/user/home")
 public class HomeServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 

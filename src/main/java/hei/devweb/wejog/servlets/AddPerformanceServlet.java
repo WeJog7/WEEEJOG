@@ -22,7 +22,7 @@ import hei.devweb.wejog.managers.PerformanceService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/addperformance")
+@WebServlet("/user/addperformance")
 public class AddPerformanceServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       

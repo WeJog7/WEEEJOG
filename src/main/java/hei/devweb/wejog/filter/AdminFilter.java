@@ -23,7 +23,7 @@ public class AdminFilter implements Filter {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		if (user == null || !user.isAdmin()) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect("connexion");
+			httpResponse.sendRedirect("../connexion");
 			return;
 		}
 		chain.doFilter(request, response);

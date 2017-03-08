@@ -13,7 +13,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class NewsServlet
  */
-@WebServlet("/news")
+@WebServlet("/user/news")
 public class NewsServlet extends AbstractGenericServlet {
 	
 	private static final long serialVersionUID = 1L;
