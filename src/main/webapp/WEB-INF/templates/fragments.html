@@ -11,18 +11,18 @@
   <body>
   
   	<header th:fragment="headerConnected(selectedMenu)">
-			<a id="logo" href="user/home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
 			
 			<div id ="informations" class="alignement">
-				<a id = "photoProfil" href="user/profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<a id = "photoProfil" href="profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
 				<h4 class="alignement">Mr. XX</h4>
 				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img src ="Images/Logout.png" alt="Deconnexion"></a>
 			</div>
 
 		<nav>
-			<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="user/home">Home</a></li>
-			<li th:class="${selectedMenu == 'about'} ? 'active'"><a href="user/about">About</a></li>
-			<li th:class="${selectedMenu == 'news'} ? 'active'"><a href="user/news">News</a></li>
+			<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="home">Home</a></li>
+			<li th:class="${selectedMenu == 'about'} ? 'active'"><a href="about">About</a></li>
+			<li th:class="${selectedMenu == 'news'} ? 'active'"><a href="news">News</a></li>
 			<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
 			<input type="submit" id="boutonSearch" class="alignement" value="Go">
 		</nav>
