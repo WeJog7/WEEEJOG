@@ -18,13 +18,7 @@ public class User implements Serializable {
 	private boolean sexe ;
 	private boolean admin;
 
-	
-	
-	
-	
-	
-	
-	
+
 	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe, boolean admin) {
 		super();
 		this.idusers = idusers;
@@ -35,7 +29,7 @@ public class User implements Serializable {
 		this.motdepasse= motdepasse;
 		this.sexe=sexe;
 		this.admin = admin;
-		
+
 	}
 	public Long getIdusers() {
 		return idusers;
@@ -85,8 +79,6 @@ public class User implements Serializable {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
-	
-	
+
+
 }

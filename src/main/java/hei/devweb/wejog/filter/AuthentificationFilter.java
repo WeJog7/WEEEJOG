@@ -19,7 +19,7 @@ public class AuthentificationFilter implements Filter{
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if (httpRequest.getSession().getAttribute("utilisateur") == null) {
+		if (httpRequest.getSession().getAttribute("user") == null) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("../connexion");
 			return;
