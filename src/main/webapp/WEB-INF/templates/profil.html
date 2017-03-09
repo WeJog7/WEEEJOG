@@ -2,8 +2,8 @@
   
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
-    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
     <title>Profil</title>
     
@@ -17,7 +17,7 @@
 
 			<div id="profil">
 				<div id="utilisateur">
-					<div><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></div>
+					<div><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></div>
 					<div class="boutons_profil"><a class="bouton_profil" href="picture">Picture</a></div>
 					<div class="boutons_profil"><a class="bouton_profil" href="description">Description</a></div>
 					<div><a class="bouton_profil" href="myNetwork">My Network</a></div>

@@ -15,7 +15,6 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.VerifyRecaptcha;
-import hei.devweb.wejog.entities.envoiMessage;
 
 /**
  * Servlet implementation class HomeServlet

@@ -11,12 +11,12 @@
   <body>
   
   	<header th:fragment="headerConnected(selectedMenu)">
-			<a id="logo" href="home" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			<a id="logo" href="home" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
 			
 			<div id ="informations" class="alignement">
-				<a id = "photoProfil" href="profil" class="alignement"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a>
+				<a id = "photoProfil" href="profil" class="alignement"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a>
 				<h4 class="alignement">Mr. XX</h4>
-				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img src ="Images/Logout.png" alt="Deconnexion"></a>
+				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
 			</div>
 
 		<nav>
@@ -45,10 +45,10 @@
 	
 	<footer th:fragment="footer">
 		<div id="footer">
-			<a id="facebook" href="Go_Facebook" class="alignement"><img src ="Images/LogoFacebook.png" alt="Logo Facebook"></a>
-			<a href="Go_Twitter" class="alignement"><img src ="Images/LogoTwitter.png" alt="Logo Twitter"></a>
-			<a href="Go_Instagram" class="alignement"><img src ="Images/LogoInstagram.png" alt="Logo Instagram"></a>
-			<a id="Contact_Us" href="contact" class="alignement">Contact Us</a>
+			<a id="facebook" href="Go_Facebook" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="contactUser" class="alignement">Contact Us</a>
 		</div>
 	</footer>
 	

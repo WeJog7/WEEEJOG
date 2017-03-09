@@ -2,8 +2,8 @@
   
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
-    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
     <title>Home</title>
     
@@ -17,15 +17,15 @@
 			<h2>Actuality</h2>
 
 			<div id="menu_home">
-				<div class="liens"><a class="boutons_home" href="addevent"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new event</a></div>
-				<div class="liens"><a class="boutons_home" href="addarticle"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new article</a></div>
-				<div class="liens"><a class="boutons_home" href="addperformance"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Share your performance</a></div>
+				<div class="liens"><a class="boutons_home" href="addevent"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a new event</a></div>
+				<div class="liens"><a class="boutons_home" href="addarticle"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a new article</a></div>
+				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
 
 			<div class="actuality " th:each="article : ${articles}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							
 							<h1 th:text=" 'Title: ' +${article.nomarticle}"></h1>
@@ -43,7 +43,7 @@
 			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<h1>My friend's performance</h1>
 							<h1 th:text=" 'At ' +${performance.dateperformance}">  </h1>
@@ -61,7 +61,7 @@
 			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>

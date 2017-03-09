@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.dao.Userdao;
-import hei.devweb.wejog.exceptions.WejogSecuriteException;
-import hei.devweb.wejog.impl.UserDaoImpl;
 import hei.devweb.wejog.managers.UserService;
 
 
