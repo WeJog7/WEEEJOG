@@ -125,24 +125,11 @@ public class UserDaoImpl implements Userdao {
 		}
 	}
 
-	
-	public void modifierroleadmin(Long idusers, boolean admin) {
-		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET admin=? WHERE idusers=?")){
-			statement.setBoolean(1, admin);
-			statement.setLong(2, idusers);
-			statement.executeUpdate();
-			statement.close();
-			connection.close();
-		}} catch (SQLException e) {
-			throw new WejogSQLException(e);
-		}
-	}
 
-	
-	public User addUser(User newuser, String motdepasse) {
+	@Override
+	public User addUser(User newuser) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO users(nom, prenom,datedenaissance, mail, sexe, motdepasse, admin) VALUES(?, ?, ?, ?, ?, ?,?)",
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO users(nom, prenom,datedenaissance, mail, sexe, motdepasse) VALUES(?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS)){
 				{
 				statement.setString(1, newuser.getNom());
@@ -150,8 +137,7 @@ public class UserDaoImpl implements Userdao {
 				statement.setDate(3,Date.valueOf(newuser.getDatedenaissance()));
 				statement.setString(4, newuser.getMail());
 				statement.setBoolean(5, newuser.isSexe());
-				statement.setString(6, motdepasse);
-				statement.setBoolean(7, newuser.isAdmin());
+				statement.setString(6, newuser.getMotdepasse());
 				statement.executeUpdate();
 				try (ResultSet idusers = statement.getGeneratedKeys()) {
 					if (idusers.next()) {
@@ -181,26 +167,9 @@ public class UserDaoImpl implements Userdao {
 	}
 
 	@Override
-	public void modifierRoleAdmin(Long id, boolean admin) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void modifierMotDePasse(Long id, String motDePasse) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public User ajouterUser(User nouvelUser, String motDePasse) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
-
-
-	
-
-
-

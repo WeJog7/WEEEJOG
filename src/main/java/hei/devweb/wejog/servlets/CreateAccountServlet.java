@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
+import hei.devweb.wejog.managers.UserService;
 
 /**
  * Servlet implementation class HomeServlet
@@ -37,12 +39,23 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         
+		String sex = request.getParameter("reponse");
+		boolean sexBoolean;
+		
+		if(sex.equals("1")){
+			sexBoolean = true;
+		}
+		
+		else{
+			sexBoolean = false;
+		}
+		
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
         
         String dateOfBirth = request.getParameter("birth");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate date = LocalDate.parse(dateOfBirth,formatter);
+        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");*/
+        LocalDate date = LocalDate.parse(dateOfBirth);
         
         String email = request.getParameter("mail");
         String password = request.getParameter("password");
@@ -51,19 +64,25 @@ public class CreateAccountServlet extends AbstractGenericServlet{
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+		User newUser = new User(name, lastName, email, date, password, sexBoolean);
 		 
-		if(verify){
+		/*if(verify){*/
 			System.out.println("The user is not a robot. Permission to create account granted.");
+			try{
+				UserService.addUser(newUser);
+			}catch (IllegalArgumentException e) {
+				System.out.println("Impossible to add the new user");
+			}
 			response.sendRedirect("creationAccountConfirmation");
-			
 		}
 		
-		else{
+		/*else{
 			System.out.println("User not verified, permission not granted.");
 			PrintWriter out = response.getWriter();
 			out.println("<font color=red>You missed the Captcha.</font>");
 		}
         
-    }
+    }*/
 
 }

@@ -24,7 +24,7 @@ public class UserService {
     }
 
 	private static Logger LOGGER = Logger.getLogger(UserService.class.getName());
-	private Userdao UserDao = new UserDaoImpl();
+	private static Userdao UserDao = new UserDaoImpl();
 	private MotDePasseManager motDePasseManager = new MotDePasseManager();
 
 
@@ -66,18 +66,14 @@ public class UserService {
 	}*/
 	
 	public boolean validerMotDePasse(String identifiant, String motDePasse){ // a changer
-		Userdao UserDao = new UserDaoImpl();
 		
 		boolean reponse;
 
-		/*if(motDePasse == UserDao.getmotdepasse(identifiant)){
-			reponse = true;
-		}*/
 		System.out.println("identifiant : "+identifiant);
 		System.out.println("mdp : "+motDePasse);
-		System.out.println("UserDao.getmotdepasse('test@test.fr'): "+UserDao.getmotdepasse("test@test.fr"));
+		System.out.println("UserDao.getmotdepasse("+identifiant+"): "+UserDao.getmotdepasse(identifiant));
 		
-		if (motDePasse.equals(UserDao.getmotdepasse("test@test.fr"))){
+		if (motDePasse.equals(UserDao.getmotdepasse(identifiant))){
 			reponse = true;
 		}
 		else{
@@ -89,6 +85,10 @@ public class UserService {
 		return reponse;
 		
 	}
+	
+	public static void addUser (User newUser) {
+		UserDao.addUser(newUser);
+	}
 
 	public void supprimerUser(Long idusers) {
 		if (idusers == null) {
@@ -97,22 +97,6 @@ public class UserService {
 
 		UserDao.supprimerUser(idusers);
 		LOGGER.info(String.format("User|supprimer|id=%d", idusers));
-	}
-
-	public void enleverDroitsAdmin(Long idusers) {
-		if (idusers == null) {
-			throw new IllegalArgumentException("L'id de l'utilisateur ne peut pas être null.");
-		}
-		UserDao.modifierRoleAdmin(idusers, false);
-		LOGGER.info(String.format("User|enleverDroitsAdmin|id=%d", idusers));
-	}
-
-	public void donnerDroitsAdmin(Long idusers) {
-		if (idusers == null) {
-			throw new IllegalArgumentException("L'id de l'utilisateur ne peut pas être null.");
-		}
-		UserDao.modifierRoleAdmin(idusers, true);
-		LOGGER.info(String.format("Utilisateur|donnerDroitsAdmin|id=%d", idusers));
 	}
 
 }

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 
-
-
 public class User implements Serializable {
 	private static final long serialVersionUID = -1167387777176439635L;
 
@@ -19,16 +17,14 @@ public class User implements Serializable {
 	private boolean admin;
 
 
-	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe, boolean admin) {
+	public User(String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe) {
 		super();
-		this.idusers = idusers;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.datedenaissance = datedenaissance;
 		this.motdepasse= motdepasse;
 		this.sexe=sexe;
-		this.admin = admin;
 	}
 	
 	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin) {
@@ -41,7 +37,6 @@ public class User implements Serializable {
 		this.sexe=sexe;
 		this.admin = admin;
 	}
-	
 	
 	
 	public Long getIdusers() {

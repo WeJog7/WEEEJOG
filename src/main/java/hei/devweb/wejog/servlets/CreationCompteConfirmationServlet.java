@@ -12,7 +12,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class CreationCompteConfirmationServlet
  */
-@WebServlet("/creationCompteConfirmation")
+@WebServlet("/creationAccountConfirmation")
 public class CreationCompteConfirmationServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
 
