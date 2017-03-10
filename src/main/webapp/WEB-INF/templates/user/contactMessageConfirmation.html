@@ -6,24 +6,23 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/RecoveryPassword.css}"/>
     <meta name="viewport" content="height=device-height"/>
-    <title>About</title>
+    <title>Account Created</title>
+    
    </head>
 
 	<body>
 
-		<header th:replace="~{fragments :: headerConnected('about')}"></header>
+		<header th:replace="~{fragments :: headerNotConnected}"></header>
 
-		<section id="presentation">
+		<section class="recovery">
+			<h1>Your message has been sent to the administrator.</h1>
+			<p>We will answer to you as fast as possible</p>
+			<a id="back_home" href="home">Back Home</a>
+		</section>
 
-			<h1>Who are we?</h1>
 
-			<p>We are an association</p>
+		<footer th:replace="~{fragments :: footer((contact))}"></footer>
 		
-		</section>	
-
-
-		<footer th:replace="~{fragments :: footer(contactUser)}"></footer>
-
 	</body>
 
 </html>
