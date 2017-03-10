@@ -12,7 +12,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class ChangePasswordServlet
  */
-@WebServlet("/user/changePassword")
+@WebServlet(urlPatterns = {"/user/changePassword", "/admin/changePassword"})
 public class ChangePasswordServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -11,21 +11,21 @@
 
 	<body>
 
-		<header th:replace="~{fragments :: headerConnected('home')}"></header>
+		<header th:replace="~{fragments :: headerConnectedAdmin('home')}"></header>
 
 		<section>
 			<h2>Actuality</h2>
 
 			<div id="menu_home">
-				<div class="liens"><a class="boutons_home" href="ajouterEvenement.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new event</a></div>
-				<div class="liens"><a class="boutons_home" href="ajouterArticle.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Add a new article</a></div>
-				<div class="liens"><a class="boutons_home" href="ajouterPerformance.html"><img src ="Images/icone_ajout.jpeg" alt="icone_ajout">Share your performance</a></div>
+				<div class="liens"><a class="boutons_home" href="addevent"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a new event</a></div>
+				<div class="liens"><a class="boutons_home" href="addarticle"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a new article</a></div>
+				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
 
 			<div class="actuality">
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<h1>Sante magazine</h1>
 							<h1>Course a pied, running</h1>
@@ -36,7 +36,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
@@ -47,7 +47,7 @@
 			<div class="actuality">
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<h1>My friend's performance</h1>
 							<h1>yesterday at 7pm</h1>
@@ -60,7 +60,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
@@ -71,7 +71,7 @@
 			<div class="actuality">
 				<table>
 					<tr>
-						<td class="image_actuality"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
@@ -84,7 +84,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a>
+							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>

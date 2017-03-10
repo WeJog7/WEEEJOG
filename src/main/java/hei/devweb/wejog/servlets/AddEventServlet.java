@@ -22,7 +22,7 @@ import hei.devweb.wejog.managers.EventService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/user/addevent")
+@WebServlet(urlPatterns = {"/user/addevent", "/admin/addevent"})
 public class AddEventServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       

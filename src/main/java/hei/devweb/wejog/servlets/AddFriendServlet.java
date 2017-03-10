@@ -13,7 +13,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class AddFriend
  */
-@WebServlet("/user/addFriend")
+@WebServlet(urlPatterns = {"/user/addFriend", "/admin/addFriend"})
 public class AddFriendServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 

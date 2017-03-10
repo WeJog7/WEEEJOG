@@ -17,7 +17,8 @@ import hei.devweb.wejog.managers.ArticleService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/user/addarticle")
+
+@WebServlet(urlPatterns = {"/user/addarticle", "/admin/addarticle"})
 public class AddArticleServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       

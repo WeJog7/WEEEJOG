@@ -9,7 +9,7 @@
 
 	<body>
 
-		<header th:replace="~{fragments :: headerConnected('home')}"></header>
+		<header th:replace="~{fragments :: headerConnectedAdmin('UsersList')}"></header>
 
 		<section>
 
@@ -21,10 +21,10 @@
 					<th>Delete</th>
 				</tr>
 				<tr>
-					<td class="userPicture"><img src ="Images/PhotoProfil.jpg" alt="Photo de profil"></td>
+					<td class="userPicture"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 					<td>MINAUD</td>
 					<td>Guillaume</td>
-					<td><a class="alignement" href="connexion.html"><img id="suppressionAdmin" src ="Images/icone_suppression.png" alt="DeletePower"></a></td>
+					<td><a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a></td>
 				</tr>
 
 			</table>

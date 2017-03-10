@@ -29,6 +29,26 @@
 		
 		</header>
 		
+		<header th:fragment="headerConnectedAdmin(selectedMenu)">
+			<a id="logo" href="home" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
+			
+			<div id ="informations" class="alignement">
+				<a id = "photoProfil" href="profil" class="alignement"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a>
+				<h4 class="alignement">Mr. XX</h4>
+				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
+			</div>
+
+		<nav>
+			<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="home">Home</a></li>
+			<li th:class="${selectedMenu == 'about'} ? 'active'"><a href="about">About</a></li>
+			<li th:class="${selectedMenu == 'news'} ? 'active'"><a href="news">News</a></li>
+			<li th:class="${selectedMenu == 'UsersList'} ? 'active'"><a href="UsersList">Users List</a></li>
+			<input type="text/plain" name="search" id="search" class="alignement" placeholder="Search...">
+			<input type="submit" id="boutonSearch" class="alignement" value="Go">
+		</nav>
+		
+		</header>
+		
 		<header th:fragment="headerNotConnected">
 			<a id="logo" href="connexion" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
 			
@@ -44,6 +64,15 @@
 		</header>
 	
 	<footer th:fragment="footer">
+		<div id="footer">
+			<a id="facebook" href="Go_Facebook" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
+			<a href="Go_Twitter" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
+			<a href="Go_Instagram" class="alignement"><img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram"></a>
+			<a id="Contact_Us" href="contactUser" class="alignement">Contact Us</a>
+		</div>
+	</footer>
+	
+	<footer th:fragment="footerConnexionPage">
 		<div id="footer">
 			<a id="facebook" href="Go_Facebook" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
 			<a href="Go_Twitter" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
