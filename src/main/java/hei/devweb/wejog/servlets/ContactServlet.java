@@ -44,18 +44,18 @@ public class ContactServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(verify){
+		/*if(verify){*/
 			envoiMessage.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactMessageConfirmation");
 			
-		}
+		/*}
 		
 		else{
 			System.out.println("User not verified, permission not granted.");
 			PrintWriter out = response.getWriter();
 			out.println("<font color=red>You missed the Captcha.</font>");
-		}
+		}*/
         
         
     }
