@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/deconnexion")
+@WebServlet(urlPatterns = {"/user/deconnexion", "/admin/servlet"})
 public class DeconnexionServlet extends HttpServlet{
 
 	/**

@@ -13,7 +13,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/user/myNetwork")
+@WebServlet(urlPatterns = {"/user/myNetwork", "/admin/myNetwork"})
 public class NetworkServlet extends AbstractGenericServlet{
 	
 	private static final long serialVersionUID = 1L;
