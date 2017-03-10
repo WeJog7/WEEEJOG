@@ -18,7 +18,7 @@ import hei.devweb.wejog.entities.envoiMessage;
 /**
  * Servlet implementation class ContactUserServlet
  */
-@WebServlet("/user/contactUser")
+@WebServlet(urlPatterns = {"/user/contactUser", "/admin/contactUser"})
 public class ContactUserServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
        
