@@ -3,6 +3,7 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,10 +11,10 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 /**
- * Servlet implementation class ContactMessageConfirmationServlet
+ * Servlet implementation class ContactUserMessageConfirmation
  */
-@WebServlet("/contactMessageConfirmation")
-public class ContactMessageConfirmationServlet extends AbstractGenericServlet{
+@WebServlet(urlPatterns = {"user/ContactUserMessageConfirmation", "admin/ContactUserMessageConfirmation"})
+public class ContactUserMessageConfirmationServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       
 	
@@ -22,7 +23,7 @@ public class ContactMessageConfirmationServlet extends AbstractGenericServlet{
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		templateEngine.process("contactMessageConfirmation", context, resp.getWriter());
+		templateEngine.process("contactUserMessageConfirmation", context, resp.getWriter());
 	}
 
 
