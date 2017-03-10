@@ -13,7 +13,7 @@ import org.thymeleaf.context.WebContext;
 /**
  * Servlet implementation class ContactUserMessageConfirmation
  */
-@WebServlet(urlPatterns = {"/user/ContactUserMessageConfirmation", "/admin/ContactUserMessageConfirmation"})
+@WebServlet(urlPatterns = {"/user/contactUserMessageConfirmation", "/admin/contactUserMessageConfirmation"})
 public class ContactUserMessageConfirmationServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
       

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,7 +43,7 @@ public class ContactUserServlet extends AbstractGenericServlet {
 		if(verify){
 			envoiMessage.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
-			response.sendRedirect("contactMessageConfirmation");
+			response.sendRedirect("contactUserMessageConfirmation");
 			
 		}
 		

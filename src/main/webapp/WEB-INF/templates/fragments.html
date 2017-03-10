@@ -50,7 +50,7 @@
 		</header>
 		
 		<header th:fragment="headerNotConnected">
-			<a id="logo" href="connexion" class="alignement"><img src ="Images/Logo.png" alt="Logo WeJog"></a>
+			<a id="logo" href="connexion" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
 			
 			<div id="not_connected">
 				<div id="bouton_connexion" class="bouton_Non_Connecte">
