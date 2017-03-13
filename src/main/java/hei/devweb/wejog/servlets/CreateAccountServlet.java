@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.dao.Userdao;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.managers.UserService;
@@ -67,7 +66,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword)){
+		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
 			
 			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
 			
