@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.dao.Userdao;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.managers.UserService;
@@ -42,7 +43,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		String sex = request.getParameter("reponse");
 		boolean sexBoolean;
 		
-		if(sex.equals("1")){
+		if(sex.equals("Male")){
 			sexBoolean = true;
 		}
 		
@@ -58,6 +59,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
         LocalDate date = LocalDate.parse(dateOfBirth);
         
         String email = request.getParameter("mail");
+        String confirmEmail = request.getParameter("ConfirmMail");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
         
@@ -65,10 +67,12 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		User newUser = new User(name, lastName, email, date, password, sexBoolean);
-		 
-		/*if(verify){*/
-			System.out.println("The user is not a robot. Permission to create account granted.");
+		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword)){
+			
+			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
+			
+			User newUser = new User(name, lastName, email, date, password, sexBoolean);
+			
 			try{
 				UserService.addUser(newUser);
 			}catch (IllegalArgumentException e) {
@@ -77,12 +81,12 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			response.sendRedirect("creationAccountConfirmation");
 		}
 		
-		/*else{
-			System.out.println("User not verified, permission not granted.");
+		else{
+			System.out.println("Incorrect informations or user not verified, permission to create an account not granted.");
 			PrintWriter out = response.getWriter();
-			out.println("<font color=red>You missed the Captcha.</font>");
+			out.println("<font color=red>You missed something.</font>");
 		}
         
-    }*/
+    }
 
 }
