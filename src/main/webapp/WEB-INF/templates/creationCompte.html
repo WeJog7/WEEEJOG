@@ -4,18 +4,27 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
+   
     <meta name="viewport" content="height=device-height"/>
+   
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    
+   
+		   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		  <script type="text/javascript" src="js/javascript.js"></script>
     <title>Account Creation</title>
    </head>
 
 	<body>
-
-		<header th:replace="~{fragments :: headerNotConnected}"></header>
+	
+		  
+		  <header th:replace="~{fragments :: headerNotConnected}"></header>
 
 		<section id="sectionCreationCompte">
 
-			<form action="" method="POST" id="creationCompte">
+			<form action="" method="POST" id="creationCompte"  onSubmit="return fenvoi() ">
 
 			<h2>Create an account</h2>
 
@@ -37,7 +46,7 @@
 
 		    <div>
 		    	<label for ="birth">Birth Date</label>
-		    	<input type="date" id="birth" name="birth" required />
+		    	<input type="text" id="datepicker" name="birth" required />
 		    </div>
 
 			<div>
