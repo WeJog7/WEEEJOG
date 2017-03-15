@@ -28,7 +28,7 @@ public class DescriptionServlet extends AbstractGenericServlet {
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
-		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		context.setVariable("User", httpRequest.getSession().getAttribute("user")); //a modifier
 
 		templateEngine.process("description", context, resp.getWriter());
 	}
