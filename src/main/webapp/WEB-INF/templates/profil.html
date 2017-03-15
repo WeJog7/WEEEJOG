@@ -15,7 +15,7 @@
 
 		<section>
 
-			<div id="profil">
+			<div id="profil" th:each="member : ${User}">
 				<div id="utilisateur">
 					<div><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></div>
 					<div class="boutons_profil"><a class="bouton_profil" href="picture">Picture</a></div>
@@ -25,9 +25,9 @@
 				</div>	
 
 				<div id="description_profil">
-					<h1>Mr.XX</h1>
+					<h1 th:text="${member.prenom}+' '+${member.nom}"></h1>
 					<h3>Description</h3>
-					<p>Je suis un paragraphe</p>
+					<p th:text="${member.description}"></p>
 				</div>
 					
 			</div>

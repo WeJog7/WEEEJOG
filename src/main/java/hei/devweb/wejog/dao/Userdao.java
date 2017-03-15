@@ -20,6 +20,7 @@ public interface Userdao {
 
 	User addUser(User nouvelUser);
 
+	void modificationDescription(long idusers, String description);
 
 
 }

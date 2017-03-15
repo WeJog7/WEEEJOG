@@ -98,5 +98,9 @@ public class UserService {
 		UserDao.supprimerUser(idusers);
 		LOGGER.info(String.format("User|supprimer|id=%d", idusers));
 	}
+	
+	public static void updateDescription (Long idusers, String description){
+		UserDao.modificationDescription(idusers, description);
+	}
 
 }
