@@ -37,7 +37,7 @@ public class DescriptionServlet extends AbstractGenericServlet {
 		
 		String description = request.getParameter("message");
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		User user = (User) httpRequest.getSession().getAttribute("user");	
+		User user = (User) httpRequest.getSession().getAttribute("user");
 		UserService.updateDescription(user.getIdusers(), description);
 		
 		response.sendRedirect("profil");
