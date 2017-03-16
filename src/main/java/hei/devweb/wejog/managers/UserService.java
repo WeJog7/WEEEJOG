@@ -90,13 +90,10 @@ public class UserService {
 		UserDao.addUser(newUser);
 	}
 
-	public void supprimerUser(Long idusers) {
-		if (idusers == null) {
-			throw new IllegalArgumentException("L'id de l'user ne peut pas être null.");
-		}
+	public void supprimerusers(Long idusers) {
+		
 
-		UserDao.supprimerUser(idusers);
-		LOGGER.info(String.format("User|supprimer|id=%d", idusers));
+		UserDao.supprimerusers(idusers);
 	}
 
 }

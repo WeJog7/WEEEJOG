@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+
+import hei.devweb.wejog.managers.UserService;
+
 /**
  * Servlet implementation class UserListServlet
  */
@@ -24,8 +27,9 @@ public class UserListServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
-		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
+		WebContext context = new WebContext(req, resp, req.getServletContext());
+		context.setVariable("users",UserService.getInstance().listerUsers());
 		templateEngine.process("UsersList", context, resp.getWriter());
 	}
 

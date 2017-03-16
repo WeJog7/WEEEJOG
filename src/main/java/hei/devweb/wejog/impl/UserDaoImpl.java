@@ -18,20 +18,20 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 public class UserDaoImpl implements Userdao {
 	
 	public List<User> listerUsers() {
-		List<User> users = new ArrayList<User>();
+		List<User> user = new ArrayList<User>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail")){
 			while (resultSet.next()) {
 
-				users.add(mapperVersUser(resultSet));
+				user.add(mapperVersUser(resultSet));
 			}
 			statement.close();
 			connection.close();
 		}}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
-		return users;
+		return user;
 	}
 	
 	private User mapperVersUser(ResultSet resultSet) throws SQLException {
@@ -112,10 +112,10 @@ public class UserDaoImpl implements Userdao {
 			throw new WejogSQLException(e);
 		}
 	}
-
+@Override
 	public void supprimerusers(long idusers) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE FROM  users WHERE idusers=?")){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  users WHERE idusers=?")){
 			statement.setLong(1, idusers);
 			statement.executeUpdate();
 			statement.close();
@@ -160,11 +160,7 @@ public class UserDaoImpl implements Userdao {
 		return null;
 	}
 
-	@Override
-	public void supprimerUser(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void modifierMotDePasse(Long id, String motDePasse) {
