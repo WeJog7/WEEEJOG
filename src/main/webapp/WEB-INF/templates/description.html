@@ -16,14 +16,19 @@
 		<section id="description">
 
 			<h1>Describe yourself !</h1>
+			
+			<form method="POST">
 
 			<div>
-		    	<textarea name="message" maxlength="1000" placeholder="Write you description here (1,000 carac max)" required></textarea>
+		    	<textarea th:text="${description}" name="message" maxlength="1000" 
+		    	placeholder="Write you description here (1,000 carac max)" required></textarea>
 		    </div>
 
 		    <div>
-		   		<input type="submit" value="Post your description">
+		   		<input type="submit" value="Post your description"/>
 		   	</div>
+		   	
+		   	</form>
 
 		</section>
 

@@ -21,10 +21,15 @@ public class UserDaoImpl implements Userdao {
 		List<User> user = new ArrayList<User>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom,datedenaissance, mail,sexe, admin FROM users ORDER BY mail")){
+				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
+						+ "admin, description, picturePath FROM users ORDER BY mail")){
 			while (resultSet.next()) {
+<<<<<<< HEAD
 
 				user.add(mapperVersUser(resultSet));
+=======
+				users.add(mapperVersUser(resultSet));
+>>>>>>> branch 'master' of https://github.com/WeJog7/WEEEJOG.git
 			}
 			statement.close();
 			connection.close();
@@ -42,13 +47,16 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getString("mail"),
 				resultSet.getDate("datedenaissance").toLocalDate(),
 				resultSet.getBoolean("sexe"),
-                resultSet.getBoolean("admin"));
+                resultSet.getBoolean("admin"),
+                resultSet.getString("description"),
+				resultSet.getString("picturePath"));
 	}
 	
 	public User getUser(long idusers) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaisse, mail, sexe, admin FROM users WHERE idusers=?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaisse, mail, sexe,"
+					+ " admin, description, picturePath FROM admin FROM users WHERE idusers=?")){
 		    statement.setLong(1, idusers);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -65,7 +73,8 @@ public class UserDaoImpl implements Userdao {
 	public User getUser(String mail) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe, admin FROM users WHERE mail=?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
+					+ "admin, description, picturePath FROM users WHERE mail=?")){
 			 statement.setString(1, mail);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -149,10 +158,42 @@ public class UserDaoImpl implements Userdao {
 		}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		
-		
 	}
 		return newuser;
 	}
+	
+	
+	public void modificationDescription(long idusers, String description){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET description=? WHERE idusers=?")){
+			statement.setString(1, description);
+			statement.setLong(2, idusers);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+	}
+	
+	public String getDescription(long idusers) {
+		String description = null;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT description FROM users WHERE idusers=?")){
+		statement.setLong(1, idusers);
+		ResultSet resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				description = resultSet.getString("description");
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+
+		return description;
+	}
+	
 
 	@Override
 	public User getUser(Long idusers) {

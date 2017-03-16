@@ -15,6 +15,8 @@ public class User implements Serializable {
 	private String motdepasse;
 	private boolean sexe ;
 	private boolean admin;
+	private String description;
+	private String picturePath;
 
 
 	public User(String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe) {
@@ -27,7 +29,8 @@ public class User implements Serializable {
 		this.sexe=sexe;
 	}
 	
-	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin) {
+	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin, String description,
+			String picturePath) {
 		super();
 		this.idusers = idusers;
 		this.nom = nom;
@@ -36,6 +39,8 @@ public class User implements Serializable {
 		this.datedenaissance = datedenaissance;
 		this.sexe=sexe;
 		this.admin = admin;
+		this.description = description;
+		this.picturePath = picturePath;
 	}
 	
 	
@@ -87,6 +92,19 @@ public class User implements Serializable {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
+	public String getPicturePath() {
+		return picturePath;
+	}
+
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
+	}
 
 }

@@ -18,8 +18,13 @@ public interface Userdao {
 
 	User addUser(User nouvelUser);
 
+<<<<<<< HEAD
 	void supprimerusers(long idusers);
 
+=======
+	void modificationDescription(long idusers, String description);
+>>>>>>> branch 'master' of https://github.com/WeJog7/WEEEJOG.git
 
+	String getDescription(long idusers);
 
 }
