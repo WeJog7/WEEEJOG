@@ -22,5 +22,6 @@ public interface Userdao {
 
 	void modificationDescription(long idusers, String description);
 
+	String getDescription(long idusers);
 
 }

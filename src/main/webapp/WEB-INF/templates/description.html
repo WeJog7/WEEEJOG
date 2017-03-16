@@ -19,8 +19,8 @@
 			
 			<form method="POST">
 
-			<div th:each="member : ${User}">
-		    	<textarea th:text="${member.description}" name="message" maxlength="1000" 
+			<div>
+		    	<textarea th:text="${description}" name="message" maxlength="1000" 
 		    	placeholder="Write you description here (1,000 carac max)" required></textarea>
 		    </div>
 

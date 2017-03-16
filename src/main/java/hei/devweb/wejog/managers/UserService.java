@@ -102,5 +102,9 @@ public class UserService {
 	public static void updateDescription (Long idusers, String description){
 		UserDao.modificationDescription(idusers, description);
 	}
+	
+	public static String getDescription(long idusers){
+		return UserDao.getDescription(idusers);
+	}
 
 }

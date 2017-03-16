@@ -171,6 +171,24 @@ public class UserDaoImpl implements Userdao {
 		}
 	}
 	
+	public String getDescription(long idusers) {
+		String description = null;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT description FROM users WHERE idusers=?")){
+		statement.setLong(1, idusers);
+		ResultSet resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				description = resultSet.getString("description");
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+
+		return description;
+	}
+	
 
 	@Override
 	public User getUser(Long idusers) {
