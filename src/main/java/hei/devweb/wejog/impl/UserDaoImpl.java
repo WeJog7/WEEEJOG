@@ -18,25 +18,23 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 public class UserDaoImpl implements Userdao {
 	
 	public List<User> listerUsers() {
-		List<User> user = new ArrayList<User>();
+		List<User> users = new ArrayList<User>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
 						+ "admin, description, picturePath FROM users ORDER BY mail")){
 			while (resultSet.next()) {
-<<<<<<< HEAD
 
-				user.add(mapperVersUser(resultSet));
-=======
+
 				users.add(mapperVersUser(resultSet));
->>>>>>> branch 'master' of https://github.com/WeJog7/WEEEJOG.git
+
 			}
 			statement.close();
 			connection.close();
 		}}} catch (SQLException e) {
 			throw new WejogSQLException(e);
 		}
-		return user;
+		return users;
 	}
 	
 	private User mapperVersUser(ResultSet resultSet) throws SQLException {
