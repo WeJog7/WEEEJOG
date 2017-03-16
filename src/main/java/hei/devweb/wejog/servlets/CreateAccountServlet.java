@@ -1,7 +1,6 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -82,8 +81,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		
 		else{
 			System.out.println("Incorrect informations or user not verified, permission to create an account not granted.");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>You missed something.</font>");
+			response.sendRedirect("creationCompte");
 		}
         
     }
