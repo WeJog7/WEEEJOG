@@ -38,6 +38,8 @@ public class ChangePasswordServlet extends AbstractGenericServlet {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPasswordConfirmation = request.getParameter("newPasswordConfirmation");
+		
+		//suite
     }
 
 
