@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -15,6 +17,7 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
+import hei.devweb.wejog.managers.MotDePasseManager;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -65,9 +68,19 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
+		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) /*&& verify*/){
 			
 			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
+			
+			try {
+				password = UserService.getInstance().genererMotDePasse(password);
+			} catch (NoSuchAlgorithmException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (InvalidKeySpecException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			User newUser = new User(name, lastName, email, date, password, sexBoolean);
 			

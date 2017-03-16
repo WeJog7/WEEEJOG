@@ -1,6 +1,8 @@
 package hei.devweb.wejog.managers;
 
 import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -46,7 +48,7 @@ public class UserService {
 		return UserDao.getUser(mail);
 	}
 
-	/*public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
+	public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
 		if (email == null || "".equals(email)) {
 			throw new IllegalArgumentException("L'identifiant doit être renseigné.");
 		}
@@ -58,41 +60,24 @@ public class UserService {
 			throw new IllegalArgumentException("L'identifiant n'est pas connu.");
 		}
 		try {
-			return motDePasseManager.validerMotDePasse(email, motDePasseAVerifier);
+			return motDePasseManager.validerMotDePasse(motDePasseAVerifier, motDePasseHashe);
 		} catch (GeneralSecurityException e) {
 			throw new WejogSecuriteException("Problème dans la vérification du mot de passe.", e);
 		}
 
-	}*/
-	
-	public boolean validerMotDePasse(String identifiant, String motDePasse){ // a changer
-		
-		boolean reponse;
-
-		System.out.println("identifiant : "+identifiant);
-		System.out.println("mdp : "+motDePasse);
-		System.out.println("UserDao.getmotdepasse("+identifiant+"): "+UserDao.getmotdepasse(identifiant));
-		
-		if (motDePasse.equals(UserDao.getmotdepasse(identifiant))){
-			reponse = true;
-		}
-		else{
-			reponse = false;
-		}
-		
-		System.out.println(reponse);
-		
-		return reponse;
-		
 	}
+	
+	public String genererMotDePasse(String motDePasse) throws NoSuchAlgorithmException, InvalidKeySpecException{
+		return motDePasseManager.genererMotDePasse(motDePasse);
+	}
+	
 	
 	public static void addUser (User newUser) {
 		UserDao.addUser(newUser);
 	}
 
 	public void supprimerusers(Long idusers) {
-		
-
+	
 		UserDao.supprimerusers(idusers);
 	}
 	

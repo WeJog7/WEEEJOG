@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.managers.UserService;
 
 
@@ -48,9 +49,9 @@ public class ConnexionServlet extends GenericLearningsServlet {
 			}
 		} catch (IllegalArgumentException e) {
 			this.ajouterMessageErreur(request, e.getMessage());
-		} /*catch (WejogSecuriteException e) {
+		} catch (WejogSecuriteException e) {
 			this.ajouterMessageErreur(request, "Problème à la vérification du mot de passe.");
-		}*/
+		}
 
 	}
 
