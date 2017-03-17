@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.EnvoiMessageChangePassword;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
+import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -39,7 +41,31 @@ public class ChangePasswordServlet extends AbstractGenericServlet {
 		String newPassword = request.getParameter("newPassword");
 		String newPasswordConfirmation = request.getParameter("newPasswordConfirmation");
 		
-		//suite
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		User member = (User) httpRequest.getSession().getAttribute("user");
+		
+		try {
+			if(email.equals(member.getMail()) && UserService.getInstance().validerMotDePasse(member.getMail(), oldPassword) 
+					&& newPassword.equals(newPasswordConfirmation)){
+				
+				UserService.getInstance().updatePassword(member.getIdusers(), newPassword);
+				EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newPassword);
+				response.sendRedirect("changePasswordConfirmation");
+			}
+			
+			else{
+				response.sendRedirect("changePassword");
+			}
+		} catch (WejogSecuriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

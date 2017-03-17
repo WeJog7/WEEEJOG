@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.EnvoiMessageCreationCompte;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.managers.MotDePasseManager;
@@ -52,7 +53,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			sexBoolean = false;
 		}
 		
-        String name = request.getParameter("name");
+        String firstName = request.getParameter("name");
         String lastName = request.getParameter("lastName");
         
         String dateOfBirth = request.getParameter("birth");
@@ -68,7 +69,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
+		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) /*&& verify*/){
 			
 			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
 			
@@ -82,10 +83,11 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 				e1.printStackTrace();
 			}
 			
-			User newUser = new User(name, lastName, email, date, password, sexBoolean);
+			User newUser = new User(lastName, firstName, email, date, password, sexBoolean);
 			
 			try{
 				UserService.addUser(newUser);
+				EnvoiMessageCreationCompte.main(email, firstName, confirmPassword);
 			}catch (IllegalArgumentException e) {
 				System.out.println("Impossible to add the new user");
 			}

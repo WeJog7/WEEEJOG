@@ -14,17 +14,14 @@ public interface Userdao {
 
 	String getmotdepasse(String mail);
 
-	void modifierMotDePasse(Long id, String motDePasse);
-
 	User addUser(User nouvelUser);
-
 
 	void supprimerusers(long idusers);
 
-
 	void modificationDescription(long idusers, String description);
 
-
 	String getDescription(long idusers);
+
+	void modifierMotDePasse(long idusers, String motdepasse);
 
 }

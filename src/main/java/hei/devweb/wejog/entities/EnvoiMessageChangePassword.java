@@ -1,14 +1,19 @@
 package hei.devweb.wejog.entities;
 
 import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
 
-public class envoiMessage{
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+public class EnvoiMessageChangePassword {
 	
-	public static void main(String email, String name, String message){
+public static void main(String email, String firstName, String password){
 		
-		String to = "weejog@gmail.com";
+		String to = email;
 	    String from =  "weejog@gmail.com";
 
 	     Properties props = new Properties();
@@ -17,7 +22,6 @@ public class envoiMessage{
 	     props.put("mail.smtp.starttls.enable", "true");
 	     props.put("mail.smtp.auth", "true");
 	     props.put("mail.smtp.starttls.enable", "true");
-
 
 	     Session session = Session.getDefaultInstance(props);
 	     session.setDebug(true);
@@ -29,9 +33,9 @@ public class envoiMessage{
 
 	         mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-	         mess.setSubject("Message from website");
+	         mess.setSubject("Welcome to WeJog");
 
-	         mess.setText("Mail adresse : "+email+"\n"+"\n"+"Person's name : "+name+"\n"+"\n"+"Message : "+message);
+	         mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"+"Here are your new account's informations : "+"\n"+"Your ident : "+email+"\n"+"Your password : "+password);
 
 	         Transport trans = session.getTransport("smtp");
 	         trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
@@ -44,6 +48,5 @@ public class envoiMessage{
 	     }
 	   
 	}
-			
-		 
+
 }

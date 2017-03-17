@@ -12,7 +12,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.VerifyRecaptcha;
-import hei.devweb.wejog.entities.envoiMessage;
+import hei.devweb.wejog.entities.EnvoiMessageContactUs;
 
 
 /**
@@ -45,7 +45,7 @@ public class ContactServlet extends AbstractGenericServlet{
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
 		/*if(verify){*/
-			envoiMessage.main(email, name, message);
+			EnvoiMessageContactUs.main(email, name, message);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactMessageConfirmation");
 			

@@ -107,7 +107,7 @@ public class UserDaoImpl implements Userdao {
 	}
 
 	
-	public void modifiermotdepasse(long idusers, String motdepasse) {
+	public void modifierMotDePasse(long idusers, String motdepasse) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET motdepasse=? WHERE idusers=?")){
 			statement.setString(1, motdepasse);
@@ -119,7 +119,8 @@ public class UserDaoImpl implements Userdao {
 			throw new WejogSQLException(e);
 		}
 	}
-@Override
+	
+	@Override
 	public void supprimerusers(long idusers) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  users WHERE idusers=?")){
@@ -197,14 +198,6 @@ public class UserDaoImpl implements Userdao {
 	public User getUser(Long idusers) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	
-
-	@Override
-	public void modifierMotDePasse(Long id, String motDePasse) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -88,5 +88,10 @@ public class UserService {
 	public static String getDescription(long idusers){
 		return UserDao.getDescription(idusers);
 	}
+	
+	public void updatePassword (long idusers, String password) throws NoSuchAlgorithmException, InvalidKeySpecException{
+		String newPassword = motDePasseManager.genererMotDePasse(password);
+		UserDao.modifierMotDePasse(idusers, newPassword);
+	}
 
 }
