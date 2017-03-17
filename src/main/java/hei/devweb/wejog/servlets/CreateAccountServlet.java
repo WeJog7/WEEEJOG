@@ -69,7 +69,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
-		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) /*&& verify*/){
+		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
 			
 			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
 			
