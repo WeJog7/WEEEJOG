@@ -24,7 +24,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("user") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
-			engine.process("public/connexion", new WebContext(request, response, getServletContext()), response.getWriter());
+			engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 		}
 	}
 
