@@ -33,7 +33,7 @@ public class EnvoiMessageChangePassword {
 
 			mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-			if(typeOfMail.equals("forgetPassword")){
+			if(typeOfMail.equals("changePassword")){
 
 				mess.setSubject("Password modification");
 
