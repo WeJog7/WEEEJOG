@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.EnvoiMessageChangePassword;
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
+import hei.devweb.wejog.managers.UserService;
 
 /**
  * Servlet implementation class HomeServlet
@@ -36,21 +41,30 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
             HttpServletResponse response) throws ServletException, IOException {
         
         String email = request.getParameter("email");
-             
-        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+
+		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		 
-		if(verify){
-			System.out.println("The user is not a robot. Permission to create account granted.");
-			response.sendRedirect("creationAccountConfirmation");
+		if(UserService.getInstance().getUser(email) != null && verify){
 			
+			String typeOfMail = "forgetPassword";
+			User member = UserService.getInstance().getUser(email);
+			String newRandomPassword = UserService.getInstance().generateRandomPassword();
+			
+			try {
+				UserService.getInstance().updatePassword(member.getIdusers(), newRandomPassword);
+			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newRandomPassword, typeOfMail);
+			
+			response.sendRedirect("recoveryPasswordConfirmation");
 		}
 		
 		else{
-			System.out.println("User not verified, permission not granted.");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>You missed the Captcha.</font>");
+			response.sendRedirect("recoveryPassword");
 		}
         
     }

@@ -48,8 +48,9 @@ public class ChangePasswordServlet extends AbstractGenericServlet {
 			if(email.equals(member.getMail()) && UserService.getInstance().validerMotDePasse(member.getMail(), oldPassword) 
 					&& newPassword.equals(newPasswordConfirmation)){
 				
+				String typeOfMail = "changePassword";
 				UserService.getInstance().updatePassword(member.getIdusers(), newPassword);
-				EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newPassword);
+				EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newPassword, typeOfMail);
 				response.sendRedirect("changePasswordConfirmation");
 			}
 			

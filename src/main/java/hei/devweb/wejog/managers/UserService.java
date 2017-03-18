@@ -93,5 +93,9 @@ public class UserService {
 		String newPassword = motDePasseManager.genererMotDePasse(password);
 		UserDao.modifierMotDePasse(idusers, newPassword);
 	}
+	
+	public String generateRandomPassword(){
+		return UserDao.generateRandomPassword();
+	}
 
 }

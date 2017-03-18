@@ -193,6 +193,18 @@ public class UserDaoImpl implements Userdao {
 		return description;
 	}
 	
+	
+	public String generateRandomPassword() {
+		int length = 7;
+        String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
+        StringBuffer pass = new StringBuffer();
+        for(int x=0;x<length;x++)   {
+           int i = (int)Math.floor(Math.random() * (chars.length() -1));
+           pass.append(chars.charAt(i));
+        }
+        return pass.toString();
+	}
+	
 
 	@Override
 	public User getUser(Long idusers) {

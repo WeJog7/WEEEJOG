@@ -23,5 +23,7 @@ public interface Userdao {
 	String getDescription(long idusers);
 
 	void modifierMotDePasse(long idusers, String motdepasse);
+	
+	String generateRandomPassword();
 
 }

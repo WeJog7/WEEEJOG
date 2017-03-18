@@ -16,8 +16,20 @@ public class test {
 		System.out.println(UserDao.getUser("test@test.fr").getMotdepasse());
 		System.out.println(UserDao.getUser("test@test.fr").getPrenom());*/
 		
-		System.out.println(UserService.getInstance().genererMotDePasse("1111"));
+		/*System.out.println(UserService.getInstance().genererMotDePasse("1111"));*/
+		
+		System.out.println(generate(7));
 
+	}
+	
+	public static String generate(int length) {
+        String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
+        StringBuffer pass = new StringBuffer();
+        for(int x=0;x<length;x++)   {
+           int i = (int)Math.floor(Math.random() * (chars.length() -1));
+           pass.append(chars.charAt(i));
+        }
+        return pass.toString();
 	}
 
 }

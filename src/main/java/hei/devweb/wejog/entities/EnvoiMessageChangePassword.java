@@ -10,47 +10,61 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EnvoiMessageChangePassword {
-	
-public static void main(String email, String firstName, String password){
-		
+
+	public static void main(String email, String firstName, String password, String typeOfMail){
+
 		String to = email;
-	    String from =  "weejog@gmail.com";
+		String from =  "weejog@gmail.com";
 
-	     Properties props = new Properties();
-	     props.setProperty("mail.transport.protocol", "smtp");
-	     props.setProperty("mail.host", "smtp.gmail.com");
-	     props.put("mail.smtp.starttls.enable", "true");
-	     props.put("mail.smtp.auth", "true");
-	     props.put("mail.smtp.starttls.enable", "true");
+		Properties props = new Properties();
+		props.setProperty("mail.transport.protocol", "smtp");
+		props.setProperty("mail.host", "smtp.gmail.com");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
 
-	     Session session = Session.getDefaultInstance(props);
-	     session.setDebug(true);
+		Session session = Session.getDefaultInstance(props);
+		session.setDebug(true);
 
-	     try {
-	         MimeMessage mess = new MimeMessage(session);
+		try {
+			MimeMessage mess = new MimeMessage(session);
 
-	         mess.setFrom(new InternetAddress(from));
+			mess.setFrom(new InternetAddress(from));
 
-	         mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-	         mess.setSubject("Password modification");
+			if(typeOfMail.equals("forgetPassword")){
 
-	         mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
-	        		 +"Here are your new account's informations : "+"\n"
-	        		 +"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
-	        		 +"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
-	        		 +"Please do not answer to this message.");
+				mess.setSubject("Password modification");
 
-	         Transport trans = session.getTransport("smtp");
-	         trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
-	         trans.sendMessage(mess, mess.getAllRecipients());
+				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
+						+"Here are your new account's informations : "+"\n"
+						+"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
+						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
+						+"Please do not answer to this message.");
+			}
 
-	         System.out.println("Message Sent !");
+			else{
+				
+				mess.setSubject("Recovery Password");
 
-	     } catch (MessagingException mex) {
-	         mex.printStackTrace();
-	     }
-	   
+				mess.setText("Hi "+firstName+", your have informed us that you have forgotten your password,"+"\n"+"\n"
+						+"Here are your new account's informations : "+"\n"
+						+"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
+						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
+						+"Please do not answer to this message.");
+			}
+			
+			Transport trans = session.getTransport("smtp");
+			trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
+			trans.sendMessage(mess, mess.getAllRecipients());
+
+			System.out.println("Message Sent !");
+
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+
 	}
 
 }

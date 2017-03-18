@@ -71,7 +71,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		
 		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
 			
-			System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
+			//System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
 			
 			try {
 				password = UserService.getInstance().genererMotDePasse(password);
