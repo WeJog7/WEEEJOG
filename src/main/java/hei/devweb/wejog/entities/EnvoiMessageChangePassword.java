@@ -33,9 +33,13 @@ public static void main(String email, String firstName, String password){
 
 	         mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-	         mess.setSubject("Welcome to WeJog");
+	         mess.setSubject("Password modification");
 
-	         mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"+"Here are your new account's informations : "+"\n"+"Your ident : "+email+"\n"+"Your password : "+password);
+	         mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
+	        		 +"Here are your new account's informations : "+"\n"
+	        		 +"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
+	        		 +"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
+	        		 +"Please do not answer to this message.");
 
 	         Transport trans = session.getTransport("smtp");
 	         trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");

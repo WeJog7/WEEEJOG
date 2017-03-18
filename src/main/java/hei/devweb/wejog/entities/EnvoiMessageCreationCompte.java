@@ -35,7 +35,11 @@ public static void main(String email, String firstName, String password){
 
 	         mess.setSubject("Welcome to WeJog");
 
-	         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"+"Here are your account's informations : "+"\n"+"Your ident : "+email+"\n"+"Your password : "+password);
+	         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"
+	        		 +"Here are your account's informations : "+"\n"
+	        		 +"Your ident : "+email+"\n"
+	        		 +"Your password : "+password+"\n"+"\n"
+	        		 +"Please do not answer to this message.");
 
 	         Transport trans = session.getTransport("smtp");
 	         trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
