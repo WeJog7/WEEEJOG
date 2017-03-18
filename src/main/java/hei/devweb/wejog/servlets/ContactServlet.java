@@ -1,7 +1,6 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.VerifyRecaptcha;
-import hei.devweb.wejog.entities.EnvoiMessageContactUs;
+import hei.devweb.wejog.entities.EnvoiMessage;
 
 
 /**
@@ -44,18 +43,17 @@ public class ContactServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		/*if(verify){*/
-			EnvoiMessageContactUs.main(email, name, message);
+		if(verify){
+			String typeOfMail = "contactUs";
+			EnvoiMessage.main(email, name, message, typeOfMail);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactMessageConfirmation");
 			
-		/*}
+		}
 		
 		else{
-			System.out.println("User not verified, permission not granted.");
-			PrintWriter out = response.getWriter();
-			out.println("<font color=red>You missed the Captcha.</font>");
-		}*/
+			response.sendRedirect("contact");
+		}
         
         
     }

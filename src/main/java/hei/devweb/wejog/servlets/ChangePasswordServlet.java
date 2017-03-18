@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.EnvoiMessageChangePassword;
+import hei.devweb.wejog.entities.EnvoiMessage;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.exceptions.WejogSecuriteException;
@@ -50,7 +50,7 @@ public class ChangePasswordServlet extends AbstractGenericServlet {
 				
 				String typeOfMail = "changePassword";
 				UserService.getInstance().updatePassword(member.getIdusers(), newPassword);
-				EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newPassword, typeOfMail);
+				EnvoiMessage.main(member.getMail(), member.getPrenom(), newPassword, typeOfMail);
 				response.sendRedirect("changePasswordConfirmation");
 			}
 			

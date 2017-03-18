@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.EnvoiMessageChangePassword;
+import hei.devweb.wejog.entities.EnvoiMessage;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.managers.UserService;
@@ -58,7 +58,7 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			EnvoiMessageChangePassword.main(member.getMail(), member.getPrenom(), newRandomPassword, typeOfMail);
+			EnvoiMessage.main(member.getMail(), member.getPrenom(), newRandomPassword, typeOfMail);
 			
 			response.sendRedirect("recoveryPasswordConfirmation");
 		}

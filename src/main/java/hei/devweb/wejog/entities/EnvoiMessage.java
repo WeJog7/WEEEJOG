@@ -9,9 +9,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class EnvoiMessageChangePassword {
+public class EnvoiMessage {
 
-	public static void main(String email, String firstName, String password, String typeOfMail){
+	public static void main(String email, String firstName, String contenu, String typeOfMail){
 
 		String to = email;
 		String from =  "weejog@gmail.com";
@@ -32,28 +32,48 @@ public class EnvoiMessageChangePassword {
 			mess.setFrom(new InternetAddress(from));
 
 			mess.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-			if(typeOfMail.equals("changePassword")){
-
+			
+			switch (typeOfMail){
+			
+			case "changePassword" :
 				mess.setSubject("Password modification");
 
 				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
 						+"Here are your new account's informations : "+"\n"
-						+"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
+						+"Your ident : "+email+"\n"+"Your password : "+contenu+"\n"+"\n"
 						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
 						+"Please do not answer to this message.");
-			}
-
-			else{
+				break;
 				
-				mess.setSubject("Recovery Password");
+				
+			case "Recovery Password":
+				mess.setSubject("Password modification");
 
-				mess.setText("Hi "+firstName+", your have informed us that you have forgotten your password,"+"\n"+"\n"
+				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
 						+"Here are your new account's informations : "+"\n"
-						+"Your ident : "+email+"\n"+"Your password : "+password+"\n"+"\n"
+						+"Your ident : "+email+"\n"+"Your password : "+contenu+"\n"+"\n"
 						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
 						+"Please do not answer to this message.");
+				break;
+				
+			case "contactUs":
+				mess.setSubject("Message from website");
+
+		        mess.setText("Mail adresse : "+email+"\n"+"\n"+"Person's name : "+firstName+"\n"+"\n"+"Message : "+contenu);
+		         
+				break;
+				
+			case "createAccount" :
+				mess.setSubject("Welcome to WeJog");
+
+		         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"
+		        		 +"Here are your account's informations : "+"\n"
+		        		 +"Your ident : "+email+"\n"
+		        		 +"Your password : "+contenu+"\n"+"\n"
+		        		 +"Please do not answer to this message.");
+		         break;
 			}
+				
 			
 			Transport trans = session.getTransport("smtp");
 			trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");

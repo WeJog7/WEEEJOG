@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.EnvoiMessageCreationCompte;
+import hei.devweb.wejog.entities.EnvoiMessage;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.entities.VerifyRecaptcha;
-import hei.devweb.wejog.managers.MotDePasseManager;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -87,7 +86,8 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			
 			try{
 				UserService.addUser(newUser);
-				EnvoiMessageCreationCompte.main(email, firstName, confirmPassword);
+				String typeOfMail = "createAccount";
+				EnvoiMessage.main(email, firstName, confirmPassword, typeOfMail);
 			}catch (IllegalArgumentException e) {
 				System.out.println("Impossible to add the new user");
 			}

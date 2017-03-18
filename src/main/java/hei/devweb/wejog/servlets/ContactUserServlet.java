@@ -1,7 +1,6 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.VerifyRecaptcha;
-import hei.devweb.wejog.entities.EnvoiMessageContactUs;
+import hei.devweb.wejog.entities.EnvoiMessage;
+import hei.devweb.wejog.entities.User;
 
 /**
  * Servlet implementation class ContactUserServlet
@@ -36,12 +36,16 @@ public class ContactUserServlet extends AbstractGenericServlet {
         String name = request.getParameter("name");
         String message = request.getParameter("message");
         
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+		User member = (User) httpRequest.getSession().getAttribute("user");
+        
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(verify){
-			EnvoiMessageContactUs.main(email, name, message);
+		if(email.equals(member.getMail()) && name.equals(member.getPrenom()) && verify){
+			String typeOfMail = "contactUs";
+			EnvoiMessage.main(email, name, message, typeOfMail);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactUserMessageConfirmation");
 			
