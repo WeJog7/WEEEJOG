@@ -13,8 +13,16 @@ public class EnvoiMessage {
 
 	public static void main(String email, String firstName, String contenu, String typeOfMail){
 
-		String to = email;
+		String to;	
 		String from =  "weejog@gmail.com";
+		
+		if(typeOfMail.equals("contactUs")){
+			to = "weejog@gmail.com";
+		}
+		
+		else{
+			to = email;
+		}
 
 		Properties props = new Properties();
 		props.setProperty("mail.transport.protocol", "smtp");
@@ -46,8 +54,8 @@ public class EnvoiMessage {
 				break;
 				
 				
-			case "Recovery Password":
-				mess.setSubject("Password modification");
+			case "forgetPassword":
+				mess.setSubject("Recovery Password");
 
 				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
 						+"Here are your new account's informations : "+"\n"
