@@ -24,7 +24,7 @@
 
 		<section id="sectionCreationCompte">
 
-			<form action="" method="POST" id="creationCompte"  onSubmit="return fenvoi() ">
+			<form action="" method="POST" id="creationCompte" >
 
 			<h2>Create an account</h2>
 
@@ -52,6 +52,7 @@
 			<div>
 		    	<label for ="mail">Email</label>
 		    	<input type="email" name="mail" id="mail" placeholder="Enter your email" required >
+		    	<!--<p id="mailCheck"></p>-->
 		    </div>
 
 			<div>
@@ -62,6 +63,7 @@
 			<div>
 				<label for ="password">Password</label>
 		    	<input type="password" id="password" name="password" placeholder="Please enter your password" required />
+		    	<!--<p id="passwordCheck"></p>-->
 		    </div>
 
 		    <div>
@@ -72,7 +74,7 @@
 		    <div class="g-recaptcha" data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
 
 		   <div  id="register" >
-		   		<input type="submit" value="Register" />
+		   		<input type="submit" value="Register" onClick='return testerRadio(this.form.reponse);'/>
 		   	</div>
 		    
 			</form>

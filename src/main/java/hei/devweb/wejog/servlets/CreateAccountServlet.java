@@ -26,7 +26,7 @@ import hei.devweb.wejog.managers.UserService;
 @WebServlet("/createAccount")
 public class CreateAccountServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
-      
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
@@ -34,44 +34,45 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		templateEngine.process("creationCompte", context, resp.getWriter());
 	}
-	
+
 	protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        
+			HttpServletResponse response) throws ServletException, IOException {
+
 		String sex = request.getParameter("reponse");
 		boolean sexBoolean;
-		
-		if(sex.equals("Male")){
-			sexBoolean = true;
-		}
-		
-		else{
-			sexBoolean = false;
-		}
-		
-        String firstName = request.getParameter("name");
-        String lastName = request.getParameter("lastName");
-        
-        String dateOfBirth = request.getParameter("birth");
-        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");*/
-        LocalDate date = LocalDate.parse(dateOfBirth);
-        
-        String email = request.getParameter("mail");
-        String confirmEmail = request.getParameter("ConfirmMail");
-        String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
-        
-        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+
+		String firstName = request.getParameter("name");
+		String lastName = request.getParameter("lastName");
+
+		String dateOfBirth = request.getParameter("birth");
+		/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");*/
+		LocalDate date = LocalDate.parse(dateOfBirth);
+
+		String email = request.getParameter("mail");
+		String confirmEmail = request.getParameter("ConfirmMail");
+		String password = request.getParameter("password");
+		String confirmPassword = request.getParameter("confirmPassword");
+
+		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
-		
-		if(UserService.getInstance().getUser(email) == null && email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
-			
+
+		if(sex!=null && UserService.getInstance().getUser(email) == null 
+				&& email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
+
 			//System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
-			
+
+			if(sex.equals("Male")){
+				sexBoolean = true;
+			}
+
+			else{
+				sexBoolean = false;
+			}
+
 			try {
 				password = UserService.getInstance().genererMotDePasse(password);
 			} catch (NoSuchAlgorithmException e1) {
@@ -81,9 +82,9 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			User newUser = new User(lastName, firstName, email, date, password, sexBoolean);
-			
+
 			try{
 				UserService.addUser(newUser);
 				String typeOfMail = "createAccount";
@@ -93,12 +94,12 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			}
 			response.sendRedirect("creationAccountConfirmation");
 		}
-		
+
 		else{
 			System.out.println("Incorrect informations or user not verified, permission to create an account not granted.");
 			response.sendRedirect("createAccount");
 		}
-        
-    }
+
+	}
 
 }

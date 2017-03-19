@@ -225,6 +225,10 @@ iframe{
 }
 
 
+#mailCheck, #passwordCheck{
+	color : red;
+}
+
 label {
   width: 30%;
   display: inline-block;
