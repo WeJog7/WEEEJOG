@@ -2,6 +2,17 @@ JQuery(function($){
 	$('#datepicker').datepicker();	
 });
 
+
+function date() {
+    $( "#datepicker" ).datepicker({
+    	changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        yearRange: "-100:+0",
+        dateFormat: 'yy-mm-dd',
+    });
+  } ;
+
 /*function isValidForm(){
 
 	var mail = document.getElementById("mail").value;
@@ -35,7 +46,7 @@ function testerRadio(radio) {
 					alert('Mails adress are not the same');
 					//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
 				}
-				else{
+				if(password != confirmPassword){
 					alert('You have entered two different passwords');
 					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
 				}
@@ -49,7 +60,7 @@ function testerRadio(radio) {
 	}
 }
 
-function verifForm(f)
+/*function verifForm(f)
 {
 	var nomOk = verifNom(f.name);
 	var prenomOk = veriflastName(f.lastName);
@@ -67,7 +78,7 @@ function verifForm(f)
 		alert("Veuillez remplir correctement tous les champs");
 		return false;
 	}
-}
+}*/
 
 
 

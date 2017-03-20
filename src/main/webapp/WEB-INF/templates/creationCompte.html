@@ -1,87 +1,96 @@
 <html>
-  
-  <head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="css/stylesWeJog.css"/>
-    <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
-   
-    <meta name="viewport" content="height=device-height"/>
-   
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    
-   
-		   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		  <script type="text/javascript" src="js/javascript.js"></script>
-    <title>Account Creation</title>
-   </head>
 
-	<body>
-	
-		  
-		  <header th:replace="~{fragments :: headerNotConnected}"></header>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="css/stylesWeJog.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive-500.css" />
 
-		<section id="sectionCreationCompte">
+<meta name="viewport" content="height=device-height" />
 
-			<form action="" method="POST" id="creationCompte" >
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<title>Account Creation</title>
+</head>
+
+<body>
+
+
+	<header th:replace="~{fragments :: headerNotConnected}"></header>
+
+	<section id="sectionCreationCompte">
+
+		<form action="" method="POST" id="creationCompte">
 
 			<h2>Create an account</h2>
 
 			<div id="sex">
-		    	<label for ="sex">Sex</label>
-   				<input type="radio" name="reponse" value="Male" />Male
-    			<input type="radio" name="reponse" value="Female" />Female
+				<label for="sex">Sex</label> <input type="radio" name="reponse"
+					value="Male" />Male <input type="radio" name="reponse"
+					value="Female" />Female
 			</div>
 
 			<div>
-				<label for ="name">First Name</label>
-		    	<input type="text/plain" id="name" name="name" placeholder="Please enter your name" required />
-		    </div>
+				<label for="name">First Name</label> <input type="text/plain"
+					id="name" name="name" placeholder="Please enter your name" required />
+			</div>
 
 			<div>
-				<label for ="lastName">Last Name</label>
-		    	<input type="text/plain" id="lastName" name="lastName" placeholder="Please enter your last name" required />
-		    </div>
-
-		    <div>
-		    	<label for ="birth">Birth Date</label>
-		    	<input type="text" id="datepicker" name="birth" required />
-		    </div>
+				<label for="lastName">Last Name</label> <input type="text/plain"
+					id="lastName" name="lastName"
+					placeholder="Please enter your last name" required />
+			</div>
 
 			<div>
-		    	<label for ="mail">Email</label>
-		    	<input type="email" name="mail" id="mail" placeholder="Enter your email" required >
-		    	<!--<p id="mailCheck"></p>-->
-		    </div>
+				<label for="birth">Birth Date</label> <input type="text"
+					id="datepicker" name="birth" onClick='return date();' required />
+			</div>
 
 			<div>
-		    	<label for ="ConfirmMail">Confirm Email</label>
-		    	<input type="email" name="ConfirmMail" id="ConfirmMail" placeholder="Confirm your email" required >
-		    </div>
+				<label for="mail">Email</label> <input type="email" name="mail"
+					id="mail" placeholder="Enter your email" required>
+				<!--<p id="mailCheck"></p>-->
+			</div>
 
 			<div>
-				<label for ="password">Password</label>
-		    	<input type="password" id="password" name="password" placeholder="Please enter your password" required />
-		    	<!--<p id="passwordCheck"></p>-->
-		    </div>
+				<label for="ConfirmMail">Confirm Email</label> <input type="email"
+					name="ConfirmMail" id="ConfirmMail"
+					placeholder="Confirm your email" required>
+			</div>
 
-		    <div>
-				<label for ="confirmPassword">Password Confirmation</label>
-		    	<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Please confirm your password" required />
-		    </div>
-		    
-		    <div class="g-recaptcha" data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
+			<div>
+				<label for="password">Password</label> <input type="password"
+					id="password" name="password"
+					placeholder="Please enter your password" required />
+				<!--<p id="passwordCheck"></p>-->
+			</div>
 
-		   <div  id="register" >
-		   		<input type="submit" value="Register" onClick='return testerRadio(this.form.reponse);'/>
-		   	</div>
-		    
-			</form>
-		</section>
+			<div>
+				<label for="confirmPassword">Password Confirmation</label> <input
+					type="password" id="confirmPassword" name="confirmPassword"
+					placeholder="Please confirm your password" required />
+			</div>
 
-		<footer th:replace="~{fragments :: footer(contact)}"></footer>
+			<div class="g-recaptcha"
+				data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
 
-	</body>
+			<div id="register">
+				<input type="submit" value="Register"
+					onClick='return testerRadio(this.form.reponse);' />
+			</div>
+
+		</form>
+	</section>
+
+	<footer th:replace="~{fragments :: footer(contact)}"></footer>
+
+</body>
 
 </html>
