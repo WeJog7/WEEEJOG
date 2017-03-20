@@ -1,8 +1,3 @@
-JQuery(function($){
-	$('#datepicker').datepicker();	
-});
-
-
 function date() {
     $( "#datepicker" ).datepicker({
     	changeMonth: true,
