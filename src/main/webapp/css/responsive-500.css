@@ -43,9 +43,15 @@ nav li.active {
 	padding:0;
 	width:70%;
 }
-	
+
+
 nav input{
 	width: 100%;
+}
+
+
+#myEvent, #usersList{
+	margin-bottom: 5px;
 }
 
 

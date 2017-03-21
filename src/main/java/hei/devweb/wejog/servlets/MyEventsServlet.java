@@ -11,10 +11,10 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 /**
- * Servlet implementation class NewsServlet
+ * Servlet implementation class MyEventsServlet
  */
-@WebServlet(urlPatterns = {"/user/news", "/admin/news"})
-public class NewsServlet extends AbstractGenericServlet {
+@WebServlet(urlPatterns = {"/user/myEvents", "/admin/myEvents"})
+public class MyEventsServlet extends AbstractGenericServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class NewsServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("news", context, resp.getWriter());
+		templateEngine.process("myEvents", context, resp.getWriter());
 	}
 
 

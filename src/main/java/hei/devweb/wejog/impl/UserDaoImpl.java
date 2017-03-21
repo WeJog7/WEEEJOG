@@ -22,7 +22,7 @@ public class UserDaoImpl implements Userdao {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
-						+ "admin, description, picturePath FROM users ORDER BY mail")){
+						+ "admin, description, picturePath FROM users WHERE admin=false ORDER BY mail ")){
 			while (resultSet.next()) {
 
 
