@@ -74,7 +74,9 @@ nav input{
 
 .liens{
 	display: block;
-	width: 100%;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -143,12 +145,17 @@ footer{
 
 #utilisateur {
 	display: block;
-	width: 100%;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
 #description_profil{
-	width: 100%;
+	display: block;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -160,15 +167,19 @@ footer{
 
 .tableau_performance_totale {
 	display: block;
-	width: 100%;
+	width: 98%;
 	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
 .tableau_performance {
 	display: block;
-	width: 100%;
+	width: 98%;
 	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Page myNetwork */
@@ -192,8 +203,10 @@ footer{
 
 
 #email {
-	width: 100%;
+	width: 98%;
 	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -233,6 +246,9 @@ form#connexionCompte label {
 	margin-top: 10px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+	width:98%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
@@ -310,7 +326,9 @@ form#changePassword label{
 /*Page UserList*/
 
 table#userList{
-	width: 100%;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 }
