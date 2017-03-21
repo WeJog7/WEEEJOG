@@ -17,16 +17,21 @@
 		<section id ="ajout_performance">
 			<h2>Contact Us</h2>
 
-			<form action="" method="POST" id="formulaire_performance">
+			<form action="" method="POST" id="formulaire_performance" th:each="member : ${User}">
 
 			<div>
 		    	<h3>Your email</h3>
-		   		<input type="email" id="email_contact" name ="email_contact" class="donnees" placeholder="Please enter your email" required />
+		   		<input type="email" id="email_contact" name ="email_contact" class="donnees" th:value="${member.mail}" disabled="disabled" required />
 		   	</div>
 
 			<div>
-		    	<h3>Your name</h3>
-		   		<input type="text/plain" id="name" name ="name" class="donnees" placeholder="Please enter your name" required />
+		    	<h3>Your firstname</h3>
+		   		<input type="text/plain" id="firstName" name ="firstName" class="donnees" th:value="${member.prenom}" disabled="disabled" required />
+		   	</div>
+		   	
+		   	<div>
+		    	<h3>Your lastname</h3>
+		   		<input type="text/plain" id="lastName" name ="lastName" class="donnees" th:value="${member.nom}" disabled="disabled" required />
 		   	</div>
 
 			<div>

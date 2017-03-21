@@ -48,7 +48,7 @@ public class ChangePasswordServlet extends AbstractGenericServlet {
 				
 				String typeOfMail = "changePassword";
 				UserService.getInstance().updatePassword(member.getIdusers(), newPassword);
-				EnvoiMessage.main(member.getMail(), member.getPrenom(), newPassword, typeOfMail);
+				EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), newPassword, typeOfMail);
 				response.sendRedirect("changePasswordConfirmation");
 			}
 			

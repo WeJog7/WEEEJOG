@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 public class EnvoiMessage {
 
-	public static void main(String email, String firstName, String contenu, String typeOfMail){
+	public static void main(String email, String firstName, String lastName, String contenu, String typeOfMail){
 
 		String to;	
 		String from =  "weejog@gmail.com";
@@ -67,7 +67,7 @@ public class EnvoiMessage {
 			case "contactUs":
 				mess.setSubject("Message from website");
 
-		        mess.setText("Mail adresse : "+email+"\n"+"\n"+"Person's name : "+firstName+"\n"+"\n"+"Message : "+contenu);
+		        mess.setText("Mail adresse : "+email+"\n"+"\n"+"From : "+firstName+" "+lastName+"\n"+"\n"+"Message : "+contenu);
 		         
 				break;
 				

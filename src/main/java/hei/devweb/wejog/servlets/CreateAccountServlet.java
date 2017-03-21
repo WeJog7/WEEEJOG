@@ -86,7 +86,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			try{
 				UserService.addUser(newUser);
 				String typeOfMail = "createAccount";
-				EnvoiMessage.main(email, firstName, confirmPassword, typeOfMail);
+				EnvoiMessage.main(email, firstName, lastName, confirmPassword, typeOfMail);
 			}catch (IllegalArgumentException e) {
 				System.out.println("Impossible to add the new user");
 			}

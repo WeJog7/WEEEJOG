@@ -26,6 +26,10 @@ public class ContactUserServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		
 		templateEngine.process("contactUser", context, resp.getWriter());
 	}
 	
@@ -33,7 +37,8 @@ public class ContactUserServlet extends AbstractGenericServlet {
             HttpServletResponse response) throws ServletException, IOException {
         
         String email = request.getParameter("email_contact");
-        String name = request.getParameter("name");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
         String message = request.getParameter("message");
         
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -43,9 +48,9 @@ public class ContactUserServlet extends AbstractGenericServlet {
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(email.equals(member.getMail()) && name.equals(member.getPrenom()) && verify){
+		if(email.equals(member.getMail()) && firstName.equals(member.getPrenom()) && lastName.equals(member.getNom()) && verify){
 			String typeOfMail = "contactUs";
-			EnvoiMessage.main(email, name, message, typeOfMail);
+			EnvoiMessage.main(email, firstName, lastName, message, typeOfMail);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactUserMessageConfirmation");
 			

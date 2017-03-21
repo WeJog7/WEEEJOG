@@ -57,7 +57,7 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			EnvoiMessage.main(member.getMail(), member.getPrenom(), newRandomPassword, typeOfMail);
+			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), newRandomPassword, typeOfMail);
 			
 			response.sendRedirect("recoveryPasswordConfirmation");
 		}
