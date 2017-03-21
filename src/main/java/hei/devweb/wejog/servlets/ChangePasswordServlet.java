@@ -3,7 +3,6 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +14,6 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.EnvoiMessage;
 import hei.devweb.wejog.entities.User;
-import hei.devweb.wejog.entities.VerifyRecaptcha;
 import hei.devweb.wejog.exceptions.WejogSecuriteException;
 import hei.devweb.wejog.managers.UserService;
 

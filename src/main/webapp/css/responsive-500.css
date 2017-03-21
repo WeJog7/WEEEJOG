@@ -263,5 +263,48 @@ div#sex input{
 }
 
 
+/*Page changePassword*/
+
+#changePassword{
+	margin-left: 0;
+    margin-right: 0;
+}
+
+
+#changePasswordInput{
+	width:100%;
+}
+
+
+form#changePassword input{
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+form#changePassword label{
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/*Page description*/
+
+#description textarea{
+	width:100%;
+}
+
+
+/*Page UserList*/
+
+table#userList{
+	width: 100%;
+}
 
 }

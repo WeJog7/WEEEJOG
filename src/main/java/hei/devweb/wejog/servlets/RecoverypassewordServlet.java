@@ -1,7 +1,6 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 

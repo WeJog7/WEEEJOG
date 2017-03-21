@@ -11,7 +11,6 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.User;
-import hei.devweb.wejog.managers.EventService;
 import hei.devweb.wejog.managers.UserService;
 
 /**

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,7 +47,6 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		String lastName = request.getParameter("lastName");
 
 		String dateOfBirth = request.getParameter("birth");
-		/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");*/
 		LocalDate date = LocalDate.parse(dateOfBirth);
 
 		String email = request.getParameter("mail");

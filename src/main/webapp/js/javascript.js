@@ -8,21 +8,27 @@ function date() {
     });
   } ;
 
-/*function isValidForm(){
+function isValidForm(){
 
-	var mail = document.getElementById("mail").value;
-	var ConfirmMail = document.getElementById("ConfirmMail").value; 
-	var password = document.getElementById("password").value; 
-	var confirmPassword = document.getElementById("confirmPassword").value;
+	var oldPassword = document.getElementById("oldPassword").value; 
+	var newPassword = document.getElementById("newPassword").value; 
+	var newPasswordConfirmation = document.getElementById("newPasswordConfirmation").value;
 
-	if(mail == ConfirmMail && password == confirmPassword){
-		return true;
-	} 
+	if(oldPassword != newPassword){
+		if(newPassword == newPasswordConfirmation){
+			return true;
+		}
+		else{
+			alert('New Password and New Password Confirmation are not the same.');
+			return false;
+		}
+	}
+	
 	else{
-		alert('There is a problem in your form');
+		alert('The new password must be different from the older password.');
 		return false;
 	}
-}*/
+};
 
 function testerRadio(radio) {
 
@@ -53,7 +59,7 @@ function testerRadio(radio) {
 			return false;
 		}
 	}
-}
+};
 
 /*function verifForm(f)
 {
