@@ -1,13 +1,3 @@
-function date() {
-    $( "#datepicker" ).datepicker({
-    	changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        yearRange: "-100:+0",
-        dateFormat: 'yy-mm-dd',
-    });
-  } ;
-
 function isValidForm(){
 
 	var oldPassword = document.getElementById("oldPassword").value; 
@@ -60,6 +50,37 @@ function testerRadio(radio) {
 		}
 	}
 };
+
+/*function testerRadio(radio) {
+
+	var mail = document.getElementById("mail").value;
+	var ConfirmMail = document.getElementById("ConfirmMail").value; 
+	var password = document.getElementById("password").value; 
+	var confirmPassword = document.getElementById("confirmPassword").value;
+
+	for (var i=0; i<radio.length;i++) {
+		if (radio[i].checked) {
+			if(mail == ConfirmMail && password == confirmPassword){
+				return true;
+			}
+			else{
+				if(mail != ConfirmMail){
+					alert('Mails adress are not the same');
+					//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
+				}
+				if(password != confirmPassword){
+					alert('You have entered two different passwords');
+					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
+				}
+				return false;
+			}
+		}
+		else{
+			alert("Please chose a sex");
+			return false;
+		}
+	}
+};*/
 
 /*function verifForm(f)
 {

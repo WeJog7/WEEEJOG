@@ -16,6 +16,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script>
+ $(function() {
+	    $( "#datepicker" ).datepicker({
+	    	changeMonth: true,
+	        changeYear: true,
+	        showButtonPanel: true,
+	        yearRange: "-100:+0",
+	        dateFormat: 'yy-mm-dd',
+	    });
+	  } );
+ </script>
+
 
 <title>Account Creation</title>
 </head>
@@ -50,7 +62,7 @@
 
 			<div>
 				<label for="birth">Birth Date</label> <input type="text"
-					id="datepicker" name="birth" onClick='return date();' required />
+					id="datepicker" name="birth" required />
 			</div>
 
 			<div>
