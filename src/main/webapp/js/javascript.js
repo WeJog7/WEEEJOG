@@ -1,3 +1,13 @@
+function suppressionusers(id) {
+    if (confirm("Would you like to delete this user ?")) {
+        window.location("deleteuser?idusers="+id);
+        return true;
+    }
+    else{
+   return false;}
+    
+}
+
 function isValidForm(){
 
 	var oldPassword = document.getElementById("oldPassword").value; 
