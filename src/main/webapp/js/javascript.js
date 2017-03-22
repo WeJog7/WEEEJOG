@@ -8,6 +8,7 @@ function suppressionusers(id) {
     
 }
 
+
 function isValidForm(){
 
 	var oldPassword = document.getElementById("oldPassword").value; 
@@ -29,6 +30,20 @@ function isValidForm(){
 		return false;
 	}
 };
+
+
+function validRecaptcha(){
+	var recaptcha = document.getElementById("recaptcha").value;
+	
+	if(recaptcha != null){
+		return true;
+	}
+	
+	else{
+		alert('The captcha must be answered.');
+		return false;
+	}
+}
 
 function testerRadio(radio) {
 
