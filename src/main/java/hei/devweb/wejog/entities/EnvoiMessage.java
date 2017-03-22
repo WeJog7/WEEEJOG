@@ -47,7 +47,7 @@ public class EnvoiMessage {
 				mess.setSubject("Password modification");
 
 				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
-						+"Here are your new account's informations : "+"\n"
+						+"Here are your new account informations : "+"\n"
 						+"Your ident : "+email+"\n"+"Your password : "+contenu+"\n"+"\n"
 						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
 						+"Please do not answer to this message.");
@@ -58,7 +58,7 @@ public class EnvoiMessage {
 				mess.setSubject("Recovery Password");
 
 				mess.setText("Hi "+firstName+", your password has been changed,"+"\n"+"\n"
-						+"Here are your new account's informations : "+"\n"
+						+"Here are your new account informations : "+"\n"
 						+"Your ident : "+email+"\n"+"Your password : "+contenu+"\n"+"\n"
 						+"If you didn't ask for this change, please contact us as quick as possible."+"\n"+"\n"
 						+"Please do not answer to this message.");
@@ -75,7 +75,7 @@ public class EnvoiMessage {
 				mess.setSubject("Welcome to WeJog");
 
 		         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"
-		        		 +"Here are your account's informations : "+"\n"
+		        		 +"Here are your account informations : "+"\n"
 		        		 +"Your ident : "+email+"\n"
 		        		 +"Your password : "+contenu+"\n"+"\n"
 		        		 +"Please do not answer to this message.");
