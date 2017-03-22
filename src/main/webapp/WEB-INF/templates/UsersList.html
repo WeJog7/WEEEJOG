@@ -26,7 +26,7 @@
 					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 					<td>[[${user.nom}]]</td>
 					<td>[[${user.prenom}]]</td>
-					<td><a class="alignement" th:onClick="'suppressionusers('+${user.idusers}+')'" th:href="'deleteuser?idusers='+${user.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a></td>
+					<td><a class="alignement" onClick="suppressionusers('+${user.idusers}+');return false;" th:href="'deleteuser?idusers='+${user.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a></td>
 				</tr>
 
 			</table>
