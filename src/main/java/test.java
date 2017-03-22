@@ -9,7 +9,7 @@ public class test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException{
 		
-		System.out.println(UserService.getInstance().genererMotDePasse("1111"));
+		System.out.println(UserService.getInstance().genererMotDePasse("0000"));
 		
 		System.out.println(generate(7));
 

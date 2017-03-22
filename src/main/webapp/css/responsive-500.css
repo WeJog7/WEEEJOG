@@ -114,6 +114,19 @@ footer{
 }
 
 
+.boutonEventManagement{
+	width:100%;
+	margin-left:0;
+	margin-right:0;
+}
+
+
+.boutonEventManagement a{
+	display:block;
+	text-align: center;
+}
+
+
 /* Page ajout evenement, article, performance */
 
 #ajout_performance{

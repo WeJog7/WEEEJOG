@@ -55,7 +55,7 @@
 							<p>Calories : 771 cal</p>
 							<p>Average 12.3 mph</p>
 							<p>More information : </p>
-							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
+							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
 						</td>
 					</tr>
 					<tr>
@@ -73,13 +73,16 @@
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
-							<img id="littlePicture" src="Images/PhotoProfil.jpg" alt="Photo de profil" class="alignement">
+							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
 							<h1>Event</h1>
 							<h3>Today at 5 p.m.</h3>
 							<p>Departure : Big Ben</p>
 							<p>More information : </p>
-							<div id="ajout_ami"><a id="bouton_ajout_ami" class="boutons_ami" href="addFriend.html">Subscribe to the event</a></div>
+							<div class="boutonEventManagement">
+								<a class="boutons_ami" href="addFriend.html">Subscribe to the event</a>
+								<a class="boutons_ami" href="addFriend.html">See more</a>
+							</div>
 						</td>
 					</tr>
 					<tr>
