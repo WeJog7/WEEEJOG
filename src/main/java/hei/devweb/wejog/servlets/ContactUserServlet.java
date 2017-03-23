@@ -22,7 +22,6 @@ public class ContactUserServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
@@ -45,20 +44,18 @@ public class ContactUserServlet extends AbstractGenericServlet {
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(verify){
+		if(message !=null && !"".equals(message) && verify){
 			String typeOfMail = "contactUs";
 			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), message, typeOfMail);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactUserMessageConfirmation");
-			
 		}
 		
 		else{
 			System.out.println("User not verified, permission not granted.");
 			response.sendRedirect("contactUser");
 		}
-        
-        
+         
     }
 
 }
