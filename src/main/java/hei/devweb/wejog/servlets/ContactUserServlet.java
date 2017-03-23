@@ -43,16 +43,18 @@ public class ContactUserServlet extends AbstractGenericServlet {
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+		String checkMessage = message.replaceAll(" ", "");
         
-		if(message !=null && !"".equals(message) && verify){
+		if(message !=null && !"".equals(message) &&!"".equals(checkMessage) && verify){
 			String typeOfMail = "contactUs";
 			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), message, typeOfMail);
-			System.out.println("The user is not a robot. Permission to send message granted.");
+			//System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactUserMessageConfirmation");
 		}
 		
 		else{
-			System.out.println("User not verified, permission not granted.");
+			//System.out.println("User not verified or wrong message, permission not granted.");
 			response.sendRedirect("contactUser");
 		}
          

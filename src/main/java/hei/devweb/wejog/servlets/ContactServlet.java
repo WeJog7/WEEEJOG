@@ -38,16 +38,22 @@ public class ContactServlet extends AbstractGenericServlet{
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+		String checkFirstName = firstName.replaceAll(" ", "");
+		String checkLastName = lastName.replaceAll(" ", "");
+		String checkMessage = message.replaceAll(" ", "");
         
-		if(email!=null && !"".equals(email) && firstName!=null && !"".equals(firstName) && lastName!=null && !"".equals(lastName)
-				&& message!=null && !"".equals(message) && verify){
+		if(email!=null && !"".equals(email) && firstName!=null && !"".equals(firstName) &&!"".equals(checkFirstName)
+				&& lastName!=null && !"".equals(lastName) && !"".equals(checkLastName) && message!=null && !"".equals(message) 
+				&& !"".equals(checkMessage) && verify){
 			String typeOfMail = "contactUs";
 			EnvoiMessage.main(email, firstName, lastName, message, typeOfMail);
-			System.out.println("The user is not a robot. Permission to send message granted.");
+			// System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactMessageConfirmation");
 		}
 		
 		else{
+			//System.out.println("User not verified or wrong message, permission not granted.");
 			response.sendRedirect("contact");
 		}
         
