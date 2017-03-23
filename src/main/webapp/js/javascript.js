@@ -1,34 +1,57 @@
 function suppressionusers(id) {
-    if (confirm("Would you like to delete this user ?")) {
-        window.location("deleteuser?idusers="+id);
-        return true;
-    }
-    else{
-   return false;}
-    
+	if (confirm("Would you like to delete this user ?")) {
+		window.location("deleteuser?idusers="+id);
+		return true;
+	}
+	else{
+		return false;}
+
 }
 
 
-function validRecaptcha(){
-	
-    var verification = grecaptcha.getResponse();
-    
-    if(verification.length == 0)
-    {
-    	alert('The captcha must be done.');
-        return false;
-    }
-    else
-    {
-        return true; 
-    }
+function validContact(){
+
+	var email = document.getElementById("email_contact").value;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var message = document.getElementById("message").value;
+	var verification = grecaptcha.getResponse();
+
+	if(verification.length != 0 && email.replace(/ /g,"")!="" && firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!=""
+		&& message.replace(/ /g,"")!=""){
+		return true;
+	}
+
+	else{
+		if(email.replace(/ /g,"")==""){
+			alert('Please enter your email.');
+		}
+		
+		if(firstName.replace(/ /g,"")==""){
+			alert('Please enter your first name.');
+		}
+		
+		if(lastName.replace(/ /g,"")==""){
+			alert('Please enter your last name.');
+		}
+		
+		if(message.replace(/ /g,"")==""){
+			alert('Please enter a message.');
+		}
+
+		if(verification.length == 0){
+			alert('The captcha must be done.');
+		}
+
+		return false;
+	}
 }
 
 
 function isValidForm(){
 
-	var oldPassword = document.getElementById("oldPassword").value; 
-	var newPassword = document.getElementById("newPassword").value; 
+	var oldPassword = document.getElementById("oldPassword").value;
+	var newPassword = document.getElementById("newPassword").value;
 	var newPasswordConfirmation = document.getElementById("newPasswordConfirmation").value;
 
 	if(oldPassword != newPassword){
@@ -40,7 +63,7 @@ function isValidForm(){
 			return false;
 		}
 	}
-	
+
 	else{
 		alert('The new password must be different from the older password.');
 		return false;
@@ -50,6 +73,8 @@ function isValidForm(){
 
 function testerRadio(radio) {
 
+	var firstName = document.getElementById("name").value;
+	var lastName = document.getElementById("lastName").value;
 	var mail = document.getElementById("mail").value;
 	var ConfirmMail = document.getElementById("ConfirmMail").value; 
 	var password = document.getElementById("password").value; 
@@ -58,10 +83,19 @@ function testerRadio(radio) {
 
 	for (var i=0; i<radio.length;i++) {
 		if (radio[i].checked) {
-			if(mail == ConfirmMail && password == confirmPassword && verification.length != 0){
+			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" 
+				&& mail == ConfirmMail && password == confirmPassword && verification.length != 0){
 				return true;
 			}
 			else{
+				if(firstName.replace(/ /g,"")==""){
+					alert('Please enter your first name.');
+				}
+				
+				if(lastName.replace(/ /g,"")==""){
+					alert('Please enter your last name.');
+				}
+				
 				if(mail != ConfirmMail){
 					alert('Mails adress are not the same');
 					//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
@@ -71,9 +105,9 @@ function testerRadio(radio) {
 					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
 				}
 				if(verification.length == 0)
-			    {
-			    	alert('The captcha must be done.');
-			    }
+				{
+					alert('The captcha must be done.');
+				}
 				return false;
 			}
 		}
