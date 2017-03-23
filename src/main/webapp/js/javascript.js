@@ -9,11 +9,6 @@ function suppressionusers(id) {
 }
 
 
-function recaptchaCallback() {
-    $('#validation').removeAttr('disabled');
-};
-
-
 function validRecaptcha(){
 	
     var verification = grecaptcha.getResponse();
@@ -28,20 +23,6 @@ function validRecaptcha(){
         return true; 
     }
 }
-
-
-/*function validRecaptcha(){
-	var recaptcha = document.getElementById("recaptcha").value;
-	
-	if(recaptcha != null){
-		return true;
-	}
-	
-	else{
-		alert('The captcha must be answered.');
-		return false;
-	}
-}*/
 
 
 function isValidForm(){
@@ -73,10 +54,11 @@ function testerRadio(radio) {
 	var ConfirmMail = document.getElementById("ConfirmMail").value; 
 	var password = document.getElementById("password").value; 
 	var confirmPassword = document.getElementById("confirmPassword").value;
+	var verification = grecaptcha.getResponse();
 
 	for (var i=0; i<radio.length;i++) {
 		if (radio[i].checked) {
-			if(mail == ConfirmMail && password == confirmPassword){
+			if(mail == ConfirmMail && password == confirmPassword && verification.length != 0){
 				return true;
 			}
 			else{
@@ -88,6 +70,10 @@ function testerRadio(radio) {
 					alert('You have entered two different passwords');
 					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
 				}
+				if(verification.length == 0)
+			    {
+			    	alert('The captcha must be done.');
+			    }
 				return false;
 			}
 		}
@@ -97,58 +83,3 @@ function testerRadio(radio) {
 		}
 	}
 };
-
-/*function testerRadio(radio) {
-
-	var mail = document.getElementById("mail").value;
-	var ConfirmMail = document.getElementById("ConfirmMail").value; 
-	var password = document.getElementById("password").value; 
-	var confirmPassword = document.getElementById("confirmPassword").value;
-
-	for (var i=0; i<radio.length;i++) {
-		if (radio[i].checked) {
-			if(mail == ConfirmMail && password == confirmPassword){
-				return true;
-			}
-			else{
-				if(mail != ConfirmMail){
-					alert('Mails adress are not the same');
-					//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
-				}
-				if(password != confirmPassword){
-					alert('You have entered two different passwords');
-					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
-				}
-				return false;
-			}
-		}
-		else{
-			alert("Please chose a sex");
-			return false;
-		}
-	}
-};*/
-
-/*function verifForm(f)
-{
-	var nomOk = verifNom(f.name);
-	var prenomOk = veriflastName(f.lastName);
-	var birthOk = verifbirth(f.birth);
-	var mailOk = verifmail(f.mail);
-	var ConfirmMailOk = verifConfirmMail(f.ConfirmMail);
-	var passwordOk = verifpassword(f.password);
-	var confirmPasswordOk = verifconfirmPassword(f.confirmPassword);
-
-
-	if(nomOk && prenomOk &&  birthOk && mailOk && ConfirmMailOk && passwordOk && confirmPasswordOk)
-		return true;
-	else
-	{
-		alert("Veuillez remplir correctement tous les champs");
-		return false;
-	}
-}*/
-
-
-
-
