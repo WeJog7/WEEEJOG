@@ -36,9 +36,6 @@ public class ContactUserServlet extends AbstractGenericServlet {
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         
-        String email = request.getParameter("email_contact");
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
         String message = request.getParameter("message");
         
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -48,9 +45,9 @@ public class ContactUserServlet extends AbstractGenericServlet {
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
         
-		if(email.equals(member.getMail()) && firstName.equals(member.getPrenom()) && lastName.equals(member.getNom()) && verify){
+		if(verify){
 			String typeOfMail = "contactUs";
-			EnvoiMessage.main(email, firstName, lastName, message, typeOfMail);
+			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), message, typeOfMail);
 			System.out.println("The user is not a robot. Permission to send message granted.");
 			response.sendRedirect("contactUserMessageConfirmation");
 			

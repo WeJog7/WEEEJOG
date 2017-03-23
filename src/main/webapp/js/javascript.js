@@ -9,6 +9,41 @@ function suppressionusers(id) {
 }
 
 
+function recaptchaCallback() {
+    $('#validation').removeAttr('disabled');
+};
+
+
+function validRecaptcha(){
+	
+    var verification = grecaptcha.getResponse();
+    
+    if(verification.length == 0)
+    {
+    	alert('The captcha must be done.');
+        return false;
+    }
+    else
+    {
+        return true; 
+    }
+}
+
+
+/*function validRecaptcha(){
+	var recaptcha = document.getElementById("recaptcha").value;
+	
+	if(recaptcha != null){
+		return true;
+	}
+	
+	else{
+		alert('The captcha must be answered.');
+		return false;
+	}
+}*/
+
+
 function isValidForm(){
 
 	var oldPassword = document.getElementById("oldPassword").value; 
@@ -31,19 +66,6 @@ function isValidForm(){
 	}
 };
 
-
-function validRecaptcha(){
-	var recaptcha = document.getElementById("recaptcha").value;
-	
-	if(recaptcha != null){
-		return true;
-	}
-	
-	else{
-		alert('The captcha must be answered.');
-		return false;
-	}
-}
 
 function testerRadio(radio) {
 

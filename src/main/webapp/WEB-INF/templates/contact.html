@@ -7,7 +7,7 @@
     <meta name="viewport" content="height=device-height"/>
     <title>Contact Us</title>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
     
    </head>
 
@@ -40,10 +40,10 @@
 		   		<textarea type="text/plain" id="message" name ="message" class="donnees" placeholder="Please write your message" maxlength="140" required /></textarea>
 		   	</div>
 		   	
-		   	<div id="recaptcha" class="g-recaptcha" data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
+		   	<div data-callback="recaptchaCallback" class="g-recaptcha" data-sitekey="6Lf3GxcUAAAAAGkMnn-EfWO_RYssbBk4KrtKj3fg"></div>
 
 		   	<div>
-		   		<input type="submit" id="validation" value="Send your message" onClick="return validRecaptcha();" />
+		   		<input type="submit" id="validation" value="Send your message" onClick="return validRecaptcha();" disabled/>
 		   	</div>
 		    
 		</form>
