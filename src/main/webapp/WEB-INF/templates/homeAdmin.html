@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   
   <head>
     <meta charset="utf-8"/>
@@ -22,16 +22,17 @@
 				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
 
-			<div class="actuality">
+			<div class="actuality" th:each="article : ${articles}" >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"> </td>
 						<td>
-							<h1>Sante magazine</h1>
-							<h1>Course a pied, running</h1>
-							<h3>Les bonnes raisons pour s'y mettre</h3>
-							<p>Synopsis : </p>
-							<p>Un esprit sain dans un corps sain.</p>
+							
+							<h1 th:text=" 'Title: ' +${article.nomarticle}"></h1>
+							
+							<p th:text=" 'Synopsis: ' +${article.contenuarticle}"></p>
+							<p><a th:href="${article.lien}" target="blank">Test Lien</a></p>
+							
 						</td>
 					</tr>
 					<tr>
@@ -44,16 +45,16 @@
 				</table>
 			</div>
 
-			<div class="actuality">
+			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<h1>My friend's performance</h1>
-							<h1>yesterday at 7pm</h1>
-							<p>Distance : 3 km</p>
-							<p>Calories : 771 cal</p>
-							<p>Average 12.3 mph</p>
+							<h1 th:text=" 'At ' +${performance.dateperformance}">  </h1>
+							<p th:text="'At ' +${performance.horaireperformance}"></p>
+							<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
+							<p th:text="'Average: ' +${performance.vitesseperformance}+ ' mph'"></p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
 						</td>
@@ -68,7 +69,7 @@
 				</table>
 			</div>
 
-			<div class="actuality">
+			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
@@ -76,8 +77,8 @@
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement">Mr XX.</h1>
 							<h1>Event</h1>
-							<h3>Today at 5 p.m.</h3>
-							<p>Departure : Big Ben</p>
+							<h3 th:text="' Date: '+${event.dateevent} " > </h3>
+							<p th:text="'Place: '+${event.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
 								<a class="boutons_ami" href="addFriend.html">Subscribe to the event</a>
