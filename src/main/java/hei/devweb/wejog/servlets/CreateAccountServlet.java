@@ -57,9 +57,14 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+		String checkFirstName = firstName.replaceAll(" ", "");
+		String checkLastName = lastName.replaceAll(" ", "");
+		String checkPassword = password.replaceAll(" ", "");
 
-		if(sex!=null && firstName!=null && !"".equals(firstName) && lastName!=null && !"".equals(lastName) && dateOfBirth!=null && !"".equals(dateOfBirth)
-				&& email != null && !"".equals(email) && password != null && !"".equals(password) && UserService.getInstance().getUser(email) == null
+		if(sex!=null && firstName!=null && !"".equals(firstName) && !"".equals(checkFirstName) && lastName!=null && !"".equals(lastName) 
+				&& !"".equals(checkLastName) && dateOfBirth!=null && !"".equals(dateOfBirth) && email != null && !"".equals(email) 
+				&& password != null && !"".equals(password) && !"".equals(checkPassword) && UserService.getInstance().getUser(email) == null
 				&& email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
 
 			//System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
