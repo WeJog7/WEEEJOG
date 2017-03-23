@@ -45,7 +45,7 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		 
-		if(email == null && "".equals(email) && UserService.getInstance().getUser(email) != null && verify){
+		if(email != null && !"".equals(email) && UserService.getInstance().getUser(email) != null && verify){
 			
 			String typeOfMail = "forgetPassword";
 			User member = UserService.getInstance().getUser(email);
