@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.managers.ArticleService;
+import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.managers.PerformanceService;
+
 /**
  * Servlet implementation class HomeAdminServlet
  */
@@ -25,7 +29,9 @@ public class HomeAdminServlet extends AbstractGenericServlet {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo());
+		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
+		context.setVariable("events",EventService.getInstance().ListEventToDo());
 		templateEngine.process("homeAdmin", context, resp.getWriter());
 	}
 

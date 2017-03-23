@@ -48,7 +48,7 @@
 			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<h1>My friend's performance</h1>
 							<h1 th:text=" 'At ' +${performance.dateperformance}">  </h1>
