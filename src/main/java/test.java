@@ -9,13 +9,17 @@ public class test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException{
 		
-		System.out.println(UserService.getInstance().genererMotDePasse("0000"));
+		/*System.out.println(UserService.getInstance().genererMotDePasse("0000"));
 		
-		System.out.println(generate(7));
+		System.out.println(generate(7));*/
+		
+		String test = " je teste ";
+		test = test.replace(" ", "");
+		System.out.println("La string :>>"+test+"<<");
 
 	}
 	
-	public static String generate(int length) {
+	/*public static String generate(int length) {
         String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
         StringBuffer pass = new StringBuffer();
         for(int x=0;x<length;x++)   {
@@ -23,6 +27,6 @@ public class test {
            pass.append(chars.charAt(i));
         }
         return pass.toString();
-	}
+	}*/
 
 }
