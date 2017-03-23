@@ -75,6 +75,7 @@ function testerRadio(radio) {
 
 	var firstName = document.getElementById("name").value;
 	var lastName = document.getElementById("lastName").value;
+	var datepicker = document.getElementById("datepicker").value;
 	var mail = document.getElementById("mail").value;
 	var ConfirmMail = document.getElementById("ConfirmMail").value; 
 	var password = document.getElementById("password").value; 
@@ -83,7 +84,7 @@ function testerRadio(radio) {
 
 	for (var i=0; i<radio.length;i++) {
 		if (radio[i].checked) {
-			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" 
+			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!=""
 				&& mail == ConfirmMail && password == confirmPassword && verification.length != 0){
 				return true;
 			}
@@ -94,6 +95,10 @@ function testerRadio(radio) {
 				
 				if(lastName.replace(/ /g,"")==""){
 					alert('Please enter your last name.');
+				}
+				
+				if(datepicker.replace(/ /g,"")==""){
+					alert('Please enter a date.');
 				}
 				
 				if(mail != ConfirmMail){
