@@ -24,7 +24,7 @@ import hei.devweb.wejog.managers.UserService;
 @WebServlet("/recoveryPassword")
 public class RecoverypassewordServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
-      
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
@@ -32,40 +32,48 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		templateEngine.process("recoveryPassword", context, resp.getWriter());
 	}
-	
+
 	protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        
-        String email = request.getParameter("email");
+			HttpServletResponse response) throws ServletException, IOException {
+
+		String email = request.getParameter("email");
 
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
-		 
-		if(email != null && UserService.getInstance().getUser(email) != null && verify){
-			
-			String typeOfMail = "forgetPassword";
-			User member = UserService.getInstance().getUser(email);
-			String newRandomPassword = UserService.getInstance().generateRandomPassword();
-			
-			try {
-				UserService.getInstance().updatePassword(member.getIdusers(), newRandomPassword);
-			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+		if(email != null){
+
+			if(UserService.getInstance().getUser(email) != null && verify){
+
+
+				String typeOfMail = "forgetPassword";
+				User member = UserService.getInstance().getUser(email);
+				String newRandomPassword = UserService.getInstance().generateRandomPassword();
+
+				try {
+					UserService.getInstance().updatePassword(member.getIdusers(), newRandomPassword);
+				} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), newRandomPassword, typeOfMail);
+
+				response.sendRedirect("recoveryPasswordConfirmation");
 			}
-			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), newRandomPassword, typeOfMail);
-			
-			response.sendRedirect("recoveryPasswordConfirmation");
+
+			else{
+				response.sendRedirect("recoveryPassword");
+			}
 		}
-		
+
 		else{
 			response.sendRedirect("recoveryPassword");
 		}
-        
-    }
+
+	}
 
 }
