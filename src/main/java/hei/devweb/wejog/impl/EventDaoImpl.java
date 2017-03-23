@@ -11,6 +11,7 @@ import java.util.List;
 
 import hei.devweb.wejog.impl.DataSourceProvider;
 import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
 	
@@ -73,7 +74,16 @@ public class EventDaoImpl {
 	return newEvent;
 }
 
-
+	public void supprimereventadmin(long idevent) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  event WHERE idevent=?")){
+			statement.setLong(1, idevent);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
 	
 
-}
+	}}

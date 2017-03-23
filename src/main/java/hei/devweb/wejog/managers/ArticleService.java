@@ -32,7 +32,10 @@ public class ArticleService {
 		articleDao.addArticle(newArticle);
 		
 	} 
-
+	public void supprimerarticleadmin(Long idarticle) {
+		
+	articleDao.supprimerarticleadmin(idarticle);
+	}
 }
 
 

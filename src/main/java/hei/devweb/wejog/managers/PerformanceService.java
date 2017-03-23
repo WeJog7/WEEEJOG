@@ -30,5 +30,8 @@ public void addPerformance(Performance newPerformance) {
 	performanceDao.addPerformance(newPerformance);
 	
 } 
-
+public void supprimerperformanceadmin(Long idperformance) {
+	
+	performanceDao.supprimerperformanceadmin(idperformance);
+	}
 }

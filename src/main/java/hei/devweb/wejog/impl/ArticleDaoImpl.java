@@ -10,6 +10,7 @@ import java.util.List;
 
 import hei.devweb.wejog.impl.DataSourceProvider;
 import hei.devweb.wejog.entities.Article;
+import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class ArticleDaoImpl {
 	
@@ -67,7 +68,17 @@ public class ArticleDaoImpl {
 	return newArticle;
 }
 
-
+	public void supprimerarticleadmin(long idarticle) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  article WHERE idarticle=?")){
+			statement.setLong(1, idarticle);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+	}
 	
 
 }

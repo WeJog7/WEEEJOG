@@ -1,6 +1,6 @@
 package hei.devweb.wejog.entities;
 
-import java.time.LocalDate;
+
 
 public class Article {
 	private Integer idarticle;

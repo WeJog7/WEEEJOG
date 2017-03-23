@@ -37,7 +37,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+							<a class="alignement" th:href="'deletearticleadmin?idarticle='+${article.idarticle}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
@@ -61,7 +61,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+							<a class="alignement" th:href="'deleteperformanceadmin?idperformance='+${performance.idperformance}"  ><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" href="connexion.html"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+							<a class="alignement" th:href="'deleteeventadmin?idevent='+${event.idevent}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>

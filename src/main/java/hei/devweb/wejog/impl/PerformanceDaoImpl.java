@@ -12,6 +12,7 @@ import java.util.List;
 
 
 import hei.devweb.wejog.entities.Performance;
+import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class PerformanceDaoImpl {	
 	
@@ -78,7 +79,16 @@ e.printStackTrace();
 return newPerformance;
 }
 
+public void supprimerperformanceadmin(long idperformance) {
+	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+		try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  performance WHERE idperformance=?")){
+		statement.setLong(1, idperformance);
+		statement.executeUpdate();
+		statement.close();
+		connection.close();
+	}} catch (SQLException e) {
+		throw new WejogSQLException(e);
+	}
 
 
-
-}
+}}

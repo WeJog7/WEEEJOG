@@ -30,5 +30,9 @@ public class EventService {
 		eventDao.addEvent(newEvent);
 		
 	} 
+	public void supprimereventadmin(Long idevent) {
+		
+		eventDao.supprimereventadmin(idevent);
+		}
 
 }
