@@ -84,8 +84,8 @@ function testerRadio(radio) {
 
 	for (var i=0; i<radio.length;i++) {
 		if (radio[i].checked) {
-			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!=""
-				&& mail == ConfirmMail && password == confirmPassword && verification.length != 0){
+			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!="" && password!=""
+				&& mail!="" && mail == ConfirmMail && password == confirmPassword && verification.length != 0){
 				return true;
 			}
 			else{
@@ -99,6 +99,14 @@ function testerRadio(radio) {
 				
 				if(datepicker.replace(/ /g,"")==""){
 					alert('Please enter a date.');
+				}
+				
+				if(mail==""){
+					alert('Please enter an email.');
+				}
+				
+				if(password==""){
+					alert('Please enter a password.');
 				}
 				
 				if(mail != ConfirmMail){
