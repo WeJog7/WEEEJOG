@@ -11,6 +11,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Article;
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 
 
@@ -29,6 +30,9 @@ public class AddArticleServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 		
 		templateEngine.process("ajouterArticle", context, resp.getWriter());
 	}

@@ -32,6 +32,10 @@ public class HomeServlet extends AbstractGenericServlet{
 		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo());
 		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
 		context.setVariable("events",EventService.getInstance().ListEventToDo());
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		
 		templateEngine.process("home", context, resp.getWriter());
 	}
 

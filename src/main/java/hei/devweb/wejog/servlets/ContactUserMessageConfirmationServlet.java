@@ -22,6 +22,9 @@ public class ContactUserMessageConfirmationServlet extends AbstractGenericServle
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		
 		templateEngine.process("contactUserMessageConfirmation", context, resp.getWriter());
 	}
 

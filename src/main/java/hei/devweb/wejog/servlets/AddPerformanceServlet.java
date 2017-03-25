@@ -16,7 +16,7 @@ import org.thymeleaf.context.WebContext;
 
 
 import hei.devweb.wejog.entities.Performance;
-
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.PerformanceService;
 
 /**
@@ -33,6 +33,9 @@ public class AddPerformanceServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 		
 		templateEngine.process("ajouterPerformance", context, resp.getWriter());
 	}

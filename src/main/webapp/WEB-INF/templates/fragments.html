@@ -15,7 +15,7 @@
 			
 			<div id ="informations" class="alignement">
 				<a id = "photoProfil" href="profil" class="alignement"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a>
-				<h4 class="alignement">Mr. XX</h4>
+				<h4 class="alignement" th:text="${member.prenom}"></h4>
 				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
 			</div>
 
@@ -34,7 +34,7 @@
 			
 			<div id ="informations" class="alignement">
 				<a id = "photoProfil" href="profil" class="alignement"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a>
-				<h4 class="alignement">Mr. XX</h4>
+				<h4 class="alignement" th:text="${member.prenom}"></h4>
 				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
 			</div>
 

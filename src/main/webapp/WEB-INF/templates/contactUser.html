@@ -11,7 +11,7 @@
     
    </head>
 
-	<body>
+	<body th:each="member : ${User}">
 
 		<header th:replace="~{fragments :: headerConnected('valueWithoutImportance')}"></header>
 

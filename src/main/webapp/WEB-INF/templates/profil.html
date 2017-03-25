@@ -9,13 +9,13 @@
     
    </head>
 
-	<body>
+	<body th:each="member : ${User}">
 
 		<header th:replace="~{fragments :: headerConnected('valueWithoutImportance')}"></header>
 
 		<section>
 
-			<div id="profil" th:each="member : ${User}">
+			<div id="profil">
 				<div id="utilisateur">
 					<div><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></div>
 					<div class="boutons_profil"><a class="bouton_profil" href="picture">Picture</a></div>

@@ -9,7 +9,7 @@
  <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
    </head>
 
-	<body>
+	<body th:each="member : ${User}">
 
 		<header th:replace="~{fragments :: headerConnectedAdmin('UsersList')}"></header>
 

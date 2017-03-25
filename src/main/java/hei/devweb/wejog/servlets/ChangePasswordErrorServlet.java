@@ -19,6 +19,9 @@ public class ChangePasswordErrorServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 
 		templateEngine.process("changePasswordError", context, resp.getWriter());
 	}
