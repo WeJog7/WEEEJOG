@@ -5,6 +5,21 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+ 	$(function() {
+	    $( "#datepicker" ).datepicker({
+	    	changeMonth: true,
+	        showButtonPanel: true,
+	        yearRange: "-1:+0",
+	        dateFormat: 'yy-mm-dd',
+	        maxDate : "dateToday",
+	    });
+	  } );
+	</script>
     <title>Add Performance</title>
     
    </head>
@@ -20,7 +35,7 @@
 
 			<div>
 		    	<h3>Date</h3>
-		   		<input type="date" id="date_performance" name ="date_performance" class="donnees" required />
+		   		<input type="text" id="datepicker" name ="date_performance" class="donnees" required />
 		   	</div>
 
 		   	<div>
@@ -29,12 +44,12 @@
 		   	</div>
 
 		    <div>
-		    	<h3>Duration</h3>
+		    	<h3>Duration (in minutes)</h3>
 		    	<input type="number" id="duration" name="duration" class="donnees" placeholder="Please enter the duration in minutes" required />
 		    </div>
 
 		    <div>
-		    	<h3>Distance</h3>
+		    	<h3>Distance (in miles)</h3>
 		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" required />
 		    </div>
 
