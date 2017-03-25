@@ -75,6 +75,24 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			else{
 				sexBoolean = false;
 			}
+			
+			String correctFirstName="";
+			String correctLastName="";
+			
+			if(firstName.length()<2){
+				correctFirstName = firstName.substring(0,1).toUpperCase();
+			}
+			else{
+				correctFirstName = firstName.substring(0,1).toUpperCase()+firstName.substring(1).toLowerCase();
+			}
+			
+			if(lastName.length()<2){
+				correctLastName = lastName.substring(0,1).toUpperCase();
+			}
+			else{
+				correctLastName = lastName.substring(0,1).toUpperCase()+lastName.substring(1).toLowerCase();
+			}
+			
 
 			try {
 				password = UserService.getInstance().genererMotDePasse(password);
@@ -86,12 +104,12 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 				e1.printStackTrace();
 			}
 
-			User newUser = new User(lastName, firstName, email, date, password, sexBoolean);
+			User newUser = new User(correctLastName, correctFirstName, email, date, password, sexBoolean);
 
 			try{
 				UserService.addUser(newUser);
 				String typeOfMail = "createAccount";
-				EnvoiMessage.main(email, firstName, lastName, confirmPassword, typeOfMail);
+				EnvoiMessage.main(email, correctFirstName, correctLastName, confirmPassword, typeOfMail);
 			}catch (IllegalArgumentException e) {
 				System.out.println("Impossible to add the new user");
 			}

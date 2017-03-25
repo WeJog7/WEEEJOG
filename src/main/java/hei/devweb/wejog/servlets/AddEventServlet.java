@@ -42,13 +42,11 @@ public class AddEventServlet extends AbstractGenericServlet{
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String dateAsString=req.getParameter("date_performance");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		LocalDate date = LocalDate.parse(dateAsString,formatter);
+		String dateAsString = req.getParameter("date_performance");
+		LocalDate date = LocalDate.parse(dateAsString);
 
 		String horaireAsString=req.getParameter("hour");
-		DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		LocalDate horaire = LocalDate.parse(horaireAsString,formater);
+		LocalDate horaire = LocalDate.parse(horaireAsString);
 
 		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));

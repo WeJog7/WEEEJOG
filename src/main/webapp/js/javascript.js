@@ -1,3 +1,23 @@
+function deleteEvent(idEvent) {
+	if (confirm("Would you like to delete this Event ?")) {
+		window.location("deleteeventadmin?idevent="+idEvent);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
+function deleteArticle(idArticle) {
+	if (confirm("Would you like to delete this article ?")) {
+		window.location("deletearticleadmin?idarticle="+idArticle);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function suppressionusers(id) {
 	if (confirm("Would you like to delete this user ?")) {
 		window.location("deleteuser?idusers="+id);

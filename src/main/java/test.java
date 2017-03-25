@@ -13,10 +13,22 @@ public class test {
 		
 		System.out.println(generate(7));*/
 		
-		String test = " je teste ";
+		/*String test = " je teste ";
 		test = test.replace(" ", "");
-		System.out.println("La string :>>"+test+"<<");
-
+		System.out.println("La string :>>"+test+"<<");*/
+		
+		String firstName = "bruce wayne";
+		
+		String correctFirstName="";
+		
+		if(firstName.length()<2){
+			correctFirstName = firstName.substring(0,1).toUpperCase();
+		}
+		else{
+			correctFirstName = firstName.substring(0,1).toUpperCase()+firstName.substring(1).toLowerCase();
+		}
+		
+		System.out.println("affichage correct : "+correctFirstName);
 	}
 	
 	/*public static String generate(int length) {
