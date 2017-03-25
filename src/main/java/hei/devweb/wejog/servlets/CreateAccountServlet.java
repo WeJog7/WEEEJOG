@@ -100,7 +100,12 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 
 		else{
 			System.out.println("Incorrect informations or user not verified, permission to create an account not granted.");
+			if(UserService.getInstance().getUser(email)!=null){
+				response.sendRedirect("CreateAccountError");
+			}
+			else{
 			response.sendRedirect("createAccount");
+			}
 		}
 
 	}
