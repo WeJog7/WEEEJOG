@@ -19,6 +19,7 @@ import org.thymeleaf.context.WebContext;
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.managers.UserService;
 
 /**
  * Servlet implementation class HomeServlet
@@ -52,10 +53,13 @@ public class AddEventServlet extends AbstractGenericServlet{
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
 
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		User user = (User) httpRequest.getSession().getAttribute("user");
+		
+		Long userIdCreator = user.getIdusers();
 
 
-
-		Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, null);
+		Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, userIdCreator);
 		EventService.getInstance().addEvent(newEvent); 
 		resp.sendRedirect("home");
 	}
