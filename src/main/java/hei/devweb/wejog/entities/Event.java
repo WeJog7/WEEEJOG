@@ -11,11 +11,11 @@ public class Event {
 	private Double dureeevent;
 	private Double distanceevent;
 	private String lieuevent; 
-	private  Integer usergestion ;
+	private  Long usergestion ;
 	
 	
 	
-	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, Integer usergestion) {
+	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, Long userIdCreator) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
@@ -23,13 +23,11 @@ public class Event {
 		this.dureeevent = dureeevent;
 		this.distanceevent=distanceevent;
 		this.lieuevent=lieuevent;
-		this.usergestion=usergestion;
+		this.usergestion=userIdCreator;
 		
 		
 	}
 
-
-	
 
 	public Integer getIdevent() {
 		return idevent;
@@ -91,12 +89,12 @@ public class Event {
 	}
 
 
-	public Integer getUsergestion() {
+	public Long getUsergestion() {
 		return usergestion;
 	}
 
 
-	public void setUsergestion(Integer usergestion) {
+	public void setUsergestion(Long usergestion) {
 		this.usergestion = usergestion;
 	}
 

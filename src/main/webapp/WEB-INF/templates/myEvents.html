@@ -16,31 +16,21 @@
 		<section>
 			<h2>My event(s)</h2>
 
-			<div class="actuality">
+			<div class="actuality" th:each="myevent : ${myevents}" >
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
-							<h1>Sante magazine</h1>
-							<h1>Course a pied, running</h1>
-							<h3>Les bonnes raisons pour s'y mettre</h3>
-							<p>Synopsis : </p>
-							<p>Un esprit sain dans un corps sain.</p>
-						</td>
-					</tr>
-
-				</table>
-			</div>
-
-			<div class="actuality">
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
-						<td>
-							<h1>Active</h1>
-							<h1>6 Benefits of Running</h1>
-							<p>Synopsis : </p>
-							<p>Les 6 arguments pour vous convaincre de courir.</p>
+							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement">Mr XX.</h1>
+							<h1>Event</h1>
+							<h3 th:text="' Date: '+${myevent.dateevent} " > </h3>
+							<p th:text="'Place: '+${myevent.lieuevent} "></p>
+							<p>More information : </p>
+							<div class="boutonEventManagement">
+								<a class="boutons_ami" href="addFriend.html">Subscribe to the event</a>
+								<a class="boutons_ami" href="addFriend.html">See more</a>
+							</div>
 						</td>
 					</tr>
 

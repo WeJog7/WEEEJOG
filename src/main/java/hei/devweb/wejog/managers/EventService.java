@@ -25,7 +25,11 @@ public class EventService {
 		
 	}
 
-	
+	public  List<Event> ListmyEvent(){
+		return eventDao.ListmyEvent();
+		
+	}
+
 	public void addEvent(Event newEvent) {
 		eventDao.addEvent(newEvent);
 		

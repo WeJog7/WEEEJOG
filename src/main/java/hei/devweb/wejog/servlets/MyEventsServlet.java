@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.managers.EventService;
+
 /**
  * Servlet implementation class MyEventsServlet
  */
@@ -28,7 +30,7 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
-
+		context.setVariable("myevents",EventService.getInstance().ListmyEvent());
 		templateEngine.process("myEvents", context, resp.getWriter());
 	}
 
