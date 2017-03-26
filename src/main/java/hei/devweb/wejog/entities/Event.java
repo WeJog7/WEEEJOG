@@ -12,10 +12,10 @@ public class Event {
 	private Double distanceevent;
 	private String lieuevent; 
 	private  Integer usergestion ;
-	private Integer userparticipant;
 	
 	
-	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, Integer usergestion, Integer userparticipant) {
+	
+	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, Integer usergestion) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
@@ -24,7 +24,7 @@ public class Event {
 		this.distanceevent=distanceevent;
 		this.lieuevent=lieuevent;
 		this.usergestion=usergestion;
-		this.userparticipant=userparticipant;
+		
 		
 	}
 
@@ -101,15 +101,7 @@ public class Event {
 	}
 
 
-	public Integer getUserparticipant() {
-		return userparticipant;
-	}
 
-
-	public void setUserparticipant(Integer userparticipant) {
-		this.userparticipant = userparticipant;
-	} 
-	
 	
 	
 

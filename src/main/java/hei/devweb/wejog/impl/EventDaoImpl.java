@@ -28,8 +28,7 @@ public class EventDaoImpl {
 						resultSet.getDouble("dureeevent"),
 						resultSet.getDouble("distanceevent"),
 						resultSet.getString("lieuevent"),
-						resultSet.getInt("user1"),
-						resultSet.getInt("user2")) );
+						resultSet.getInt("user1")));
 			}
 			statement.close();
 			connection.close();
