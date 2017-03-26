@@ -32,7 +32,7 @@
 							<h1 th:text=" 'Title: ' +${article.nomarticle}"></h1>
 							
 							<p th:text=" 'Synopsis: ' +${article.contenuarticle}"></p>
-							<p><a th:href="${article.lien}" target="blank">Test Lien</a></p>
+							<p><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
 							
 						</td>
 					</tr>

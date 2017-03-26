@@ -17,7 +17,7 @@ public class test {
 		test = test.replace(" ", "");
 		System.out.println("La string :>>"+test+"<<");*/
 		
-		String firstName = "bruce wayne";
+		/*String firstName = "bruce wayne";
 		
 		String correctFirstName="";
 		
@@ -28,7 +28,14 @@ public class test {
 			correctFirstName = firstName.substring(0,1).toUpperCase()+firstName.substring(1).toLowerCase();
 		}
 		
-		System.out.println("affichage correct : "+correctFirstName);
+		System.out.println("affichage correct : "+correctFirstName);*/
+		
+		String chaine ="  test  ";
+		
+		chaine = chaine.trim();
+		
+		System.out.println("affichage correct : >>"+chaine+"<<");
+		
 	}
 	
 	/*public static String generate(int length) {
