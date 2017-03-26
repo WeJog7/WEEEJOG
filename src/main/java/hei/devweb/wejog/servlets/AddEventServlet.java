@@ -35,10 +35,10 @@ public class AddEventServlet extends AbstractGenericServlet{
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
-		
+
 		templateEngine.process("ajouterEvenement", context, resp.getWriter());
 	}
 
@@ -53,15 +53,23 @@ public class AddEventServlet extends AbstractGenericServlet{
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
 
-		HttpServletRequest httpRequest = (HttpServletRequest) req;
-		User user = (User) httpRequest.getSession().getAttribute("user");
-		
-		Long userIdCreator = user.getIdusers();
+		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(horaireAsString) && dureeevent!=null 
+				&& !"".equals(dureeevent) && distanceevent!=null && !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
 
+			HttpServletRequest httpRequest = (HttpServletRequest) req;
+			User user = (User) httpRequest.getSession().getAttribute("user");
 
-		Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, userIdCreator);
-		EventService.getInstance().addEvent(newEvent); 
-		resp.sendRedirect("home");
+			Long userIdCreator = user.getIdusers();
+			
+			String firstNameCreator = user.getPrenom();
+
+			Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
+			EventService.getInstance().addEvent(newEvent); 
+			resp.sendRedirect("home");
+		}
+		else{
+			resp.sendRedirect("addaddevent");
+		}
 	}
 }
 

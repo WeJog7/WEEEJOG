@@ -47,6 +47,13 @@ public class UserService {
 		}
 		return UserDao.getUser(mail);
 	}
+	
+	public User getUser(Long idusers) {
+		if (idusers == null || "".equals(idusers)) {
+			throw new IllegalArgumentException("L'identifiant doit être renseigné.");
+		}
+		return UserDao.getUser(idusers);
+	}
 
 	public boolean validerMotDePasse(String email, String motDePasseAVerifier) throws WejogSecuriteException {
 		if (email == null || "".equals(email)) {
