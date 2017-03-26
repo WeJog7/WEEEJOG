@@ -29,6 +29,111 @@ function suppressionusers(id) {
 }
 
 
+function validEvent(radio) {
+
+	var datepicker = document.getElementById("datepicker").value;
+	var time = document.getElementById("time").value;
+	var address = document.getElementById("adress").value; 
+	var duration = document.getElementById("duration").value; 
+	var distance = document.getElementById("distance").value;
+	var flag=0;
+
+	for (var i=0; i<radio.length;i++) {
+		if (radio[i].checked) {
+			if(datepicker.replace(/ /g,"")!="" && time.replace(/ /g,"")!="" && address.replace(/ /g,"")!="" && duration.replace(/ /g,"")!=""
+				&& distance.replace(/ /g,"")!=""){
+				return true;
+			}
+			else{
+				if(datepicker.replace(/ /g,"")=="" && flag==0){
+					alert('Please enter a date.');
+					flag=1;
+				}
+
+				if(flag==0){
+					flag = CheckDate(datepicker);
+				}
+
+				if(time.replace(/ /g,"")=="" && flag==0){
+					alert('Please enter a time.');
+					flag=1;
+				}
+
+				if(address.replace(/ /g,"")=="" && flag==0){
+					alert('Please enter an address.');
+					flag=1;
+				}
+
+				if(duration.replace(/ /g,"")=="" && flag==0){
+					alert('Please enter a duration.');
+					flag=1;
+				}
+
+				if(distance.replace(/ /g,"")=="" && flag==0){
+					alert('Please enter the distance of the route.');
+					flag=1;
+				}
+
+				return false;
+			}
+		}
+		else{
+			alert("Please enter the moment of the day.");
+			return false;
+		}
+	}
+};
+
+
+function validPerformance(){
+
+	var datepicker = document.getElementById("datepicker").value;
+	var duration = document.getElementById("duration").value;
+	var distance = document.getElementById("distance").value;
+	var average = document.getElementById("average").value;
+	var calories = document.getElementById("calories").value;
+	var flag=0;
+
+	if(datepicker.replace(/ /g,"")!="" && duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!="" && average.replace(/ /g,"")!=""
+		&& calories.replace(/ /g,"")!=""){
+		return true;
+	}
+
+	else{
+		if(datepicker.replace(/ /g,"")==""){
+			alert('Please enter a date.');
+			flag=1;
+		}
+
+		if(flag==0){
+			flag = CheckDate(datepicker);
+		}
+
+		if(duration.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a duration.');
+			flag=1;
+		}
+
+		if(distance.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a distance.');
+			flag=1;
+		}
+
+		if(average.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter an average.');
+			flag=1;
+		}
+
+		if(calories.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter the number of calories you have used.');
+			flag=1;
+		}
+
+		return false;
+	}
+}
+
+
 function validArticle(){
 
 	var lien_source = document.getElementById("lien_source").value;
@@ -162,7 +267,7 @@ function testerRadio(radio) {
 					alert('Please enter a date.');
 					flag=1;
 				}
-				
+
 				if(flag==0){
 					flag = CheckDate(datepicker);
 				}
@@ -215,11 +320,11 @@ function CheckDate(datepicker) {
 	if((!isNaN(datepicker.substring(4,5))||!isNaN(datepicker.substring(7,8))&& flag==0)){
 		alert("Wrong format, please enter a correct date"); flag=1;
 	}
-	
+
 	if((datepicker.substring(4,5)!=separateur||datepicker.substring(7,8)!=separateur) && flag==0){
 		alert("Delimiters must be like "+separateur); flag=1;
 	}
-	
+
 	if((isNaN(a)||(a<yearMin)||(a>yearMax)) && flag==0){
 		alert("In the date, the year is not correct."); flag=1;
 	}

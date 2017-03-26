@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     <script>
  	$(function() {
 	    $( "#datepicker" ).datepicker({
@@ -38,11 +39,6 @@
 		   		<input type="text" id="datepicker" name ="date_performance" class="donnees" required />
 		   	</div>
 
-		   	<div>
-		    	<h3>Hour</h3>
-		   		<input type="time" id="hour" name="hour" class="donnees" required />
-		   	</div>
-
 		    <div>
 		    	<h3>Duration (in minutes)</h3>
 		    	<input type="number" id="duration" name="duration" class="donnees" placeholder="Please enter the duration in minutes" required />
@@ -65,7 +61,7 @@
 		    
 		    
 			<div id="boutonValidation">
-		   		<input type="submit" id="validation" value="Submit your performance" />
+		   		<input type="submit" id="validation" value="Submit your performance" onClick="return validPerformance();"/>
 		   	</div>
 		</form>
 		

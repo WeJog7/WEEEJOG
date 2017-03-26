@@ -55,9 +55,9 @@
 						<td>
 							<h1>My friend's performance</h1>
 							<h1 th:text=" 'At ' +${performance.dateperformance}">  </h1>
-							<p th:text="'At ' +${performance.horaireperformance}"></p>
-							<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
-							<p th:text="'Average: ' +${performance.vitesseperformance}+ ' mph'"></p>
+							<p th:text="'During : '+${performance.dureeperformance}+'minutes'"></p>
+							<p th:text="'Calories : ' +${performance.calories}+ ' cal'"></p>
+							<p th:text="'Average : ' +${performance.vitesseperformance}+ ' mph'"></p>
 							<p>More information : </p>
 							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
 						</td>

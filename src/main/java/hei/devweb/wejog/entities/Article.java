@@ -8,19 +8,19 @@ public class Article {
 
 	private String contenuarticle;
 	private String lien;
-	private Integer user;
+	private Long userCreatorId;
 	
 	
 	
 	
-	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Integer user) {
+	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Long userCreatorId) {
 		super();
 		this.idarticle=idarticle;
 		this.nomarticle=nomarticle;
 		
 		this.contenuarticle=contenuarticle;
 		this.lien=lien;
-		this.user=user;
+		this.userCreatorId=userCreatorId;
 		
 	}
 	
@@ -50,11 +50,11 @@ public class Article {
 	public void setLien(String lien) {
 		this.lien = lien;
 	}
-	public Integer getUser() {
-		return user;
+	public Long getUserCreatorId() {
+		return userCreatorId;
 	}
-	public void setUser(Integer user) {
-		this.user = user;
+	public void setUserCreator(Long userId) {
+		this.userCreatorId = userId;
 	}
 	
 

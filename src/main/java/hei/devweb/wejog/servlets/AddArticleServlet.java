@@ -10,6 +10,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Article;
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 
 
@@ -39,7 +40,11 @@ public class AddArticleServlet extends AbstractGenericServlet{
 		if(nomarticle!=null && !"".equals(nomarticle) && contenuarticle!=null && !"".equals(contenuarticle) && lien!=null
 				&& !"".equals(lien)){
 			lien = lien.trim();
-			Article newArticle = new Article(null, nomarticle,contenuarticle,lien, null);
+			HttpServletRequest httpRequest = (HttpServletRequest) req;
+			User user = (User) httpRequest.getSession().getAttribute("user");
+			Long userIdCreator = user.getIdusers();
+			
+			Article newArticle = new Article(null, nomarticle,contenuarticle,lien, userIdCreator);
 			ArticleService.getInstance().addArticle(newArticle); 
 			resp.sendRedirect("home");
 		}

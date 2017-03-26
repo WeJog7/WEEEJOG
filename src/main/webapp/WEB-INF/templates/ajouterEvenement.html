@@ -5,17 +5,18 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
+    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
     <script>
  	$(function() {
 	    $( "#datepicker" ).datepicker({
 	        dateFormat: 'yy-mm-dd',
 	        minDate : "dateToday",
-	    });
-	  } );
+	    });	    
+ 	} );
 	</script>
     <title>Add An Event</title>
     
@@ -36,13 +37,19 @@
 		   	</div>
 
 		   	<div>
-		    	<h3>Hour</h3>
-		   		<input type="time" id="hour" name="hour" class="donnees" required />
+		    	<h3>Hour (HH:MM)</h3>
+		   		<input type="time" id="time" name="hour" class="donnees" required />
+		   	</div>
+		   	
+		   	<div id="sex">
+		   		<h3>Moment of the Day</h3>
+		   		<input type="radio" name="reponse" value="AM" />AM
+		   		<input type="radio" name="reponse" value="PM" />PM
 		   	</div>
 
 		    <div>
-		    	<h3>Adress</h3>
-		    	<input type="text/plain" id="adress" name="adress" placeholder="Please enter the adress of your performance" class="donnees" required />
+		    	<h3>Address</h3>
+		    	<input type="text" id="adress" name="adress" placeholder="Please enter the adress of your performance" class="donnees" required />
 		    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69327234186!2d-0.3817812833279029!3d51.52830797353152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C+Royaume-Uni!5e0!3m2!1sfr!2sfr!4v1485516956677" frameborder="0" style="border:0"></iframe>
 		    </div>
 
@@ -52,12 +59,12 @@
 		    </div>
 
 		    <div>
-		    	<h3>Distance</h3>
+		    	<h3>Distance of the route</h3>
 		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" required />
 		    </div>
 		    
 		    <div id="boutonValidation">
-		   		<input type="submit" id="validation" value="Post your event" />
+		   		<input type="submit" id="validation" value="Post your event" onClick='return validEvent(this.form.reponse);'/>
 		   	</div>
 		    
 		</form>

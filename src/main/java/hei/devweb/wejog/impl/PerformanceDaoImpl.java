@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +25,11 @@ public class PerformanceDaoImpl {
 			performance.add(new Performance(
 					resultSet.getInt("idperformance"),
 					resultSet.getDate("dateperformance").toLocalDate(),
-					resultSet.getTime("horaireperformance").toLocalTime(),
 					resultSet.getDouble("dureeperformance"),
 					resultSet.getDouble("distanceperformance"),
 					resultSet.getDouble("vitesseperformance"),
 					resultSet.getDouble("calories"),
-					resultSet.getString("lieuperformance"),
-					resultSet.getInt("user")) );
+					resultSet.getLong("userCreatorId")) );
 		}
 		statement.close();
 		connection.close();
@@ -51,15 +48,13 @@ public class PerformanceDaoImpl {
 public Performance addPerformance(Performance newPerformance){
 	try {
 		Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-		PreparedStatement statement = connection.prepareStatement("INSERT INTO `performance`(`dateperformance`,`horaireperformance`,`dureeperformance`,`distanceperformance`,`vitesseperformance`,`calories`,`lieuperformance`)VALUES(?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO `performance`(`dateperformance`,`dureeperformance`,`distanceperformance`,`vitesseperformance`,`calories`,userCreatorId)VALUES(?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 	statement.setDate(1,Date.valueOf(newPerformance.getDateperformance()));
-	statement.setTime(2,Time.valueOf(newPerformance.getHoraireperformance()));
-	statement.setDouble(3,newPerformance.getDureeperformance());
-    statement.setDouble(4,newPerformance.getDistanceperformance());
-    statement.setDouble(5,newPerformance.getVitesseperformance());
-    statement.setDouble(6,newPerformance.getCalories());
-    statement.setString(7,newPerformance.getLieuperformance());
-	
+	statement.setDouble(2,newPerformance.getDureeperformance());
+    statement.setDouble(3,newPerformance.getDistanceperformance());
+    statement.setDouble(4,newPerformance.getVitesseperformance());
+    statement.setDouble(5,newPerformance.getCalories());
+    statement.setLong(6,newPerformance.getUserCreatorId());
 	
 			statement.executeUpdate();
 			

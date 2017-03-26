@@ -25,7 +25,7 @@ public class ArticleDaoImpl {
 						resultSet.getString("nomarticle"),
 						resultSet.getString("contenuarticle"),					
 						resultSet.getString("lien"),
-						resultSet.getInt("user")));
+						resultSet.getLong("userCreator")));
 			}
 			statement.close();
 			connection.close();
@@ -44,11 +44,11 @@ public class ArticleDaoImpl {
 	public Article addArticle(Article newArticle){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`)VALUES(?,?,?);", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`,`userCreator`)VALUES(?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1,newArticle.getNomarticle());
 		statement.setString(2,newArticle.getContenuarticle());
 	    statement.setString(3,newArticle.getLien());
-		
+	    statement.setLong(4,newArticle.getUserCreatorId());
 		
 				statement.executeUpdate();
 				
