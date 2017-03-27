@@ -22,7 +22,7 @@
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement">Mr XX.</h1>
+							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
 							<h1>Event</h1>
 							<h3 th:text="' Date: '+${myevent.dateevent} " > </h3>
 							<p th:text="'Place: '+${myevent.lieuevent} "></p>

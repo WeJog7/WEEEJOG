@@ -95,7 +95,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event JOIN users ON event.user1 = users.idusers WHERE idevent=? AND idusers=?")){
+				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event JOIN users ON event.user1 = users.idusers ")){
 			while ( resultSet.next()){
 				event.add(new Event(
 						resultSet.getInt("idevent"),
