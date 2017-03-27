@@ -14,7 +14,7 @@ import hei.devweb.wejog.managers.AboutService;
 /**
  * Servlet implementation class AboutAdminServlet
  */
-@WebServlet("/admin/aboutAdmin")
+@WebServlet("/admin/about")
 public class AboutAdminServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
 
