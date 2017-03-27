@@ -38,8 +38,4 @@ public class HomeServlet extends AbstractGenericServlet{
 		
 		templateEngine.process("home", context, resp.getWriter());
 	}
-
-
 }
-
-

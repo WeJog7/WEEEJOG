@@ -38,6 +38,4 @@ public class HomeAdminServlet extends AbstractGenericServlet {
 		
 		templateEngine.process("homeAdmin", context, resp.getWriter());
 	}
-
-
 }
