@@ -10,30 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.AboutService;
 
 /**
  * Servlet implementation class AboutServlet
  */
-@WebServlet("/user/about")
+@WebServlet(urlPatterns = {"/user/about", "/admin/about"})
 public class AboutServlet extends AbstractGenericServlet{
-	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
-		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		User user = (User) httpRequest.getSession().getAttribute("user");
+		context.setVariable("User", user);
 		
 		context.setVariable("AboutContenu", AboutService.getInstance().getContenu());
-
-		templateEngine.process("about", context, resp.getWriter());
+		
+		if(user.isAdmin()){
+			templateEngine.process("aboutAdmin", context, resp.getWriter());
+		}
+		else{
+			templateEngine.process("about", context, resp.getWriter());
+		}
 	}
-
-
 }

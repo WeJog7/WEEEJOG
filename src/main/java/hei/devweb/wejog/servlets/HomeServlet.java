@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.EventService;
 import hei.devweb.wejog.managers.PerformanceService;
@@ -18,7 +19,7 @@ import hei.devweb.wejog.managers.PerformanceService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/user/home")
+@WebServlet(urlPatterns = {"/user/home", "/admin/home"})
 public class HomeServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
@@ -32,10 +33,16 @@ public class HomeServlet extends AbstractGenericServlet{
 		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo());
 		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
 		context.setVariable("events",EventService.getInstance().ListEventToDo());
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
-		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
-		
-		templateEngine.process("home", context, resp.getWriter());
+		User user = (User) httpRequest.getSession().getAttribute("user");
+		context.setVariable("User", user);
+
+		if(user.isAdmin()){
+			templateEngine.process("homeAdmin", context, resp.getWriter());
+		}
+		else{
+			templateEngine.process("home", context, resp.getWriter());
+		}
 	}
 }
