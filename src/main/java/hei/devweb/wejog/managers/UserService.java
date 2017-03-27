@@ -17,22 +17,17 @@ import hei.devweb.wejog.managers.UserService;
 
 public class UserService {
 	
-    private static class UserManagerHolder {
+    private static class UserServiceHolder {
         private static UserService instance = new UserService();
     }
 
     public static UserService getInstance() {
-        return UserManagerHolder.instance;
+        return UserServiceHolder.instance;
     }
 
 	private static Logger LOGGER = Logger.getLogger(UserService.class.getName());
 	private static Userdao UserDao = new UserDaoImpl();
 	private MotDePasseManager motDePasseManager = new MotDePasseManager();
-
-
-	private static class UserServiceHolder {
-		private static UserService instance = new UserService();
-	}
 
 	private UserService() {
 	}

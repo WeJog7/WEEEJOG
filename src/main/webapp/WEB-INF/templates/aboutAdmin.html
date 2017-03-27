@@ -6,16 +6,20 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/RecoveryPassword.css}"/>
     <meta name="viewport" content="height=device-height"/>
-    <title>About</title>
+    <title>AboutAdmin</title>
    </head>
 
 	<body th:each="member : ${User}">
 
-		<header th:replace="~{fragments :: headerConnected('about')}"></header>
+		<header th:replace="~{fragments :: headerConnectedAdmin('about')}"></header>
 
 		<section id="presentation">
-
+		
 			<h1>Who are we?</h1>
+			
+			<div id="ajout_ami">
+				<a class="boutons_ami" href="aboutChangeDescription">Change description</a>
+			</div>
 
 			<p th:text="${AboutContenu}"></p>
 		
