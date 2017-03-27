@@ -25,8 +25,8 @@ public class EventService {
 		
 	}
 
-	public  List<Event> ListmyEvent(){
-		return eventDao.ListmyEvent();
+	public  List<Event> ListmyEvent(long idusers){
+		return eventDao.ListmyEvent(idusers);
 		
 	}
 
