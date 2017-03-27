@@ -38,49 +38,46 @@ function validEvent(radio) {
 	var distance = document.getElementById("distance").value;
 	var flag=0;
 
-	for (var i=0; i<radio.length;i++) {
-		if (radio[i].checked) {
-			if(datepicker.replace(/ /g,"")!="" && time.replace(/ /g,"")!="" && address.replace(/ /g,"")!="" && duration.replace(/ /g,"")!=""
-				&& distance.replace(/ /g,"")!=""){
-				return true;
-			}
-			else{
-				if(datepicker.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter a date.');
-					flag=1;
-				}
-
-				if(flag==0){
-					flag = CheckDate(datepicker);
-				}
-
-				if(time.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter a time.');
-					flag=1;
-				}
-
-				if(address.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter an address.');
-					flag=1;
-				}
-
-				if(duration.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter a duration.');
-					flag=1;
-				}
-
-				if(distance.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter the distance of the route.');
-					flag=1;
-				}
-
-				return false;
-			}
+	if((radio[0].checked || (radio[1].checked)) && datepicker.replace(/ /g,"")!="" && time.replace(/ /g,"")!="" 
+		&& address.replace(/ /g,"")!="" && duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!=""){
+		return true;
+	}
+	else{
+		if(datepicker.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a date.');
+			flag=1;
 		}
-		else{
+
+		if(flag==0){
+			flag = CheckDate(datepicker);
+		}
+
+		if(time.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a time.');
+			flag=1;
+		}
+
+		if (!radio[0].checked && !radio[1].checked && flag==0){
 			alert("Please enter the moment of the day.");
-			return false;
+			flag=1;
 		}
+
+		if(address.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter an address.');
+			flag=1;
+		}
+
+		if(duration.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a duration.');
+			flag=1;
+		}
+
+		if(distance.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter the distance of the route.');
+			flag=1;
+		}
+
+		return false;
 	}
 };
 
@@ -246,64 +243,63 @@ function testerRadio(radio) {
 	var verification = grecaptcha.getResponse();
 	var flag=0;
 
-	for (var i=0; i<radio.length;i++) {
-		if (radio[i].checked) {
-			if(firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!="" && password!=""
-				&& mail!="" && mail == ConfirmMail && password == confirmPassword && verification.length != 0){
-				return true;
-			}
-			else{
-				if(firstName.replace(/ /g,"")==""){
-					alert('Please enter your first name.');
-					flag=1;
-				}
 
-				if(lastName.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter your last name.');
-					flag=1;
-				}
-
-				if(datepicker.replace(/ /g,"")=="" && flag==0){
-					alert('Please enter a date.');
-					flag=1;
-				}
-
-				if(flag==0){
-					flag = CheckDate(datepicker);
-				}
-
-				if(mail=="" && flag==0){
-					alert('Please enter an email.');
-					flag=1;
-				}
-
-				if(password=="" && flag==0){
-					alert('Please enter a password.');
-					flag=1;
-				}
-
-				if(mail != ConfirmMail && flag==0){
-					alert('Mails adress are not the same');
-					//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
-					flag=1;
-				}
-				if(password != confirmPassword && flag==0){
-					alert('You have entered two different passwords');
-					//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
-					flag=1;
-				}
-				if(verification.length == 0 && flag==0){
-					alert('The captcha must be done.');
-					flag=1;
-				}
-				return false;
-			}
-		}
-		else{
-			alert("Please chose a sex");
-			return false;
-		}
+	if((radio[0].checked || (radio[1].checked)) && firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!="" && password!=""
+		&& mail!="" && mail == ConfirmMail && password == confirmPassword && verification.length != 0){
+		return true;
 	}
+	else{
+		if (!radio[0].checked && !radio[1].checked){
+			alert("Please chose a sex");
+			flag=1;
+		}
+
+		if(firstName.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter your first name.');
+			flag=1;
+		}
+
+		if(lastName.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter your last name.');
+			flag=1;
+		}
+
+		if(datepicker.replace(/ /g,"")=="" && flag==0){
+			alert('Please enter a date.');
+			flag=1;
+		}
+
+		if(flag==0){
+			flag = CheckDate(datepicker);
+		}
+
+		if(mail=="" && flag==0){
+			alert('Please enter an email.');
+			flag=1;
+		}
+
+		if(password=="" && flag==0){
+			alert('Please enter a password.');
+			flag=1;
+		}
+
+		if(mail != ConfirmMail && flag==0){
+			alert('Mails adress are not the same');
+			//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
+			flag=1;
+		}
+		if(password != confirmPassword && flag==0){
+			alert('You have entered two different passwords');
+			//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
+			flag=1;
+		}
+		if(verification.length == 0 && flag==0){
+			alert('The captcha must be done.');
+			flag=1;
+		}
+		return false;
+	}
+
 };
 
 
