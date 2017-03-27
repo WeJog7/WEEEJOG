@@ -20,7 +20,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event ")){
+				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event where affiche")){
 					while ( resultSet.next()){
 						event.add(new Event(
 								resultSet.getInt("idevent"),
@@ -65,7 +65,6 @@ public class EventDaoImpl {
 			ResultSet resultSet = statement.getGeneratedKeys();
 			if(resultSet.next()) {
 				newEvent.setIdevent(resultSet.getInt(1));
-
 			}
 			statement.close();
 			connection.close();
@@ -80,8 +79,9 @@ public class EventDaoImpl {
 
 	public void supprimereventadmin(long idevent) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  event WHERE idevent=?")){
-				statement.setLong(1, idevent);
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE event SET affiche=? WHERE idevent=?")){
+				statement.setBoolean(1, false);
+				statement.setLong(2, idevent);
 				statement.executeUpdate();
 				statement.close();
 				connection.close();
@@ -95,7 +95,7 @@ public class EventDaoImpl {
 	public List<Event> ListmyEvent(long idusers ){
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? ")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? and affiche")){
 				statement.setLong(1, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){

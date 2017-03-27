@@ -35,7 +35,7 @@ public class AboutChangeDescription extends AbstractGenericServlet {
 		String description = request.getParameter("description");
 		AboutService.updateAboutContenu(description);	
 
-		response.sendRedirect("aboutAdmin");
+		response.sendRedirect("about");
 	}
 
 }
