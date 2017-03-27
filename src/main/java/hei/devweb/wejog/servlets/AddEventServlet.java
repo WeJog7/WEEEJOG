@@ -19,7 +19,6 @@ import org.thymeleaf.context.WebContext;
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.EventService;
-import hei.devweb.wejog.managers.UserService;
 
 /**
  * Servlet implementation class HomeServlet
@@ -60,7 +59,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 			User user = (User) httpRequest.getSession().getAttribute("user");
 
 			Long userIdCreator = user.getIdusers();
-			
+
 			String firstNameCreator = user.getPrenom();
 
 			Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);

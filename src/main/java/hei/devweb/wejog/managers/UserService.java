@@ -4,7 +4,6 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import hei.devweb.wejog.dao.Userdao;
 import hei.devweb.wejog.entities.User;
@@ -25,7 +24,6 @@ public class UserService {
         return UserServiceHolder.instance;
     }
 
-	private static Logger LOGGER = Logger.getLogger(UserService.class.getName());
 	private static Userdao UserDao = new UserDaoImpl();
 	private MotDePasseManager motDePasseManager = new MotDePasseManager();
 

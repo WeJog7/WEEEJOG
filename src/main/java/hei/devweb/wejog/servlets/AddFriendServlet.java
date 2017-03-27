@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.User;
-
 /**
  * Servlet implementation class AddFriend
  */
