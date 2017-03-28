@@ -21,8 +21,8 @@ public static PerformanceService getInstance() {
 private PerformanceService() {
 }
 
-public  List<Performance> ListPerformanceToDo(){
-	return performanceDao.ListPerfomanceToDo();
+public  List<Performance> ListPerformanceToDo(long idusers){
+	return performanceDao.ListPerfomanceToDo(idusers);
 }
 
 
