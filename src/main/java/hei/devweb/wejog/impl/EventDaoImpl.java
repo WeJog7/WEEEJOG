@@ -120,7 +120,7 @@ public class EventDaoImpl {
 		return event;		
 	}
 	
-	public List<Event> ListInscritEvent(long idevent, long idusers ){
+	public List<Event> ListInscritEvent(long idevent, long idusers){
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event JOIN participant ON event.idevent=participant.idevent WHERE participant.idevent=? and participant.idusers=? and affiche")){

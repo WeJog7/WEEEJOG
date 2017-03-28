@@ -41,17 +41,17 @@
 			</div>
 			</div>
 			
-		<!--	<div class="actuality" th:each="myevent : ${myevents}" >
+		<div class="actuality" th:each="inscritevent : ${inscritevents}" >
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
 						<td>
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
+							<h1 class="alignement" th:text="${inscritevent.userGestionFirstName}"></h1>
 							<h1>Event</h1>
-							<h3 th:text="'Date: '+${myevent.dateevent}"></h3>
-							<h3 th:text="'Time: '+${myevent.horaireevent}+' '+${myevent.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${myevent.lieuevent} "></p>
+							<h3 th:text="'Date: '+${inscritevent.dateevent}"></h3>
+							<h3 th:text="'Time: '+${inscritevent.horaireevent}+' '+${inscritevent.momentOfTheDay}"></h3>
+							<p th:text="'Place: '+${inscritevent.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
 								<a class="boutons_ami" href="addFriend.html">See more</a>
