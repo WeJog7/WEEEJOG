@@ -25,13 +25,14 @@ public class HomeServlet extends AbstractGenericServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo());
-		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
-		context.setVariable("events",EventService.getInstance().ListEventToDo());
-
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
+		
+		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers()));
+		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
+		context.setVariable("events",EventService.getInstance().ListEventToDo());
 
 		if(user.isAdmin()){
 			templateEngine.process("homeAdmin", context, resp.getWriter());

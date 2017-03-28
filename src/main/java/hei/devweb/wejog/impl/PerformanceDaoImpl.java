@@ -16,12 +16,13 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 public class PerformanceDaoImpl {	
 	
 	
-	public List<Performance> ListPerfomanceToDo(){
+	public List<Performance> ListPerfomanceToDo(long idusers){
 	List<Performance> performance = new ArrayList<>();
 	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-		try(Statement statement = connection.createStatement()){
-			try(ResultSet resultSet = statement.executeQuery("SELECT * FROM performance ")){
-		while ( resultSet.next()){
+		try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM performance WHERE userCreatorId=? ")){
+			statement.setLong(1, idusers);
+			ResultSet resultSet = statement.executeQuery();
+			while ( resultSet.next()){
 			performance.add(new Performance(
 					resultSet.getInt("idperformance"),
 					resultSet.getDate("dateperformance").toLocalDate(),
@@ -30,18 +31,14 @@ public class PerformanceDaoImpl {
 					resultSet.getDouble("vitesseperformance"),
 					resultSet.getDouble("calories"),
 					resultSet.getLong("userCreatorId")) );
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
 		}
-		statement.close();
-		connection.close();
-	}}}
-	catch (SQLException e){
-		e.printStackTrace();
-	
-	}
-			
-
-			return performance;
-		}
+	return performance;		
+}
 	
 
 
