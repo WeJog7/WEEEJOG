@@ -119,4 +119,31 @@ public class EventDaoImpl {
 			}
 		return event;		
 	}
+	
+	public List<Event> ListInscritEvent(long idevent, long idusers ){
+		List<Event> event = new ArrayList<>();		
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event JOIN participant ON event.idevent=participant.idevent WHERE participant.idevent=? and participant.idusers=? and affiche")){
+				statement.setLong(1, idevent);
+				statement.setLong(2, idusers);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					event.add(new Event(
+							resultSet.getInt("idevent"),
+							resultSet.getDate("dateevent").toLocalDate(),
+							resultSet.getString("horaireevent"),
+							resultSet.getString("momentOfTheDay"),
+							resultSet.getDouble("dureeevent"),
+							resultSet.getDouble("distanceevent"),
+							resultSet.getString("lieuevent"),
+							resultSet.getLong("user1"),
+							resultSet.getString("userGestionFirstName")));
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return event;		
+	}
 }
