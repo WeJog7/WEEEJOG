@@ -16,7 +16,32 @@
 		<section>
 			<h2>My event(s)</h2>
 
+			<div>
+			<h2 th:text="${eventAdministrator}"></h2>
 			<div class="actuality" th:each="myevent : ${myevents}" >
+				<table>
+					<tr>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td>
+							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
+							<h1>Event</h1>
+							<h3 th:text="'Date: '+${myevent.dateevent}"></h3>
+							<h3 th:text="'Time: '+${myevent.horaireevent}+' '+${myevent.momentOfTheDay}"></h3>
+							<p th:text="'Place: '+${myevent.lieuevent} "></p>
+							<p>More information : </p>
+							<div class="boutonEventManagement">
+								<a class="boutons_ami" href="addFriend.html">Manage the event</a>
+								<a class="boutons_ami" href="addFriend.html">See more</a>
+							</div>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+			</div>
+			
+		<!--	<div class="actuality" th:each="myevent : ${myevents}" >
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
@@ -35,7 +60,7 @@
 					</tr>
 
 				</table>
-			</div>
+			</div> -->
 
 		</section>
 
