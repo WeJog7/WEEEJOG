@@ -44,13 +44,18 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
 		List<Long> listIdEventInscrit = new LinkedList<Long>();
+		List<Event> evenementsInscrits = new LinkedList<Event>();
 		
 		for(int i=0;i<eventInscrit.size();i++){
 			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
 			System.out.println("regarde "+listIdEventInscrit.get(i));
+			evenementsInscrits.add(EventService.getInstance().getEvent(listIdEventInscrit.get(i)));
 		}
 		
-		//context.setVariable("inscritevents",EventService.getInstance().ListInscritEvent(event.getIdevent() ,user.getIdusers()));
+		if(!evenementsInscrits.isEmpty()){
+			context.setVariable("eventRegistered", "Event(s) where i am registered");	
+			context.setVariable("inscritevents",evenementsInscrits);
+		}
 		
 		templateEngine.process("myEvents", context, resp.getWriter());
 	}
