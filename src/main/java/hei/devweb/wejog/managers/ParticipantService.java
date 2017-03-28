@@ -21,4 +21,9 @@ public class ParticipantService {
 		return participantDao.ListEvenementsInscrits(idusers);
 		
 	}
+	
+	public Participant RegistredToEvent(Participant newparticipant ){
+		return participantDao.RegistredToEvent(newparticipant);
+		
+	}
 }

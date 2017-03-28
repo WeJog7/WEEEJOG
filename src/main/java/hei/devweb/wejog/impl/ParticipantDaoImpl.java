@@ -1,16 +1,18 @@
 package hei.devweb.wejog.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import hei.devweb.wejog.entities.Participant;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class ParticipantDaoImpl {
-	
+
 	public List<Participant> ListEvenementsInscrits(long idusers ){
 		List<Participant> participant = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -30,8 +32,30 @@ public class ParticipantDaoImpl {
 			}
 		return participant;		
 	}
-	
 
+	public Participant RegistredToEvent(Participant newparticipant ){
 
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(idevent, idusers) VALUES(?, ?)",
+					Statement.RETURN_GENERATED_KEYS)){
+				{
+				statement.setLong(1, newparticipant.getIdevent());
+				statement.setLong(2, newparticipant.getIdusers());
+                statement.executeUpdate();
+				try (ResultSet idparticipant = statement.getGeneratedKeys()) {
+					if (idparticipant.next()) {
+						newparticipant.setIdusers(idparticipant.getLong(1));
+					}
+				}
+			}
 
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		
+	}
+		return newparticipant;
+	}
 }
+
+
+
