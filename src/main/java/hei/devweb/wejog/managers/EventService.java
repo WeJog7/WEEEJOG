@@ -25,11 +25,14 @@ public class EventService {
 		
 	}
 
+	public  List<Event> ListInscritEvent(long idevent, long idusers){
+		return eventDao.ListInscritEvent(idevent, idusers);
+		
+	}
 	public  List<Event> ListmyEvent(long idusers){
 		return eventDao.ListmyEvent(idusers);
 		
 	}
-
 	public void addEvent(Event newEvent) {
 		eventDao.addEvent(newEvent);
 		
