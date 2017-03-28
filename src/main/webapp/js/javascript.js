@@ -1,3 +1,13 @@
+function subscribeEvent(idEvent){
+	if (confirm("Do you want to subscribe to this event ?")) {
+		window.location("addparticipant?idevent="+idEvent);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function deleteEvent(idEvent) {
 	if (confirm("Would you like to delete this Event ?")) {
 		window.location("deleteeventadmin?idevent="+idEvent);
@@ -32,14 +42,17 @@ function suppressionusers(id) {
 function validEvent(radio) {
 
 	var datepicker = document.getElementById("datepicker").value;
-	var time = document.getElementById("time").value;
+	var hour = document.getElementById("hour");
+	var hourChoosed = hour.options[hour.selectedIndex].value;
+	var minutes = document.getElementById("minutes");
+	var minutesChoosed = minutes.options[minutes.selectedIndex].value;
 	var address = document.getElementById("adress").value; 
 	var duration = document.getElementById("duration").value; 
 	var distance = document.getElementById("distance").value;
 	var flag=0;
 
-	if((radio[0].checked || (radio[1].checked)) && datepicker.replace(/ /g,"")!="" && time.replace(/ /g,"")!="" 
-		&& address.replace(/ /g,"")!="" && duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!=""){
+	if((radio[0].checked || (radio[1].checked)) && datepicker.replace(/ /g,"")!="" && address.replace(/ /g,"")!="" 
+		&& duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!=""){
 		return true;
 	}
 	else{
@@ -52,8 +65,13 @@ function validEvent(radio) {
 			flag = CheckDate(datepicker);
 		}
 
-		if(time.replace(/ /g,"")=="" && flag==0){
-			alert('Please enter a time.');
+		if(hourChoosed=="" && flag==0){
+			alert('Please enter an hour.');
+			flag=1;
+		}
+		
+		if(minutesChoosed=="" && flag==0){
+			alert('Please enter minutes.');
 			flag=1;
 		}
 

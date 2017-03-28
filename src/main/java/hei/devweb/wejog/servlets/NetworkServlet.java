@@ -17,12 +17,8 @@ import org.thymeleaf.context.WebContext;
 public class NetworkServlet extends AbstractGenericServlet{
 	
 	private static final long serialVersionUID = 1L;
-      
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
-	 */
+    
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		

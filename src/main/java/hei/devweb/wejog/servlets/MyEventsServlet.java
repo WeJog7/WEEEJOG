@@ -48,7 +48,6 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		for(int i=0;i<eventInscrit.size();i++){
 			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
-			System.out.println("regarde "+listIdEventInscrit.get(i));
 			evenementsInscrits.add(EventService.getInstance().getEvent(listIdEventInscrit.get(i)));
 		}
 		

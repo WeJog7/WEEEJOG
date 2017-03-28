@@ -52,9 +52,9 @@ public class AddEventServlet extends AbstractGenericServlet{
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
 		
-		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(horaireAsString) && horaireAsString.length()==5
-				&& dureeevent!=null && !"".equals(dureeevent) && momentOfTheDay!=null && !"".equals(momentOfTheDay)	&& distanceevent!=null 
-				&& !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
+		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(hour) && !"".equals(minute) 
+				&& horaireAsString.length()==5 && dureeevent!=null && !"".equals(dureeevent) && momentOfTheDay!=null 
+				&& !"".equals(momentOfTheDay)	&& distanceevent!=null && !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
 
 			HttpServletRequest httpRequest = (HttpServletRequest) req;
 			User user = (User) httpRequest.getSession().getAttribute("user");
