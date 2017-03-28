@@ -19,7 +19,7 @@ public class ParticipantDaoImpl {
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					participant.add(new Participant(
-							resultSet.getLong("idColonneParticipant"),
+							resultSet.getLong("idparticipant"),
 							resultSet.getLong("idevent"),
 							resultSet.getLong("idusers")));
 				}

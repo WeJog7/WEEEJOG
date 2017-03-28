@@ -15,11 +15,11 @@ public class Participant {
 		
 	}
 
-	public Long getIdparticipant() {
+	public Long getIdEventInscrit() {
 		return idColonneParticipant;
 	}
 
-	public void setIdparticipant(Long idColonneParticipant) {
+	public void setIdEventInscrit(Long idColonneParticipant) {
 		this.idColonneParticipant = idColonneParticipant;
 	}
 

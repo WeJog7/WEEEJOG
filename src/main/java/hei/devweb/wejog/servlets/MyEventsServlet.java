@@ -1,9 +1,12 @@
 package hei.devweb.wejog.servlets;
 
+
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,8 +14,10 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.entities.Participant;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.managers.ParticipantService;
 
 /**
  * Servlet implementation class MyEventsServlet
@@ -22,11 +27,7 @@ public class MyEventsServlet extends AbstractGenericServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
@@ -34,9 +35,22 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);	
 		
-		context.setVariable("myevents",EventService.getInstance().ListmyEvent(user.getIdusers()));
+		List<Event> listEventAdministrated = EventService.getInstance().ListmyEvent(user.getIdusers());
 		
-		context.setVariable("inscritevents",EventService.getInstance().ListInscritEvent(event.getIdevent() ,user.getIdusers()));
+		if(!listEventAdministrated.isEmpty()){
+			context.setVariable("eventAdministrator", "My event(s) administrated");	
+			context.setVariable("myevents",listEventAdministrated);
+		}
+		
+		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
+		List<Long> listIdEventInscrit = new LinkedList<Long>();
+		
+		for(int i=0;i<eventInscrit.size();i++){
+			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
+			System.out.println("regarde "+listIdEventInscrit.get(i));
+		}
+		
+		//context.setVariable("inscritevents",EventService.getInstance().ListInscritEvent(event.getIdevent() ,user.getIdusers()));
 		
 		templateEngine.process("myEvents", context, resp.getWriter());
 	}
