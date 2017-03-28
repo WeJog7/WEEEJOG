@@ -25,7 +25,10 @@ public class EventService {
 		
 	}
 
-	
+	public void getEvent(Long idevent){
+		eventDao.getEvent(idevent);
+		
+	}
 	public  List<Event> ListmyEvent(long idusers){
 		return eventDao.ListmyEvent(idusers);
 		
