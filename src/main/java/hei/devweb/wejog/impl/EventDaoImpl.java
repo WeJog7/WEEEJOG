@@ -11,6 +11,7 @@ import java.util.List;
 
 import hei.devweb.wejog.impl.DataSourceProvider;
 import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
@@ -120,24 +121,27 @@ public class EventDaoImpl {
 		return event;		
 	}
 	
-	public List<Event> ListInscritEvent(long idevent, long idusers){
-		List<Event> event = new ArrayList<>();		
+private Event mapperVersEvent(ResultSet resultSet) throws SQLException {
+		
+		return new Event (resultSet.getInt("idevent"),
+				resultSet.getDate("dateevent").toLocalDate(),
+				resultSet.getString("horaireevent"),
+				resultSet.getString("momentOfTheDay"),
+				resultSet.getDouble("dureeevent"),
+				resultSet.getDouble("distanceevent"),
+				resultSet.getString("lieuevent"),
+				resultSet.getLong("user1"),
+				resultSet.getString("userGestionFirstName"));
+	}
+
+	public Event getEvent(long idevent ){
+		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event JOIN participant ON event.idevent=participant.idevent WHERE participant.idevent=? and participant.idusers=? and affiche")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=?")){
 				statement.setLong(1, idevent);
-				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
-					event.add(new Event(
-							resultSet.getInt("idevent"),
-							resultSet.getDate("dateevent").toLocalDate(),
-							resultSet.getString("horaireevent"),
-							resultSet.getString("momentOfTheDay"),
-							resultSet.getDouble("dureeevent"),
-							resultSet.getDouble("distanceevent"),
-							resultSet.getString("lieuevent"),
-							resultSet.getLong("user1"),
-							resultSet.getString("userGestionFirstName")));
+					event = mapperVersEvent(resultSet);
 				}
 				statement.close();
 				connection.close();
