@@ -413,6 +413,11 @@ div#forget_password a{
 }
 
 
+#hourLetter{
+	width:15px;
+}
+
+
 /* Page myNetwork */
 
 .network{

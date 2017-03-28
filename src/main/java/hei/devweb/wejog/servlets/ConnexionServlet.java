@@ -33,7 +33,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 		String identifiant = request.getParameter("mail");
 		String motDePasse = request.getParameter("password");
 		try {
-			if (UserService.getInstance().validerMotDePasse(identifiant, motDePasse)) {
+			if (UserService.getInstance().getUser(identifiant)!=null && UserService.getInstance().validerMotDePasse(identifiant, motDePasse)){
 				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
 
 				if (UserService.getInstance().getUser(identifiant).isAdmin()){
@@ -44,7 +44,7 @@ public class ConnexionServlet extends GenericLearningsServlet {
 				}
 
 			} else {
-				this.ajouterMessageErreur(request, "Le mot de passe renseigné est faux.");
+				this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
 				response.sendRedirect("connexion");
 			}
 		} catch (IllegalArgumentException e) {

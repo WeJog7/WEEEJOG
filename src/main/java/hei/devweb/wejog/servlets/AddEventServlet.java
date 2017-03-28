@@ -2,8 +2,6 @@ package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +29,6 @@ public class AddEventServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
@@ -44,16 +41,20 @@ public class AddEventServlet extends AbstractGenericServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String dateAsString = req.getParameter("date_performance");
 		LocalDate date = LocalDate.parse(dateAsString);
-
-		String horaireAsString=req.getParameter("hour");
-		LocalDate horaire = LocalDate.parse(horaireAsString);
+	
+		String hour = req.getParameter("hour");
+		String minute = req.getParameter("minutes");
+		String momentOfTheDay = req.getParameter("reponse");
+		
+		String horaireAsString = hour+":"+minute;
 
 		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
-
-		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(horaireAsString) && dureeevent!=null 
-				&& !"".equals(dureeevent) && distanceevent!=null && !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
+		
+		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(horaireAsString) && horaireAsString.length()==5
+				&& dureeevent!=null && !"".equals(dureeevent) && momentOfTheDay!=null && !"".equals(momentOfTheDay)	&& distanceevent!=null 
+				&& !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
 
 			HttpServletRequest httpRequest = (HttpServletRequest) req;
 			User user = (User) httpRequest.getSession().getAttribute("user");
@@ -62,13 +63,12 @@ public class AddEventServlet extends AbstractGenericServlet{
 
 			String firstNameCreator = user.getPrenom();
 
-			Event newEvent = new Event(null, date,horaire,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
+			Event newEvent = new Event(null,date,horaireAsString,momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
 			EventService.getInstance().addEvent(newEvent); 
 			resp.sendRedirect("home");
 		}
 		else{
-			resp.sendRedirect("addaddevent");
+			resp.sendRedirect("addevent");
 		}
 	}
 }
-

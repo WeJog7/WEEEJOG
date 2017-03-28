@@ -5,30 +5,35 @@ import java.time.LocalDate;
 
 
 public class Event {
+	
 	private Integer idevent;
 	private LocalDate dateevent;
-	private LocalDate horaireevent;
+	private String horaireevent;
+	private String momentOfTheDay;
 	private Double dureeevent;
 	private Double distanceevent;
 	private String lieuevent; 
 	private Long usergestion ;
 	private String userGestionFirstName;
-	
-	
-	
-	public Event (Integer idevent, LocalDate dateevent, LocalDate horaireevent, double dureeevent, double distanceevent,String lieuevent, 
+
+
+	public Event (Integer idevent, LocalDate dateevent, String horaireevent, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
 			Long userIdCreator, String userGestionFirstName) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
 		this.horaireevent = horaireevent;
+		this.momentOfTheDay = momentOfTheDay;
 		this.dureeevent = dureeevent;
 		this.distanceevent=distanceevent;
 		this.lieuevent=lieuevent;
 		this.usergestion=userIdCreator;
 		this.userGestionFirstName= userGestionFirstName;
-		
-		
+	}
+
+
+	public String getMomentOfTheDay() {
+		return momentOfTheDay;
 	}
 
 
@@ -52,12 +57,12 @@ public class Event {
 	}
 
 
-	public LocalDate getHoraireevent() {
+	public String getHoraireevent() {
 		return horaireevent;
 	}
 
 
-	public void setHoraireevent(LocalDate horaireevent) {
+	public void setHoraireevent(String horaireevent) {
 		this.horaireevent = horaireevent;
 	}
 
@@ -110,7 +115,5 @@ public class Event {
 	public void setUserGestionFirstName(String userGestionFirstName) {
 		this.userGestionFirstName = userGestionFirstName;
 	}
-	
-	
 
 }

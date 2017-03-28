@@ -11,7 +11,6 @@ import java.util.List;
 
 import hei.devweb.wejog.impl.DataSourceProvider;
 import hei.devweb.wejog.entities.Event;
-import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
@@ -25,7 +24,8 @@ public class EventDaoImpl {
 						event.add(new Event(
 								resultSet.getInt("idevent"),
 								resultSet.getDate("dateevent").toLocalDate(),
-								resultSet.getDate("horaireevent").toLocalDate(),
+								resultSet.getString("horaireevent"),
+								resultSet.getString("momentOfTheDay"),
 								resultSet.getDouble("dureeevent"),
 								resultSet.getDouble("distanceevent"),
 								resultSet.getString("lieuevent"),
@@ -49,15 +49,17 @@ public class EventDaoImpl {
 	public Event addEvent(Event newEvent){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(`dateevent`,`horaireevent`,`dureeevent`,"
-					+ "`distanceevent`,`lieuevent`,`user1`,userGestionFirstName)VALUES(?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(`dateevent`,`horaireevent`,momentOfTheDay,"
+					+ "`dureeevent`,`distanceevent`,`lieuevent`,`user1`,userGestionFirstName)VALUES(?,?,?,?,?,?,?,?);",
+					Statement.RETURN_GENERATED_KEYS);
 			statement.setDate(1,Date.valueOf(newEvent.getDateevent()));
-			statement.setDate(2,Date.valueOf(newEvent.getHoraireevent()));
-			statement.setDouble(3,newEvent.getDureeevent());
-			statement.setDouble(4,newEvent.getDistanceevent());
-			statement.setString(5,newEvent.getLieuevent());
-			statement.setLong(6,newEvent.getUsergestion());
-			statement.setString(7,newEvent.getUserGestionFirstName());
+			statement.setString(2,newEvent.getHoraireevent());
+			statement.setString(3,newEvent.getMomentOfTheDay());
+			statement.setDouble(4,newEvent.getDureeevent());
+			statement.setDouble(5,newEvent.getDistanceevent());
+			statement.setString(6,newEvent.getLieuevent());
+			statement.setLong(7,newEvent.getUsergestion());
+			statement.setString(8,newEvent.getUserGestionFirstName());
 
 
 			statement.executeUpdate();
@@ -102,7 +104,8 @@ public class EventDaoImpl {
 					event.add(new Event(
 							resultSet.getInt("idevent"),
 							resultSet.getDate("dateevent").toLocalDate(),
-							resultSet.getDate("horaireevent").toLocalDate(),
+							resultSet.getString("horaireevent"),
+							resultSet.getString("momentOfTheDay"),
 							resultSet.getDouble("dureeevent"),
 							resultSet.getDouble("distanceevent"),
 							resultSet.getString("lieuevent"),

@@ -24,7 +24,8 @@
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
 							<h1>Event</h1>
-							<h3 th:text="' Date: '+${myevent.dateevent} " > </h3>
+							<h3 th:text="'Date: '+${myevent.dateevent}"></h3>
+							<h3 th:text="'Time: '+${myevent.horaireevent}+' '+${myevent.momentOfTheDay}"></h3>
 							<p th:text="'Place: '+${myevent.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
