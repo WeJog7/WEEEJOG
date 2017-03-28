@@ -22,6 +22,8 @@
 				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
 
+			<div>
+			<h2 th:text="${articleTitle}"></h2>
 			<div class="actuality " th:each="article : ${articles}">
 				<table>
 					<tr>
@@ -38,8 +40,10 @@
 
 				</table>
 			</div>
+			</div>
 	
-			
+			<div>
+			<h2 th:text="${performanceTitle}"></h2>
 			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
@@ -57,7 +61,10 @@
 
 				</table>
 			</div>
+			</div>
 
+			<div>
+			<h2 th:text="${eventTitle}"></h2>
 			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
@@ -71,13 +78,15 @@
 							<p th:text="'Place: '+${event.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
-								<a class="boutons_ami" th:href="'addparticipant?idevent='+${event.idevent}">Subscribe to the event</a>
+								<a class="boutons_ami" onClick="subscribeEvent('+${event.idevent}+');return false;"
+								th:href="'addparticipant?idevent='+${event.idevent}">Subscribe to the event</a>
 								<a class="boutons_ami" href="addFriend.html">See more</a>
 							</div>
 						</td>
 					</tr>
 
 				</table>
+			</div>
 			</div>
 
 		</section>

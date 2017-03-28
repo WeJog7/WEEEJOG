@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.Article;
+import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.EventService;
@@ -30,9 +35,26 @@ public class HomeServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		
-		context.setVariable("performances",PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers()));
-		context.setVariable("articles",ArticleService.getInstance().ListArticleToDo());
-		context.setVariable("events",EventService.getInstance().ListEventToDo());
+		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
+		
+		if(!listArticles.isEmpty()){
+			context.setVariable("articleTitle","Articles");
+			context.setVariable("articles",listArticles);
+		}
+		
+		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
+		
+		if(!listPerformances.isEmpty()){
+			context.setVariable("performanceTitle","Performances");
+			context.setVariable("performances", listPerformances);
+		}
+		
+		List<Event> listEvents = EventService.getInstance().ListEventToDo();
+		
+		if(!listEvents.isEmpty()){
+			context.setVariable("eventTitle","Events");
+			context.setVariable("events", listEvents);
+		}
 
 		if(user.isAdmin()){
 			templateEngine.process("homeAdmin", context, resp.getWriter());

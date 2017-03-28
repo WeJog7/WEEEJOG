@@ -8,6 +8,16 @@ function subscribeEvent(idEvent){
 }
 
 
+function deletePerformance(idPerformance){
+	if (confirm("Do you want to delete this performance ?")) {
+		window.location("deleteperformanceadmin?idperformance="+idEvent);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function deleteEvent(idEvent) {
 	if (confirm("Would you like to delete this Event ?")) {
 		window.location("deleteeventadmin?idevent="+idEvent);

@@ -23,6 +23,8 @@
 				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
 
+			<div>
+			<h2 th:text="${articleTitle}"></h2>
 			<div class="actuality" th:each="article : ${articles}" >
 				<table>
 					<tr>
@@ -47,7 +49,10 @@
 
 				</table>
 			</div>
+			</div>
 
+			<div>
+			<h2 th:text="${performanceTitle}"></h2>
 			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
@@ -64,14 +69,19 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" th:href="'deleteperformanceadmin?idperformance='+${performance.idperformance}"  ><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+							<a class="alignement" onClick="deletePerformance('+${article.idarticle}+');return false;"
+							th:href="'deleteperformanceadmin?idperformance='+${performance.idperformance}">
+							<img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
 
 				</table>
 			</div>
+			</div>
 
+			<div>
+			<h2 th:text="${eventTitle}"></h2>
 			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
@@ -99,8 +109,8 @@
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
-
 				</table>
+			</div>
 			</div>
 
 		</section>

@@ -11,7 +11,6 @@ import java.util.List;
 
 import hei.devweb.wejog.impl.DataSourceProvider;
 import hei.devweb.wejog.entities.Event;
-import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
