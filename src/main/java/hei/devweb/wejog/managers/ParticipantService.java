@@ -19,7 +19,6 @@ public class ParticipantService {
 	
 	public  List<Participant> ListEvenementsInscrits(long idusers){
 		return participantDao.ListEvenementsInscrits(idusers);
-		
 	}
 	
 	public Participant RegistredToEvent(Participant newparticipant ){
