@@ -31,4 +31,21 @@ public class CoupleAmiDaoImpl {
 			}
 		return coupleamis;		
 	}
+	
+	
+	public void supprimeramis(long idusers1, long idusers2) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement(" DELETE FROM ami WHERE "
+					+ "(idusers1=? AND idusers2=?) OR (idusers1=? AND idusers2=?)")){
+				statement.setLong(1, idusers1);
+				statement.setLong(2, idusers2);
+				statement.setLong(3, idusers2);
+				statement.setLong(4, idusers1);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+}
 }

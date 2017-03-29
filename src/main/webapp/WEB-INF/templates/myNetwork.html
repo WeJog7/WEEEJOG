@@ -24,7 +24,7 @@
 		   		</tr>
 		   		<tr><td><h3 th:text="${friend.prenom}+' '+${friend.nom}"></h3></td></tr>
 		   		<tr><td><a class="boutons_ami" href="voir_plus"><img th:src ="@{/Images/voir_plus.jpg}" alt="icone_voir_plus">Profile</a>
-						<a class="boutons_ami" href="supprimer_ami"><img th:src ="@{/Images/icone_suppression.png}" alt="icone_suppression">Delete</a>
+						<a class="boutons_ami" th:href="'deleteami?idusers='+${friend.idusers}"><img th:src ="@{/Images/icone_suppression.png}" alt="icone_suppression">Delete</a>
 					</td>
 				</tr>
 		   	</table>

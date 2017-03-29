@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.User;
-import hei.devweb.wejog.managers.ParticipantService;
-
+import hei.devweb.wejog.managers.CoupleAmiService;
 
 
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet(urlPatterns = {"/user/desinscrireparticipant", "/admin/desinscrireparticipant"})
-public class DesinscrireEventServlet extends AbstractGenericServlet{
+@WebServlet(urlPatterns = {"/user/deleteami", "/admin/deleteami"})
+public class DeleteAmiServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,11 +24,11 @@ public class DesinscrireEventServlet extends AbstractGenericServlet{
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
-		Long idevent = Long.parseLong(req.getParameter("idevent"));
+		Long idusers = Long.parseLong(req.getParameter("idusers"));
 		
 	
-		ParticipantService.getInstance().DesinscrireEvent(idevent, user.getIdusers());
-		resp.sendRedirect("myEvents");
+		CoupleAmiService.getInstance().supprimeramis(idusers, user.getIdusers());
+		resp.sendRedirect("myNetwork");
 
 	
 	}
