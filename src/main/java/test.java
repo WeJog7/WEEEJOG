@@ -2,6 +2,7 @@
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.time.LocalDate;
 
 import hei.devweb.wejog.managers.UserService;
 
@@ -30,11 +31,15 @@ public class test {
 		
 		System.out.println("affichage correct : "+correctFirstName);*/
 		
-		String chaine ="  test  ";
+		/*String chaine ="  test  ";
 		
 		chaine = chaine.trim();
 		
-		System.out.println("affichage correct : >>"+chaine+"<<");
+		System.out.println("affichage correct : >>"+chaine+"<<");*/
+		
+		LocalDate localDate = LocalDate.now();
+		String dateAsString = localDate.toString();
+		System.out.println("localDate : "+localDate+ " et DateAstring : "+dateAsString);
 		
 	}
 	

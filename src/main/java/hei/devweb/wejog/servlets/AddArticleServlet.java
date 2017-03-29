@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +46,9 @@ public class AddArticleServlet extends AbstractGenericServlet{
 			User user = (User) httpRequest.getSession().getAttribute("user");
 			Long userIdCreator = user.getIdusers();
 			
-			Article newArticle = new Article(null, nomarticle,contenuarticle,lien, userIdCreator, user.getPrenom());
+			LocalDate localDate = LocalDate.now();
+			
+			Article newArticle = new Article(null, nomarticle,localDate,contenuarticle,lien, userIdCreator, user.getPrenom());
 			ArticleService.getInstance().addArticle(newArticle); 
 			resp.sendRedirect("home");
 		}

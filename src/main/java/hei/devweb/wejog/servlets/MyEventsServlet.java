@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,9 +35,11 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
-		context.setVariable("User", user);	
+		context.setVariable("User", user);
 		
-		List<Event> listEventAdministrated = EventService.getInstance().ListmyEvent(user.getIdusers());
+		Date todayDate = Date.valueOf(LocalDate.now());
+		
+		List<Event> listEventAdministrated = EventService.getInstance().ListmyEvent(user.getIdusers(),todayDate);
 		
 		if(!listEventAdministrated.isEmpty()){
 			context.setVariable("eventAdministrator", "My event(s) administrated");	

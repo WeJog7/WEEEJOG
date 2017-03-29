@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -49,7 +51,9 @@ public class HomeServlet extends AbstractGenericServlet{
 			context.setVariable("performances", listPerformances);
 		}
 		
-		List<Event> listEvents = EventService.getInstance().ListEventToDo();
+		Date todayDate = Date.valueOf(LocalDate.now());
+		
+		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate);
 		
 		if(!listEvents.isEmpty()){
 			context.setVariable("eventTitle","Events");

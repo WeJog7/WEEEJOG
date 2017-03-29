@@ -36,8 +36,15 @@
 								<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 								<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
 							</div>
-							<p th:text=" 'Synopsis: ' +${article.contenuarticle}"></p>
-							<p><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>	
+							<h1 th:text=" 'At : ' +${article.dateOfPost}"></h1>
+							<div>
+								<h3 class="alignement">Synopsis : </h3>
+								<p class="alignement" th:text="${article.contenuarticle}"></p>
+							</div>
+							<div>
+								<h3 class="alignement">Link : </h3>
+								<p class="alignement"><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
+							</div>	
 						</td>
 					</tr>
 					<tr>

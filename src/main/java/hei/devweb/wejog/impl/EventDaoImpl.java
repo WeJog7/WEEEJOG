@@ -15,12 +15,13 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
 
-	public List<Event> ListEventToDo(){
+	public List<Event> ListEventToDo(Date todayDate){
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM event where affiche")){
-					while ( resultSet.next()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event where affiche AND dateevent>=? ORDER BY dateevent ASC")){
+				statement.setDate(1, todayDate);
+				ResultSet resultSet = statement.executeQuery();
+					while (resultSet.next()){
 						event.add(new Event(
 								resultSet.getInt("idevent"),
 								resultSet.getDate("dateevent").toLocalDate(),
@@ -34,7 +35,7 @@ public class EventDaoImpl {
 					}
 					statement.close();
 					connection.close();
-				}}}
+				}}
 		catch (SQLException e){
 			e.printStackTrace();
 
@@ -94,11 +95,12 @@ public class EventDaoImpl {
 
 
 
-	public List<Event> ListmyEvent(long idusers ){
+	public List<Event> ListmyEvent(long idusers, Date todayDate){
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? and affiche")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? and (affiche AND dateevent>=?) ORDER BY dateevent ASC")){
 				statement.setLong(1, idusers);
+				statement.setDate(2, todayDate);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					event.add(new Event(
@@ -133,7 +135,7 @@ private Event mapperVersEvent(ResultSet resultSet) throws SQLException {
 				resultSet.getString("userGestionFirstName"));
 	}
 
-	public Event getEvent(long idevent ){
+	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=?")){

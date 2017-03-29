@@ -1,6 +1,7 @@
 package hei.devweb.wejog.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class ArticleDaoImpl {
 						article.add(new Article(
 								resultSet.getInt("idarticle"),
 								resultSet.getString("nomarticle"),
+								resultSet.getDate("dateOfPost").toLocalDate(),
 								resultSet.getString("contenuarticle"),					
 								resultSet.getString("lien"),
 								resultSet.getLong("userCreator"),
@@ -42,12 +44,13 @@ public class ArticleDaoImpl {
 	public Article addArticle(Article newArticle){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`,`userCreator`,creatorFirstName)VALUES(?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,dateOfPost,`contenuarticle`,`lien`,`userCreator`,creatorFirstName)VALUES(?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1,newArticle.getNomarticle());
-			statement.setString(2,newArticle.getContenuarticle());
-			statement.setString(3,newArticle.getLien());
-			statement.setLong(4,newArticle.getUserCreatorId());
-			statement.setString(5, newArticle.getCreatorFirstName());
+			statement.setDate(2, Date.valueOf(newArticle.getDateOfPost()));
+			statement.setString(3,newArticle.getContenuarticle());
+			statement.setString(4,newArticle.getLien());
+			statement.setLong(5,newArticle.getUserCreatorId());
+			statement.setString(6, newArticle.getCreatorFirstName());
 			statement.executeUpdate();
 
 			ResultSet resultSet = statement.getGeneratedKeys();

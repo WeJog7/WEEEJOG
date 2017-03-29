@@ -1,10 +1,11 @@
 package hei.devweb.wejog.entities;
 
-
+import java.time.LocalDate;
 
 public class Article {
 	private Integer idarticle;
 	private String nomarticle;
+	private LocalDate dateOfPost;
 	private String contenuarticle;
 	private String lien;
 	private Long userCreatorId;
@@ -21,10 +22,11 @@ public class Article {
 	}
 
 
-	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Long userCreatorId, String creatorFirstName) {
+	public Article(Integer idarticle, String nomarticle,LocalDate dateOfPost,String contenuarticle,String lien,Long userCreatorId, String creatorFirstName) {
 		super();
 		this.idarticle=idarticle;
 		this.nomarticle=nomarticle;
+		this.dateOfPost=dateOfPost;
 		this.contenuarticle=contenuarticle;
 		this.lien=lien;
 		this.userCreatorId=userCreatorId;
@@ -32,6 +34,16 @@ public class Article {
 	}
 	
 	
+	public LocalDate getDateOfPost() {
+		return dateOfPost;
+	}
+
+
+	public void setDateOfPost(LocalDate dateOfPost) {
+		this.dateOfPost = dateOfPost;
+	}
+
+
 	public Integer getIdarticle() {
 		return idarticle;
 	}
