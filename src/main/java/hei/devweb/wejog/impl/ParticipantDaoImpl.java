@@ -54,6 +54,21 @@ public class ParticipantDaoImpl {
 	}
 		return newparticipant;
 	}
+	
+	public void DesinscrireEvent(long idevent, long idusers) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement(" DELETE FROM participant WHERE idevent=? and idusers=?")){
+				statement.setLong(1, idevent);
+				statement.setLong(2, idusers);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+}
+	
+	
 }
 
 

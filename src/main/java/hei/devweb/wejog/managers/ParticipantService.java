@@ -26,4 +26,7 @@ public class ParticipantService {
 		return participantDao.RegistredToEvent(newparticipant);
 		
 	}
+	public void DesinscrireEvent(long idevent, long idusers){
+		participantDao.DesinscrireEvent(idevent, idusers);
+	}
 }
