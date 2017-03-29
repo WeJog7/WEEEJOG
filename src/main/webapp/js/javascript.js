@@ -1,3 +1,13 @@
+function UnsubscribeEvent(idEvent){
+	if (confirm("Do you want to Unsubscribe to this event ?")) {
+		window.location("desinscrireparticipant?idevent="+idEvent);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function subscribeEvent(idEvent){
 	if (confirm("Do you want to subscribe to this event ?")) {
 		window.location("addparticipant?idevent="+idEvent);

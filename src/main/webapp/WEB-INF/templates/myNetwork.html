@@ -18,33 +18,11 @@
 
 			<div id="ajout_ami"><a class="boutons_ami" href="addFriend"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a friend</a></div>
 
-			<table class="network">
+			<table class="network" th:each="friend : ${friends}">
 		    	<tr>
 		    		<td><img id="image_reseau" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 		   		</tr>
-		   		<tr><td><h3>Habib BENALLAL</h3></td></tr>
-		   		<tr><td><a class="boutons_ami" href="voir_plus"><img th:src ="@{/Images/voir_plus.jpg}" alt="icone_voir_plus">Profile</a>
-						<a class="boutons_ami" href="supprimer_ami"><img th:src ="@{/Images/icone_suppression.png}" alt="icone_suppression">Delete</a>
-					</td>
-				</tr>
-		   	</table>
-
-		   	<table class="network">
-		    	<tr>
-		    		<td><img id="image_reseau" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-		   		</tr>
-		   		<tr><td><h3>Guillaume MINAUD</h3></td></tr>
-		   		<tr><td><a class="boutons_ami" href="voir_plus"><img th:src ="@{/Images/voir_plus.jpg}" alt="icone_voir_plus">Profile</a>
-						<a class="boutons_ami" href="supprimer_ami"><img th:src ="@{/Images/icone_suppression.png}" alt="icone_suppression">Delete</a>
-					</td>
-				</tr>
-		   	</table>
-
-		   	<table class="network">
-		    	<tr>
-		    		<td><img id="image_reseau" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-		   		</tr>
-		   		<tr><td><h3>Habib BENALLAL</h3></td></tr>
+		   		<tr><td><h3 th:text="${friend.prenom}+' '+${friend.nom}"></h3></td></tr>
 		   		<tr><td><a class="boutons_ami" href="voir_plus"><img th:src ="@{/Images/voir_plus.jpg}" alt="icone_voir_plus">Profile</a>
 						<a class="boutons_ami" href="supprimer_ami"><img th:src ="@{/Images/icone_suppression.png}" alt="icone_suppression">Delete</a>
 					</td>

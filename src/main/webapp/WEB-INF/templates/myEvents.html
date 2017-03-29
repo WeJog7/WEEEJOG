@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
+    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     <title>News</title>
     
    </head>
@@ -57,7 +58,8 @@
 							<p>More information : </p>
 							<div class="boutonEventManagement">
 								<a class="boutons_ami" href="addFriend.html">See more</a>
-								<a class="boutons_ami" th:href="'desinscrireparticipant?idevent='+${inscritevent.idevent}">unsubscribe</a>
+								<a class="boutons_ami" onClick="UnsubscribeEvent('+${inscritevent.idevent}+');return false;"
+								th:href="'desinscrireparticipant?idevent='+${inscritevent.idevent}">Unsubscribe</a>
 							</div>
 						</td>
 					</tr>

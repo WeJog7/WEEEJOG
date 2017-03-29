@@ -16,6 +16,7 @@ public class CoupleAmiDaoImpl {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM ami WHERE idusers1=? OR idusers2=? ")){
 				statement.setLong(1, idusers);
+				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					coupleamis.add(new CoupleAmis(

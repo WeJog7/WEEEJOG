@@ -50,11 +50,12 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getString("picturePath"));
 	}
 	
+
 	public User getUser(long idusers) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaisse, mail, sexe,"
-					+ " admin, description, picturePath FROM admin FROM users WHERE idusers=?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
+					+ " admin, description, picturePath FROM users WHERE idusers=?")){
 		    statement.setLong(1, idusers);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -205,11 +206,4 @@ public class UserDaoImpl implements Userdao {
         return pass.toString();
 	}
 	
-
-	@Override
-	public User getUser(Long idusers) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
