@@ -24,10 +24,10 @@ public class DeleteAmiServlet extends AbstractGenericServlet{
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
-		Long idusers = Long.parseLong(req.getParameter("idusers"));
+		Long idFriend = Long.parseLong(req.getParameter("idusers"));
 		
 	
-		CoupleAmiService.getInstance().supprimeramis(idusers, user.getIdusers());
+		CoupleAmiService.getInstance().supprimeramis(idFriend, user.getIdusers());
 		resp.sendRedirect("myNetwork");
 
 	

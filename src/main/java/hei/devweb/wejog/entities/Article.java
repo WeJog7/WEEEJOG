@@ -5,23 +5,30 @@ package hei.devweb.wejog.entities;
 public class Article {
 	private Integer idarticle;
 	private String nomarticle;
-
 	private String contenuarticle;
 	private String lien;
 	private Long userCreatorId;
+	private String creatorFirstName;
 	
 	
-	
-	
-	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Long userCreatorId) {
+	public String getCreatorFirstName() {
+		return creatorFirstName;
+	}
+
+
+	public void setCreatorFirstName(String creatorFirstName) {
+		this.creatorFirstName = creatorFirstName;
+	}
+
+
+	public Article(Integer idarticle, String nomarticle,String contenuarticle,String lien,Long userCreatorId, String creatorFirstName) {
 		super();
 		this.idarticle=idarticle;
 		this.nomarticle=nomarticle;
-		
 		this.contenuarticle=contenuarticle;
 		this.lien=lien;
 		this.userCreatorId=userCreatorId;
-		
+		this.creatorFirstName=creatorFirstName;
 	}
 	
 	
@@ -57,5 +64,4 @@ public class Article {
 		this.userCreatorId = userId;
 	}
 	
-
 }

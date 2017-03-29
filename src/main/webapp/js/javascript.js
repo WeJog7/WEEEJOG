@@ -1,5 +1,15 @@
+function deleteFriend(idFriend){
+	if (confirm("Do you want to delete this friend ?")) {
+		window.location("deleteami?idusers="+idFriend);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function UnsubscribeEvent(idEvent){
-	if (confirm("Do you want to Unsubscribe to this event ?")) {
+	if (confirm("Do you want to unsubscribe to this event ?")) {
 		window.location("desinscrireparticipant?idevent="+idEvent);
 		return true;
 	}

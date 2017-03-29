@@ -28,16 +28,17 @@
 				<table>
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
-						<td>
-							
+						<td>	
 							<h1 th:text=" 'Title: ' +${article.nomarticle}"></h1>
-							
+							<div class="postBy">
+							<h1 class="alignement">Post By : </h1>
+								<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+								<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
+							</div>
 							<p th:text=" 'Synopsis: ' +${article.contenuarticle}"></p>
 							<p><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
-							
 						</td>
 					</tr>
-
 				</table>
 			</div>
 			</div>

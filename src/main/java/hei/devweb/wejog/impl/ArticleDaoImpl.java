@@ -18,14 +18,15 @@ public class ArticleDaoImpl {
 		List<Article> article = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM article ")){
+				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM article ORDER BY idarticle DESC")){
 					while ( resultSet.next()){
 						article.add(new Article(
 								resultSet.getInt("idarticle"),
 								resultSet.getString("nomarticle"),
 								resultSet.getString("contenuarticle"),					
 								resultSet.getString("lien"),
-								resultSet.getLong("userCreator")));
+								resultSet.getLong("userCreator"),
+								resultSet.getString("creatorFirstName")));
 					}
 					statement.close();
 					connection.close();
@@ -41,12 +42,12 @@ public class ArticleDaoImpl {
 	public Article addArticle(Article newArticle){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`,`userCreator`)VALUES(?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `article`(`nomarticle`,`contenuarticle`,`lien`,`userCreator`,creatorFirstName)VALUES(?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1,newArticle.getNomarticle());
 			statement.setString(2,newArticle.getContenuarticle());
 			statement.setString(3,newArticle.getLien());
 			statement.setLong(4,newArticle.getUserCreatorId());
-
+			statement.setString(5, newArticle.getCreatorFirstName());
 			statement.executeUpdate();
 
 			ResultSet resultSet = statement.getGeneratedKeys();

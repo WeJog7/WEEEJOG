@@ -128,6 +128,11 @@ footer{
 }
 
 
+.postBy{
+	display:block;
+}
+
+
 /* Page ajout evenement, article, performance */
 
 #ajout_performance{

@@ -44,7 +44,7 @@ public class AddArticleServlet extends AbstractGenericServlet{
 			User user = (User) httpRequest.getSession().getAttribute("user");
 			Long userIdCreator = user.getIdusers();
 			
-			Article newArticle = new Article(null, nomarticle,contenuarticle,lien, userIdCreator);
+			Article newArticle = new Article(null, nomarticle,contenuarticle,lien, userIdCreator, user.getPrenom());
 			ArticleService.getInstance().addArticle(newArticle); 
 			resp.sendRedirect("home");
 		}

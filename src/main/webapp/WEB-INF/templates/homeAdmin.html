@@ -30,12 +30,14 @@
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"> </td>
 						<td>
-							
-							<h1 th:text=" 'Title: ' +${article.nomarticle}"></h1>
-							
+							<h1 th:text=" 'Title : ' +${article.nomarticle}"></h1>
+							<h1 class="alignement">Post By : </h1>
+							<div class="postBy">
+								<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+								<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
+							</div>
 							<p th:text=" 'Synopsis: ' +${article.contenuarticle}"></p>
-							<p><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
-							
+							<p><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>	
 						</td>
 					</tr>
 					<tr>
