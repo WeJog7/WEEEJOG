@@ -59,24 +59,23 @@ public class HomeServlet extends AbstractGenericServlet{
 		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate, user.getIdusers());
 		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
 		List<Long> listIdEventInscrit = new LinkedList<Long>();
+		List<Event> listEventsToDisplay = listEvents;
 
 		for(int i=0;i<eventInscrit.size();i++){
 			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
 		}
 
-		
-		/*for(int i=0;i<listEvents.size();i++){
-			// mettre un while ?
+		for(int i=0;i<listEvents.size();i++){
 			for(int j=0;j<eventInscrit.size();j++){
 				if(listEvents.get(i).getIdevent() == eventInscrit.get(j).getIdevent()){
-					listEvents.remove(i);
+					listEventsToDisplay.remove(listEvents.get(i));
 				}
 			}
-		}*/
+		}
 
-		if(!listEvents.isEmpty()){
+		if(!listEventsToDisplay.isEmpty()){
 			context.setVariable("eventTitle","Events");
-			context.setVariable("events", listEvents);
+			context.setVariable("events", listEventsToDisplay);
 		}
 
 		if(user.isAdmin()){
