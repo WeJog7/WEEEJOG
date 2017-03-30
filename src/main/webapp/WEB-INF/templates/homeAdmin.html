@@ -22,6 +22,39 @@
 				<div class="liens"><a class="boutons_home" href="addarticle"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Add a new article</a></div>
 				<div class="liens"><a class="boutons_home" href="addperformance"><img th:src ="@{/Images/icone_ajout.jpeg}" alt="icone_ajout">Share your performance</a></div>
 			</div>
+			
+			<div>
+			<h2 th:text="${eventTitle}"></h2>
+			<div class="actuality" th:each="event : ${events}" >
+				<table>
+					<tr>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td>
+							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${event.userGestionFirstName}"></h1>
+							<h1>Event</h1>
+							<h3 th:text="'Date: '+${event.dateevent}"></h3>
+							<h3 th:text="'Time: '+${event.horaireevent}+' '+${event.momentOfTheDay}"></h3>
+							<p th:text="'Place: '+${event.lieuevent} "></p>
+							<p>More information : </p>
+							<div class="boutonEventManagement">
+								<a class="boutons_ami" onClick="subscribeEvent('+${event.idevent}+');return false;"
+								th:href="'addparticipant?idevent='+${event.idevent}">Subscribe to the event</a>
+								<a class="boutons_ami" href="addFriend.html">See more</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a class="alignement" onClick="deleteEvent('+${event.idevent}+');return false;"
+							th:href="'deleteeventadmin?idevent='+${event.idevent}"><img id="suppressionAdmin" 
+							th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+							<h3 class="alignement">Delete this post</h3>
+						</td>
+					</tr>
+				</table>
+			</div>
+			</div>
 
 			<div>
 			<h2 th:text="${articleTitle}"></h2>
@@ -85,39 +118,6 @@
 						</td>
 					</tr>
 
-				</table>
-			</div>
-			</div>
-
-			<div>
-			<h2 th:text="${eventTitle}"></h2>
-			<div class="actuality" th:each="event : ${events}" >
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
-						<td>
-							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${event.userGestionFirstName}"></h1>
-							<h1>Event</h1>
-							<h3 th:text="'Date: '+${event.dateevent}"></h3>
-							<h3 th:text="'Time: '+${event.horaireevent}+' '+${event.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${event.lieuevent} "></p>
-							<p>More information : </p>
-							<div class="boutonEventManagement">
-								<a class="boutons_ami" onClick="subscribeEvent('+${event.idevent}+');return false;"
-								th:href="'addparticipant?idevent='+${event.idevent}">Subscribe to the event</a>
-								<a class="boutons_ami" href="addFriend.html">See more</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<a class="alignement" onClick="deleteEvent('+${event.idevent}+');return false;"
-							th:href="'deleteeventadmin?idevent='+${event.idevent}"><img id="suppressionAdmin" 
-							th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
-							<h3 class="alignement">Delete this post</h3>
-						</td>
-					</tr>
 				</table>
 			</div>
 			</div>

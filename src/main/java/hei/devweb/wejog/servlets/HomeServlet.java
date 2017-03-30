@@ -4,6 +4,7 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,10 +17,12 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Article;
 import hei.devweb.wejog.entities.Event;
+import hei.devweb.wejog.entities.Participant;
 import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.managers.ParticipantService;
 import hei.devweb.wejog.managers.PerformanceService;
 
 /**
@@ -32,29 +35,45 @@ public class HomeServlet extends AbstractGenericServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
-		
+
 		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
-		
+
 		if(!listArticles.isEmpty()){
 			context.setVariable("articleTitle","Articles");
 			context.setVariable("articles",listArticles);
 		}
-		
+
 		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
-		
+
 		if(!listPerformances.isEmpty()){
 			context.setVariable("performanceTitle","Performances");
 			context.setVariable("performances", listPerformances);
 		}
-		
+
 		Date todayDate = Date.valueOf(LocalDate.now());
+
+		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate, user.getIdusers());
+		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
+		List<Long> listIdEventInscrit = new LinkedList<Long>();
+
+		for(int i=0;i<eventInscrit.size();i++){
+			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
+		}
+
 		
-		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate);
-		
+		/*for(int i=0;i<listEvents.size();i++){
+			// mettre un while ?
+			for(int j=0;j<eventInscrit.size();j++){
+				if(listEvents.get(i).getIdevent() == eventInscrit.get(j).getIdevent()){
+					listEvents.remove(i);
+				}
+			}
+		}*/
+
 		if(!listEvents.isEmpty()){
 			context.setVariable("eventTitle","Events");
 			context.setVariable("events", listEvents);

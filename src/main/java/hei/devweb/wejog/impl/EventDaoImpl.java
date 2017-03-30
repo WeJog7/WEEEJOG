@@ -15,15 +15,17 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class EventDaoImpl {
 
-	public List<Event> ListEventToDo(Date todayDate){
+	public List<Event> ListEventToDo(Date todayDate, long idusers){
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event where affiche AND dateevent>=? ORDER BY dateevent ASC")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event where affiche AND (dateevent>=? AND user1!=?) "
+					+ "ORDER BY dateevent ASC")){
 				statement.setDate(1, todayDate);
+				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
 					while (resultSet.next()){
 						event.add(new Event(
-								resultSet.getInt("idevent"),
+								resultSet.getLong("idevent"),
 								resultSet.getDate("dateevent").toLocalDate(),
 								resultSet.getString("horaireevent"),
 								resultSet.getString("momentOfTheDay"),
@@ -67,7 +69,7 @@ public class EventDaoImpl {
 
 			ResultSet resultSet = statement.getGeneratedKeys();
 			if(resultSet.next()) {
-				newEvent.setIdevent(resultSet.getInt(1));
+				newEvent.setIdevent(resultSet.getLong(1));
 			}
 			statement.close();
 			connection.close();
@@ -104,7 +106,7 @@ public class EventDaoImpl {
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					event.add(new Event(
-							resultSet.getInt("idevent"),
+							resultSet.getLong("idevent"),
 							resultSet.getDate("dateevent").toLocalDate(),
 							resultSet.getString("horaireevent"),
 							resultSet.getString("momentOfTheDay"),
@@ -124,7 +126,7 @@ public class EventDaoImpl {
 	
 private Event mapperVersEvent(ResultSet resultSet) throws SQLException {
 		
-		return new Event (resultSet.getInt("idevent"),
+		return new Event (resultSet.getLong("idevent"),
 				resultSet.getDate("dateevent").toLocalDate(),
 				resultSet.getString("horaireevent"),
 				resultSet.getString("momentOfTheDay"),

@@ -21,8 +21,8 @@ public class EventService {
 	private EventService() {
 	}
 
-	public  List<Event> ListEventToDo(Date todayDate){
-		return eventDao.ListEventToDo(todayDate);
+	public  List<Event> ListEventToDo(Date todayDate, long idusers){
+		return eventDao.ListEventToDo(todayDate, idusers);
 		
 	}
 

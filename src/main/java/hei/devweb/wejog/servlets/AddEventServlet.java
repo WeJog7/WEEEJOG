@@ -68,7 +68,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 			resp.sendRedirect("home");
 		}
 		else{
-			resp.sendRedirect("addevent");
+			resp.sendRedirect("myEvents");
 		}
 	}
 }

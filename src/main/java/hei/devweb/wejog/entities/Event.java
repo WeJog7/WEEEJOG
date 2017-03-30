@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Event {
 	
-	private Integer idevent;
+	private Long idevent;
 	private LocalDate dateevent;
 	private String horaireevent;
 	private String momentOfTheDay;
@@ -17,7 +17,7 @@ public class Event {
 	private String userGestionFirstName;
 
 
-	public Event (Integer idevent, LocalDate dateevent, String horaireevent, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
+	public Event (Long idevent, LocalDate dateevent, String horaireevent, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
 			Long userIdCreator, String userGestionFirstName) {
 		super();
 		this.idevent = idevent;
@@ -37,12 +37,12 @@ public class Event {
 	}
 
 
-	public Integer getIdevent() {
+	public Long getIdevent() {
 		return idevent;
 	}
 
 
-	public void setIdevent(Integer idevent) {
+	public void setIdevent(Long idevent) {
 		this.idevent = idevent;
 	}
 
