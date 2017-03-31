@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.EventService;
 import hei.devweb.wejog.managers.ParticipantService;
-
-
 
 /**
  * Servlet implementation class HomeServlet
@@ -22,10 +21,13 @@ public class DesinscrireEventServlet extends AbstractGenericServlet{
 
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
-		
+
 		Long idevent = Long.parseLong(req.getParameter("idevent"));
-		
-		ParticipantService.getInstance().DesinscrireEvent(idevent, user.getIdusers());
+
+		if(EventService.getInstance().getEvent(idevent) != null){
+			ParticipantService.getInstance().DesinscrireEvent(idevent, user.getIdusers());
+		}
+
 		resp.sendRedirect("myEvents");
 
 	}

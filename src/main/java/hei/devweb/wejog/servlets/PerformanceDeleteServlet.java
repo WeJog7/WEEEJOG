@@ -11,7 +11,7 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.PerformanceService;
 
 @WebServlet(urlPatterns = {"/admin/deleteperformanceadmin","/user/deletePerformance"})
-public class PerformanceDeleteAdminServlet extends AbstractGenericServlet {
+public class PerformanceDeleteServlet extends AbstractGenericServlet {
 
 	private static final long serialVersionUID = 1L;
 

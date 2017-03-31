@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.Participant;
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.EventService;
 import hei.devweb.wejog.managers.ParticipantService;
 
 
@@ -29,11 +30,16 @@ public class AddParticipantServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		Long idevent = Long.parseLong(req.getParameter("idevent"));
-		
-		Participant newParticipant = new Participant(null, idevent, user.getIdusers());
-		ParticipantService.getInstance().RegistredToEvent(newParticipant);
-		resp.sendRedirect("home");
 
-	
+		Event event = EventService.getInstance().getEvent(idevent);
+
+		if(event != null){
+			if(event.getUsergestion() != user.getIdusers()){
+				Participant newParticipant = new Participant(null, idevent, user.getIdusers());
+				ParticipantService.getInstance().RegistredToEvent(newParticipant);
+			}
+		}
+
+		resp.sendRedirect("home");
 	}
 }
