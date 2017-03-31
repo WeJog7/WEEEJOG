@@ -23,21 +23,21 @@ public class EventDaoImpl {
 				statement.setDate(1, todayDate);
 				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
-					while (resultSet.next()){
-						event.add(new Event(
-								resultSet.getLong("idevent"),
-								resultSet.getDate("dateevent").toLocalDate(),
-								resultSet.getString("horaireevent"),
-								resultSet.getString("momentOfTheDay"),
-								resultSet.getDouble("dureeevent"),
-								resultSet.getDouble("distanceevent"),
-								resultSet.getString("lieuevent"),
-								resultSet.getLong("user1"),
-								resultSet.getString("userGestionFirstName")));
-					}
-					statement.close();
-					connection.close();
-				}}
+				while (resultSet.next()){
+					event.add(new Event(
+							resultSet.getLong("idevent"),
+							resultSet.getDate("dateevent").toLocalDate(),
+							resultSet.getString("horaireevent"),
+							resultSet.getString("momentOfTheDay"),
+							resultSet.getDouble("dureeevent"),
+							resultSet.getDouble("distanceevent"),
+							resultSet.getString("lieuevent"),
+							resultSet.getLong("user1"),
+							resultSet.getString("userGestionFirstName")));
+				}
+				statement.close();
+				connection.close();
+			}}
 		catch (SQLException e){
 			e.printStackTrace();
 
@@ -123,9 +123,9 @@ public class EventDaoImpl {
 			}
 		return event;		
 	}
-	
-private Event mapperVersEvent(ResultSet resultSet) throws SQLException {
-		
+
+	private Event mapperVersEvent(ResultSet resultSet) throws SQLException {
+
 		return new Event (resultSet.getLong("idevent"),
 				resultSet.getDate("dateevent").toLocalDate(),
 				resultSet.getString("horaireevent"),

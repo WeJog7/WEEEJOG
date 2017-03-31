@@ -8,30 +8,35 @@ import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.impl.PerformanceDaoImpl;
 
 
-public class PerformanceService {private PerformanceDaoImpl performanceDao = new PerformanceDaoImpl();
+public class PerformanceService {
 
-private static class PerformanceServiceHolder {
-	private static PerformanceService instance = new PerformanceService();
-}
+	private PerformanceDaoImpl performanceDao = new PerformanceDaoImpl();
 
-public static PerformanceService getInstance() {
-	return PerformanceServiceHolder.instance;
-}
+	private static class PerformanceServiceHolder {
+		private static PerformanceService instance = new PerformanceService();
+	}
 
-private PerformanceService() {
-}
+	public static PerformanceService getInstance() {
+		return PerformanceServiceHolder.instance;
+	}
 
-public  List<Performance> ListPerformanceToDo(long idusers){
-	return performanceDao.ListPerfomanceToDo(idusers);
-}
+	private PerformanceService() {
+	}
+
+	public  List<Performance> ListPerformanceToDo(long idusers){
+		return performanceDao.ListPerfomanceToDo(idusers);
+	}
 
 
-public void addPerformance(Performance newPerformance) {
-	performanceDao.addPerformance(newPerformance);
+	public void addPerformance(Performance newPerformance) {
+		performanceDao.addPerformance(newPerformance);
+
+	} 
+	public void supprimerPerformance(Long idperformance) {
+		performanceDao.supprimerPerformance(idperformance);
+	}
 	
-} 
-public void supprimerperformanceadmin(Long idperformance) {
-	
-	performanceDao.supprimerperformanceadmin(idperformance);
+	public Performance getperformance(Long idperformance){
+		return performanceDao.getperformance(idperformance);
 	}
 }

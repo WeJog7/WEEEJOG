@@ -43,15 +43,23 @@ public class HomeServlet extends AbstractGenericServlet{
 		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
 
 		if(!listArticles.isEmpty()){
-			context.setVariable("articleTitle","Articles");
+			context.setVariable("articleTitle","Articles posted by the community");
 			context.setVariable("articles",listArticles);
+		}
+		
+		if(listArticles.isEmpty()){
+			context.setVariable("articleTitle","No articles to display");
 		}
 
 		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
 
 		if(!listPerformances.isEmpty()){
-			context.setVariable("performanceTitle","Performances");
+			context.setVariable("performanceTitle","Personal performances");
 			context.setVariable("performances", listPerformances);
+		}
+		
+		if(listPerformances.isEmpty()){
+			context.setVariable("performanceTitle","No personal performances to display");
 		}
 
 		Date todayDate = Date.valueOf(LocalDate.now());
@@ -74,8 +82,12 @@ public class HomeServlet extends AbstractGenericServlet{
 		}
 
 		if(!listEventsToDisplay.isEmpty()){
-			context.setVariable("eventTitle","Events");
+			context.setVariable("eventTitle","Events available");
 			context.setVariable("events", listEventsToDisplay);
+		}
+		
+		if(listEventsToDisplay.isEmpty()){
+			context.setVariable("eventTitle","No events available");
 		}
 
 		if(user.isAdmin()){

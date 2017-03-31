@@ -3,7 +3,7 @@ package hei.devweb.wejog.entities;
 import java.time.LocalDate;
 
 public class Performance {
-	private Integer idperformance;
+	private Long idperformance;
 	private LocalDate dateperformance;
 	private Double dureeperformance;
 	private Double distanceperformance;
@@ -11,7 +11,7 @@ public class Performance {
 	private Double calories;
 	private Long userCreatorId ;
 	
-	public Performance(Integer idperformance, LocalDate dateperformance, double dureeperformance, double distanceperformance,
+	public Performance(Long idperformance, LocalDate dateperformance, double dureeperformance, double distanceperformance,
 			double vitesseperformance, double calories, long userCreatorId) {
 		super();
 		this.idperformance = idperformance;
@@ -25,10 +25,10 @@ public class Performance {
 		
 	}
 	
-	public Integer getIdperformance() {
+	public Long getIdperformance() {
 		return idperformance;
 	}
-	public void setIdperformance(Integer idperformance) {
+	public void setIdperformance(Long idperformance) {
 		this.idperformance = idperformance;
 	}
 	public LocalDate getDateperformance() {

@@ -22,7 +22,7 @@ public class ArticleDaoImpl {
 				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM article ORDER BY idarticle DESC")){
 					while ( resultSet.next()){
 						article.add(new Article(
-								resultSet.getInt("idarticle"),
+								resultSet.getLong("idarticle"),
 								resultSet.getString("nomarticle"),
 								resultSet.getDate("dateOfPost").toLocalDate(),
 								resultSet.getString("contenuarticle"),					
@@ -55,7 +55,7 @@ public class ArticleDaoImpl {
 
 			ResultSet resultSet = statement.getGeneratedKeys();
 			if(resultSet.next()) {
-				newArticle.setIdarticle(resultSet.getInt(1));
+				newArticle.setIdarticle(resultSet.getLong(1));
 
 			}
 			statement.close();
@@ -79,6 +79,34 @@ public class ArticleDaoImpl {
 			}} catch (SQLException e) {
 				throw new WejogSQLException(e);
 			}
+	}
+
+	private Article mapperVersArticle(ResultSet resultSet) throws SQLException {
+
+		return new Article (resultSet.getLong("idarticle"),
+				resultSet.getString("nomarticle"),
+				resultSet.getDate("dateOfPost").toLocalDate(),
+				resultSet.getString("contenuarticle"),					
+				resultSet.getString("lien"),
+				resultSet.getLong("userCreator"),
+				resultSet.getString("creatorFirstName"));
+	}
+
+	public Article getArticle(Long idarticle){
+		Article article = null ;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM article WHERE idarticle=?")){
+				statement.setLong(1, idarticle);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					article = mapperVersArticle(resultSet);
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return article;		
 	}
 
 
