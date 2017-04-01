@@ -41,7 +41,6 @@ public class HomeServlet extends AbstractGenericServlet{
 		context.setVariable("User", user);
 
 		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
-		List<Article> listArticlesAllowedToDeleteByUser = listArticles;
 
 		if(!listArticles.isEmpty()){
 			context.setVariable("articleTitle","Articles posted by the community");
@@ -55,7 +54,6 @@ public class HomeServlet extends AbstractGenericServlet{
 					if(listArticles.get(i).getUserCreatorId() == user.getIdusers()){
 						listArticles.get(i).setResponse("yes");
 					}
-					System.out.println(listArticles.get(i).getResponse());
 				}
 				context.setVariable("articles",listArticles);
 			}
