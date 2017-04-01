@@ -50,6 +50,16 @@ function deleteEvent(idEvent) {
 
 function deleteArticle(idArticle) {
 	if (confirm("Would you like to delete this article ?")) {
+		window.location("deleteArticle?idarticle="+idArticle);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
+function deleteArticleAdmin(idArticle) {
+	if (confirm("Would you like to delete this article ?")) {
 		window.location("deletearticleadmin?idarticle="+idArticle);
 		return true;
 	}

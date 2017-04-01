@@ -27,13 +27,7 @@ public class ArticleDeleteServlet extends AbstractGenericServlet {
 			ArticleService.getInstance().supprimerarticleadmin(idarticle);
 		}
 
-		if(user.isAdmin()){
-			resp.sendRedirect("home");
-		}
-		
-		else{
-			resp.sendRedirect("myEvents");
-		}
+		resp.sendRedirect("home");
 	}
 
 }

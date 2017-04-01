@@ -10,6 +10,7 @@ public class Article {
 	private String lien;
 	private Long userCreatorId;
 	private String creatorFirstName;
+	private String response;
 	
 	
 	public String getCreatorFirstName() {
@@ -33,7 +34,30 @@ public class Article {
 		this.creatorFirstName=creatorFirstName;
 	}
 	
+	public Article(Long idarticle, String nomarticle,LocalDate dateOfPost,String contenuarticle,String lien,Long userCreatorId, 
+			String creatorFirstName, String response) {
+		super();
+		this.idarticle=idarticle;
+		this.nomarticle=nomarticle;
+		this.dateOfPost=dateOfPost;
+		this.contenuarticle=contenuarticle;
+		this.lien=lien;
+		this.userCreatorId=userCreatorId;
+		this.creatorFirstName=creatorFirstName;
+		this.response=response;
+	}
 	
+	
+	public String getResponse() {
+		return response;
+	}
+
+
+	public void setResponse(String response) {
+		this.response = response;
+	}
+
+
 	public LocalDate getDateOfPost() {
 		return dateOfPost;
 	}

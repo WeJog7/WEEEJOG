@@ -41,10 +41,24 @@ public class HomeServlet extends AbstractGenericServlet{
 		context.setVariable("User", user);
 
 		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
+		List<Article> listArticlesAllowedToDeleteByUser = listArticles;
 
 		if(!listArticles.isEmpty()){
 			context.setVariable("articleTitle","Articles posted by the community");
-			context.setVariable("articles",listArticles);
+			
+			if(user.isAdmin()){
+				context.setVariable("articles",listArticles);
+			}
+			
+			if(!user.isAdmin()){
+				for(int i=0;i<listArticles.size();i++){
+					if(listArticles.get(i).getUserCreatorId() == user.getIdusers()){
+						listArticles.get(i).setResponse("yes");
+					}
+					System.out.println(listArticles.get(i).getResponse());
+				}
+				context.setVariable("articles",listArticles);
+			}
 		}
 		
 		if(listArticles.isEmpty()){
@@ -66,16 +80,17 @@ public class HomeServlet extends AbstractGenericServlet{
 
 		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate, user.getIdusers());
 		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
-		List<Long> listIdEventInscrit = new LinkedList<Long>();
+		//List<Long> listIdEventInscrit = new LinkedList<Long>();
 		List<Event> listEventsToDisplay = listEvents;
 
-		for(int i=0;i<eventInscrit.size();i++){
+		/*for(int i=0;i<eventInscrit.size();i++){
 			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
-		}
+		}*/
 
 		for(int i=0;i<listEvents.size();i++){
 			for(int j=0;j<eventInscrit.size();j++){
 				if(listEvents.get(i).getIdevent() == eventInscrit.get(j).getIdevent()){
+					System.out.println(eventInscrit.get(j).getIdevent());
 					listEventsToDisplay.remove(listEvents.get(i));
 				}
 			}

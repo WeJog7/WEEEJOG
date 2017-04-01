@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
+    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     <title>Home</title>
     
    </head>
@@ -43,7 +44,6 @@
 							</div>
 						</td>
 					</tr>
-
 				</table>
 			</div>
 			</div>
@@ -70,6 +70,10 @@
 								<h3 class="alignement">Link : </h3>
 								<p class="alignement"><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
 							</div>
+						</td>
+					</tr>
+					<tr th:if="${article.response}=='yes'">
+						<td colspan="2" th:replace="~{fragments :: DeleteArticleUser}">
 						</td>
 					</tr>
 				</table>
