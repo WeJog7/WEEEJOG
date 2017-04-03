@@ -25,5 +25,6 @@ private CoupleAmiDaoImpl amiDao = new CoupleAmiDaoImpl();
 	public void supprimeramis(long idusers1, long idusers2){
 		amiDao.supprimeramis(idusers1, idusers2);
 	}
-
+	
+	 
 }

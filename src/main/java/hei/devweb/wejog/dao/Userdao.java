@@ -26,4 +26,6 @@ public interface Userdao {
 	
 	String generateRandomPassword();
 
+	List<User> ListSearchAmi(String nom, String prenom);
+
 }

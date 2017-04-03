@@ -204,6 +204,28 @@ public class UserDaoImpl implements Userdao {
            pass.append(chars.charAt(i));
         }
         return pass.toString();
+        
+        
+	}
+	
+	public List<User> ListSearchAmi(String nom , String prenom){
+		
+		List<User> listSearch = new ArrayList<>();		
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE nom LIKE %?% OR prenom LIKE %?%   ")){
+				statement.setString(1, nom);
+				statement.setString(2, prenom);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					listSearch.add(mapperVersUser(resultSet));
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return listSearch;
+		
 	}
 	
 }

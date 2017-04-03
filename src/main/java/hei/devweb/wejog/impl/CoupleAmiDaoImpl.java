@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hei.devweb.wejog.entities.CoupleAmis;
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class CoupleAmiDaoImpl {
@@ -46,6 +47,10 @@ public class CoupleAmiDaoImpl {
 				connection.close();
 			}} catch (SQLException e) {
 				throw new WejogSQLException(e);
+				
+				
 			}
 }
+	
+
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.managers.UserService;
+
 /**
  * Servlet implementation class AddFriend
  */
@@ -27,6 +29,11 @@ public class AddFriendServlet extends AbstractGenericServlet{
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
+		
+		String nom = req.getParameter("nom");
+		String prenom = req.getParameter("prenom");
+		
+		context.setVariable("users",UserService.getInstance().ListSearchAmi(nom, prenom));
 
 		templateEngine.process("addFriend", context, resp.getWriter());
 	}
