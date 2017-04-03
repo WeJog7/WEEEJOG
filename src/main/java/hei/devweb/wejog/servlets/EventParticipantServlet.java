@@ -40,6 +40,6 @@ public class EventParticipantServlet extends AbstractGenericServlet{
 			}
 		}
 
-		resp.sendRedirect("home");
+		resp.sendRedirect("myEvents");
 	}
 }

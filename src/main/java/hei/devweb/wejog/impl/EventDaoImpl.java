@@ -143,7 +143,7 @@ public class EventDaoImpl {
 	public Event getEvent(long idevent, Date todayDate){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? AND affiche AND dateevent>=?"
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? AND (affiche AND dateevent>=?)"
 					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
 				statement.setLong(1, idevent);
 				statement.setDate(2, todayDate);
@@ -162,8 +162,7 @@ public class EventDaoImpl {
 	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? AND affiche AND dateevent>=?"
-					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? ")){
 				statement.setLong(1, idevent);;
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){

@@ -82,7 +82,6 @@ public class HomeServlet extends AbstractGenericServlet{
 		for(int i=0;i<listEvents.size();i++){
 			for(int j=0;j<eventInscrit.size();j++){
 				if(listEvents.get(i).getIdevent() == eventInscrit.get(j).getIdevent()){
-					System.out.println(eventInscrit.get(j).getIdevent());
 					listEventsToDisplay.remove(listEvents.get(i));
 				}
 			}
