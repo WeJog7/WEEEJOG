@@ -8,7 +8,8 @@ public class Event {
 	
 	private Long idevent;
 	private LocalDate dateevent;
-	private String horaireevent;
+	private Integer hour;
+	private Integer minutes;
 	private String momentOfTheDay;
 	private Double dureeevent;
 	private Double distanceevent;
@@ -17,18 +18,29 @@ public class Event {
 	private String userGestionFirstName;
 
 
-	public Event (Long idevent, LocalDate dateevent, String horaireevent, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
+	public Event (Long idevent, LocalDate dateevent, Integer hour, Integer minutes, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
 			Long userIdCreator, String userGestionFirstName) {
 		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
-		this.horaireevent = horaireevent;
+		this.hour = hour;
+		this.minutes = minutes;
 		this.momentOfTheDay = momentOfTheDay;
 		this.dureeevent = dureeevent;
 		this.distanceevent=distanceevent;
 		this.lieuevent=lieuevent;
 		this.usergestion=userIdCreator;
 		this.userGestionFirstName= userGestionFirstName;
+	}
+
+
+	public Integer getMinutes() {
+		return minutes;
+	}
+
+
+	public void setMinutes(Integer minutes) {
+		this.minutes = minutes;
 	}
 
 
@@ -57,13 +69,13 @@ public class Event {
 	}
 
 
-	public String getHoraireevent() {
-		return horaireevent;
+	public Integer getHour() {
+		return hour;
 	}
 
 
-	public void setHoraireevent(String horaireevent) {
-		this.horaireevent = horaireevent;
+	public void setHour(Integer hour) {
+		this.hour = hour;
 	}
 
 

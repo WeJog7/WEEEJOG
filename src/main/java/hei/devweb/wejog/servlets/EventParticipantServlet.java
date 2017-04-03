@@ -20,7 +20,7 @@ import hei.devweb.wejog.managers.ParticipantService;
  * Servlet implementation class HomeServlet
  */
 @WebServlet(urlPatterns = {"/user/addparticipant", "/admin/addparticipant"})
-public class AddParticipantServlet extends AbstractGenericServlet{
+public class EventParticipantServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

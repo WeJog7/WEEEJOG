@@ -34,7 +34,7 @@
 							<h1 class="alignement" th:text="${event.userGestionFirstName}"></h1>
 							<h1>Event</h1>
 							<h3 th:text="'Date: '+${event.dateevent}"></h3>
-							<h3 th:text="'Time: '+${event.horaireevent}+' '+${event.momentOfTheDay}"></h3>
+							<h3 th:text="'Time: '+${event.hour}+':'+${event.minutes}+' '+${event.momentOfTheDay}"></h3>
 							<p th:text="'Place: '+${event.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
