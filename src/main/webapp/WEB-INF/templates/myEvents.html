@@ -28,7 +28,7 @@
 							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
 							<h1>Event</h1>
 							<h3 th:text="'Date: '+${myevent.dateevent}"></h3>
-							<h3 th:text="'Time: '+${myevent.hour}+':'+${myevent.minutes}+' '+${myevent.momentOfTheDay}"></h3>
+							<h3 th:text="'Time: '+${myevent.timeAsString}+' '+${myevent.momentOfTheDay}"></h3>
 							<p th:text="'Place: '+${myevent.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">
@@ -53,7 +53,7 @@
 							<h1 class="alignement" th:text="${inscritevent.userGestionFirstName}"></h1>
 							<h1>Event</h1>
 							<h3 th:text="'Date: '+${inscritevent.dateevent}"></h3>
-							<h3 th:text="'Time: '+${inscritevent.hour}+':'+${inscritevent.minutes}+' '+${inscritevent.momentOfTheDay}"></h3>
+							<h3 th:text="'Time: '+${inscritevent.timeAsString}+' '+${inscritevent.momentOfTheDay}"></h3>
 							<p th:text="'Place: '+${inscritevent.lieuevent} "></p>
 							<p>More information : </p>
 							<div class="boutonEventManagement">

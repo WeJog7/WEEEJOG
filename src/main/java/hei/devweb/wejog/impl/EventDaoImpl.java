@@ -19,7 +19,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event where affiche AND (dateevent>=? AND user1!=?) "
-					+ "ORDER BY dateevent ASC")){
+					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
 				statement.setDate(1, todayDate);
 				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
@@ -27,8 +27,7 @@ public class EventDaoImpl {
 					event.add(new Event(
 							resultSet.getLong("idevent"),
 							resultSet.getDate("dateevent").toLocalDate(),
-							resultSet.getInt("hour"),
-							resultSet.getInt("minutes"),
+							resultSet.getString("timeAsString"),
 							resultSet.getString("momentOfTheDay"),
 							resultSet.getDouble("dureeevent"),
 							resultSet.getDouble("distanceevent"),
@@ -53,18 +52,19 @@ public class EventDaoImpl {
 	public Event addEvent(Event newEvent){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(`dateevent`,hour, minutes,momentOfTheDay,"
-					+ "`dureeevent`,`distanceevent`,`lieuevent`,`user1`,userGestionFirstName)VALUES(?,?,?,?,?,?,?,?,?);",
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(`dateevent, timeAsString, hour, minutes,momentOfTheDay,"
+					+ "`dureeevent`,`distanceevent`,`lieuevent`,`user1`,userGestionFirstName)VALUES(?,?,?,?,?,?,?,?,?,?);",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setDate(1,Date.valueOf(newEvent.getDateevent()));
-			statement.setInt(2,newEvent.getHour());
-			statement.setInt(3, newEvent.getMinutes());
-			statement.setString(4,newEvent.getMomentOfTheDay());
-			statement.setDouble(5,newEvent.getDureeevent());
-			statement.setDouble(6,newEvent.getDistanceevent());
-			statement.setString(7,newEvent.getLieuevent());
-			statement.setLong(8,newEvent.getUsergestion());
-			statement.setString(9,newEvent.getUserGestionFirstName());
+			statement.setString(2, newEvent.getTimeAsString());
+			statement.setInt(3,newEvent.getHour());
+			statement.setInt(4, newEvent.getMinutes());
+			statement.setString(5,newEvent.getMomentOfTheDay());
+			statement.setDouble(6,newEvent.getDureeevent());
+			statement.setDouble(7,newEvent.getDistanceevent());
+			statement.setString(8,newEvent.getLieuevent());
+			statement.setLong(9,newEvent.getUsergestion());
+			statement.setString(10,newEvent.getUserGestionFirstName());
 
 
 			statement.executeUpdate();
@@ -102,7 +102,8 @@ public class EventDaoImpl {
 	public List<Event> ListmyEvent(long idusers, Date todayDate){
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? and (affiche AND dateevent>=?) ORDER BY dateevent ASC")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE user1=? and (affiche AND dateevent>=?)"
+					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
 				statement.setLong(1, idusers);
 				statement.setDate(2, todayDate);
 				ResultSet resultSet = statement.executeQuery();
@@ -110,8 +111,7 @@ public class EventDaoImpl {
 					event.add(new Event(
 							resultSet.getLong("idevent"),
 							resultSet.getDate("dateevent").toLocalDate(),
-							resultSet.getInt("hour"),
-							resultSet.getInt("minutes"),
+							resultSet.getString("timeAsString"),
 							resultSet.getString("momentOfTheDay"),
 							resultSet.getDouble("dureeevent"),
 							resultSet.getDouble("distanceevent"),
@@ -131,8 +131,7 @@ public class EventDaoImpl {
 
 		return new Event (resultSet.getLong("idevent"),
 				resultSet.getDate("dateevent").toLocalDate(),
-				resultSet.getInt("hour"),
-				resultSet.getInt("minutes"),
+				resultSet.getString("timeAsString"),
 				resultSet.getString("momentOfTheDay"),
 				resultSet.getDouble("dureeevent"),
 				resultSet.getDouble("distanceevent"),
@@ -141,11 +140,31 @@ public class EventDaoImpl {
 				resultSet.getString("userGestionFirstName"));
 	}
 
+	public Event getEvent(long idevent, Date todayDate){
+		Event event = null ;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? AND affiche AND dateevent>=?"
+					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
+				statement.setLong(1, idevent);
+				statement.setDate(2, todayDate);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					event = mapperVersEvent(resultSet);
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return event;		
+	}
+	
 	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=?")){
-				statement.setLong(1, idevent);
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idevent=? AND affiche AND dateevent>=?"
+					+ "ORDER BY dateevent ASC, momentOfTheDay, hour ASC, minutes ASC")){
+				statement.setLong(1, idevent);;
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					event = mapperVersEvent(resultSet);

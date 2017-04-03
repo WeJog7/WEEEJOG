@@ -26,10 +26,14 @@ public class EventService {
 		
 	}
 
+	public Event getEvent(Long idevent, Date todayDate){
+		return eventDao.getEvent(idevent, todayDate);
+	}
+	
 	public Event getEvent(Long idevent){
 		return eventDao.getEvent(idevent);
-		
 	}
+	
 	public  List<Event> ListmyEvent(long idusers, Date todayDate){
 		return eventDao.ListmyEvent(idusers, todayDate);
 		

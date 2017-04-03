@@ -52,13 +52,13 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		for(int i=0;i<eventInscrit.size();i++){
 			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
-			evenementsInscrits.add(EventService.getInstance().getEvent(listIdEventInscrit.get(i)));
+			evenementsInscrits.add(EventService.getInstance().getEvent(listIdEventInscrit.get(i),todayDate));
 		}
 		
 		if(!evenementsInscrits.isEmpty()){
 			context.setVariable("eventRegistered", "Event(s) where i am registered");	
-			context.setVariable("inscritevents",evenementsInscrits);
 		}
+		context.setVariable("inscritevents",evenementsInscrits);
 		
 		templateEngine.process("myEvents", context, resp.getWriter());
 	}

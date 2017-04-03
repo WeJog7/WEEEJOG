@@ -4,7 +4,6 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -78,12 +77,7 @@ public class HomeServlet extends AbstractGenericServlet{
 
 		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate, user.getIdusers());
 		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
-		//List<Long> listIdEventInscrit = new LinkedList<Long>();
 		List<Event> listEventsToDisplay = listEvents;
-
-		/*for(int i=0;i<eventInscrit.size();i++){
-			listIdEventInscrit.add((eventInscrit.get(i)).getIdevent());
-		}*/
 
 		for(int i=0;i<listEvents.size();i++){
 			for(int j=0;j<eventInscrit.size();j++){

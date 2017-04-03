@@ -10,6 +10,7 @@ public class Event {
 	private LocalDate dateevent;
 	private Integer hour;
 	private Integer minutes;
+	private String timeAsString;
 	private String momentOfTheDay;
 	private Double dureeevent;
 	private Double distanceevent;
@@ -18,13 +19,35 @@ public class Event {
 	private String userGestionFirstName;
 
 
-	public Event (Long idevent, LocalDate dateevent, Integer hour, Integer minutes, String momentOfTheDay, double dureeevent, double distanceevent,String lieuevent, 
-			Long userIdCreator, String userGestionFirstName) {
-		super();
+	public Event (Long idevent, LocalDate dateevent, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
+			double dureeevent, double distanceevent,String lieuevent, Long userIdCreator, String userGestionFirstName) {
 		this.idevent = idevent;
 		this.dateevent = dateevent;
 		this.hour = hour;
 		this.minutes = minutes;
+		this.timeAsString=timeAsString;
+		this.momentOfTheDay = momentOfTheDay;
+		this.dureeevent = dureeevent;
+		this.distanceevent=distanceevent;
+		this.lieuevent=lieuevent;
+		this.usergestion=userIdCreator;
+		this.userGestionFirstName= userGestionFirstName;
+	}
+	
+	public String getTimeAsString() {
+		return timeAsString;
+	}
+
+	public void setTimeAsString(String timeAsString) {
+		this.timeAsString = timeAsString;
+	}
+
+	public Event (Long idevent, LocalDate dateevent, String timeAsString, String momentOfTheDay, double dureeevent, double distanceevent,
+			String lieuevent, Long userIdCreator, String userGestionFirstName) {
+		super();
+		this.idevent = idevent;
+		this.dateevent = dateevent;
+		this.timeAsString=timeAsString;
 		this.momentOfTheDay = momentOfTheDay;
 		this.dureeevent = dureeevent;
 		this.distanceevent=distanceevent;
