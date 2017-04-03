@@ -42,19 +42,17 @@ public class AddEventServlet extends AbstractGenericServlet{
 		String dateAsString = req.getParameter("date_performance");
 		LocalDate date = LocalDate.parse(dateAsString);
 	
-		String hour = req.getParameter("hour");
-		String minute = req.getParameter("minutes");
+		Integer hour = Integer.parseInt(req.getParameter("hour"));
+		Integer minutes = Integer.parseInt(req.getParameter("minutes"));
 		String momentOfTheDay = req.getParameter("reponse");
-		
-		String horaireAsString = hour+":"+minute;
 
 		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
 		
-		if(dateAsString!=null && !"".equals(dateAsString) && horaireAsString!=null && !"".equals(hour) && !"".equals(minute) 
-				&& horaireAsString.length()==5 && dureeevent!=null && !"".equals(dureeevent) && momentOfTheDay!=null 
-				&& !"".equals(momentOfTheDay)	&& distanceevent!=null && !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
+		if(dateAsString!=null && !"".equals(dateAsString) && hour!=null && !"".equals(hour) && minutes!=null && !"".equals(minutes) 
+				&& dureeevent!=null && !"".equals(dureeevent) && momentOfTheDay!=null && !"".equals(momentOfTheDay)	&& distanceevent!=null 
+				&& !"".equals(distanceevent) && lieuevent!=null && !"".equals(lieuevent)){
 
 			HttpServletRequest httpRequest = (HttpServletRequest) req;
 			User user = (User) httpRequest.getSession().getAttribute("user");
@@ -63,12 +61,12 @@ public class AddEventServlet extends AbstractGenericServlet{
 
 			String firstNameCreator = user.getPrenom();
 
-			Event newEvent = new Event(null,date,horaireAsString,momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
+			Event newEvent = new Event(null,date, hour, minutes,momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
 			EventService.getInstance().addEvent(newEvent); 
-			resp.sendRedirect("home");
+			resp.sendRedirect("myEvents");
 		}
 		else{
-			resp.sendRedirect("myEvents");
+			resp.sendRedirect("home");
 		}
 	}
 }

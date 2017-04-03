@@ -14,7 +14,7 @@ import hei.devweb.wejog.managers.ParticipantService;
  * Servlet implementation class HomeServlet
  */
 @WebServlet(urlPatterns = {"/user/desinscrireparticipant", "/admin/desinscrireparticipant"})
-public class DesinscrireEventServlet extends AbstractGenericServlet{
+public class EventUnsubscribeServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
