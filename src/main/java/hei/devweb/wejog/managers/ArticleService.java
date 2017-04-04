@@ -1,5 +1,6 @@
 package hei.devweb.wejog.managers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import hei.devweb.wejog.entities.Article;
@@ -22,8 +23,8 @@ public class ArticleService {
 	private ArticleService() {
 	}
 
-	public  List<Article> ListArticleToDo(){
-		return articleDao.ListArticleToDo();
+	public  List<Article> ListArticleToDo(LocalDate limitatedDate){
+		return articleDao.ListArticleToDo(limitatedDate);
 
 	}
 

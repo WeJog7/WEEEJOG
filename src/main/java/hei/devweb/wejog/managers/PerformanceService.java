@@ -1,5 +1,6 @@
 package hei.devweb.wejog.managers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -23,8 +24,8 @@ public class PerformanceService {
 	private PerformanceService() {
 	}
 
-	public  List<Performance> ListPerformanceToDo(long idusers){
-		return performanceDao.ListPerfomanceToDo(idusers);
+	public  List<Performance> ListPerformanceToDo(long idusers, LocalDate limitatedDate){
+		return performanceDao.ListPerfomanceToDo(idusers, limitatedDate);
 	}
 
 

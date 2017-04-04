@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,13 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 public class PerformanceDaoImpl {	
 
 
-	public List<Performance> ListPerfomanceToDo(long idusers){
+	public List<Performance> ListPerfomanceToDo(long idusers, LocalDate limitatedDate){
 		List<Performance> performance = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM performance WHERE userCreatorId=? ")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM performance WHERE userCreatorId=? "
+					+ "AND dateperformance>=? ORDER BY dateperformance DESC")){
 				statement.setLong(1, idusers);
+				statement.setDate(2, Date.valueOf(limitatedDate));
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					performance.add(new Performance(

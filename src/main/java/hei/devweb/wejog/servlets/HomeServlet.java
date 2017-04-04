@@ -38,8 +38,10 @@ public class HomeServlet extends AbstractGenericServlet{
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
+		
+		LocalDate limitedDate = LocalDate.now().minusMonths(1);
 
-		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo();
+		List<Article> listArticles = ArticleService.getInstance().ListArticleToDo(limitedDate);
 
 		if(!listArticles.isEmpty()){
 			context.setVariable("articleTitle","Articles posted by the community");
@@ -62,7 +64,7 @@ public class HomeServlet extends AbstractGenericServlet{
 			context.setVariable("articleTitle","No articles to display");
 		}
 
-		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
+		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers(),limitedDate);
 
 		if(!listPerformances.isEmpty()){
 			context.setVariable("performanceTitle","Personal performances");

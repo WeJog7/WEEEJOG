@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +16,14 @@ import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class ArticleDaoImpl {
 
-	public List<Article> ListArticleToDo(){
+	public List<Article> ListArticleToDo(LocalDate limitatedDate){
 		List<Article> article = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(Statement statement = connection.createStatement()){
-				try(ResultSet resultSet = statement.executeQuery("SELECT * FROM article ORDER BY idarticle DESC")){
-					while ( resultSet.next()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM article WHERE dateOfPost>=? ORDER BY dateOfPost DESC, "
+					+ "idarticle DESC")){
+					statement.setDate(1, Date.valueOf(limitatedDate));
+					ResultSet resultSet = statement.executeQuery();
+					while (resultSet.next()){
 						article.add(new Article(
 								resultSet.getLong("idarticle"),
 								resultSet.getString("nomarticle"),
@@ -32,7 +35,7 @@ public class ArticleDaoImpl {
 					}
 					statement.close();
 					connection.close();
-				}}}
+				}}
 		catch (SQLException e){
 			e.printStackTrace();
 		}
