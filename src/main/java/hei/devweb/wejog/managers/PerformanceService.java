@@ -40,4 +40,8 @@ public class PerformanceService {
 	public Performance getperformance(Long idperformance){
 		return performanceDao.getperformance(idperformance);
 	}
+	
+	public List<Performance> friendsPerformances(long idusers){
+		return performanceDao.friendsPerformances(idusers);
+	}
 }
