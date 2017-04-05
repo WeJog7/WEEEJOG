@@ -98,8 +98,8 @@ public class UserService {
 		return UserDao.generateRandomPassword();
 	}
 
-	public List<User> ListSearchAmi(String nom , String prenom){
-		 return UserDao.ListSearchAmi(nom, prenom);
+	public List<User> ListSearchAmi(String identity){
+		 return UserDao.ListSearchAmi(identity);
 		 
 	 }
 

@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -19,24 +22,37 @@ import hei.devweb.wejog.managers.UserService;
 public class AddFriendServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
+	private String recherche;
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
+		if(recherche!=null){
+		
+		List<User> listFound = UserService.getInstance().ListSearchAmi(recherche);
+
+		context.setVariable("addusers", listFound);
+		}
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 		
-		String nom = req.getParameter("nom");
-		String prenom = req.getParameter("prenom");
-		
-		context.setVariable("users",UserService.getInstance().ListSearchAmi(nom, prenom));
-
 		templateEngine.process("addFriend", context, resp.getWriter());
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String identity = request.getParameter("friendSearch");
+		
+		recherche = identity;
+		
+		response.sendRedirect("addFriend");
+	}
 
 }
