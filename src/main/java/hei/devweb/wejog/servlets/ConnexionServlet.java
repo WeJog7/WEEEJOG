@@ -17,7 +17,7 @@ import hei.devweb.wejog.managers.UserService;
 
 
 @WebServlet("/connexion")
-public class ConnexionServlet extends GenericLearningsServlet {
+public class ConnexionServlet extends GenericWejogServlet {
 	private static final long serialVersionUID = 3038302649713866775L;
 
 	@Override

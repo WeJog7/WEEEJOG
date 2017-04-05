@@ -14,7 +14,7 @@ import hei.devweb.wejog.managers.CoupleAmiService;
  * Servlet implementation class HomeServlet
  */
 @WebServlet(urlPatterns = {"/user/deleteami", "/admin/deleteami"})
-public class DeleteAmiServlet extends AbstractGenericServlet{
+public class NetworkFriendDeleteServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

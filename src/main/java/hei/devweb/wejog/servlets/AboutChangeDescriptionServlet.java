@@ -15,7 +15,7 @@ import hei.devweb.wejog.managers.AboutService;
  * Servlet implementation class AboutChangeDescription
  */
 @WebServlet("/admin/aboutChangeDescription")
-public class AboutChangeDescription extends AbstractGenericServlet {
+public class AboutChangeDescriptionServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
