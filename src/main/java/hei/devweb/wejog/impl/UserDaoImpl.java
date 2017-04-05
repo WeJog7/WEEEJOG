@@ -208,13 +208,14 @@ public class UserDaoImpl implements Userdao {
         
 	}
 	
-	public List<User> ListSearchAmi(String identity){
+	public List<User> ListSearchAmi(String identity, Long idusers){
 		
 		List<User> listSearch = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE nom LIKE ?  OR prenom LIKE ?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE (nom LIKE ?  OR prenom LIKE ?) AND idusers!=?")){
 				statement.setString(1, "%"+identity+"%");
 				statement.setString(2, "%"+identity+"%");
+				statement.setLong(3, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					listSearch.add(mapperVersUser(resultSet));
