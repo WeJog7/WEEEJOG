@@ -64,7 +64,7 @@ public class HomeServlet extends AbstractGenericServlet{
 			context.setVariable("articleTitle","No articles to display");
 		}
 
-		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers(),limitedDate);
+		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
 
 		if(!listPerformances.isEmpty()){
 			context.setVariable("performanceTitle","Personal performances");
