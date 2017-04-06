@@ -1,20 +1,29 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+
+
+import hei.devweb.wejog.entities.ImageS3Util;
+
+
 /**
  * Servlet implementation class PictureServlet
+ * @param <RedirectAttributes>
  */
+@MultipartConfig
 @WebServlet(urlPatterns = {"/user/picture", "/admin/picture"})
-public class PictureServlet extends AbstractGenericServlet {
+public class PictureServlet<RedirectAttributes> extends AbstractGenericServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -32,5 +41,10 @@ public class PictureServlet extends AbstractGenericServlet {
 		templateEngine.process("picture", context, resp.getWriter());
 	}
 
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-}
+		Part picture = req.getPart("image");
+		
+		ImageS3Util.uploadImageToAWSS3(picture);
+	}
+	}

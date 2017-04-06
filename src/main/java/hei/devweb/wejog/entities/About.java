@@ -1,6 +1,6 @@
 package hei.devweb.wejog.entities;
 
-public class About {
+public class About{
 	private String contenu;
 	
 	public About (String contenu){
