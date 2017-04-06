@@ -15,6 +15,7 @@ import org.thymeleaf.context.WebContext;
 
 
 import hei.devweb.wejog.entities.ImageS3Util;
+import hei.devweb.wejog.entities.User;
 
 
 /**
@@ -42,9 +43,12 @@ public class PictureServlet<RedirectAttributes> extends AbstractGenericServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		WebContext context = new WebContext(req, resp, req.getServletContext());
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		User user = (User) httpRequest.getSession().getAttribute("user");
 
 		Part picture = req.getPart("image");
 		
-		ImageS3Util.uploadImageToAWSS3(picture);
+		ImageS3Util.uploadImageToAWSS3(picture, user.getIdusers().toString());
 	}
 	}

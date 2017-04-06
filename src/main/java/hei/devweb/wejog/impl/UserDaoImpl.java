@@ -24,10 +24,7 @@ public class UserDaoImpl implements Userdao {
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
 						+ "admin, description, picturePath FROM users WHERE admin=false ORDER BY mail ")){
 			while (resultSet.next()) {
-
-
 				users.add(mapperVersUser(resultSet));
-
 			}
 			statement.close();
 			connection.close();
@@ -176,6 +173,7 @@ public class UserDaoImpl implements Userdao {
 		}
 	}
 	
+	
 	public String getDescription(long idusers) {
 		String description = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -204,9 +202,8 @@ public class UserDaoImpl implements Userdao {
            pass.append(chars.charAt(i));
         }
         return pass.toString();
-        
-        
 	}
+	
 	
 	public List<User> ListSearchAmi(String identity, Long idusers){
 		

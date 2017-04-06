@@ -21,21 +21,20 @@ public class ImageS3Util {
     private static final String BUCKET = "wejog";
     private static final String S3_CACHE = "60"; // e.g 60
     private static AmazonS3 s3;
-    public static void uploadImageToAWSS3(Part multipartFile) throws IllegalStateException,
-               IOException {	String fileName = null;
+    public static void uploadImageToAWSS3(Part multipartFile, String fileName) throws IllegalStateException,
+               IOException {
         try {
+        	System.out.println("FileName : "+fileName);
             AWSCredentials credentials = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
             java.security.Security.setProperty("networkaddress.cache.ttl", S3_CACHE);
             s3 = new AmazonS3Client(credentials);	s3.setEndpoint(END_POINT_URL);
             InputStream stream = multipartFile.getInputStream();
-            System.out.println("stream:"+stream);
-            fileName = multipartFile.getSubmittedFileName();
-            System.out.println("filename:"+fileName);
+            //System.out.println("stream:"+stream);
             ObjectMetadata objectMetadata = new ObjectMetadata();
-            System.out.println("object:"+objectMetadata);
+            //System.out.println("object:"+objectMetadata);
             PutObjectRequest putObjectRequest = new PutObjectRequest(BUCKET,fileName, stream,objectMetadata);
             //skip if do not want to access the image directly from S3
-            System.out.println("put:"+putObjectRequest);
+            //System.out.println("put:"+putObjectRequest);
             putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead); 
             //skip if do not want to access the image directly from S3
             s3.putObject(putObjectRequest);
