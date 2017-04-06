@@ -100,7 +100,7 @@
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<h1>My friend's performance</h1>
-							<h1 th:text=" 'At ' +${performance.dateperformance}">  </h1>
+							<h1 th:text=" 'On ' +${performance.dateperformance}">  </h1>
 							<p th:text="'During : '+${performance.dureeperformance}+'minutes'"></p>
 							<p th:text="'Calories : ' +${performance.calories}+ ' cal'"></p>
 							<p th:text="'Average : ' +${performance.vitesseperformance}+ ' mph'"></p>
@@ -110,13 +110,32 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a class="alignement" onClick="deletePerformance('+${article.idarticle}+');return false;"
+							<a class="alignement" onClick="deletePerformanceAdmin('+${article.idarticle}+');return false;"
 							th:href="'deleteperformanceadmin?idperformance='+${performance.idperformance}">
 							<img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</td>
 					</tr>
-
+				</table>
+			</div>
+			</div>
+			
+			<div>
+			<h2 th:text="${friendPerformanceTitle}"></h2>
+			<div class="actuality" th:each="friendPerformance : ${friendsPerformances}">
+				<table>
+					<tr>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td>
+							<h1 th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
+							<h1 th:text=" 'On ' +${friendPerformance.dateperformance}">  </h1>
+							<p th:text="'During : '+${friendPerformance.dureeperformance}+'minutes'"></p>
+							<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>
+							<p th:text="'Average: ' +${friendPerformance.vitesseperformance}+ ' mph'"></p>
+							<p>More information : </p>
+							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
+						</td>
+					</tr>
 				</table>
 			</div>
 			</div>

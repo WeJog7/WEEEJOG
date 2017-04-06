@@ -19,7 +19,7 @@ public class ArticleDaoImpl {
 	public List<Article> ListArticleToDo(LocalDate limitatedDate){
 		List<Article> article = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM article WHERE dateOfPost>=? ORDER BY dateOfPost DESC, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM article WHERE dateOfPost>=? AND affiche ORDER BY dateOfPost DESC, "
 					+ "idarticle DESC")){
 					statement.setDate(1, Date.valueOf(limitatedDate));
 					ResultSet resultSet = statement.executeQuery();
@@ -74,8 +74,9 @@ public class ArticleDaoImpl {
 
 	public void supprimerarticleadmin(long idarticle) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  article WHERE idarticle=?")){
-				statement.setLong(1, idarticle);
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE article SET affiche=? WHERE idarticle=?")){
+				statement.setBoolean(1, false);
+				statement.setLong(2, idarticle);
 				statement.executeUpdate();
 				statement.close();
 				connection.close();

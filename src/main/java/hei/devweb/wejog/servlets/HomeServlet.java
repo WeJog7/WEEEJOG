@@ -64,7 +64,7 @@ public class HomeServlet extends AbstractGenericServlet{
 			context.setVariable("articleTitle","No articles to display");
 		}
 
-		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers(),limitedDate);
+		List<Performance> listPerformances = PerformanceService.getInstance().ListPerformanceToDo(user.getIdusers());
 
 		if(!listPerformances.isEmpty()){
 			context.setVariable("performanceTitle","Personal performances");
@@ -74,7 +74,18 @@ public class HomeServlet extends AbstractGenericServlet{
 		if(listPerformances.isEmpty()){
 			context.setVariable("performanceTitle","No personal performances to display");
 		}
+		
+		List<Performance> listFriendPerformances = PerformanceService.getInstance().friendsPerformances(user.getIdusers());
 
+		if(!listFriendPerformances.isEmpty()){
+			context.setVariable("friendPerformanceTitle","My friends's performances");
+			context.setVariable("friendsPerformances", listFriendPerformances);
+		}
+		
+		if(listFriendPerformances.isEmpty()){
+			context.setVariable("friendPerformanceTitle","No friends's performances to display");
+		}
+		
 		Date todayDate = Date.valueOf(LocalDate.now());
 
 		List<Event> listEvents = EventService.getInstance().ListEventToDo(todayDate, user.getIdusers());

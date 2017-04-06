@@ -30,7 +30,17 @@ function subscribeEvent(idEvent){
 
 function deletePerformance(idPerformance){
 	if (confirm("Do you want to delete this performance ?")) {
-		window.location("deleteperformanceadmin?idperformance="+idEvent);
+		window.location("deletePerformance?idperformance="+idPerformance);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
+function deletePerformanceAdmin(idPerformance){
+	if (confirm("Do you want to delete this performance ?")) {
+		window.location("deleteperformanceadmin?idperformance="+idPerformance);
 		return true;
 	}
 	else{
