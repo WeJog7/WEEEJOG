@@ -28,7 +28,7 @@
 			<div class="actuality" th:each="event : ${events}" >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement" th:text="${event.userGestionFirstName}"></h1>
@@ -53,7 +53,7 @@
 			<div class="actuality " th:each="article : ${articles}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>	
 							<h1 th:text=" 'Title : ' +${article.nomarticle}"></h1>
 							<h1 class="alignement">Post By : </h1>
@@ -85,9 +85,9 @@
 			<div class="actuality" th:each="performance : ${performances}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
-							<h1 th:text=" 'On ' +${performance.dateperformance}">  </h1>
+							<h1 th:text=" 'Realised on ' +${performance.dateperformance}">  </h1>
 							<p th:text="'During : '+${performance.dureeperformance}+'minutes'"></p>
 							<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
 							<p th:text="'Average: ' +${performance.vitesseperformance}+ ' mph'"></p>
@@ -112,10 +112,10 @@
 			<div class="actuality" th:each="friendPerformance : ${friendsPerformances}">
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<h1 th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
-							<h1 th:text=" 'On ' +${friendPerformance.dateperformance}">  </h1>
+							<h1 th:text=" 'Realised on ' +${friendPerformance.dateperformance}">  </h1>
 							<p th:text="'During : '+${friendPerformance.dureeperformance}+'minutes'"></p>
 							<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>
 							<p th:text="'Average: ' +${friendPerformance.vitesseperformance}+ ' mph'"></p>

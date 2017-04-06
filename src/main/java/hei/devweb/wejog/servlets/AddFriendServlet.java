@@ -27,31 +27,31 @@ public class AddFriendServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	private String recherche;
-	
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User",user);
-		
-		if(recherche!=null){
-		
-		List<User> listFound = UserService.getInstance().ListSearchAmi(recherche, user.getIdusers());
 
-		context.setVariable("addusers", listFound);
+		if(recherche!=null){
+
+			List<User> listFound = UserService.getInstance().ListSearchAmi(recherche, user.getIdusers());
+
+			context.setVariable("addusers", listFound);
 		}
-		
+
 		templateEngine.process("addFriend", context, resp.getWriter());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String identity = request.getParameter("friendSearch");
-		
+
 		recherche = identity;
-		
+
 		response.sendRedirect("addFriend");
 	}
 

@@ -418,6 +418,11 @@ div#forget_password a{
 }
 
 
+#connexionError{
+	color: red;
+}
+
+
 /* Page myNetwork */
 
 .network{

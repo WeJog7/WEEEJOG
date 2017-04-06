@@ -120,7 +120,8 @@ public class PerformanceDaoImpl {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, dateperformance, dureeperformance, distanceperformance,"
 					+ "vitesseperformance, calories "
-					+ "FROM performance LEFT JOIN ami AS A1 ON performance.userCreatorId=A1.idusers1 "
+					+ "FROM performance "
+					+ "LEFT JOIN ami AS A1 ON performance.userCreatorId=A1.idusers1 "
 					+ "LEFT JOIN ami AS A2 ON performance.userCreatorId=A2.idusers2 "
 					+ "INNER JOIN users ON performance.userCreatorId=users.idusers "
 					+ "WHERE A1.idusers2=? OR A2.idusers1=? "

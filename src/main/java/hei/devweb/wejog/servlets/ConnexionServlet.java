@@ -2,7 +2,7 @@ package hei.devweb.wejog.servlets;
 
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,12 +19,21 @@ import hei.devweb.wejog.managers.UserService;
 @WebServlet("/connexion")
 public class ConnexionServlet extends GenericWejogServlet {
 	private static final long serialVersionUID = 3038302649713866775L;
+	
+	private boolean error;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("user") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
-			engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
+			WebContext context = new WebContext(request, response, request.getServletContext());
+			
+			if(error){
+				context.setVariable("ConnexionError", "Mail adress or password incorrect");
+			}
+			//engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
+			
+			engine.process("connexion", context, response.getWriter());
 		}
 	}
 
@@ -35,7 +44,9 @@ public class ConnexionServlet extends GenericWejogServlet {
 		try {
 			if (UserService.getInstance().getUser(identifiant)!=null && UserService.getInstance().validerMotDePasse(identifiant, motDePasse)){
 				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
-
+				
+				error = false;
+				
 				if (UserService.getInstance().getUser(identifiant).isAdmin()){
 					response.sendRedirect("admin/home");
 				}
@@ -45,6 +56,7 @@ public class ConnexionServlet extends GenericWejogServlet {
 
 			} else {
 				this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
+				error = true;
 				response.sendRedirect("connexion");
 			}
 		} catch (IllegalArgumentException e) {
