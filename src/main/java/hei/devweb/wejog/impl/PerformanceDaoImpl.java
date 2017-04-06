@@ -118,7 +118,7 @@ public class PerformanceDaoImpl {
 	public List<Performance> friendsPerformances(long idusers){
 		List<Performance> performance = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, dateperformance, dureeperformance, distanceperformance,"
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, dateperformance, dureeperformance, distanceperformance,"
 					+ "vitesseperformance, calories "
 					+ "FROM performance "
 					+ "LEFT JOIN ami AS A1 ON performance.userCreatorId=A1.idusers1 "
@@ -132,6 +132,7 @@ public class PerformanceDaoImpl {
 				while ( resultSet.next()){
 					performance.add(new Performance(
 							resultSet.getString("prenom"),
+							resultSet.getString("picturePath"),
 							resultSet.getDate("dateperformance").toLocalDate(),
 							resultSet.getDouble("dureeperformance"),
 							resultSet.getDouble("distanceperformance"),

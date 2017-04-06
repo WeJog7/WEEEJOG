@@ -16,6 +16,7 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.ImageS3Util;
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.UserService;
 
 
 /**
@@ -25,17 +26,17 @@ import hei.devweb.wejog.entities.User;
 @MultipartConfig
 @WebServlet(urlPatterns = {"/user/picture", "/admin/picture"})
 public class PictureServlet<RedirectAttributes> extends AbstractGenericServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 
@@ -43,12 +44,20 @@ public class PictureServlet<RedirectAttributes> extends AbstractGenericServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		WebContext context = new WebContext(req, resp, req.getServletContext());
+	
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
+		
+		String amazonPath = "https://s3.eu-west-2.amazonaws.com/wejog/"+user.getIdusers().toString();
 
 		Part picture = req.getPart("image");
-		
+
 		ImageS3Util.uploadImageToAWSS3(picture, user.getIdusers().toString());
+		
+		UserService.getInstance().updatePicture(user.getIdusers(), amazonPath);
+		
+		user.setPicturePath(amazonPath);
+		
+		resp.sendRedirect("profil");
 	}
-	}
+}

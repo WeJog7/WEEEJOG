@@ -27,5 +27,7 @@ public interface Userdao {
 	String generateRandomPassword();
 
 	List<User> ListSearchAmi(String identity, Long idusers);
-
+	
+	void updatePicture(long idusers, String picturePath);
+	
 }

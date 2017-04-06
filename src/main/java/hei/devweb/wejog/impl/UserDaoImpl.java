@@ -223,7 +223,20 @@ public class UserDaoImpl implements Userdao {
 				throw new WejogSQLException(e);
 			}
 		return listSearch;
-		
+	}
+	
+	
+	public void updatePicture(long idusers, String picturePath){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET picturePath=? WHERE idusers=?")){
+			statement.setString(1, picturePath);
+			statement.setLong(2, idusers);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
 	}
 	
 }

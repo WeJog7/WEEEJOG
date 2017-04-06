@@ -114,7 +114,8 @@
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
-							<h1 th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
+							<img id="littlePicture" th:src ="${friendPerformance.picturePath}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
 							<h1 th:text=" 'Realised on ' +${friendPerformance.dateperformance}">  </h1>
 							<p th:text="'During : '+${friendPerformance.dureeperformance}+'minutes'"></p>
 							<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>

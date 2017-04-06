@@ -77,7 +77,6 @@ public class UserService {
 	}
 
 	public void supprimerusers(Long idusers) {
-	
 		UserDao.supprimerusers(idusers);
 	}
 	
@@ -99,8 +98,10 @@ public class UserService {
 	}
 
 	public List<User> ListSearchAmi(String identity, Long idusers){
-		 return UserDao.ListSearchAmi(identity, idusers);
-		 
+		 return UserDao.ListSearchAmi(identity, idusers); 
 	 }
 
+	public void updatePicture(long idusers, String picturePath){
+		UserDao.updatePicture(idusers, picturePath);
+	}
 }

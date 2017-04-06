@@ -24,7 +24,7 @@ public class ImageS3Util {
     public static void uploadImageToAWSS3(Part multipartFile, String fileName) throws IllegalStateException,
                IOException {
         try {
-        	System.out.println("FileName : "+fileName);
+        	//System.out.println("FileName : "+fileName);
             AWSCredentials credentials = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
             java.security.Security.setProperty("networkaddress.cache.ttl", S3_CACHE);
             s3 = new AmazonS3Client(credentials);	s3.setEndpoint(END_POINT_URL);
