@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.CoupleAmis;
+import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.CoupleAmiService;
+import hei.devweb.wejog.managers.PerformanceService;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -43,7 +47,10 @@ public class AddFriendServlet extends AbstractGenericServlet{
 			context.setVariable("addusers", listFound);
 		}
 
+		
 		templateEngine.process("addFriend", context, resp.getWriter());
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,6 +60,9 @@ public class AddFriendServlet extends AbstractGenericServlet{
 		recherche = identity;
 
 		response.sendRedirect("addFriend");
+		
+		
+		
 	}
 
 }

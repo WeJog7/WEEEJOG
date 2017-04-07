@@ -26,5 +26,14 @@ private CoupleAmiDaoImpl amiDao = new CoupleAmiDaoImpl();
 		amiDao.supprimeramis(idusers1, idusers2);
 	}
 	
-	 
+
+	public void addFriend(CoupleAmis friends ){
+		amiDao.addFriend(friends);
+	}
+	public void acceptedFiend(CoupleAmis friends ){
+		amiDao.acceptedFiend(friends);
+	}
+	 public void deleteAsking(long idaskfriend){
+		 amiDao.deleteAsking(idaskfriend);
+	 }
 }

@@ -27,7 +27,7 @@
 		   	<table id="friendFound">
 		   		<tr>
 		   			<td id="friendIdentity">Friend Found : </td>
-		   			<td>Elizabeth II</td>
+		   			<td></td>
 		   			<td><input type="submit" id="submit" value="Add"></td>
 		   		</tr>
 		   	</table>
@@ -36,13 +36,13 @@
 					<th>Picture</th>
 					<th>Last Name</th>
 					<th>First Name</th>
-					<th>Delete</th>
+					<th>add</th>
 				</tr>
 				<tr th:each="adduser : ${addusers}" >
 					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 					<td>[[${adduser.nom}]]</td>
 					<td>[[${adduser.prenom}]]</td>
-					<td><a class="alignement"  ><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a></td>
+					<td><a class="alignement" th:href="'addforFriend?idusers='+${adduser.idusers}" ><img id="suppressionAdmin" th:src ="@{/Images/icone_ajout.jpeg}" alt="DeletePower"></a></td>
 				</tr>
 
 			</table>		   	

@@ -49,6 +49,7 @@ public class AddPerformanceServlet extends AbstractGenericServlet{
 			User user = (User) httpRequest.getSession().getAttribute("user");
 			Long userIdCreator = user.getIdusers();
 
+			
 			Performance newPerformance = new Performance(null, dateperformance,dureeperformance,distanceperformance,vitesseperformance,
 					calories, userIdCreator);
 			PerformanceService.getInstance().addPerformance(newPerformance); 
