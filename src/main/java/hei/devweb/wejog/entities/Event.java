@@ -44,7 +44,6 @@ public class Event {
 
 	public Event (Long idevent, LocalDate dateevent, String timeAsString, String momentOfTheDay, double dureeevent, double distanceevent,
 			String lieuevent, Long userIdCreator, String userGestionFirstName) {
-		super();
 		this.idevent = idevent;
 		this.dateevent = dateevent;
 		this.timeAsString=timeAsString;

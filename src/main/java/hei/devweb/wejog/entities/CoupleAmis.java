@@ -7,7 +7,6 @@ public class CoupleAmis {
 	public long idusers2;
 	
 	public CoupleAmis(long idami, long idusers1, long idusers2){
-		super();
 		this.idami=idami;
 		this.idusers1=idusers1;
 		this.idusers2=idusers2;
