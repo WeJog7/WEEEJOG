@@ -36,4 +36,7 @@ private CoupleAmiDaoImpl amiDao = new CoupleAmiDaoImpl();
 	 public void deleteAsking(long idaskfriend){
 		 amiDao.deleteAsking(idaskfriend);
 	 }
+	public List<CoupleAmis> ListAsking(long idusers2){
+		return amiDao.ListAsking(idusers2);
+	}
 }

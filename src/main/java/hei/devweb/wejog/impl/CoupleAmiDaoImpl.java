@@ -114,16 +114,15 @@ public class CoupleAmiDaoImpl {
 		return newAmis;
 	}
 	
-	public List<CoupleAmis> ListAsking(long idusers1, long idusers2){
+	public List<CoupleAmis> ListAsking(long idusers2){
 		List<CoupleAmis> coupleamis = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM ami WHERE idusers1=? AND idusers2=? ")){
-				statement.setLong(1, idusers1);
-				statement.setLong(2, idusers2);
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM askfriend WHERE idusers2=? ")){
+				statement.setLong(1, idusers2);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					coupleamis.add(new CoupleAmis(
-							resultSet.getLong("idami"),
+							resultSet.getLong("idaskfriend"),
 							resultSet.getLong("idusers1"),
 							resultSet.getLong("idusers2")));
 				}

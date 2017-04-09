@@ -12,7 +12,7 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.CoupleAmiService;
 
 @WebServlet(urlPatterns = {"/user/addforFriend", "/admin/addforFriend"})
-public class AskforFriendServlet extends AbstractGenericServlet{
+public class AddforFriendServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 
