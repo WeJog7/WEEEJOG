@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   
   <head>
     <meta charset="utf-8"/>
@@ -22,7 +22,7 @@
 			<div class="actuality" th:each="myevent : ${myevents}" >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
@@ -47,7 +47,7 @@
 		<div class="actuality" th:each="inscritevent : ${inscritevents}"  >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></a></td>
+						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
 							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
 							<h1 class="alignement" th:text="${inscritevent.userGestionFirstName}"></h1>
