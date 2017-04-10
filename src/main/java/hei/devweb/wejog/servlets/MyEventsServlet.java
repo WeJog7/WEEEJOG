@@ -4,7 +4,6 @@ package hei.devweb.wejog.servlets;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,10 +15,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Event;
-import hei.devweb.wejog.entities.Participant;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.EventService;
-import hei.devweb.wejog.managers.ParticipantService;
 
 /**
  * Servlet implementation class MyEventsServlet
@@ -39,31 +36,28 @@ public class MyEventsServlet extends AbstractGenericServlet {
 		
 		Date todayDate = Date.valueOf(LocalDate.now());
 		
-		List<Event> listEventAdministrated = EventService.getInstance().ListmyEvent(user.getIdusers(),todayDate);
+		List<Event> listEventAdministrated = EventService.getInstance().ListmyEventAdministrated(user.getIdusers(),todayDate);
 		
 		if(!listEventAdministrated.isEmpty()){
 			context.setVariable("eventAdministrator", "My event(s) administrated");	
-			context.setVariable("myevents",listEventAdministrated);
+			context.setVariable("myEvents",listEventAdministrated);
 		}
 		
-		List<Participant> eventInscrit = ParticipantService.getInstance().ListEvenementsInscrits(user.getIdusers());
-		List<Event> evenementsInscrits = new LinkedList<Event>();
-		
-		for(int i=0;i<eventInscrit.size();i++){
-			Event eventTopicaled = EventService.getInstance().getEvent(eventInscrit.get(i).getIdevent(),todayDate);
-			
-			if(eventTopicaled!=null){
-				evenementsInscrits.add(eventTopicaled);
-			}
+		if(listEventAdministrated.isEmpty()){
+			context.setVariable("eventAdministrator", "No event(s) administrated");	
 		}
 		
-		if(!evenementsInscrits.isEmpty()){
+		List<Event> listEventSubscribed = EventService.getInstance().listEventsSubscribed(user.getIdusers(), todayDate);
+		
+		if(!listEventSubscribed.isEmpty()){
 			context.setVariable("eventRegistered", "Event(s) where i am registered");
-			context.setVariable("inscritevents",evenementsInscrits);
+			context.setVariable("eventsSubscribed",listEventSubscribed);
+		}
+		
+		if(listEventSubscribed.isEmpty()){
+			context.setVariable("eventRegistered", "No Event(s) subscribed to display");
 		}
 		
 		templateEngine.process("myEvents", context, resp.getWriter());
 	}
-
-
 }

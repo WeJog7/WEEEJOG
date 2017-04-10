@@ -30,16 +30,15 @@
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
-							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${event.userGestionFirstName}"></h1>
+							<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${event.managerFirstName}"></h1>
 							<h1>Event</h1>
-							<h3 th:text="'Date: '+${event.dateevent}"></h3>
+							<h3 th:text="'Date: '+${event.date}"></h3>
 							<h3 th:text="'Time: '+${event.timeAsString}+' '+${event.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${event.lieuevent} "></p>
-							<p>More information : </p>
+							<p th:text="'Place: '+${event.place} "></p>
 							<div class="boutonEventManagement">
-								<a class="boutons_ami" onClick="subscribeEvent('+${event.idevent}+');return false;"
-								th:href="'addparticipant?idevent='+${event.idevent}">Subscribe to the event</a>
+								<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
+								th:href="'addparticipant?idevent='+${event.idEvent}">Subscribe to the event</a>
 								<a class="boutons_ami" href="addFriend.html">See more</a>
 							</div>
 						</td>
@@ -55,20 +54,20 @@
 					<tr>
 						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>	
-							<h1 th:text=" 'Title : ' +${article.nomarticle}"></h1>
+							<h1 th:text=" 'Title : ' +${article.name}"></h1>
 							<h1 class="alignement">Post By : </h1>
 							<div class="postBy">
-								<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
+								<img id="littlePicture" th:src ="${article.creatorPicturePath}" alt="Photo de profil" class="alignement">
 								<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
 							</div>
-							<h1 th:text=" 'At : ' +${article.dateOfPost}"></h1>
+							<h1 th:text=" 'At : ' +${article.postDate}"></h1>
 							<div>
 								<h3 class="alignement">Synopsis : </h3>
-								<p class="alignement" th:text="${article.contenuarticle}"></p>
+								<p class="alignement" th:text="${article.content}"></p>
 							</div>
 							<div>
 								<h3 class="alignement">Link : </h3>
-								<p class="alignement"><a th:text="${article.lien}" th:href="${article.lien}" target="blank"></a></p>
+								<p class="alignement"><a th:text="${article.link}" th:href="${article.link}" target="blank"></a></p>
 							</div>
 						</td>
 					</tr>

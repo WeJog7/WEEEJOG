@@ -52,7 +52,7 @@ public class HomeServlet extends AbstractGenericServlet{
 			
 			if(!user.isAdmin()){
 				for(int i=0;i<listArticles.size();i++){
-					if(listArticles.get(i).getUserCreatorId() == user.getIdusers()){
+					if(listArticles.get(i).getCreatorId() == user.getIdusers()){
 						listArticles.get(i).setResponse("yes");
 					}
 				}
@@ -94,7 +94,7 @@ public class HomeServlet extends AbstractGenericServlet{
 
 		for(int i=0;i<listEvents.size();i++){
 			for(int j=0;j<eventInscrit.size();j++){
-				if(listEvents.get(i).getIdevent() == eventInscrit.get(j).getIdevent()){
+				if(listEvents.get(i).getIdEvent() == eventInscrit.get(j).getIdevent()){
 					listEventsToDisplay.remove(listEvents.get(i));
 				}
 			}

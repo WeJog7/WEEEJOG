@@ -63,9 +63,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 
 			Long userIdCreator = user.getIdusers();
 
-			String firstNameCreator = user.getPrenom();
-
-			Event newEvent = new Event(null,date, timeAsString, hour, minutes, momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator, firstNameCreator);
+			Event newEvent = new Event(null,date, timeAsString, hour, minutes, momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator);
 			EventService.getInstance().addEvent(newEvent); 
 			resp.sendRedirect("myEvents");
 		}

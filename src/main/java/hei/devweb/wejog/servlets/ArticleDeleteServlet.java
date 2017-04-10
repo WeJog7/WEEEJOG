@@ -23,7 +23,7 @@ public class ArticleDeleteServlet extends AbstractGenericServlet {
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 
-		if(ArticleService.getInstance().getArticle(idarticle).getUserCreatorId() == user.getIdusers() || user.isAdmin()){
+		if(ArticleService.getInstance().getArticle(idarticle).getCreatorId() == user.getIdusers() || user.isAdmin()){
 			ArticleService.getInstance().supprimerarticleadmin(idarticle);
 		}
 

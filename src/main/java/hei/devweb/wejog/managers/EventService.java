@@ -9,7 +9,7 @@ import hei.devweb.wejog.impl.EventDaoImpl;
 
 public class EventService {
 	private EventDaoImpl eventDao = new EventDaoImpl();
-	
+
 	private static class JoueurServiceHolder {
 		private static EventService instance = new EventService();
 	}
@@ -23,28 +23,26 @@ public class EventService {
 
 	public  List<Event> ListEventToDo(Date todayDate, long idusers){
 		return eventDao.ListEventToDo(todayDate, idusers);
-		
 	}
 
-	public Event getEvent(Long idevent, Date todayDate){
-		return eventDao.getEvent(idevent, todayDate);
-	}
-	
 	public Event getEvent(Long idevent){
 		return eventDao.getEvent(idevent);
 	}
-	
-	public  List<Event> ListmyEvent(long idusers, Date todayDate){
-		return eventDao.ListmyEvent(idusers, todayDate);
-		
+
+	public  List<Event> ListmyEventAdministrated(long idusers, Date todayDate){
+		return eventDao.ListmyEventAdministrated(idusers, todayDate);
 	}
+
+	public List<Event> listEventsSubscribed(long idusers, Date todayDate){
+		return eventDao.listEventsSubscribed(idusers, todayDate);
+	}
+
 	public void addEvent(Event newEvent) {
 		eventDao.addEvent(newEvent);
-		
 	} 
-	public void supprimereventadmin(Long idevent) {
-		
-		eventDao.supprimereventadmin(idevent);
-		}
+	
+	public void deleteEvent(Long idEvent) {
+		eventDao.deleteEvent(idEvent);
+	}
 
 }

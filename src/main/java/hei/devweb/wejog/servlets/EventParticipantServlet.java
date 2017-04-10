@@ -34,7 +34,7 @@ public class EventParticipantServlet extends AbstractGenericServlet{
 		Event event = EventService.getInstance().getEvent(idevent);
 
 		if(event != null){
-			if(event.getUsergestion() != user.getIdusers()){
+			if(event.getCreatorId() != user.getIdusers()){
 				Participant newParticipant = new Participant(null, idevent, user.getIdusers());
 				ParticipantService.getInstance().RegistredToEvent(newParticipant);
 			}

@@ -19,18 +19,16 @@
 
 			<div>
 			<h2 th:text="${eventAdministrator}"></h2>
-			<div class="actuality" th:each="myevent : ${myevents}" >
+			<div class="actuality" th:each="myEvent : ${myEvents}" >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
-							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${myevent.userGestionFirstName}"></h1>
+							<img id="littlePicture" th:src ="${myEvent.managerPicturePath}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${myEvent.managerFirstName}"></h1>
 							<h1>Event</h1>
-							<h3 th:text="'Date: '+${myevent.dateevent}"></h3>
-							<h3 th:text="'Time: '+${myevent.timeAsString}+' '+${myevent.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${myevent.lieuevent} "></p>
-							<p>More information : </p>
+							<h3 th:text="'Date: '+${myEvent.date}"></h3>
+							<h3 th:text="'Time: '+${myEvent.timeAsString}+' '+${myEvent.momentOfTheDay}"></h3>
+							<p th:text="'Place: '+${myEvent.place} "></p>
 							<div class="boutonEventManagement">
 								<a class="boutons_ami" href="addFriend.html">Manage the event</a>
 								<a class="boutons_ami" href="addFriend.html">See more</a>
@@ -44,22 +42,20 @@
 		
 		<div>
 			<h2 th:text="${eventRegistered}"></h2>
-		<div class="actuality" th:each="inscritevent : ${inscritevents}"  >
+		<div class="actuality" th:each="eventSubscribed : ${eventsSubscribed}"  >
 				<table>
 					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 						<td>
-							<img id="littlePicture" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${inscritevent.userGestionFirstName}"></h1>
+							<img id="littlePicture" th:src ="${eventSubscribed.managerPicturePath}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${eventSubscribed.managerFirstName}"></h1>
 							<h1>Event</h1>
-							<h3 th:text="'Date: '+${inscritevent.dateevent}"></h3>
-							<h3 th:text="'Time: '+${inscritevent.timeAsString}+' '+${inscritevent.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${inscritevent.lieuevent} "></p>
-							<p>More information : </p>
+							<h3 th:text="'Date: '+${eventSubscribed.date}"></h3>
+							<h3 th:text="'Time: '+${eventSubscribed.timeAsString}+' '+${eventSubscribed.momentOfTheDay}"></h3>
+							<p th:text="'Place: '+${eventSubscribed.place} "></p>
 							<div class="boutonEventManagement">
 								<a class="boutons_ami" href="addFriend.html">See more</a>
-								<a class="boutons_ami" onClick="UnsubscribeEvent('+${inscritevent.idevent}+');return false;"
-								th:href="'desinscrireparticipant?idevent='+${inscritevent.idevent}">Unsubscribe</a>
+								<a class="boutons_ami" onClick="UnsubscribeEvent('+${eventSubscribed.idEvent}+');return false;"
+								th:href="'desinscrireparticipant?idevent='+${eventSubscribed.idEvent}">Unsubscribe</a>
 							</div>
 						</td>
 					</tr>

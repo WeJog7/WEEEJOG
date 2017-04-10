@@ -18,7 +18,7 @@ public class EventDeleteAdminServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Long idevent = Long.parseLong(req.getParameter("idevent"));
-		EventService.getInstance().supprimereventadmin(idevent);
+		EventService.getInstance().deleteEvent(idevent);
 		resp.sendRedirect("home");
 	}
 

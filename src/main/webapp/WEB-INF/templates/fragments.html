@@ -73,8 +73,8 @@
 	</footer>
 	
 	<td th:fragment="DeleteArticleUser">
-		<a class="alignement" onClick="deleteArticle('+${article.idarticle}+');return false;" 
-		th:href="'deleteArticle?idarticle='+${article.idarticle}"><img id="suppressionAdmin"
+		<a class="alignement" onClick="deleteArticle('+${article.idArticle}+');return false;" 
+		th:href="'deleteArticle?idarticle='+${article.idArticle}"><img id="suppressionAdmin"
 		th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 		<h3 class="alignement">Delete your article</h3>
 	</td>

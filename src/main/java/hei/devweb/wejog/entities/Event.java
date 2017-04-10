@@ -6,55 +6,52 @@ import java.time.LocalDate;
 
 public class Event {
 	
-	private Long idevent;
-	private LocalDate dateevent;
+	private Long idEvent;
+	private LocalDate date;
 	private Integer hour;
 	private Integer minutes;
 	private String timeAsString;
 	private String momentOfTheDay;
-	private Double dureeevent;
-	private Double distanceevent;
-	private String lieuevent; 
-	private Long usergestion ;
-	private String userGestionFirstName;
+	private Double duration;
+	private Double distance;
+	private String place; 
+	private Long creatorId ;
+	private String managerFirstName;
+	private String managerPicturePath;
 
-
-	public Event (Long idevent, LocalDate dateevent, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
-			double dureeevent, double distanceevent,String lieuevent, Long userIdCreator, String userGestionFirstName) {
-		this.idevent = idevent;
-		this.dateevent = dateevent;
+	/** public Event
+	 * Constructor made for creating an event in database
+	 */
+	public Event (Long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
+			double duration, double distance,String place, Long creatorId) {
+		this.idEvent = idEvent;
+		this.date = date;
 		this.hour = hour;
 		this.minutes = minutes;
 		this.timeAsString=timeAsString;
 		this.momentOfTheDay = momentOfTheDay;
-		this.dureeevent = dureeevent;
-		this.distanceevent=distanceevent;
-		this.lieuevent=lieuevent;
-		this.usergestion=userIdCreator;
-		this.userGestionFirstName= userGestionFirstName;
-	}
-	
-	public String getTimeAsString() {
-		return timeAsString;
+		this.duration = duration;
+		this.distance=distance;
+		this.place=place;
+		this.creatorId=creatorId;
 	}
 
-	public void setTimeAsString(String timeAsString) {
-		this.timeAsString = timeAsString;
-	}
-
-	public Event (Long idevent, LocalDate dateevent, String timeAsString, String momentOfTheDay, double dureeevent, double distanceevent,
-			String lieuevent, Long userIdCreator, String userGestionFirstName) {
-		this.idevent = idevent;
-		this.dateevent = dateevent;
+	/**
+	 * Constructor made for creating a list of events
+	 */
+	public Event (Long idEvent, LocalDate date, String timeAsString, String momentOfTheDay, double duration, double distance,
+			String place, String managerFirstName, String managerPicturePath) {
+		this.idEvent = idEvent;
+		this.date = date;
 		this.timeAsString=timeAsString;
 		this.momentOfTheDay = momentOfTheDay;
-		this.dureeevent = dureeevent;
-		this.distanceevent=distanceevent;
-		this.lieuevent=lieuevent;
-		this.usergestion=userIdCreator;
-		this.userGestionFirstName= userGestionFirstName;
+		this.duration = duration;
+		this.distance=distance;
+		this.place=place;
+		this.managerFirstName= managerFirstName;
+		this.managerPicturePath=managerPicturePath;
 	}
-
+	
 
 	public Integer getMinutes() {
 		return minutes;
@@ -71,23 +68,33 @@ public class Event {
 	}
 
 
-	public Long getIdevent() {
-		return idevent;
+	public Long getIdEvent() {
+		return idEvent;
 	}
 
 
-	public void setIdevent(Long idevent) {
-		this.idevent = idevent;
+	public void setIdEvent(Long idEvent) {
+		this.idEvent = idEvent;
 	}
 
 
-	public LocalDate getDateevent() {
-		return dateevent;
+	public LocalDate getDate() {
+		return date;
 	}
 
 
-	public void setDateevent(LocalDate dateevent) {
-		this.dateevent = dateevent;
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
+	
+	public String getTimeAsString() {
+		return timeAsString;
+	}
+
+	
+	public void setTimeAsString(String timeAsString) {
+		this.timeAsString = timeAsString;
 	}
 
 
@@ -101,53 +108,62 @@ public class Event {
 	}
 
 
-	public Double getDureeevent() {
-		return dureeevent;
+	public Double getDuration() {
+		return duration;
 	}
 
 
-	public void setDureeevent(Double dureeevent) {
-		this.dureeevent = dureeevent;
+	public void setDuration(Double duration) {
+		this.duration = duration;
 	}
 
 
-	public Double getDistanceevent() {
-		return distanceevent;
+	public Double getDistance() {
+		return distance;
 	}
 
 
-	public void setDistanceevent(Double distanceevent) {
-		this.distanceevent = distanceevent;
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 
 
-	public String getLieuevent() {
-		return lieuevent;
+	public String getPlace() {
+		return place;
 	}
 
 
-	public void setLieuevent(String lieuevent) {
-		this.lieuevent = lieuevent;
+	public void setPlace(String place) {
+		this.place = place;
 	}
 
 
-	public Long getUsergestion() {
-		return usergestion;
+	public Long getCreatorId() {
+		return creatorId;
+	}
+
+	
+	public void setCreatorId(Long creatorId) {
+		this.creatorId = creatorId;
+	}
+
+	
+	public String getManagerFirstName() {
+		return managerFirstName;
 	}
 
 
-	public void setUsergestion(Long usergestion) {
-		this.usergestion = usergestion;
+	public void setManagerFirstName(String managerFirstName) {
+		this.managerFirstName = managerFirstName;
 	}
 
-
-	public String getUserGestionFirstName() {
-		return userGestionFirstName;
+	
+	public String getManagerPicturePath() {
+		return managerPicturePath;
 	}
 
-
-	public void setUserGestionFirstName(String userGestionFirstName) {
-		this.userGestionFirstName = userGestionFirstName;
+	
+	public void setManagerPicturePath(String managerPicturePath) {
+		this.managerPicturePath = managerPicturePath;
 	}
-
 }

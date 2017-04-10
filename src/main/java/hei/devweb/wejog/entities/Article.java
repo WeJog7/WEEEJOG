@@ -3,47 +3,50 @@ package hei.devweb.wejog.entities;
 import java.time.LocalDate;
 
 public class Article {
-	private Long idarticle;
-	private String nomarticle;
-	private LocalDate dateOfPost;
-	private String contenuarticle;
-	private String lien;
-	private Long userCreatorId;
+	private Long idArticle;
+	private String name;
+	private LocalDate postDate;
+	private String content;
+	private String link;
+	private Long creatorId;
 	private String creatorFirstName;
+	private String creatorPicturePath;
 	private String response;
 	
-	
-	public String getCreatorFirstName() {
-		return creatorFirstName;
-	}
 
-
-	public void setCreatorFirstName(String creatorFirstName) {
-		this.creatorFirstName = creatorFirstName;
-	}
-
-
-	public Article(Long idarticle, String nomarticle,LocalDate dateOfPost,String contenuarticle,String lien,Long userCreatorId, String creatorFirstName) {
-		super();
-		this.idarticle=idarticle;
-		this.nomarticle=nomarticle;
-		this.dateOfPost=dateOfPost;
-		this.contenuarticle=contenuarticle;
-		this.lien=lien;
-		this.userCreatorId=userCreatorId;
-		this.creatorFirstName=creatorFirstName;
+	public Article(Long idArticle, String name,LocalDate postDate,String content,String link,Long creatorId) {
+		this.idArticle=idArticle;
+		this.name=name;
+		this.postDate=postDate;
+		this.content=content;
+		this.link=link;
+		this.creatorId=creatorId;
 	}
 	
-	public Article(Long idarticle, String nomarticle,LocalDate dateOfPost,String contenuarticle,String lien,Long userCreatorId, 
-			String creatorFirstName, String response) {
-		super();
-		this.idarticle=idarticle;
-		this.nomarticle=nomarticle;
-		this.dateOfPost=dateOfPost;
-		this.contenuarticle=contenuarticle;
-		this.lien=lien;
-		this.userCreatorId=userCreatorId;
+	
+	public Article(Long idArticle, String name,LocalDate postDate,String content,String link,Long creatorId, 
+			String creatorFirstName, String creatorPicturePath) {
+		this.idArticle=idArticle;
+		this.name=name;
+		this.postDate=postDate;
+		this.content=content;
+		this.link=link;
+		this.creatorId=creatorId;
 		this.creatorFirstName=creatorFirstName;
+		this.creatorPicturePath=creatorPicturePath;
+	}
+	
+	
+	public Article(Long idArticle, String name,LocalDate postDate,String content,String link,Long creatorId, 
+			String creatorFirstName, String creatorPicturePath, String response) {
+		this.idArticle=idArticle;
+		this.name=name;
+		this.postDate=postDate;
+		this.content=content;
+		this.link=link;
+		this.creatorId=creatorId;
+		this.creatorFirstName=creatorFirstName;
+		this.creatorPicturePath=creatorPicturePath;
 		this.response=response;
 	}
 	
@@ -58,46 +61,82 @@ public class Article {
 	}
 
 
-	public LocalDate getDateOfPost() {
-		return dateOfPost;
+	public LocalDate getPostDate() {
+		return postDate;
 	}
 
 
-	public void setDateOfPost(LocalDate dateOfPost) {
-		this.dateOfPost = dateOfPost;
+	public void setPostDate(LocalDate postDate) {
+		this.postDate = postDate;
 	}
 
 
-	public Long getIdarticle() {
-		return idarticle;
-	}
-	public void setIdarticle(Long idarticle) {
-		this.idarticle = idarticle;
-	}
-	public String getNomarticle() {
-		return nomarticle;
-	}
-	public void setNomarticle(String nomarticle) {
-		this.nomarticle = nomarticle;
+	public Long getIdArticle() {
+		return idArticle;
 	}
 	
-	public String getContenuarticle() {
-		return contenuarticle;
-	}
-	public void setContenuarticle(String contenuarticle) {
-		this.contenuarticle = contenuarticle;
-	}
-	public String getLien() {
-		return lien;
-	}
-	public void setLien(String lien) {
-		this.lien = lien;
-	}
-	public Long getUserCreatorId() {
-		return userCreatorId;
-	}
-	public void setUserCreator(Long userId) {
-		this.userCreatorId = userId;
+	
+	public void setIdArticle(Long idArticle) {
+		this.idArticle = idArticle;
 	}
 	
+	
+	public String getName() {
+		return name;
+	}
+	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	public String getContent() {
+		return content;
+	}
+	
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	
+	public String getLink() {
+		return link;
+	}
+	
+	
+	public void setLink(String link) {
+		this.link = link;
+	}
+	
+	
+	public Long getCreatorId() {
+		return creatorId;
+	}
+	
+	
+	public void setCreatorId(Long userId) {
+		this.creatorId = userId;
+	}
+	
+	
+	public String getCreatorPicturePath() {
+		return creatorPicturePath;
+	}
+	
+	
+	public void setCreatorPicturePath(String creatorPicturePath) {
+		this.creatorPicturePath = creatorPicturePath;
+	}
+	
+	
+	public String getCreatorFirstName() {
+		return creatorFirstName;
+	}
+
+
+	public void setCreatorFirstName(String creatorFirstName) {
+		this.creatorFirstName = creatorFirstName;
+	}
 }
