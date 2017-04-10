@@ -22,7 +22,7 @@
 
 			<table class="network" th:each="friend : ${friends}">
 		    	<tr>
-		    		<td><img id="image_reseau" th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
+		    		<td><img id="image_reseau" th:src ="${friend.picturePath}" alt="Photo de profil"></td>
 		   		</tr>
 		   		<tr><td><h3 th:text="${friend.prenom}+' '+${friend.nom}"></h3></td></tr>
 		   		<tr><td><a class="boutons_ami" href="voir_plus"><img th:src ="@{/Images/voir_plus.jpg}" alt="icone_voir_plus">Profile</a>
