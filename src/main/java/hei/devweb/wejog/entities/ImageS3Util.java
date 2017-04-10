@@ -15,8 +15,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
  
 public class ImageS3Util {
-    private static final String ACCESS_KEY = "AKIAJQEH4NHR7I4R5RHQ";
-    private static final String SECRET_KEY = "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";
+    private static final String ACCESS_KEY = "XXX";
+    private static final String SECRET_KEY = "xxx";
     private static final String END_POINT_URL = "http://s3.amazonaws.com";// e.g http://s3.amazonaws.com
     private static final String BUCKET = "wejog";
     private static final String S3_CACHE = "60"; // e.g 60
