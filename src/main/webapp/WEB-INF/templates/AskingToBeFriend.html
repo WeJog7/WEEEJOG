@@ -30,7 +30,7 @@
 					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 					<td>[[${asking.nom}]]</td>
 					<td>[[${asking.prenom}]]</td>
-					<td><a class="alignement" th:href="'acceptedFriend?idusers='+${asking.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_ajout.jpeg}"  alt="DeletePower"></a><a class="alignement"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}"  alt="DeletePower"></a></td>
+					<td><a class="alignement" th:href="'acceptedFriend?idusers='+${asking.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_ajout.jpeg}"  alt="DeletePower"></a><a class="alignement"  th:href="'declinetobefriend?idusers='+${asking.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}"  alt="DeletePower"></a></td>
 				</tr>
 
 			</table>		   	

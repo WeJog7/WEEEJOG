@@ -11,6 +11,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.CoupleAmiService;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -32,6 +33,9 @@ public class ProfilServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		
 		context.setVariable("description", UserService.getDescription(user.getIdusers()));
+		
+	   context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(user.getIdusers()));
+				
 		context.setVariable("User", user);
 		
 		templateEngine.process("profil", context, resp.getWriter());

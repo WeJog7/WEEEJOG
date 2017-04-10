@@ -77,10 +77,11 @@ public class CoupleAmiDaoImpl {
 		return newAmis;
 	}
 	
-	public void deleteAsking(long idask) {
+	public void deleteAsking(long idusers1, long idusers2) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  askfriend WHERE idaskfriend=?")){
-				statement.setLong(1, idask);
+			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  askfriend WHERE idusers1=? and idusers2=?")){
+				statement.setLong(1, idusers1);
+				statement.setLong(2, idusers2);
 				statement.executeUpdate();
 				statement.close();
 				connection.close();
@@ -117,7 +118,7 @@ public class CoupleAmiDaoImpl {
 	public List<CoupleAmis> ListAsking(long idusers2){
 		List<CoupleAmis> coupleamis = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM askfriend WHERE idusers2=? ")){
+			try(PreparedStatement statement = connection.prepareStatement("(SELECT * FROM askfriend WHERE idusers2=?)")){
 				statement.setLong(1, idusers2);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
@@ -132,6 +133,23 @@ public class CoupleAmiDaoImpl {
 				throw new WejogSQLException(e);
 			}
 		return coupleamis;		
+	}
+	
+	public int countAsking(long idusers2){
+			int count = 0;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("(SELECT COUNT(idaskfriend)  AS total FROM askfriend WHERE idusers2=?)")){
+				statement.setLong(1, idusers2);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					count = resultSet.getInt("total");
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return count;	
 	}
 	
 

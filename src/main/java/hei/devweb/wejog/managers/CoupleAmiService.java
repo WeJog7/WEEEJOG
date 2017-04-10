@@ -33,10 +33,14 @@ private CoupleAmiDaoImpl amiDao = new CoupleAmiDaoImpl();
 	public void acceptedFiend(CoupleAmis friends ){
 		amiDao.acceptedFiend(friends);
 	}
-	 public void deleteAsking(long idaskfriend){
-		 amiDao.deleteAsking(idaskfriend);
+	 public void deleteAsking(long idusers1, long idusers2){
+		 amiDao.deleteAsking(idusers1, idusers2);
 	 }
 	public List<CoupleAmis> ListAsking(long idusers2){
 		return amiDao.ListAsking(idusers2);
+	}
+	
+	public int countAsking(long idusers2){
+		return amiDao.countAsking(idusers2);
 	}
 }
