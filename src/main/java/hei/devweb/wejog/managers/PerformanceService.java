@@ -39,4 +39,17 @@ public class PerformanceService {
 	public List<Performance> friendsPerformances(long idusers){
 		return performanceDao.friendsPerformances(idusers);
 	}
+	
+	public int countTimePerformance(long userCreatorId){
+		return performanceDao.countTimePerformance(userCreatorId);
+			
+	}
+	
+	public int countDistancePerformance (long userCreatorId){
+		return performanceDao.countDistancePerformance(userCreatorId);
+	}
+	
+	public int countNumberOfRace (long userCreatorId){
+		return performanceDao.countNumberOfRace(userCreatorId);
+	}
 }

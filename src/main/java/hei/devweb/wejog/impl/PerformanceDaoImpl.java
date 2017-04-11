@@ -146,5 +146,57 @@ public class PerformanceDaoImpl {
 			}
 		return performance;	
 	}
+	
+	public int countTimePerformance(long userCreatorId){
+		int count = 0;
+	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(dureeperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+			statement.setLong(1, userCreatorId);
+			ResultSet resultSet = statement.executeQuery();
+			while ( resultSet.next()){
+				count = resultSet.getInt("total");
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+	return count;	
 
+}
+	public int countDistancePerformance(long userCreatorId){
+		int count = 0;
+	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(distanceperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+			statement.setLong(1, userCreatorId);
+			ResultSet resultSet = statement.executeQuery();
+			while ( resultSet.next()){
+				count = resultSet.getInt("total");
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+	return count;	
+
+}
+	public int countNumberOfRace(long userCreatorId){
+		int count = 0;
+	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT COUNT(idperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+			statement.setLong(1, userCreatorId);
+			ResultSet resultSet = statement.executeQuery();
+			while ( resultSet.next()){
+				count = resultSet.getInt("total");
+			}
+			statement.close();
+			connection.close();
+		}} catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
+	return count;	
+
+}
+	
 }

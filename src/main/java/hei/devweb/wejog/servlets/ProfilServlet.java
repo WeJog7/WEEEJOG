@@ -12,6 +12,7 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.CoupleAmiService;
+import hei.devweb.wejog.managers.PerformanceService;
 import hei.devweb.wejog.managers.UserService;
 
 /**
@@ -35,6 +36,9 @@ public class ProfilServlet extends AbstractGenericServlet{
 		context.setVariable("description", UserService.getDescription(user.getIdusers()));
 		
 	   context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(user.getIdusers()));
+	   context.setVariable("TotalTime",PerformanceService.getInstance().countTimePerformance(user.getIdusers()));
+	   context.setVariable("TotalDistance",PerformanceService.getInstance().countDistancePerformance(user.getIdusers()));
+	   context.setVariable("TotalRace",PerformanceService.getInstance().countNumberOfRace(user.getIdusers()));
 				
 		context.setVariable("User", user);
 		
