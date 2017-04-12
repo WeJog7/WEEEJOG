@@ -25,11 +25,10 @@ public class AddforFriendServlet extends AbstractGenericServlet{
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
-		Long userIdseeker = user.getIdusers();
 		
-		Long idusers = Long.parseLong(req.getParameter("idusers"));
+		Long idFriendToAdd = Long.parseLong(req.getParameter("idusers"));
 		
-		CoupleAmis newCoupleAmis = new CoupleAmis(userIdseeker, idusers);
+		CoupleAmis newCoupleAmis = new CoupleAmis(user.getIdusers(), idFriendToAdd);
 		CoupleAmiService.getInstance().addFriend(newCoupleAmis);
 		
 		resp.sendRedirect("addFriend");

@@ -121,7 +121,13 @@ public class PerformanceDaoImpl {
 				statement.setLong(2, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
-					performance.add(mapperVersPerformance(resultSet));
+					performance.add(new Performance(resultSet.getString("prenom"),
+							resultSet.getString("picturePath"),
+							resultSet.getDate("date").toLocalDate(),
+							resultSet.getDouble("duration"),
+							resultSet.getDouble("distance"),
+							resultSet.getDouble("speed"),
+							resultSet.getDouble("calories")));
 				}
 				statement.close();
 				connection.close();
