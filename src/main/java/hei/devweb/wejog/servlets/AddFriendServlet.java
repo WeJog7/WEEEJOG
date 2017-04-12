@@ -37,16 +37,10 @@ public class AddFriendServlet extends AbstractGenericServlet{
 		context.setVariable("User",user);
 
 		if(recherche!=null){
-
 			List<User> listFound = UserService.getInstance().ListSearchAmi(recherche, user.getIdusers());
-
 			context.setVariable("addusers", listFound);
 		}
-
-		
 		templateEngine.process("addFriend", context, resp.getWriter());
-		
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,9 +50,5 @@ public class AddFriendServlet extends AbstractGenericServlet{
 		recherche = identity;
 
 		response.sendRedirect("addFriend");
-		
-		
-		
 	}
-
 }

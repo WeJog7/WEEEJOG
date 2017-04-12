@@ -118,8 +118,8 @@ public class PerformanceDaoImpl {
 	public List<Performance> friendsPerformances(long idusers){
 		List<Performance> performance = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, dateperformance, dureeperformance, distanceperformance,"
-					+ "vitesseperformance, calories "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, dateperformance, dureeperformance, "
+					+ "distanceperformance, vitesseperformance, calories "
 					+ "FROM performance "
 					+ "LEFT JOIN ami AS A1 ON performance.userCreatorId=A1.idusers1 "
 					+ "LEFT JOIN ami AS A2 ON performance.userCreatorId=A2.idusers2 "
@@ -150,7 +150,8 @@ public class PerformanceDaoImpl {
 	public int countTimePerformance(long userCreatorId){
 		int count = 0;
 	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(dureeperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(dureeperformance)  AS total FROM performance "
+				+ "WHERE userCreatorId=?)")){
 			statement.setLong(1, userCreatorId);
 			ResultSet resultSet = statement.executeQuery();
 			while ( resultSet.next()){
@@ -167,7 +168,8 @@ public class PerformanceDaoImpl {
 	public int countDistancePerformance(long userCreatorId){
 		int count = 0;
 	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(distanceperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT SUM(distanceperformance)  AS total FROM performance "
+				+ "WHERE userCreatorId=?)")){
 			statement.setLong(1, userCreatorId);
 			ResultSet resultSet = statement.executeQuery();
 			while ( resultSet.next()){
@@ -184,7 +186,8 @@ public class PerformanceDaoImpl {
 	public int countNumberOfRace(long userCreatorId){
 		int count = 0;
 	try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-		try(PreparedStatement statement = connection.prepareStatement("(SELECT COUNT(idperformance)  AS total FROM performance WHERE userCreatorId=?)")){
+		try(PreparedStatement statement = connection.prepareStatement("(SELECT COUNT(idperformance)  AS total FROM performance "
+				+ "WHERE userCreatorId=?)")){
 			statement.setLong(1, userCreatorId);
 			ResultSet resultSet = statement.executeQuery();
 			while ( resultSet.next()){
