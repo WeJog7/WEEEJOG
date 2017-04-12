@@ -3,13 +3,13 @@ package hei.devweb.wejog.entities;
 import java.time.LocalDate;
 
 public class Performance {
-	private Long idperformance;
-	private LocalDate dateperformance;
-	private Double dureeperformance;
-	private Double distanceperformance;
-	private Double vitesseperformance;
+	private Long idPerformance;
+	private LocalDate date;
+	private Double duration;
+	private Double distance;
+	private Double speed;
 	private Double calories;
-	private Long userCreatorId ;
+	private Long creatorId ;
 	private String prenom;
 	private String picturePath;
 	
@@ -21,25 +21,25 @@ public class Performance {
 		this.picturePath = picturePath;
 	}
 
-	public Performance(Long idperformance, LocalDate dateperformance, double dureeperformance, double distanceperformance,
-			double vitesseperformance, double calories, long userCreatorId) {
-		this.idperformance = idperformance;
-		this.dateperformance = dateperformance;
-		this.dureeperformance = dureeperformance;
-		this.distanceperformance=distanceperformance;
-		this.vitesseperformance=vitesseperformance;
+	public Performance(Long idPerformance, LocalDate date, double duration, double distance,
+			double speed, double calories, long creatorId) {
+		this.idPerformance = idPerformance;
+		this.date = date;
+		this.duration = duration;
+		this.distance=distance;
+		this.speed=speed;
 		this.calories=calories;
-		this.userCreatorId=userCreatorId;
+		this.creatorId=creatorId;
 	}
 	
-	public Performance(String prenom, String picturePath, LocalDate dateperformance, double dureeperformance, double distanceperformance,
-			double vitesseperformance, double calories) {
+	public Performance(String prenom, String picturePath, LocalDate date, double duration, double distance,
+			double speed, double calories) {
 		this.prenom=prenom;
 		this.picturePath=picturePath;
-		this.dateperformance = dateperformance;
-		this.dureeperformance = dureeperformance;
-		this.distanceperformance=distanceperformance;
-		this.vitesseperformance=vitesseperformance;
+		this.date = date;
+		this.duration = duration;
+		this.distance=distance;
+		this.speed=speed;
 		this.calories=calories;
 	}
 	
@@ -47,35 +47,35 @@ public class Performance {
 		return prenom;
 	}
 
-	public Long getIdperformance() {
-		return idperformance;
+	public Long getIdPerformance() {
+		return idPerformance;
 	}
-	public void setIdperformance(Long idperformance) {
-		this.idperformance = idperformance;
+	public void setIdPerformance(Long idPerformance) {
+		this.idPerformance = idPerformance;
 	}
-	public LocalDate getDateperformance() {
-		return dateperformance;
+	public LocalDate getDate() {
+		return date;
 	}
-	public void setDateperformance(LocalDate dateperformance) {
-		this.dateperformance = dateperformance;
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
-	public Double getDureeperformance() {
-		return dureeperformance;
+	public Double getDuration() {
+		return duration;
 	}
-	public void setDureeperformance(Double dureeperformance) {
-		this.dureeperformance = dureeperformance;
+	public void setDuration(Double duration) {
+		this.duration = duration;
 	}
-	public Double getDistanceperformance() {
-		return distanceperformance;
+	public Double getDistance() {
+		return distance;
 	}
-	public void setDistanceperformance(Double distanceperformance) {
-		this.distanceperformance = distanceperformance;
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
-	public Double getVitesseperformance() {
-		return vitesseperformance;
+	public Double getSpeed() {
+		return speed;
 	}
-	public void setVitesseperformance(Double vitesseperformance) {
-		this.vitesseperformance = vitesseperformance;
+	public void setSpeed(Double speed) {
+		this.speed = speed;
 	}
 	public Double getCalories() {
 		return calories;
@@ -83,11 +83,11 @@ public class Performance {
 	public void setCalories(Double calories) {
 		this.calories = calories;
 	}
-	public Long getUserCreatorId() {
-		return userCreatorId;
+	public Long getCreatorId() {
+		return creatorId;
 	}
-	public void setUser(Long userId) {
-		this.userCreatorId = userId;
+	public void setCreatorId (Long userId) {
+		this.creatorId = userId;
 	}
 
 }

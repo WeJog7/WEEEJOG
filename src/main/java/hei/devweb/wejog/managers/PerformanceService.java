@@ -46,7 +46,7 @@ public class PerformanceService {
 	}
 	
 	public int countDistancePerformance (long userCreatorId){
-		return performanceDao.countDistancePerformance(userCreatorId);
+		return performanceDao.countDistance(userCreatorId);
 	}
 	
 	public int countNumberOfRace (long userCreatorId){

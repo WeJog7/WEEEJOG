@@ -21,7 +21,7 @@ public class PerformanceDeleteServlet extends AbstractGenericServlet {
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 
-		if(PerformanceService.getInstance().getperformance(idperformance).getUserCreatorId() == user.getIdusers() || user.isAdmin()){
+		if(PerformanceService.getInstance().getperformance(idperformance).getCreatorId() == user.getIdusers() || user.isAdmin()){
 			PerformanceService.getInstance().supprimerPerformance(idperformance);
 		}
 
