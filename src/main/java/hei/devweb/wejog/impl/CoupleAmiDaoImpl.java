@@ -55,7 +55,8 @@ public class CoupleAmiDaoImpl {
 	public CoupleAmis addFriend(CoupleAmis newAmis){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `askfriend`(`idusers1`, `idusers2`)VALUES(?,?);",Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `askfriend`(`idusers1`, `idusers2`)VALUES(?,?);",
+					Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setLong(1,newAmis.getIdusers1());
 			statement.setLong(2,newAmis.getIdusers2());
@@ -93,7 +94,8 @@ public class CoupleAmiDaoImpl {
 	public CoupleAmis acceptedFiend(CoupleAmis newAmis){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `ami`(`idusers1`, `idusers2`)VALUES(?,?);",Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `ami`(`idusers1`, `idusers2`)VALUES(?,?);",
+					Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setLong(1,newAmis.getIdusers1());
 			statement.setLong(2,newAmis.getIdusers2());
@@ -138,7 +140,7 @@ public class CoupleAmiDaoImpl {
 	public int countAsking(long idusers2){
 			int count = 0;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("(SELECT COUNT(idaskfriend)  AS total FROM askfriend WHERE idusers2=?)")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT COUNT(idaskfriend) AS total FROM askfriend WHERE idusers2=?")){
 				statement.setLong(1, idusers2);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
