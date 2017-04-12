@@ -12,11 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import hei.devweb.wejog.entities.CoupleAmis;
-import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.entities.User;
-import hei.devweb.wejog.managers.CoupleAmiService;
-import hei.devweb.wejog.managers.PerformanceService;
 import hei.devweb.wejog.managers.UserService;
 
 /**

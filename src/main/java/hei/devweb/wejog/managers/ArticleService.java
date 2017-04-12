@@ -33,8 +33,8 @@ public class ArticleService {
 
 	} 
 
-	public void supprimerarticleadmin(Long idarticle) {	
-		articleDao.supprimerarticleadmin(idarticle);
+	public void deleteArticle(Long idarticle) {	
+		articleDao.deleteArticle(idarticle);
 	}
 	
 	public Article getArticle(Long idarticle){
