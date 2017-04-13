@@ -39,6 +39,7 @@ public class AddFriendServlet extends AbstractGenericServlet{
 		if(recherche!=null){
 			List<User> listFound = UserService.getInstance().ListSearchAmi(recherche, user.getIdusers());
 			context.setVariable("addusers", listFound);
+			recherche = null;
 		}
 		templateEngine.process("addFriend", context, resp.getWriter());
 	}

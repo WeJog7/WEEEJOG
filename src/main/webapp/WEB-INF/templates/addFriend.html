@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/stylesWeJog.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
-   
+    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     <meta name="viewport" content="height=device-height"/>
     <title>Add a friend</title>
     
@@ -39,7 +39,11 @@
 					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
 					<td>[[${adduser.nom}]]</td>
 					<td>[[${adduser.prenom}]]</td>
-					<td><a class="alignement" th:href="'addforFriend?idusers='+${adduser.idusers}" ><img id="suppressionAdmin" th:src ="@{/Images/icone_ajout.jpeg}" alt="DeletePower"></a></td>
+					<td>
+						<a class="alignement" th:href="'sendInvitation?idusers='+${adduser.idusers}" 
+						onClick="sendInvitation('+${adduser.idusers}+');return false;">
+						<img id="suppressionAdmin" th:src ="@{/Images/icone_ajout.jpeg}" alt="DeletePower"></a>
+					</td>
 				</tr>
 
 			</table>		   	

@@ -11,8 +11,8 @@ import hei.devweb.wejog.entities.CoupleAmis;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.CoupleAmiService;
 
-@WebServlet(urlPatterns = {"/user/addforFriend", "/admin/addforFriend"})
-public class AddforFriendServlet extends AbstractGenericServlet{
+@WebServlet(urlPatterns = {"/user/sendInvitation", "/admin/sendInvitation"})
+public class FriendInvitationSendingServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 
@@ -20,16 +20,19 @@ public class AddforFriendServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 
-
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
-		
+
 		Long idFriendToAdd = Long.parseLong(req.getParameter("idusers"));
-		
-		CoupleAmis newCoupleAmis = new CoupleAmis(user.getIdusers(), idFriendToAdd);
-		CoupleAmiService.getInstance().addFriend(newCoupleAmis);
-		
+
+		if(CoupleAmiService.getInstance().getFriendCouple(user.getIdusers(), idFriendToAdd)==null){
+			
+			CoupleAmis newCoupleAmis = new CoupleAmis(user.getIdusers(), idFriendToAdd);
+			CoupleAmiService.getInstance().addFriend(newCoupleAmis);
+		}
+
 		resp.sendRedirect("addFriend");
-}}
+	}
+}
