@@ -11,7 +11,7 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.CoupleAmiService;
 
 @WebServlet(urlPatterns = {"/user/declinetobefriend", "/admin/declinetobefriend"})
-public class DeclineToBeFriendServlet extends AbstractGenericServlet{
+public class FriendDeclineInvitationServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 
