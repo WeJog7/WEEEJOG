@@ -211,7 +211,8 @@ public class UserDaoImpl implements Userdao {
 		List<User> listSearch = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM users "
-					+ "WHERE (nom LIKE ? OR prenom LIKE ?) AND idusers!=?")){
+					+ "WHERE (nom LIKE ? OR prenom LIKE ?) AND idusers!=? "
+					+ "ORDER BY nom ASC")){
 				statement.setString(1, "%"+identity+"%");
 				statement.setString(2, "%"+identity+"%");
 				statement.setLong(3, idusers);
