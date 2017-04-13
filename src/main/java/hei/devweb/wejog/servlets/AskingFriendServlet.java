@@ -38,8 +38,6 @@ public class AskingFriendServlet extends AbstractGenericServlet {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		
-		// si deux personnes se sont demandées en amis en même temps il y a donc 2 invitations amis en BDD
-		// si l'un des deux accepte il faut que les 2 invitations soient supprimées
 
 		List<CoupleAmis> askingList = CoupleAmiService.getInstance().ListAsking(user.getIdusers());
 		List<Long> askingIdList = new LinkedList<Long>();

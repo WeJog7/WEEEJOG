@@ -27,10 +27,11 @@ public class FriendInvitationSendingServlet extends AbstractGenericServlet{
 
 		Long idFriendToAdd = Long.parseLong(req.getParameter("idusers"));
 
-		if(CoupleAmiService.getInstance().getFriendCouple(user.getIdusers(), idFriendToAdd)==null){
+		if(CoupleAmiService.getInstance().getFriendCouple(user.getIdusers(), idFriendToAdd)==null &&
+				CoupleAmiService.getInstance().getInvitation(user.getIdusers(), idFriendToAdd)==null){
 			
 			CoupleAmis newCoupleAmis = new CoupleAmis(user.getIdusers(), idFriendToAdd);
-			CoupleAmiService.getInstance().addFriend(newCoupleAmis);
+			CoupleAmiService.getInstance().sendInvitationToBeFriend(newCoupleAmis);
 		}
 
 		resp.sendRedirect("addFriend");

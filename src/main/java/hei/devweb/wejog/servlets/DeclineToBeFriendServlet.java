@@ -28,7 +28,7 @@ public class DeclineToBeFriendServlet extends AbstractGenericServlet{
 		
 		Long idusers = Long.parseLong(req.getParameter("idusers"));
 	  
-		CoupleAmiService.getInstance().deleteAsking(idusers, userIdseeker);
+		CoupleAmiService.getInstance().deleteInvitation(idusers, userIdseeker);
 		
 		resp.sendRedirect("AskingToBeFriend");
 }}

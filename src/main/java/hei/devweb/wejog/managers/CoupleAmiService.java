@@ -27,16 +27,16 @@ public class CoupleAmiService {
 	}
 
 
-	public void addFriend(CoupleAmis friends ){
-		amiDao.addFriend(friends);
+	public void sendInvitationToBeFriend(CoupleAmis friends ){
+		amiDao.sendInvitationToBeFriend(friends);
 	}
 	
-	public void acceptedFiend(CoupleAmis friends ){
-		amiDao.acceptedFiend(friends);
+	public void acceptFiend(CoupleAmis friends ){
+		amiDao.acceptFiend(friends);
 	}
 
-	public void deleteAsking(long idusers1, long idusers2){
-		amiDao.deleteAsking(idusers1, idusers2);
+	public void deleteInvitation(long idusers1, long idusers2){
+		amiDao.deleteInvitation(idusers1, idusers2);
 	}
 
 	public List<CoupleAmis> ListAsking(long idusers2){
@@ -49,5 +49,9 @@ public class CoupleAmiService {
 	
 	public CoupleAmis getFriendCouple(long idusers, long idFriend){
 		return amiDao.getFriendCouple(idusers, idFriend);
+	}
+	
+	public CoupleAmis getInvitation(long idusers, long idFriend){
+		return amiDao.getInvitation(idusers, idFriend);
 	}
 }

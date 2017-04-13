@@ -12,7 +12,7 @@ import hei.devweb.wejog.entities.CoupleAmis;
 import hei.devweb.wejog.exceptions.WejogSQLException;
 
 public class CoupleAmiDaoImpl {
-	
+
 	public List<CoupleAmis> ListAmis(long idusers){
 		List<CoupleAmis> coupleamis = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -46,25 +46,21 @@ public class CoupleAmiDaoImpl {
 				statement.executeUpdate();
 				statement.close();
 				connection.close();
-			}} catch (SQLException e) {
-				throw new WejogSQLException(e);
-
-
 			}
+		}catch (SQLException e) {
+			throw new WejogSQLException(e);
+		}
 	}
 
-	
-	public CoupleAmis addFriend(CoupleAmis newAmis){
+
+	public CoupleAmis sendInvitationToBeFriend(CoupleAmis newAmis){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO `askfriend`(`idusers1`, `idusers2`)VALUES(?,?);",
 					Statement.RETURN_GENERATED_KEYS);
-
 			statement.setLong(1,newAmis.getIdusers1());
 			statement.setLong(2,newAmis.getIdusers2());
-
 			statement.executeUpdate();
-
 			ResultSet resultSet = statement.getGeneratedKeys();
 			if(resultSet.next()) {
 				newAmis.setIdami(resultSet.getLong(1));
@@ -72,20 +68,21 @@ public class CoupleAmiDaoImpl {
 			statement.close();
 			connection.close();
 		}
-
 		catch (SQLException e){
 			e.printStackTrace();
-
 		}
 		return newAmis;
 	}
 
 
-	public void deleteAsking(long idusers1, long idusers2) {
+	public void deleteInvitation(long idusers1, long idusers2) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  askfriend WHERE idusers1=? and idusers2=?")){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  askfriend "
+					+ "WHERE (idusers1=? AND idusers2=?) OR (idusers1=? AND idusers2=?)")){
 				statement.setLong(1, idusers1);
 				statement.setLong(2, idusers2);
+				statement.setLong(3, idusers2);
+				statement.setLong(4, idusers1);
 				statement.executeUpdate();
 				statement.close();
 				connection.close();
@@ -95,17 +92,14 @@ public class CoupleAmiDaoImpl {
 	}
 
 
-	public CoupleAmis acceptedFiend(CoupleAmis newAmis){
+	public CoupleAmis acceptFiend(CoupleAmis newAmis){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO `ami`(`idusers1`, `idusers2`)VALUES(?,?);",
 					Statement.RETURN_GENERATED_KEYS);
-
 			statement.setLong(1,newAmis.getIdusers1());
 			statement.setLong(2,newAmis.getIdusers2());
-
 			statement.executeUpdate();
-
 			ResultSet resultSet = statement.getGeneratedKeys();
 			if(resultSet.next()) {
 				newAmis.setIdami(resultSet.getLong(1));
@@ -113,10 +107,8 @@ public class CoupleAmiDaoImpl {
 			statement.close();
 			connection.close();
 		}
-
 		catch (SQLException e){
 			e.printStackTrace();
-
 		}
 		return newAmis;
 	}
@@ -160,6 +152,7 @@ public class CoupleAmiDaoImpl {
 		return count;	
 	}
 
+	
 	public CoupleAmis getFriendCouple(long idusers, long idFriend){
 		CoupleAmis coupleamis = null;		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -183,5 +176,29 @@ public class CoupleAmiDaoImpl {
 			}
 		return coupleamis;		
 	}
+	
+	
+	public CoupleAmis getInvitation(long idusers, long idFriend){
+		CoupleAmis coupleamis = null;		
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM askfriend "
+					+ "WHERE idusers1=? AND idusers2=?")){
+				statement.setLong(1, idusers);
+				statement.setLong(2, idFriend);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					coupleamis = new CoupleAmis(
+							resultSet.getLong("idaskfriend"),
+							resultSet.getLong("idusers1"),
+							resultSet.getLong("idusers2"));
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return coupleamis;		
+	}
+	
 
 }
