@@ -37,7 +37,6 @@ public class FriendInvitationsListServlet extends AbstractGenericServlet {
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
-		
 
 		List<CoupleAmis> askingList = CoupleAmiService.getInstance().ListAsking(user.getIdusers());
 		List<Long> askingIdList = new LinkedList<Long>();
@@ -57,7 +56,4 @@ public class FriendInvitationsListServlet extends AbstractGenericServlet {
 		
 		templateEngine.process("AskingToBeFriend", context, resp.getWriter());
 	}
-
-
-
 }
