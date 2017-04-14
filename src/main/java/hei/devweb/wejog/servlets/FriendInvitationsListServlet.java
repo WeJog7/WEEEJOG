@@ -44,13 +44,7 @@ public class FriendInvitationsListServlet extends AbstractGenericServlet {
 		List<User> askingUsersList = new LinkedList<User>();
 		
 		for(int i=0;i<askingList.size();i++){
-			if(askingList.get(i).getIdusers1()!=user.getIdusers()){
-				askingIdList.add(askingList.get(i).getIdusers1());
-			}
-			
-			if(askingList.get(i).getIdusers2()!=user.getIdusers()){
-				askingIdList.add(askingList.get(i).getIdusers2());
-			}	
+			askingIdList.add(askingList.get(i).getIdusers1());
 		}
 		
 		for(int i=0;i<askingIdList.size();i++){
