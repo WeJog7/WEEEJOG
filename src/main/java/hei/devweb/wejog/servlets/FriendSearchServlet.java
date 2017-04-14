@@ -19,7 +19,7 @@ import hei.devweb.wejog.managers.UserService;
  * Servlet implementation class AddFriend
  */
 @WebServlet(urlPatterns = {"/user/addFriend", "/admin/addFriend"})
-public class AddFriendServlet extends AbstractGenericServlet{
+public class FriendSearchServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 
