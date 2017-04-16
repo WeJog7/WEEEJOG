@@ -12,13 +12,13 @@ public interface Userdao {
 	
 	User getUser(long idusers);
 
-	String getmotdepasse(String mail);
+	String getPassword(String mail);
 
 	User addUser(User nouvelUser);
 
-	void supprimerusers(long idusers);
+	void deleteUser(long idusers);
 
-	void modificationDescription(long idusers, String description);
+	void updateDescription(long idusers, String description);
 
 	String getDescription(long idusers);
 
@@ -26,7 +26,7 @@ public interface Userdao {
 	
 	String generateRandomPassword();
 
-	List<User> ListSearchAmi(String identity, Long idusers);
+	List<Long> listUsersIdFound(String identity, Long idusers);
 	
 	void updatePicture(long idusers, String picturePath);
 	

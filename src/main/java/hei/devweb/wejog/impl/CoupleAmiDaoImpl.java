@@ -35,7 +35,7 @@ public class CoupleAmiDaoImpl {
 	}
 
 
-	public void supprimeramis(long idusers1, long idusers2) {
+	public void deleteFriend(long idusers1, long idusers2) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement(" DELETE FROM ami WHERE "
 					+ "(idusers1=? AND idusers2=?) OR (idusers1=? AND idusers2=?)")){

@@ -24,7 +24,7 @@ public class NetworkFriendDeleteServlet extends AbstractGenericServlet{
 
 		Long idFriend = Long.parseLong(req.getParameter("idusers"));
 
-		CoupleAmiService.getInstance().supprimeramis(idFriend, user.getIdusers());
+		CoupleAmiService.getInstance().deleteFriend(idFriend, user.getIdusers());
 		resp.sendRedirect("myNetwork");
 	}
 }

@@ -22,8 +22,8 @@ public class CoupleAmiService {
 
 	}
 
-	public void supprimeramis(long idusers1, long idusers2){
-		amiDao.supprimeramis(idusers1, idusers2);
+	public void deleteFriend(long idusers1, long idusers2){
+		amiDao.deleteFriend(idusers1, idusers2);
 	}
 
 

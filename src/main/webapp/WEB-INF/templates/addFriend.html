@@ -25,7 +25,7 @@
 		</form>
 			
 		   	<div id="friendFound">
-		   		<h3>Friend(s) Found :</h3>
+		   		<h3 th:text="${result}"></h3>
 		   	</div>
 		   	
 		   	<table id="userList">
@@ -35,8 +35,8 @@
 					<th>First Name</th>
 					<th>add</th>
 				</tr>
-				<tr th:each="adduser : ${addusers}" >
-					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
+				<tr th:each="adduser : ${usersFound}" >
+					<td class="userPicture"  ><img th:src ="${adduser.picturePath}" alt="Photo de profil"></td>
 					<td>[[${adduser.nom}]]</td>
 					<td>[[${adduser.prenom}]]</td>
 					<td>

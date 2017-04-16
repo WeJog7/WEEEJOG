@@ -33,17 +33,17 @@ public class NetworkServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		
-		List<CoupleAmis> friendsList = CoupleAmiService.getInstance().ListAmis(user.getIdusers());
+		List<CoupleAmis> friendCoupleList = CoupleAmiService.getInstance().ListAmis(user.getIdusers());
 		List<Long> friendsIdList = new LinkedList<Long>();
 		List<User> friendsUsersList = new LinkedList<User>();
 		
-		for(int i=0;i<friendsList.size();i++){
-			if(friendsList.get(i).getIdusers1()!=user.getIdusers()){
-				friendsIdList.add(friendsList.get(i).getIdusers1());
+		for(int i=0;i<friendCoupleList.size();i++){
+			if(friendCoupleList.get(i).getIdusers1()!=user.getIdusers()){
+				friendsIdList.add(friendCoupleList.get(i).getIdusers1());
 			}
 			
-			if(friendsList.get(i).getIdusers2()!=user.getIdusers()){
-				friendsIdList.add(friendsList.get(i).getIdusers2());
+			if(friendCoupleList.get(i).getIdusers2()!=user.getIdusers()){
+				friendsIdList.add(friendCoupleList.get(i).getIdusers2());
 			}	
 		}
 		

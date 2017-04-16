@@ -86,7 +86,7 @@ public class UserDaoImpl implements Userdao {
 	}
 
 
-	public String getmotdepasse(String mail) {
+	public String getPassword(String mail) {
 		String motdepasse = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT motdepasse FROM users WHERE mail=?")){
@@ -119,7 +119,7 @@ public class UserDaoImpl implements Userdao {
 	}
 
 	@Override
-	public void supprimerusers(long idusers) {
+	public void deleteUser(long idusers) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  users WHERE idusers=?")){
 				statement.setLong(1, idusers);
@@ -161,7 +161,7 @@ public class UserDaoImpl implements Userdao {
 	}
 
 
-	public void modificationDescription(long idusers, String description){
+	public void updateDescription(long idusers, String description){
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET description=? WHERE idusers=?")){
 				statement.setString(1, description);
@@ -206,11 +206,11 @@ public class UserDaoImpl implements Userdao {
 	}
 
 
-	public List<User> ListSearchAmi(String identity, Long idusers){
+	public List<Long> listUsersIdFound(String identity, Long idusers){
 
-		List<User> listSearch = new ArrayList<>();		
+		List<Long> listUserSearch = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM users "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers FROM users "
 					+ "WHERE (nom LIKE ? OR prenom LIKE ?) AND idusers!=? "
 					+ "ORDER BY nom ASC")){
 				statement.setString(1, "%"+identity+"%");
@@ -218,14 +218,14 @@ public class UserDaoImpl implements Userdao {
 				statement.setLong(3, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
-					listSearch.add(mapperVersUser(resultSet));
+					listUserSearch.add(resultSet.getLong("idusers"));
 				}
 				statement.close();
 				connection.close();
 			}} catch (SQLException e) {
 				throw new WejogSQLException(e);
 			}
-		return listSearch;
+		return listUserSearch;
 	}
 
 

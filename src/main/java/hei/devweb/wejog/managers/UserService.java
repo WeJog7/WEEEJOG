@@ -55,7 +55,7 @@ public class UserService {
 		if (motDePasseAVerifier == null || "".equals(motDePasseAVerifier)) {
 			throw new IllegalArgumentException("Le mot de passe doit être renseigné.");
 		}
-		String motDePasseHashe = UserDao.getmotdepasse(email);
+		String motDePasseHashe = UserDao.getPassword(email);
 		if (motDePasseHashe == null) {
 			throw new IllegalArgumentException("L'identifiant n'est pas connu.");
 		}
@@ -76,12 +76,12 @@ public class UserService {
 		UserDao.addUser(newUser);
 	}
 
-	public void supprimerusers(Long idusers) {
-		UserDao.supprimerusers(idusers);
+	public void deleteUser(Long idusers) {
+		UserDao.deleteUser(idusers);
 	}
 	
 	public static void updateDescription (Long idusers, String description){
-		UserDao.modificationDescription(idusers, description);
+		UserDao.updateDescription(idusers, description);
 	}
 	
 	public static String getDescription(long idusers){
@@ -97,8 +97,8 @@ public class UserService {
 		return UserDao.generateRandomPassword();
 	}
 
-	public List<User> ListSearchAmi(String identity, Long idusers){
-		 return UserDao.ListSearchAmi(identity, idusers); 
+	public List<Long> listUsersIdFound(String identity, Long idusers){
+		 return UserDao.listUsersIdFound(identity, idusers); 
 	 }
 
 	public void updatePicture(long idusers, String picturePath){

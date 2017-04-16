@@ -22,7 +22,7 @@ public class UserDeleteServlet extends AbstractGenericServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long idusers = Long.parseLong(req.getParameter("idusers"));
-		UserService.getInstance().supprimerusers(idusers);
+		UserService.getInstance().deleteUser(idusers);
 		resp.sendRedirect("UsersList");
 	}
 
