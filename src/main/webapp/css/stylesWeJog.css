@@ -54,7 +54,6 @@ h4{
 nav{
     width: 65%;
     text-align: center;
-    display: inline-block;
 }
 
 
@@ -499,6 +498,7 @@ table.network td{
     margin-right : 20%;
 }
 
+
 .liens{
     width: 33%;
     display: inline-block;
@@ -515,6 +515,7 @@ table.network td{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 
 a:hover.boutons_home{
     color : #1A7A50;

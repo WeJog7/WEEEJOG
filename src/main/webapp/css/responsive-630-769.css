@@ -1,0 +1,13 @@
+@media screen and (min-width: 630px) and (max-width: 769px)
+{
+
+#logo{
+	width: 25%;
+}
+
+nav{
+    width: 35%;
+    margin-left: 7%;
+}
+
+}

@@ -1,0 +1,12 @@
+@media screen and (min-width: 770px) and (max-width: 950px)
+{
+
+#logo{
+	width: 25%;
+}
+
+nav{
+    width: 45%;
+}
+
+}
