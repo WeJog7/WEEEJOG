@@ -29,16 +29,16 @@
 			-->
 		</nav>
 		
-		</header>
+	</header>
 		
-		<header th:fragment="headerConnectedAdmin(selectedMenu)">
-			<a id="logo" href="home" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
+	<header th:fragment="headerConnectedAdmin(selectedMenu)">
+		<a id="logo" href="home" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
 			
-			<div id ="informations" class="alignement">
-				<a id = "photoProfil" href="profil" class="alignement"><img th:src ="${member.picturePath}" alt="Photo de profil"></a>
-				<h4 class="alignement" th:text="${member.prenom}"></h4>
-				<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
-			</div>
+		<div id ="informations" class="alignement">
+			<a id = "photoProfil" href="profil" class="alignement"><img th:src ="${member.picturePath}" alt="Photo de profil"></a>
+			<h4 class="alignement" th:text="${member.prenom}"></h4>
+			<a id = "logo_deconnexion" class="alignement" href="deconnexion"><img th:src ="@{/Images/Logout.png}" alt="Deconnexion"></a>
+		</div>
 
 		<nav>
 			<li th:class="${selectedMenu == 'home'} ? 'active'"><a href="home">Home</a></li>
@@ -51,27 +51,27 @@
 			-->
 		</nav>
 		
-		</header>
+	</header>
 		
-		<header th:fragment="headerNotConnected">
-			<a id="logo" href="connexion" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
+	<header th:fragment="headerNotConnected">
+		<a id="logo" href="connexion" class="alignement"><img th:src ="@{/Images/Logo.png}" alt="Logo WeJog"></a>
 			
-			<div id="not_connected">
-				<div id="bouton_connexion" class="bouton_Non_Connecte">
-					<a class="bouton_lien" href="connexion">Sign In</a>
-				</div>
-				<div id="bouton_register" class="bouton_Non_Connecte">
-					<a class="bouton_lien" href="createAccount">Register</a>
-				</div>
+		<div id="not_connected">
+			<div id="bouton_connexion" class="bouton_Non_Connecte">
+				<a class="bouton_lien" href="connexion">Sign In</a>
 			</div>
-		
-		</header>
+			<div id="bouton_register" class="bouton_Non_Connecte">
+				<a class="bouton_lien" href="createAccount">Register</a>
+			</div>
+		</div>
+	
+	</header>
 	
 	<footer th:fragment="footer(Statut)">
 		<div id="footer">
-			<a id="facebook" href="Go_Facebook" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
-			<a href="Go_Twitter" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
-			<a href="Go_Instagram" class="alignement"><img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram"></a>
+			<a id="facebook" href="https://www.facebook.com/Wejog-413517032350991/" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
+			<a href="https://twitter.com/Weeejooog" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
+			<a href="https://www.instagram.com/weeejooog/" class="alignement"><img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram"></a>
 			<a id="Contact_Us" th:href="${Statut}" class="alignement">Contact Us</a>
 		</div>
 	</footer>
