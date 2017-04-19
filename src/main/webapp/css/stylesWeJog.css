@@ -540,9 +540,6 @@ a:hover.boutons_home{
 
 
 .actuality{
-    border-style: solid;
-    border-color: #1A7A50;
-    border-radius: 5px;
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 15%;
@@ -550,13 +547,13 @@ a:hover.boutons_home{
 }
 
 
-.actuality img{
-    width: 100%;
-}
-
-
-td.image_actuality{
-    width: 30%
+.event{
+	border-style: solid;
+    border-color: #1A7A50;
+    border-radius: 5px;
+	width: 49%;
+	display: inline-block;
+	margin-bottom: 10px;
 }
 
 
@@ -634,6 +631,8 @@ td.image_actuality{
 
 #utilisateur img{
     width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 

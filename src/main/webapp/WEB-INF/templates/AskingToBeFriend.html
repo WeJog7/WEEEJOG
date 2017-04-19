@@ -30,7 +30,7 @@
 					<th>add</th>
 				</tr>
 				<tr th:each="asking : ${askings}" >
-					<td class="userPicture"  ><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
+					<td class="userPicture"  ><img th:src ="${asking.picturePath}" alt="Photo de profil"></td>
 					<td>[[${asking.nom}]]</td>
 					<td>[[${asking.prenom}]]</td>
 					<td><a class="alignement" th:href="'acceptedFriend?idusers='+${asking.idusers}">

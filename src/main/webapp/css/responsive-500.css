@@ -80,6 +80,12 @@ nav input{
 }
 
 
+.event{
+	display: block;
+	width: 100%;
+}
+
+
 #Contact_Us{
 	display: none;
 }

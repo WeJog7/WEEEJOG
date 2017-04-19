@@ -28,107 +28,83 @@
 			</div>
 			
 			<div>
-			<h2 th:text="${eventTitle}"></h2>
-			<div class="actuality" th:each="event : ${events}" >
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-						<td>
-							<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${event.managerFirstName}"></h1>
-							<h1>Event</h1>
-							<h3 th:text="'Date: '+${event.date}"></h3>
-							<h3 th:text="'Time: '+${event.timeAsString}+' '+${event.momentOfTheDay}"></h3>
-							<p th:text="'Place: '+${event.place} "></p>
-							<div class="boutonEventManagement">
-								<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
-								th:href="'addparticipant?idevent='+${event.idEvent}">Subscribe to the event</a>
-								<a class="boutons_ami" href="addFriend.html">See more</a>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
+				<h2 th:text="${eventTitle}"></h2>
+				<div class="actuality">
+					<div class="event" th:each="event : ${events}">
+						<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+						<h1 class="alignement" th:text="${event.managerFirstName}"></h1>
+						<h1>Event</h1>
+						<h3 th:text="'Date: '+${event.date}"></h3>
+						<h3 th:text="'Time: '+${event.timeAsString}+' '+${event.momentOfTheDay}"></h3>
+						<p th:text="'Place: '+${event.place} "></p>
+						<div class="boutonEventManagement">
+							<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
+							th:href="'addparticipant?idevent='+${event.idEvent}">Subscribe to the event</a>
+							<a class="boutons_ami" href="addFriend.html">See more</a>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div>
-			<h2 th:text="${articleTitle}"></h2>
-			<div class="actuality " th:each="article : ${articles}">
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-						<td>	
-							<h1 th:text=" 'Title : ' +${article.name}"></h1>
-							<h1 class="alignement">Post By : </h1>
-							<div class="postBy">
-								<img id="littlePicture" th:src ="${article.creatorPicturePath}" alt="Photo de profil" class="alignement">
-								<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
-							</div>
-							<h1 th:text=" 'At : ' +${article.postDate}"></h1>
-							<div>
-								<h3 class="alignement">Synopsis : </h3>
-								<p class="alignement" th:text="${article.content}"></p>
-							</div>
-							<div>
-								<h3 class="alignement">Link : </h3>
-								<p class="alignement"><a th:text="${article.link}" th:href="${article.link}" target="blank"></a></p>
-							</div>
-						</td>
-					</tr>
-					<tr th:if="${article.response}=='yes'">
-						<td colspan="2" th:replace="~{fragments :: DeleteArticleUser}">
-						</td>
-					</tr>
-				</table>
-			</div>
+				<h2 th:text="${articleTitle}"></h2>
+				<div class="actuality">
+					<div class="event" th:each="article : ${articles}">
+						<h1 th:text=" 'Title : ' +${article.name}"></h1>
+						<h1 class="alignement">Post By : </h1>
+						<div class="postBy">
+							<img id="littlePicture" th:src ="${article.creatorPicturePath}" alt="Photo de profil" class="alignement">
+							<h1 class="alignement" th:text="${article.creatorFirstName}"></h1>
+						</div>
+						<h1 th:text=" 'At : ' +${article.postDate}"></h1>
+						<div>
+							<h3 class="alignement">Synopsis : </h3>
+							<p class="alignement" th:text="${article.content}"></p>
+						</div>
+						<div>
+							<h3 class="alignement">Link : </h3>
+							<p class="alignement"><a th:text="${article.link}" th:href="${article.link}" target="blank"></a></p>
+						</div>
+						<div th:if="${article.response}=='yes'">
+							<div th:replace="~{fragments :: DeleteArticleUser}"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 	
 			<div>
-			<h2 th:text="${performanceTitle}"></h2>
-			<div class="actuality" th:each="performance : ${performances}">
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-						<td>
-							<h1 th:text=" 'Realised on ' +${performance.date}">  </h1>
-							<p th:text="'During : '+${performance.duration}+'minutes'"></p>
-							<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
-							<p th:text="'Average: ' +${performance.speed}+ ' mph'"></p>
-							<p>More information : </p>
-							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
+				<h2 th:text="${performanceTitle}"></h2>
+				<div class="actuality">
+					<div class="event" th:each="performance : ${performances}">
+						<h1 th:text=" 'Realised on ' +${performance.date}">  </h1>
+						<p th:text="'During : '+${performance.duration}+'minutes'"></p>
+						<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
+						<p th:text="'Average: ' +${performance.speed}+ ' mph'"></p>
+						<p>More information : </p>
+						<div>
 							<a class="alignement" onClick="deletePerformance('+${performance.idPerformance}+');return false;"
 							th:href="'deletePerformance?idperformance='+${performance.idPerformance}">
 							<img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
-						</td>
-					</tr>
-				</table>
-			</div>
+						</div>
+					</div> 
+				</div>
 			</div>
 			
 			<div>
-			<h2 th:text="${friendPerformanceTitle}"></h2>
-			<div class="actuality" th:each="friendPerformance : ${friendsPerformances}">
-				<table>
-					<tr>
-						<td class="image_actuality"><img th:src ="@{/Images/PhotoProfil.jpg}" alt="Photo de profil"></td>
-						<td>
-							<img id="littlePicture" th:src ="${friendPerformance.picturePath}" alt="Photo de profil" class="alignement">
-							<h1 class="alignement" th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
-							<h1 th:text=" 'Realised on ' +${friendPerformance.date}">  </h1>
-							<p th:text="'During : '+${friendPerformance.duration}+'minutes'"></p>
-							<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>
-							<p th:text="'Average: ' +${friendPerformance.speed}+ ' mph'"></p>
-							<p>More information : </p>
-							<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
-						</td>
-					</tr>
-				</table>
-			</div>
+				<h2 th:text="${friendPerformanceTitle}"></h2>
+				<div class="actuality">
+					<div class="event" th:each="friendPerformance : ${friendsPerformances}">
+						<img id="littlePicture" th:src ="${friendPerformance.picturePath}" alt="Photo de profil" class="alignement">
+						<h1 class="alignement" th:text="${friendPerformance.prenom}+'\'s performance'"></h1>
+						<h1 th:text=" 'Realised on ' +${friendPerformance.date}">  </h1>
+						<p th:text="'During : '+${friendPerformance.duration}+'minutes'"></p>
+						<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>
+						<p th:text="'Average: ' +${friendPerformance.speed}+ ' mph'"></p>
+						<p>More information : </p>
+						<div id="ajout_ami"><a class="boutons_ami" href="addFriend.html">Access to the profil</a></div>
+					</div>
+				</div>
 			</div>
 
 		</section>

@@ -69,19 +69,25 @@
 	
 	<footer th:fragment="footer(Statut)">
 		<div id="footer">
-			<a id="facebook" href="https://www.facebook.com/Wejog-413517032350991/" class="alignement"><img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook"></a>
-			<a href="https://twitter.com/Weeejooog" class="alignement"><img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter"></a>
-			<a href="https://www.instagram.com/weeejooog/" class="alignement"><img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram"></a>
+			<a id="facebook" href="https://www.facebook.com/Wejog-413517032350991/" class="alignement" target="blank">
+				<img th:src ="@{/Images/LogoFacebook.png}" alt="Logo Facebook">
+			</a>
+			<a href="https://twitter.com/Weeejooog" class="alignement" target="blank">
+				<img th:src ="@{/Images/LogoTwitter.png}" alt="Logo Twitter">
+			</a>
+			<a href="https://www.instagram.com/weeejooog/" class="alignement" target="blank">
+				<img th:src ="@{/Images/LogoInstagram.png}" alt="Logo Instagram">
+			</a>
 			<a id="Contact_Us" th:href="${Statut}" class="alignement">Contact Us</a>
 		</div>
 	</footer>
 	
-	<td th:fragment="DeleteArticleUser">
+	<div th:fragment="DeleteArticleUser">
 		<a class="alignement" onClick="deleteArticle('+${article.idArticle}+');return false;" 
 		th:href="'deleteArticle?idarticle='+${article.idArticle}"><img id="suppressionAdmin"
 		th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 		<h3 class="alignement">Delete your article</h3>
-	</td>
+	</div>
 	
   </body>
   
