@@ -1,5 +1,6 @@
 package hei.devweb.wejog.managers;
 
+import java.sql.Date;
 import java.util.List;
 import hei.devweb.wejog.entities.Performance;
 import hei.devweb.wejog.impl.PerformanceDaoImpl;
@@ -52,4 +53,17 @@ public class PerformanceService {
 	public int countNumberOfRace (long userCreatorId){
 		return performanceDao.countNumberOfRace(userCreatorId);
 	}
+	
+	public int getperformanceWeek1KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformanceWeek1KM(userCreatorId, todayDate);
+		}
+	public int getperformanceWeek5KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformanceWeek5KM(userCreatorId, todayDate);
+		}
+	public int getperformanceWeek10KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformanceWeek10KM(userCreatorId, todayDate);
+		}
+	public int getperformanceWeek42KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformanceWeek42KM(userCreatorId, todayDate);
+		}
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,5 +192,72 @@ public class PerformanceDaoImpl {
 		return count;	
 
 	}
-
+	public int getperformanceWeek1KM(Long creatorId, Date todayDate){
+		int performance = 0 ;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT MIN(duration) AS mini FROM performance WHERE creatorId=? AND distance=1 AND date>=? ")){
+				statement.setLong(1, creatorId);
+				statement.setDate(2, todayDate);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					performance = resultSet.getInt("mini");
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return performance;	
+	}
+		public int getperformanceWeek5KM(Long creatorId, Date todayDate){
+			int performance = 0 ;
+			try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+				try(PreparedStatement statement = connection.prepareStatement("SELECT MIN(duration) AS mini FROM performance WHERE creatorId=? AND distance=5 AND date>=? ")){
+					statement.setLong(1, creatorId);
+					statement.setDate(2, todayDate);
+					ResultSet resultSet = statement.executeQuery();
+					while ( resultSet.next()){
+						performance = resultSet.getInt("mini");
+					}
+					statement.close();
+					connection.close();
+				}} catch (SQLException e) {
+					throw new WejogSQLException(e);
+				}
+			return performance;		
+	}
+		public int getperformanceWeek10KM(Long creatorId, Date todayDate){
+			int performance = 0 ;
+			try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+				try(PreparedStatement statement = connection.prepareStatement("SELECT MIN(duration) AS mini FROM performance WHERE creatorId=? AND distance=10 AND date>=? ")){
+					statement.setLong(1, creatorId);
+					statement.setDate(2, todayDate);
+					ResultSet resultSet = statement.executeQuery();
+					while ( resultSet.next()){
+						performance = resultSet.getInt("mini");
+					}
+					statement.close();
+					connection.close();
+				}} catch (SQLException e) {
+					throw new WejogSQLException(e);
+				}
+			return performance;		
+	}
+		public int getperformanceWeek42KM(Long creatorId, Date todayDate){
+			int performance = 0 ;
+			try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+				try(PreparedStatement statement = connection.prepareStatement("SELECT MIN(duration) AS mini FROM performance WHERE creatorId=? AND distance=42 AND date>=? ")){
+					statement.setLong(1, creatorId);
+					statement.setDate(2, todayDate);
+					ResultSet resultSet = statement.executeQuery();
+					while ( resultSet.next()){
+						performance = resultSet.getInt("mini");
+					}
+					statement.close();
+					connection.close();
+				}} catch (SQLException e) {
+					throw new WejogSQLException(e);
+				}
+			return performance;		
+	}
 }
