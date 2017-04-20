@@ -3,12 +3,61 @@
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import hei.devweb.wejog.managers.UserService;
 
 public class test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException{
+		
+		String recherche ="gui po";
+		
+		Long id = (long) 23;
+		
+		List<String> completeIdentity = new ArrayList<String>();
+		
+		if(recherche.contains(" ")){
+			completeIdentity= Arrays.asList(recherche.split(" "));
+		}
+		
+		System.out.println(completeIdentity);
+		System.out.println(completeIdentity.size());
+		
+		
+		List<Long> listUsersIdFound = new LinkedList<Long>();
+		
+		List<Long> listUsersIdFoundCompleteIdentity = new LinkedList<Long>();
+		
+		if(completeIdentity.size()==2){
+			for (int i=0;i<2;i++){
+				listUsersIdFoundCompleteIdentity = UserService.getInstance().listUsersIdFound(completeIdentity.get(i), id);
+				
+				int j = 0;
+				while(j<listUsersIdFoundCompleteIdentity.size()){
+					if(!listUsersIdFound.contains(listUsersIdFoundCompleteIdentity.get(j))){
+						listUsersIdFound.add(listUsersIdFoundCompleteIdentity.get(j));
+					}
+					j++;
+				}
+				
+				//listUsersIdFoundCompleteIdentity.addAll(listUsersIdFound);
+			}
+			// attention au doublons
+		// envoyer dans context
+			System.out.println(listUsersIdFound);
+		}
+		
+		
+		else{
+			listUsersIdFound = UserService.getInstance().listUsersIdFound(recherche, id);
+			// envoyer dans context
+			System.out.println(listUsersIdFound);
+		}
+				
 		
 		/*System.out.println(UserService.getInstance().genererMotDePasse("0000"));
 		
@@ -37,9 +86,9 @@ public class test {
 		
 		System.out.println("affichage correct : >>"+chaine+"<<");*/
 		
-		LocalDate localDate = LocalDate.now();
+		/*LocalDate localDate = LocalDate.now();
 		String dateAsString = localDate.toString();
-		System.out.println("localDate : "+localDate+ " et DateAstring : "+dateAsString);
+		System.out.println("localDate : "+localDate+ " et DateAstring : "+dateAsString);*/
 		
 	}
 	

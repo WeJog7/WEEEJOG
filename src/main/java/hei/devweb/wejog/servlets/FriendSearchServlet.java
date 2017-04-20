@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,7 +42,36 @@ public class FriendSearchServlet extends AbstractGenericServlet{
 		context.setVariable("User",user);
 
 		if(recherche!=null){
-			List<Long> listUsersIdFound = UserService.getInstance().listUsersIdFound(recherche, user.getIdusers());
+			// List<Long> listUsersIdFound = UserService.getInstance().listUsersIdFound(recherche, user.getIdusers());
+			
+			List<String> completeIdentity = new ArrayList<String>();
+			
+			if(recherche.contains(" ")){
+				completeIdentity= Arrays.asList(recherche.split(" "));
+			}
+			
+			List<Long> listUsersIdFound = new LinkedList<Long>();
+			
+			List<Long> listUsersIdFoundCompleteIdentity = new LinkedList<Long>();
+			
+			if(completeIdentity.size()==2){
+				for (int i=0;i<2;i++){
+					listUsersIdFoundCompleteIdentity = UserService.getInstance().listUsersIdFound(completeIdentity.get(i), user.getIdusers());
+					
+					int j = 0;
+					while(j<listUsersIdFoundCompleteIdentity.size()){
+						if(!listUsersIdFound.contains(listUsersIdFoundCompleteIdentity.get(j))){
+							listUsersIdFound.add(listUsersIdFoundCompleteIdentity.get(j));
+						}
+						j++;
+					}
+				}
+			}
+			
+			
+			else{
+				listUsersIdFound = UserService.getInstance().listUsersIdFound(recherche, user.getIdusers());
+			}
 
 			if(!listUsersIdFound.isEmpty()){
 				List<CoupleAmis> friendCoupleList = CoupleAmiService.getInstance().ListAmis(user.getIdusers());
