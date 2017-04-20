@@ -22,7 +22,7 @@ public class UserDaoImpl implements Userdao {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
-						+ "admin, description, picturePath FROM users WHERE admin=false ORDER BY mail ")){
+						+ "admin, description, picturePath, block FROM users WHERE admin=false and block=false ORDER BY mail ")){
 					while (resultSet.next()) {
 						users.add(mapperVersUser(resultSet));
 					}
@@ -44,7 +44,8 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getBoolean("sexe"),
 				resultSet.getBoolean("admin"),
 				resultSet.getString("description"),
-				resultSet.getString("picturePath"));
+				resultSet.getString("picturePath"),
+				resultSet.getBoolean("block"));
 	}
 
 
@@ -52,7 +53,7 @@ public class UserDaoImpl implements Userdao {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
-					+ " admin, description, picturePath FROM users WHERE idusers=?")){
+					+ " admin, description, picturePath, block FROM users WHERE idusers=?")){
 				statement.setLong(1, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
@@ -70,7 +71,7 @@ public class UserDaoImpl implements Userdao {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
-					+ "admin, description, picturePath FROM users WHERE mail=?")){
+					+ "admin, description, picturePath, block FROM users WHERE mail=?")){
 				statement.setString(1, mail);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
@@ -211,7 +212,7 @@ public class UserDaoImpl implements Userdao {
 		List<Long> listUserSearch = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers FROM users "
-					+ "WHERE (nom LIKE ? OR prenom LIKE ?) AND idusers!=? "
+					+ "WHERE (nom LIKE ? OR prenom LIKE ?) AND idusers!=? AND block=false "
 					+ "ORDER BY nom ASC")){
 				statement.setString(1, "%"+identity+"%");
 				statement.setString(2, "%"+identity+"%");
@@ -240,6 +241,50 @@ public class UserDaoImpl implements Userdao {
 			}} catch (SQLException e) {
 				throw new WejogSQLException(e);
 			}
+	}
+	
+	
+	public void blockUser(long idusers){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET block=true WHERE idusers=?")){
+				statement.setLong(1, idusers);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+	}
+	
+	
+	public void unblockUser(long idusers){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET block=false WHERE idusers=?")){
+				statement.setLong(1, idusers);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+	}
+	
+	
+	public List<User> usersBlockList() {
+		List<User> users = new ArrayList<User>();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(Statement statement = connection.createStatement()){
+				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
+						+ "admin, description, picturePath, block FROM users WHERE admin=false and block=true ORDER BY nom ")){
+					while (resultSet.next()) {
+						users.add(mapperVersUser(resultSet));
+					}
+					statement.close();
+					connection.close();
+				}}} catch (SQLException e) {
+					throw new WejogSQLException(e);
+				}
+		return users;
 	}
 
 }

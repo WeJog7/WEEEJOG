@@ -17,22 +17,56 @@
 		<header th:replace="~{fragments :: headerConnectedAdmin('UsersList')}"></header>
 
 		<section>
+		
+			<h2>Users list</h2>
 
 			<table id="userList">
 				<tr>
 					<th>Picture</th>
 					<th>Last Name</th>
 					<th>First Name</th>
-					<th>Delete</th>
+					<th>Delete or block</th>
 				</tr>
 				<tr th:each="user : ${users}" >
 					<td class="userPicture"  ><img th:src ="${user.picturePath}" alt="Photo de profil"></td>
 					<td>[[${user.nom}]]</td>
 					<td>[[${user.prenom}]]</td>
-					<td><a class="alignement" onClick="suppressionusers('+${user.idusers}+');return false;" th:href="'deleteuser?idusers='+${user.idusers}"><img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a></td>
+					<td><a class="alignement" onClick="suppressionusers('+${user.idusers}+');return false;" 
+							th:href="'deleteuser?idusers='+${user.idusers}"><img id="suppressionAdmin" 
+							th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+						<a class="alignement" onClick="blockUser('+${user.idusers}+');return false;" 
+							th:href="'blockUser?idusers='+${user.idusers}"><img id="suppressionAdmin" 
+							th:src ="@{/Images/blockUser.png}" alt="DeletePower"></a>
+					</td>
 				</tr>
 
 			</table>
+			
+			<div th:if="${AreThereUsersBlockedToDisplay}=='yes'">
+			<h2>Users blocked</h2>
+			
+			<table id="userList">
+				<tr>
+					<th>Picture</th>
+					<th>Last Name</th>
+					<th>First Name</th>
+					<th>Delete or unblock</th>
+				</tr>
+				<tr th:each="userBlock : ${usersBlockList}" >
+					<td class="userPicture"  ><img th:src ="${userBlock.picturePath}" alt="Photo de profil"></td>
+					<td>[[${userBlock.nom}]]</td>
+					<td>[[${userBlock.prenom}]]</td>
+					<td><a class="alignement" onClick="suppressionusers('+${userBlock.idusers}+');return false;" 
+							th:href="'deleteuser?idusers='+${userBlock.idusers}"><img id="suppressionAdmin" 
+							th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+						<a class="alignement" onClick="unblockUser('+${userBlock.idusers}+');return false;" 
+							th:href="'unblockUser?idusers='+${userBlock.idusers}"><img id="suppressionAdmin" 
+							th:src ="@{/Images/unblockUser.png}" alt="DeletePower"></a>
+					</td>
+				</tr>
+
+			</table>
+			</div>
 
 		</section>
 

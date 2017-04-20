@@ -151,6 +151,8 @@ footer{
 
 #description_profil{
 	width: 100%;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 
@@ -271,5 +273,40 @@ div#sex input{
 }
 
 
+/*Page userList*/
+
+table#userList{
+	width:100%;
+}
+
+.userPicture img{
+    width: 100%;
+}
+
+
+/*Page changePassword*/
+
+#changePassword{
+	width:100%;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+form#changePassword label{
+	width: 100%;
+}
+
+
+form#changePassword input{
+	width: 95%;
+}
+
+
+#changePasswordInput{
+	width: 95%;
+}
 
 }

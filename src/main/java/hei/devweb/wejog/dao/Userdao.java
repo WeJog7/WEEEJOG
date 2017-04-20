@@ -30,4 +30,10 @@ public interface Userdao {
 	
 	void updatePicture(long idusers, String picturePath);
 	
+	void blockUser(long idusers);
+	
+	List<User> usersBlockList();
+	
+	void unblockUser(long idusers);
+	
 }

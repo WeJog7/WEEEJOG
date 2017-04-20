@@ -18,20 +18,24 @@ import hei.devweb.wejog.managers.UserService;
 @WebServlet("/connexion")
 public class ConnexionServlet extends GenericWejogServlet {
 	private static final long serialVersionUID = 3038302649713866775L;
-	
+
 	private boolean error;
+	private boolean block;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("user") == null) {
 			TemplateEngine engine = this.createTemplateEngine(request);
 			WebContext context = new WebContext(request, response, request.getServletContext());
-			
+
 			if(error){
 				context.setVariable("ConnexionError", "Mail adress or password incorrect");
 			}
-			//engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 			
+			if(block){
+				context.setVariable("ConnexionError", "Account blocked");
+			}
+			//engine.process("connexion", new WebContext(request, response, getServletContext()), response.getWriter());
 			engine.process("connexion", context, response.getWriter());
 		}
 	}
@@ -41,11 +45,13 @@ public class ConnexionServlet extends GenericWejogServlet {
 		String identifiant = request.getParameter("mail");
 		String motDePasse = request.getParameter("password");
 		try {
-			if (UserService.getInstance().getUser(identifiant)!=null && UserService.getInstance().validerMotDePasse(identifiant, motDePasse)){
+			if (UserService.getInstance().getUser(identifiant)!=null && UserService.getInstance().validerMotDePasse(identifiant, motDePasse)
+					&& !UserService.getInstance().getUser(identifiant).isBlock()){
 				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
-				
+
 				error = false;
-				
+				block = false;
+
 				if (UserService.getInstance().getUser(identifiant).isAdmin()){
 					response.sendRedirect("admin/home");
 				}
@@ -54,8 +60,15 @@ public class ConnexionServlet extends GenericWejogServlet {
 				}
 
 			} else {
-				this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
-				error = true;
+				if(UserService.getInstance().getUser(identifiant).isBlock()){
+					this.ajouterMessageErreur(request, "User blocked by Admin.");
+					block = true;
+				}
+
+				else{
+					this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
+					error = true;
+				}
 				response.sendRedirect("connexion");
 			}
 		} catch (IllegalArgumentException e) {

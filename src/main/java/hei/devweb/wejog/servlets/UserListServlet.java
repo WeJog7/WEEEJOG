@@ -25,18 +25,20 @@ public class UserListServlet extends AbstractGenericServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		context.setVariable("users",UserService.getInstance().listerUsers());
+		
+		if(!UserService.getInstance().usersBlockList().isEmpty()){
+			context.setVariable("AreThereUsersBlockedToDisplay","yes");
+			context.setVariable("usersBlockList",UserService.getInstance().usersBlockList());
+		}
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		context.setVariable("User", httpRequest.getSession().getAttribute("user"));
 		
 		templateEngine.process("UsersList", context, resp.getWriter());
 	}
-
-
 
 }

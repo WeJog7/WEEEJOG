@@ -112,9 +112,7 @@ public class FriendSearchServlet extends AbstractGenericServlet{
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String identity = request.getParameter("friendSearch");
-
-		recherche = identity;
+		recherche = request.getParameter("friendSearch");
 
 		response.sendRedirect("addFriend");
 	}

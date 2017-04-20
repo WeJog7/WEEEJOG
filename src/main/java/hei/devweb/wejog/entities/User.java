@@ -17,6 +17,7 @@ public class User implements Serializable {
 	private boolean admin;
 	private String description;
 	private String picturePath;
+	private boolean block;
 
 
 	public User(String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe) {
@@ -30,7 +31,7 @@ public class User implements Serializable {
 	}
 	
 	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin, String description,
-			String picturePath) {
+			String picturePath, boolean block) {
 		super();
 		this.idusers = idusers;
 		this.nom = nom;
@@ -41,9 +42,18 @@ public class User implements Serializable {
 		this.admin = admin;
 		this.description = description;
 		this.picturePath = picturePath;
+		this.block=block;
 	}
 	
 	
+	public boolean isBlock() {
+		return block;
+	}
+
+	public void setBlock(boolean block) {
+		this.block = block;
+	}
+
 	public Long getIdusers() {
 		return idusers;
 	}

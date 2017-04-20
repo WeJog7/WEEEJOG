@@ -1,3 +1,21 @@
+function unblockUser(idUser){
+	if (confirm("Do you want to unblock this user ?")) {
+		window.location("unblockUser?idusers="+idUser);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+function blockUser(idUser){
+	if (confirm("Do you want to block this user ?")) {
+		window.location("blockUser?idusers="+idUser);
+		return true;
+	}
+	else{
+		return false;}
+}
+
 function sendInvitation(idFriend){
 	if (confirm("Do you want to send an invitation to be friend ?")) {
 		window.location("sendInvitation?idusers="+idFriend);

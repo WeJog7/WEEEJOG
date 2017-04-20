@@ -104,4 +104,17 @@ public class UserService {
 	public void updatePicture(long idusers, String picturePath){
 		UserDao.updatePicture(idusers, picturePath);
 	}
+	
+	public void blockUser(long idusers){
+		UserDao.blockUser(idusers);
+	}
+	
+	public List<User> usersBlockList() {
+		return UserDao.usersBlockList();
+	}
+	
+	public void unblockUser(long idusers){
+		UserDao.unblockUser(idusers);
+	}
+
 }
