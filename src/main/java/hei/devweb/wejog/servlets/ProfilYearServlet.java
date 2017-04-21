@@ -74,6 +74,12 @@ public class ProfilYearServlet extends AbstractGenericServlet{
 	   }
 		context.setVariable("User", user);
 		
+		   context.setVariable("fastestdistance", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[0]+ " Km");
+		   context.setVariable("fastestduration", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[1]+ " Min");
+		   
+		   context.setVariable("longuestdistance", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[0]+ " Km");
+		   context.setVariable("longuestduration", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[1]+ " Min");
+		   
 		templateEngine.process("profil", context, resp.getWriter());
 	}
 

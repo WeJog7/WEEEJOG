@@ -260,4 +260,44 @@ public class PerformanceDaoImpl {
 				}
 			return performance;		
 	}
+		public int[] getperformancefastest(Long creatorId, Date todayDate){
+		  int performance[] = {0,0}  ;
+			try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+				try(PreparedStatement statement = connection.prepareStatement("SELECT distance , MIN(duration) AS fastest FROM performance WHERE creatorId=? AND date>=?  ")){
+					statement.setLong(1, creatorId);
+					statement.setDate(2, todayDate);
+					ResultSet resultSet = statement.executeQuery();
+					while ( resultSet.next()){
+						performance[1]= resultSet.getInt("fastest") ;
+						performance[0]= resultSet.getInt("distance");
+					
+						
+					}
+					statement.close();
+					connection.close();
+				}} catch (SQLException e) {
+					throw new WejogSQLException(e);
+				}
+			return performance;		
+	}
+		
+		public int[] getperformancelonguest(Long creatorId, Date todayDate){
+			int performance[] = {0,0}  ;
+				try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+					try(PreparedStatement statement = connection.prepareStatement("SELECT duration , MAX(distance) AS longuest FROM performance WHERE creatorId=?  AND date>=?  ")){
+						statement.setLong(1, creatorId);
+						statement.setDate(2, todayDate);
+						ResultSet resultSet = statement.executeQuery();
+						while ( resultSet.next()){
+							performance[1]= resultSet.getInt("duration") ;
+							performance[0]= resultSet.getInt("longuest");
+							
+						}
+						statement.close();
+						connection.close();
+					}} catch (SQLException e) {
+						throw new WejogSQLException(e);
+					}
+				return performance;		
+		}
 }

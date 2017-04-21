@@ -66,4 +66,11 @@ public class PerformanceService {
 	public int getperformance42KM(long userCreatorId, Date todayDate){
 		return performanceDao.getperformance42KM(userCreatorId, todayDate);
 		}
+	
+	public int[] getperformancefastest(long userCreatorId, Date todayDate){
+		return performanceDao.getperformancefastest(userCreatorId, todayDate);
+	}
+	public int[] getperformancelonguest(long userCreatorId, Date todayDate){
+		return performanceDao.getperformancelonguest(userCreatorId, todayDate);
+	}
 }

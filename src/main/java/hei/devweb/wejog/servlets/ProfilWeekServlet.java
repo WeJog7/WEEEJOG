@@ -47,31 +47,39 @@ public class ProfilWeekServlet extends AbstractGenericServlet{
 	   
 	   if ( PerformanceService.getInstance().getperformance1KM(user.getIdusers(), todayDate1week) != 0 ){
 		   
-	   context.setVariable("Week1KM", PerformanceService.getInstance().getperformance1KM(user.getIdusers(), todayDate1week)+" MIN");
+	   context.setVariable("Week1KM", PerformanceService.getInstance().getperformance1KM(user.getIdusers(), todayDate1week)+" Min");
 	   }
 	   else {
 		   context.setVariable("Week1KM", "None");
 	   }
 	   
 	   if ( PerformanceService.getInstance().getperformance5KM(user.getIdusers(), todayDate1week) !=0 ){
-	   context.setVariable("Week5KM", PerformanceService.getInstance().getperformance5KM(user.getIdusers(), todayDate1week)+" MIN");
+	   context.setVariable("Week5KM", PerformanceService.getInstance().getperformance5KM(user.getIdusers(), todayDate1week)+" Min");
 	   }
 	   else {
 		   context.setVariable("Week5KM", "None");
 	   }
 	   if( PerformanceService.getInstance().getperformance10KM(user.getIdusers(), todayDate1week)!=0){
-	   context.setVariable("Week10KM", PerformanceService.getInstance().getperformance10KM(user.getIdusers(), todayDate1week)+" MIN");
+	   context.setVariable("Week10KM", PerformanceService.getInstance().getperformance10KM(user.getIdusers(), todayDate1week)+" Min");
 	   }
 	   else{
 		   context.setVariable("Week10KM", "None");
 	   }
 	   
 	   if(PerformanceService.getInstance().getperformance42KM(user.getIdusers(), todayDate1week)!=0){
-	   context.setVariable("Week42KM", PerformanceService.getInstance().getperformance42KM(user.getIdusers(), todayDate1week)+" MIN");
+	   context.setVariable("Week42KM", PerformanceService.getInstance().getperformance42KM(user.getIdusers(), todayDate1week)+" Min");
 	   }
 	   else{
 		   context.setVariable("Week42KM", "None");
 	   }
+	   
+	   context.setVariable("fastestdistance", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[0]+ " Km");
+	   context.setVariable("fastestduration", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[1]+ " Min");
+	   
+	   context.setVariable("longuestdistance", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[0]+ " Km");
+	   context.setVariable("longuestduration", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[1]+ " Min");
+	   
+	  
 		context.setVariable("User", user);
 		
 		templateEngine.process("profil", context, resp.getWriter());
