@@ -54,16 +54,16 @@ public class PerformanceService {
 		return performanceDao.countNumberOfRace(userCreatorId);
 	}
 	
-	public int getperformanceWeek1KM(long userCreatorId, Date todayDate){
-		return performanceDao.getperformanceWeek1KM(userCreatorId, todayDate);
+	public int getperformance1KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformance1KM(userCreatorId, todayDate);
 		}
-	public int getperformanceWeek5KM(long userCreatorId, Date todayDate){
-		return performanceDao.getperformanceWeek5KM(userCreatorId, todayDate);
+	public int getperformance5KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformance5KM(userCreatorId, todayDate);
 		}
-	public int getperformanceWeek10KM(long userCreatorId, Date todayDate){
-		return performanceDao.getperformanceWeek10KM(userCreatorId, todayDate);
+	public int getperformance10KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformance10KM(userCreatorId, todayDate);
 		}
-	public int getperformanceWeek42KM(long userCreatorId, Date todayDate){
-		return performanceDao.getperformanceWeek42KM(userCreatorId, todayDate);
+	public int getperformance42KM(long userCreatorId, Date todayDate){
+		return performanceDao.getperformance42KM(userCreatorId, todayDate);
 		}
 }

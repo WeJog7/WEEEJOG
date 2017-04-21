@@ -21,8 +21,8 @@ import hei.devweb.wejog.managers.UserService;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet(urlPatterns = {"/user/profil", "/admin/profil"})
-public class ProfilServlet extends AbstractGenericServlet{
+@WebServlet(urlPatterns = {"/user/profilmonth", "/admin/profilmonth"})
+public class ProfilMonthServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -35,7 +35,7 @@ public class ProfilServlet extends AbstractGenericServlet{
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
-		Date todayDate1week = Date.valueOf(LocalDate.now().minusWeeks(1));
+		Date todayDate1week = Date.valueOf(LocalDate.now().minusMonths(1));
 		
 		
 		context.setVariable("description", UserService.getDescription(user.getIdusers()));
@@ -45,29 +45,29 @@ public class ProfilServlet extends AbstractGenericServlet{
 	   context.setVariable("TotalDistance",PerformanceService.getInstance().countDistancePerformance(user.getIdusers()));
 	   context.setVariable("TotalRace",PerformanceService.getInstance().countNumberOfRace(user.getIdusers()));
 	   
-	   if ( PerformanceService.getInstance().getperformanceWeek1KM(user.getIdusers(), todayDate1week) != 0 ){
+	   if ( PerformanceService.getInstance().getperformance1KM(user.getIdusers(), todayDate1week) != 0 ){
 		   
-	   context.setVariable("Week1KM", PerformanceService.getInstance().getperformanceWeek1KM(user.getIdusers(), todayDate1week)+" MIN");
+	   context.setVariable("Week1KM", PerformanceService.getInstance().getperformance1KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else {
 		   context.setVariable("Week1KM", "None");
 	   }
 	   
-	   if ( PerformanceService.getInstance().getperformanceWeek5KM(user.getIdusers(), todayDate1week) !=0 ){
-	   context.setVariable("Week5KM", PerformanceService.getInstance().getperformanceWeek5KM(user.getIdusers(), todayDate1week)+" MIN");
+	   if ( PerformanceService.getInstance().getperformance5KM(user.getIdusers(), todayDate1week) !=0 ){
+	   context.setVariable("Week5KM", PerformanceService.getInstance().getperformance5KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else {
 		   context.setVariable("Week5KM", "None");
 	   }
-	   if( PerformanceService.getInstance().getperformanceWeek10KM(user.getIdusers(), todayDate1week)!=0){
-	   context.setVariable("Week10KM", PerformanceService.getInstance().getperformanceWeek10KM(user.getIdusers(), todayDate1week)+" MIN");
+	   if( PerformanceService.getInstance().getperformance10KM(user.getIdusers(), todayDate1week)!=0){
+	   context.setVariable("Week10KM", PerformanceService.getInstance().getperformance10KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else{
 		   context.setVariable("Week10KM", "None");
 	   }
 	   
-	   if(PerformanceService.getInstance().getperformanceWeek42KM(user.getIdusers(), todayDate1week)!=0){
-	   context.setVariable("Week42KM", PerformanceService.getInstance().getperformanceWeek42KM(user.getIdusers(), todayDate1week)+" MIN");
+	   if(PerformanceService.getInstance().getperformance42KM(user.getIdusers(), todayDate1week)!=0){
+	   context.setVariable("Week42KM", PerformanceService.getInstance().getperformance42KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else{
 		   context.setVariable("Week42KM", "None");
