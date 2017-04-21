@@ -50,44 +50,69 @@
 			</div>
 
 			<div>
-				<label for="name">First Name</label> <input type="text/plain"
-					id="name" name="name" placeholder="Please enter your name" required />
+				<label for="name">First Name</label>
+				<input type="text/plain" id="name" name="name" placeholder="Please enter your name" onBlur="validFirstName()" required />
+				<div class="form-display">
+					<div id="check_name1" class="check1">&#10004;</div>
+					<div id="check_name2" class="check2">X</div>
+				</div>
 			</div>
 
 			<div>
-				<label for="lastName">Last Name</label> <input type="text/plain"
-					id="lastName" name="lastName"
-					placeholder="Please enter your last name" required />
+				<label for="lastName">Last Name</label>
+				<input type="text/plain" id="lastName" name="lastName" placeholder="Please enter your last name" 
+					onBlur="validLastName()" required />
+				<div class="form-display">
+					<div id="check_lastName1" class="check1">&#10004;</div>
+					<div id="check_lastName2" class="check2">X</div>
+				</div>
 			</div>
 
 			<div>
-				<label for="birth">Birth Date</label> <input type="text"
-					id="datepicker" name="birth" required />
+				<label for="birth">Birth Date</label> <input type="text" id="datepicker" name="birth" required />
+				<div class="form-display">
+					<div id="check_date1" class="check1">&#10004;</div>
+					<div id="check_date2" class="check2">X</div>
+				</div>
 			</div>
 
 			<div>
-				<label for="mail">Email</label> <input type="email" name="mail"
-					id="mail" placeholder="Enter your email" required>
-				<!--<p id="mailCheck"></p>-->
+				<label for="mail">Email</label>
+				<input type="email" name="mail"	id="mail" placeholder="Enter your email" onFocus="validDate()" onBlur="validEmail()" required>
+				<div class="form-display">
+					<div id="check_email1" class="check1">&#10004;</div>
+					<div id="check_email2" class="check2">X</div>
+				</div>
 			</div>
 
 			<div>
-				<label for="ConfirmMail">Confirm Email</label> <input type="email"
-					name="ConfirmMail" id="ConfirmMail"
-					placeholder="Confirm your email" required>
+				<label for="ConfirmMail">Confirm Email</label>
+				<input type="email"	name="ConfirmMail" id="confirmMail" onBlur="validConfirmEmail()" placeholder="Confirm your email" required>
+				<div class="form-display">
+					<div id="check_confirmMail1" class="check1">&#10004;</div>
+					<div id="check_confirmMail2" class="check2">X</div>
+				</div>
+				<p id="errorConfirmMail" class="error">Mails address are not the same</p>
 			</div>
 
 			<div>
-				<label for="password">Password</label> <input type="password"
-					id="password" name="password"
-					placeholder="Please enter your password" required />
-				<!--<p id="passwordCheck"></p>-->
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" onBlur="validPassword()" placeholder="Please enter your password" required />
+				<div class="form-display">
+					<div id="check_password1" class="check1">&#10004;</div>
+					<div id="check_password2" class="check2">X</div>
+				</div>
 			</div>
 
 			<div>
-				<label for="confirmPassword">Password Confirmation</label> <input
-					type="password" id="confirmPassword" name="confirmPassword"
+				<label for="confirmPassword">Password Confirmation</label>
+				<input type="password" id="confirmPassword" name="confirmPassword" onBlur="validConfirmPassword()"
 					placeholder="Please confirm your password" required />
+				<div class="form-display">
+					<div id="check_confirmPassword1" class="check1">&#10004;</div>
+					<div id="check_confirmPassword2" class="check2">X</div>
+				</div>
+				<p id="errorConfirmPassword" class="error">You have entered two different passwords</p>
 			</div>
 
 			<div class="g-recaptcha"

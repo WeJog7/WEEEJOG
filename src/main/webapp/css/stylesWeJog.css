@@ -220,6 +220,53 @@ iframe{
 
 /* Page Creation de compte */
 
+.check1{
+	color:white;
+	font-size:20px;
+	font-weight:bold;
+	font-family:Trebuchet MS;
+	background-color: green;
+	padding:5px;
+	text-align:center;
+	display: none;
+	box-shadow: 0 0 2px #888;
+ 	border-radius: 50px;
+ 	height: 30px;
+ 	width: 100%;
+}
+
+
+.check2{
+	color:white;
+	font-size:20px;
+	font-weight:bold;
+	font-family:Trebuchet MS;
+	background-color: red;
+	padding:5px;
+	text-align:center;
+	display: none;
+	box-shadow: 0 0 2px #888;
+	border-radius: 50px;
+	height: 30px;
+	width: 100%;
+}
+
+
+.form-display{
+	display:inline-block;
+	width:5%;
+}
+
+
+.error{
+	margin-left:130px;
+	font-style: italic;
+	font-weight: bold;
+	color : red;
+	display: none;
+}
+
+
 #recaptchaCenter{
 	margin-left: 35%;
 }
@@ -260,7 +307,7 @@ textarea {
 
 
 form#creationCompte input{
-    width: 65%;
+    width: 58%;
     margin: 6px;
     border-radius: 5px;
 }
