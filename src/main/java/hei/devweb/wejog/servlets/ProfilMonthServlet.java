@@ -72,6 +72,14 @@ public class ProfilMonthServlet extends AbstractGenericServlet{
 	   else{
 		   context.setVariable("Week42KM", "None");
 	   }
+	   
+	   
+	   context.setVariable("fastestdistance", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[0]+ " Km");
+	   context.setVariable("fastestduration", PerformanceService.getInstance().getperformancefastest(user.getIdusers(), todayDate1week)[1]+ " Min");
+	   
+	   context.setVariable("longuestdistance", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[0]+ " Km");
+	   context.setVariable("longuestduration", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[1]+ " Min");
+	   
 		context.setVariable("User", user);
 		
 		templateEngine.process("profil", context, resp.getWriter());
