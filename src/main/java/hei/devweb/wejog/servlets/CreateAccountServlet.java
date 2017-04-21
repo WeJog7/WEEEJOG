@@ -55,7 +55,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		String confirmPassword = request.getParameter("confirmPassword");
 
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-		System.out.println(gRecaptchaResponse);
+		//System.out.println(gRecaptchaResponse);
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		
 		firstName = firstName.replaceAll(" ", "");

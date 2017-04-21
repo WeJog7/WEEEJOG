@@ -84,7 +84,7 @@ public class EnvoiMessage {
 				
 			
 			Transport trans = session.getTransport("smtp");
-			trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "benallalminaud");
+			trans.connect("smtp.gmail.com", 587, "weejog@gmail.com", "MOTDEPASSE");
 			trans.sendMessage(mess, mess.getAllRecipients());
 
 			System.out.println("Message Sent !");
