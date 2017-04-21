@@ -92,7 +92,12 @@ function validConfirmEmail(){
 	{
 		document.getElementById("check_confirmMail1").style.display = "none";
 		document.getElementById("check_confirmMail2").style.display = "inline";
-		document.getElementById("errorConfirmMail").style.display = "inline";
+		if(confirmMail==mail){
+			document.getElementById("errorConfirmMail").style.display = "none";
+		}
+		else{
+			document.getElementById("errorConfirmMail").style.display = "inline";
+		}
 		return false;
 	}
 }
@@ -139,7 +144,7 @@ function validConfirmPassword(){
 		document.getElementById("check_confirmPassword1").style.display = "none";
 		document.getElementById("check_confirmPassword2").style.display = "inline";
 		if(confirmPassword==password){
-			document.getElementById("cerrorConfirmPassword").style.display = "none";
+			document.getElementById("errorConfirmPassword").style.display = "none";
 		}
 		else{
 			document.getElementById("errorConfirmPassword").style.display = "inline";
