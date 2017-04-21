@@ -50,27 +50,27 @@ public class ProfilServlet extends AbstractGenericServlet{
 	   context.setVariable("Week1KM", PerformanceService.getInstance().getperformanceWeek1KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else {
-		   context.setVariable("Week1KM", "none");
+		   context.setVariable("Week1KM", "None");
 	   }
 	   
 	   if ( PerformanceService.getInstance().getperformanceWeek5KM(user.getIdusers(), todayDate1week) !=0 ){
 	   context.setVariable("Week5KM", PerformanceService.getInstance().getperformanceWeek5KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else {
-		   context.setVariable("Week5KM", "none");
+		   context.setVariable("Week5KM", "None");
 	   }
 	   if( PerformanceService.getInstance().getperformanceWeek10KM(user.getIdusers(), todayDate1week)!=0){
 	   context.setVariable("Week10KM", PerformanceService.getInstance().getperformanceWeek10KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else{
-		   context.setVariable("Week10KM", "none");
+		   context.setVariable("Week10KM", "None");
 	   }
 	   
 	   if(PerformanceService.getInstance().getperformanceWeek42KM(user.getIdusers(), todayDate1week)!=0){
 	   context.setVariable("Week42KM", PerformanceService.getInstance().getperformanceWeek42KM(user.getIdusers(), todayDate1week)+" MIN");
 	   }
 	   else{
-		   context.setVariable("Week42KM", "none");
+		   context.setVariable("Week42KM", "None");
 	   }
 		context.setVariable("User", user);
 		
