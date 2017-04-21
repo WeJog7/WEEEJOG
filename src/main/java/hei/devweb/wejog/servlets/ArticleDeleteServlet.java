@@ -12,7 +12,7 @@ import hei.devweb.wejog.managers.ArticleService;
 
 
 
-@WebServlet(urlPatterns = {"/admin/deletearticleadmin","/user/deleteArticle"})
+@WebServlet(urlPatterns = {"/admin/deleteArticle","/user/deleteArticle"})
 public class ArticleDeleteServlet extends AbstractGenericServlet {
 
 	private static final long serialVersionUID = 1L;

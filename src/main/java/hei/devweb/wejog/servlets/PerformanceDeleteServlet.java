@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.PerformanceService;
 
-@WebServlet(urlPatterns = {"/admin/deleteperformanceadmin","/user/deletePerformance"})
+@WebServlet(urlPatterns = {"/admin/deletePerformance","/user/deletePerformance"})
 public class PerformanceDeleteServlet extends AbstractGenericServlet {
 
 	private static final long serialVersionUID = 1L;

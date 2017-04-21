@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-501-629.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
-    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
+    <script type="text/javascript" th:src="@{/js/home.js}"></script>
     <title>HomeAdmin</title>
     
    </head>
@@ -74,8 +74,8 @@
 						</div>
 						
 						<div>
-							<a class="alignement" onClick="deleteArticleAdmin('+${article.idArticle}+');return false;" 
-							th:href="'deletearticleadmin?idarticle='+${article.idArticle}"><img id="suppressionAdmin"
+							<a class="alignement" onClick="deleteArticle('+${article.idArticle}+');return false;" 
+							th:href="'deleteArticle?idarticle='+${article.idArticle}"><img id="suppressionAdmin"
 							th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</div>
@@ -93,8 +93,8 @@
 						<p th:text="'Average : ' +${performance.speed}+ ' mph'"></p>
 						<p>More information : </p>
 						<div>
-							<a class="alignement" onClick="deletePerformanceAdmin('+${performance.idPerformance}+');return false;"
-							th:href="'deleteperformanceadmin?idperformance='+${performance.idPerformance}">
+							<a class="alignement" onClick="deletePerformance('+${performance.idPerformance}+');return false;"
+							th:href="'deletePerformance?idperformance='+${performance.idPerformance}">
 							<img id="suppressionAdmin" th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
 							<h3 class="alignement">Delete this post</h3>
 						</div>
