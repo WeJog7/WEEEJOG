@@ -1,8 +1,14 @@
-@media screen and (min-width: 951px) and (max-width: 1140px)
+@media screen and (min-width: 951px) and (max-width: 1210px)
 {
 
 nav{
     width: 60%;
+}
+
+
+#creationCompte{
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 
