@@ -224,6 +224,7 @@ form#connexionCompte label {
 	display: block;
 	width: 100%;
 	text-align: center;
+	margin: 0;
 }
 
 
@@ -253,6 +254,7 @@ form#connexionCompte label {
 	margin-right: 0;
 	padding-left: 0;
 	padding-right: 0;
+	text-align: center;
 }
 
 
@@ -265,6 +267,7 @@ label {
 	display: block;
 	width: 100%;
 	text-align: center;
+	margin: 0;
 }
 
 
@@ -272,6 +275,22 @@ div#sex input{
 	width: 20%;
 }
 
+
+#boutonsSex{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+
+.form-display{
+	display: block;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+}
 
 /*Page userList*/
 

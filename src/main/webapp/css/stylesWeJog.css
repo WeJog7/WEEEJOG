@@ -259,10 +259,19 @@ iframe{
 
 
 .error{
-	margin-left:130px;
+	text-align: center;
 	font-style: italic;
 	font-weight: bold;
 	color : red;
+}
+
+
+#errorConfirmMail{
+	display: none;
+}
+
+
+#errorConfirmPassword{
 	display: none;
 }
 
@@ -275,6 +284,13 @@ iframe{
 #mailCheck, #passwordCheck{
 	color : red;
 }
+
+
+#boutonsSex{
+	width: 58%;
+	display: inline-block;
+}
+
 
 label {
   width: 30%;
@@ -293,7 +309,6 @@ textarea {
 
 
 #creationCompte{
-    text-align: center;
     background-color: white;
     margin-left: 29%;
     margin-right: 29%;
@@ -336,6 +351,17 @@ div#sex input{
 
 div#register input{
     width: 50%;
+}
+
+
+#register{
+	text-align: center;
+}
+
+
+.sexAlign{
+	width: 49%;
+	display: inline-block;
 }
 
 

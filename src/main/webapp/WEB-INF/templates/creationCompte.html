@@ -44,9 +44,15 @@
 			<h2>Create an account</h2>
 
 			<div id="sex">
-				<label for="sex">Sex</label> <input type="radio" name="reponse"
-					value="Male" />Male <input type="radio" name="reponse"
-					value="Female" />Female
+				<label for="sex">Sex</label>
+				<div id="boutonsSex">
+					<div class="sexAlign">
+					<input type="radio" name="reponse" value="Male" />Male
+					</div>
+					<div class="sexAlign">
+					<input type="radio" name="reponse" value="Female" />Female
+					</div>
+				</div>
 			</div>
 
 			<div>
@@ -92,7 +98,9 @@
 					<div id="check_confirmMail1" class="check1">&#10004;</div>
 					<div id="check_confirmMail2" class="check2">X</div>
 				</div>
-				<p id="errorConfirmMail" class="error">Mails address are not the same</p>
+				<div id="errorConfirmMail">
+					<p class="error">Mails address are not the same</p>
+				</div>
 			</div>
 
 			<div>
@@ -112,7 +120,9 @@
 					<div id="check_confirmPassword1" class="check1">&#10004;</div>
 					<div id="check_confirmPassword2" class="check2">X</div>
 				</div>
-				<p id="errorConfirmPassword" class="error">You have entered two different passwords</p>
+				<div id="errorConfirmPassword">
+				<p class="error">You have entered two different passwords</p>
+				</div>
 			</div>
 
 			<div class="g-recaptcha"
