@@ -56,7 +56,7 @@ function validEmail(){
 	var mail = document.getElementById("mail").value;
 	var confirmMail = document.getElementById("confirmMail").value;
 	
-	if(mail.replace(/ /g,"")!="")
+	if(mail.replace(/ /g,"")!="" && validateEmail(mail)==true)
 	{
 		document.getElementById("check_email1").style.display = "inline";
 		document.getElementById("check_email2").style.display = "none";
@@ -167,8 +167,9 @@ function testerRadio(radio) {
 	var flag=0;
 
 
-	if((radio[0].checked || (radio[1].checked)) && firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" && datepicker.replace(/ /g,"")!="" && password!=""
-		&& mail!="" && mail == ConfirmMail && password == confirmPassword && verification.length != 0){
+	if((radio[0].checked || (radio[1].checked)) && firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!="" 
+		&& datepicker.replace(/ /g,"")!="" && password.replace(/ /g,"")!=""	&& mail.replace(/ /g,"")!="" && mail == confirmMail 
+		&& password == confirmPassword && validateEmail(mail)==true && verification.length != 0){
 		return true;
 	}
 	else{
@@ -196,26 +197,41 @@ function testerRadio(radio) {
 			flag = CheckDate(datepicker);
 		}
 
-		if(mail=="" && flag==0){
-			alert('Please enter an email.');
+		if((mail.replace(/ /g,"")=="" || validateEmail(mail)==false) && flag==0){
+			if(mail.replace(/ /g,"")==""){
+				alert('Please enter an email.');
+			}
+			else{
+				alert('Please enter a correct email.');
+			}
+			flag=1;
+		}
+		
+		if(confirmMail.replace(/ /g,"")=="" && flag==0){
+			alert('Please confirm your email.');
+			flag=1;
+		}
+		
+		if(mail != confirmMail && flag==0){
+			alert('Mails address are not the same.');
 			flag=1;
 		}
 
-		if(password=="" && flag==0){
+		if(password.replace(/ /g,"")=="" && flag==0){
 			alert('Please enter a password.');
 			flag=1;
 		}
-
-		if(mail != confirmMail && flag==0){
-			alert('Mails address are not the same.');
-			//document.getElementById("mailCheck").innerHTML = "Mails adress are not the same";
+		
+		if(confirmPassword.replace(/ /g,"")=="" && flag==0){
+			alert('Please confirm your password.');
 			flag=1;
 		}
+
 		if(password != confirmPassword && flag==0){
 			alert('You have entered two different passwords');
-			//document.getElementById("passwordCheck").innerHTML = "You have entered two different passwords";
 			flag=1;
 		}
+		
 		if(verification.length == 0 && flag==0){
 			alert('The captcha must be done.');
 			flag=1;
@@ -258,3 +274,9 @@ function CheckDate(datepicker) {
 
 	return flag;
 };
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}

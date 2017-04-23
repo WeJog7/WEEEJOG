@@ -8,13 +8,18 @@ function validContact(){
 	var flag=0;
 
 	if(verification.length != 0 && email.replace(/ /g,"")!="" && firstName.replace(/ /g,"")!="" && lastName.replace(/ /g,"")!=""
-		&& message.replace(/ /g,"")!=""){
+		&& message.replace(/ /g,"")!="" && validateEmail(email)==true){
 		return true;
 	}
 
 	else{
-		if(email.replace(/ /g,"")==""){
-			alert('Please enter your email.');
+		if(email.replace(/ /g,"")=="" || validateEmail(email)==false){
+			if(email.replace(/ /g,"")==""){
+				alert('Please enter your email.');
+			}
+			else{
+				alert('Please enter a correct email.');
+			}
 			flag=1;
 		}
 
@@ -40,4 +45,10 @@ function validContact(){
 
 		return false;
 	}
+}
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
 }
