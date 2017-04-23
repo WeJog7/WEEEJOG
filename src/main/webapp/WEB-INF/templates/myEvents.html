@@ -33,8 +33,7 @@
 						<h3 th:text="'Time: '+${myEvent.timeAsString}+' '+${myEvent.momentOfTheDay}"></h3>
 						<p th:text="'Place: '+${myEvent.place} "></p>
 						<div class="boutonEventManagement">
-							<a class="boutons_ami" href="addFriend.html">Manage the event</a>
-							<a class="boutons_ami" href="addFriend.html">See more</a>
+							<a class="boutons_ami" th:href="'event?idEvent='+${myEvent.idEvent}">Manage the event</a>
 						</div>
 					</div>
 				</div>
@@ -52,7 +51,7 @@
 					<h3 th:text="'Time: '+${eventSubscribed.timeAsString}+' '+${eventSubscribed.momentOfTheDay}"></h3>
 					<p th:text="'Place: '+${eventSubscribed.place} "></p>
 					<div class="boutonEventManagement">
-						<a class="boutons_ami" href="addFriend.html">See more</a>
+						<a class="boutons_ami" th:href="'event?idEvent='+${eventSubscribed.idEvent}">See more</a>
 						<a class="boutons_ami" onClick="UnsubscribeEvent('+${eventSubscribed.idEvent}+');return false;"
 							th:href="'desinscrireparticipant?idevent='+${eventSubscribed.idEvent}">Unsubscribe</a>
 					</div>
