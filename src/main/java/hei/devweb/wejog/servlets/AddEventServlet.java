@@ -51,6 +51,7 @@ public class AddEventServlet extends AbstractGenericServlet{
 		Double dureeevent=Double.parseDouble(req.getParameter("duration"));
 		Double distanceevent=Double.parseDouble(req.getParameter("distance"));
 		String lieuevent = req.getParameter("adress");
+		String details = req.getParameter("details");
 		
 		String timeAsString = hourAsString+":"+minutesAsString;
 		
@@ -63,7 +64,8 @@ public class AddEventServlet extends AbstractGenericServlet{
 
 			Long userIdCreator = user.getIdusers();
 
-			Event newEvent = new Event(null,date, timeAsString, hour, minutes, momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator);
+			Event newEvent = new Event(null,date, timeAsString, hour, minutes, momentOfTheDay,dureeevent,distanceevent,lieuevent, userIdCreator,
+					details);
 			EventService.getInstance().addEvent(newEvent); 
 			resp.sendRedirect("myEvents");
 		}

@@ -11,7 +11,6 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 
 
-
 @WebServlet(urlPatterns = {"/admin/deleteArticle","/user/deleteArticle"})
 public class ArticleDeleteServlet extends AbstractGenericServlet {
 

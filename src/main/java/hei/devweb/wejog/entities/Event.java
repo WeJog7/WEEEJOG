@@ -18,12 +18,13 @@ public class Event {
 	private Long creatorId ;
 	private String managerFirstName;
 	private String managerPicturePath;
+	private String details;
 
 	/** public Event
 	 * Constructor made for creating an event in database
 	 */
 	public Event (Long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
-			double duration, double distance,String place, Long creatorId) {
+			double duration, double distance,String place, Long creatorId, String details) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.hour = hour;
@@ -34,13 +35,14 @@ public class Event {
 		this.distance=distance;
 		this.place=place;
 		this.creatorId=creatorId;
+		this.details=details;
 	}
 
 	/**
 	 * Constructor made for creating a list of events
 	 */
 	public Event (Long idEvent, LocalDate date, String timeAsString, String momentOfTheDay, double duration, double distance,
-			String place, String managerFirstName, String managerPicturePath) {
+			String place, String managerFirstName, String managerPicturePath, String details) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.timeAsString=timeAsString;
@@ -50,8 +52,17 @@ public class Event {
 		this.place=place;
 		this.managerFirstName= managerFirstName;
 		this.managerPicturePath=managerPicturePath;
+		this.details=details;
 	}
 	
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
 
 	public Integer getMinutes() {
 		return minutes;

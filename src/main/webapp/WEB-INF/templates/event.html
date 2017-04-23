@@ -26,17 +26,25 @@
 				</div>	
 
 				<div class="manageEvent">
+						<h3 class="alignement">Organized by : </h3>
 						<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
-						<h1 class="alignement" th:text="${event.managerFirstName}"></h1>
-						<h1>Event</h1>
-						<h3 th:text="'Date: '+${event.date}"></h3>
-						<h3 th:text="'Time: '+${event.timeAsString}+' '+${event.momentOfTheDay}"></h3>
-						<p th:text="'Place: '+${event.place} "></p>
+						<p class="alignement" th:text="${event.managerFirstName}"></p>
+						<h3 th:text="'Date : '+${event.date}"></h3>
+						<h3 th:text="'Time : '+${event.timeAsString}+' '+${event.momentOfTheDay}"></h3>
+						<h3 th:text="'Place : '+${event.place} "></h3>
+						<p th:text="'Duration : '+${event.duration} "></p>
+						<p th:text="'Distance of the route : '+${event.distance} "></p>
+						<p th:text="'Details : '+${event.details} "></p>
 						<div class="boutonEventManagement">
 							<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
 							th:href="'addparticipant?idevent='+${event.idEvent}">Update the event</a>
-							<a class="boutons_ami" href="addFriend.html">Delete the Event</a>
+							<a class="boutons_ami" onClick="deleteEvent('+${event.idEvent}+');return false;"
+							th:href="'deleteEvent?idEvent='+${event.idEvent}">Delete the Event</a>
 						</div>
+				</div>
+				
+				<div>
+					<!-- Mettre les commentaires ici -->
 				</div>
 			
 

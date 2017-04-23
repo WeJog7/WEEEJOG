@@ -20,7 +20,7 @@ function deletePerformance(idPerformance){
 
 function deleteEvent(idEvent) {
 	if (confirm("Would you like to delete this Event ?")) {
-		window.location("deleteeventadmin?idevent="+idEvent);
+		window.location("deleteEvent?idEvent="+idEvent);
 		return true;
 	}
 	else{
