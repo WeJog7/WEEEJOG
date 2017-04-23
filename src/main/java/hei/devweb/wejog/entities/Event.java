@@ -42,7 +42,7 @@ public class Event {
 	 * Constructor made for creating a list of events
 	 */
 	public Event (Long idEvent, LocalDate date, String timeAsString, String momentOfTheDay, double duration, double distance,
-			String place, String managerFirstName, String managerPicturePath, String details) {
+			String place, Long creatorId, String details, String managerFirstName, String managerPicturePath) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.timeAsString=timeAsString;
@@ -50,9 +50,10 @@ public class Event {
 		this.duration = duration;
 		this.distance=distance;
 		this.place=place;
+		this.creatorId=creatorId;
+		this.details=details;
 		this.managerFirstName= managerFirstName;
 		this.managerPicturePath=managerPicturePath;
-		this.details=details;
 	}
 	
 

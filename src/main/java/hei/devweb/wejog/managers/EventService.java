@@ -2,6 +2,7 @@ package hei.devweb.wejog.managers;
 
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.impl.EventDaoImpl;
@@ -25,6 +26,10 @@ public class EventService {
 		return eventDao.ListEventToDo(todayDate, idusers);
 	}
 
+	public Event getEvent(Long idevent, LocalDate todayDate){
+		return eventDao.getEvent(idevent, todayDate);
+	}
+	
 	public Event getEvent(Long idevent){
 		return eventDao.getEvent(idevent);
 	}

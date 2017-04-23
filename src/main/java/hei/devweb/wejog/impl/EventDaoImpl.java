@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class EventDaoImpl {
 				resultSet.getDouble("duration"),
 				resultSet.getDouble("distance"),
 				resultSet.getString("place"),
+				resultSet.getLong("creatorId"),
 				resultSet.getString("details"),
 				resultSet.getString("prenom"),
 				resultSet.getString("picturePath"));
@@ -34,7 +36,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, details "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "where display AND (date>=? AND creatorId!=?) "
@@ -60,7 +62,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, details "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "where display AND (date>=? AND creatorId!=?) "
@@ -86,7 +88,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, details "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "WHERE creatorId=? and (display AND date>=?) "
@@ -153,13 +155,38 @@ public class EventDaoImpl {
 	}
 
 	
+	public Event getEvent(long idevent, LocalDate todayDate){
+		Event event = null ;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "FROM event "
+					+ "INNER JOIN users ON event.creatorId=users.idusers "
+					+ "WHERE idEvent=? AND date>=? AND display")){
+				statement.setLong(1, idevent);
+				statement.setDate(2, Date.valueOf(todayDate));
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					event = mapperVersEvent(resultSet);
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return event;		
+	}
+	
+	
 	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
-					+ "WHERE idEvent=? ")){
-				statement.setLong(1, idevent);;
+					+ "WHERE idEvent=? AND display ")){
+				statement.setLong(1, idevent);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					event = mapperVersEvent(resultSet);

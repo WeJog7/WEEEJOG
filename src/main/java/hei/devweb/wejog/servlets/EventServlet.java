@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,15 +32,18 @@ public class EventServlet extends AbstractGenericServlet {
 		context.setVariable("User", user);
 		
 		Long idEvent = Long.parseLong(request.getParameter("idEvent"));
-		Event event = EventService.getInstance().getEvent(idEvent);
-		context.setVariable("event", event);
+		LocalDate todayDate = LocalDate.now();
+		Event event = EventService.getInstance().getEvent(idEvent, todayDate);
 		
-		templateEngine.process("event", context, response.getWriter());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(event!=null){
+			context.setVariable("event", event);
+			templateEngine.process("event", context, response.getWriter());
+		}
 		
-		doGet(request, response);
+		else{
+			response.sendRedirect("home");
+		}
+		
 	}
 
 }
