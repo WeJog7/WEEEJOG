@@ -154,7 +154,9 @@ public class EventDaoImpl {
 	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event WHERE idEvent=? ")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM event "
+					+ "INNER JOIN users ON event.creatorId=users.idusers "
+					+ "WHERE idEvent=? ")){
 				statement.setLong(1, idevent);;
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){

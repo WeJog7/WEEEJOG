@@ -904,4 +904,14 @@ body{
 	margin:0;
 }
 
+
+/*Page event*/
+
+.manageEvent{
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+
 }
