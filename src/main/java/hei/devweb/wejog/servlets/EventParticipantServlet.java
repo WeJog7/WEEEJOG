@@ -29,7 +29,7 @@ public class EventParticipantServlet extends AbstractGenericServlet{
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
-		Long idevent = Long.parseLong(req.getParameter("idevent"));
+		Long idevent = Long.parseLong(req.getParameter("idEvent"));
 
 		Event event = EventService.getInstance().getEvent(idevent);
 

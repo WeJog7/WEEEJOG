@@ -58,17 +58,50 @@ public class EventDaoImpl {
 	}
 	
 	
-	public List<Event> listEventsSubscribed(long idusers, Date todayDate){
+	/*public List<Event> listEventsSubscribed(long idusers, Date todayDate){
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, event.idEvent, date, timeAsString, "
 					+ "momentOfTheDay, duration, distance, place, creatorId, details "
 					+ "FROM event "
-					+ "INNER JOIN users ON event.creatorId=users.idusers "
+					+ "INNER JOIN participant ON event.idEvent=participant.idevent "
+					+ "INNER JOIN users ON participant.idusers=users.idusers "
 					+ "where display AND (date>=? AND creatorId!=?) "
 					+ "ORDER BY date ASC, momentOfTheDay, hour ASC, minutes ASC")){
 				statement.setDate(1, todayDate);
 				statement.setLong(2, idusers);
+				ResultSet resultSet = statement.executeQuery();
+				while (resultSet.next()){
+					event.add(mapperVersEvent(resultSet));
+				}
+				statement.close();
+				connection.close();
+			}}
+		catch (SQLException e){
+			e.printStackTrace();
+
+		}
+		return event;
+	}*/
+	
+	public List<Event> listEventsSubscribed(long idusers, Date todayDate){
+		List<Event> event = new ArrayList<>();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT req.prenom AS prenom, "
+					+ "req.picturePath AS picturePath, event.idEvent, date, timeAsString, "
+					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "FROM event "
+					+ "INNER JOIN participant ON event.idEvent=participant.idevent "
+					+ "INNER JOIN (SELECT event.idEvent AS idEvent, users.idusers AS idusers, users.prenom AS prenom, "
+					+ "users.picturePath AS picturePath "
+					+ "FROM users INNER JOIN event "
+					+ "ON users.idusers = event.creatorId) AS req "
+					+ "ON req.idEvent = event.idEvent "
+					+ "where participant.idusers=? AND event.display AND (event.date>=? AND event.creatorId!=?) "
+					+ "ORDER BY date ASC, momentOfTheDay, hour ASC, minutes ASC")){
+				statement.setLong(1, idusers);
+				statement.setDate(2, todayDate);
+				statement.setLong(3, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				while (resultSet.next()){
 					event.add(mapperVersEvent(resultSet));
