@@ -58,32 +58,6 @@ public class EventDaoImpl {
 	}
 	
 	
-	/*public List<Event> listEventsSubscribed(long idusers, Date todayDate){
-		List<Event> event = new ArrayList<>();
-		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, event.idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
-					+ "FROM event "
-					+ "INNER JOIN participant ON event.idEvent=participant.idevent "
-					+ "INNER JOIN users ON participant.idusers=users.idusers "
-					+ "where display AND (date>=? AND creatorId!=?) "
-					+ "ORDER BY date ASC, momentOfTheDay, hour ASC, minutes ASC")){
-				statement.setDate(1, todayDate);
-				statement.setLong(2, idusers);
-				ResultSet resultSet = statement.executeQuery();
-				while (resultSet.next()){
-					event.add(mapperVersEvent(resultSet));
-				}
-				statement.close();
-				connection.close();
-			}}
-		catch (SQLException e){
-			e.printStackTrace();
-
-		}
-		return event;
-	}*/
-	
 	public List<Event> listEventsSubscribed(long idusers, Date todayDate){
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
