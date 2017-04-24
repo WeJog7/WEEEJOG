@@ -25,6 +25,8 @@ public class EventDaoImpl {
 				resultSet.getDouble("duration"),
 				resultSet.getDouble("distance"),
 				resultSet.getString("place"),
+				resultSet.getDouble("latitude"),
+				resultSet.getDouble("longitude"),
 				resultSet.getLong("creatorId"),
 				resultSet.getString("details"),
 				resultSet.getString("prenom"),
@@ -36,7 +38,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "where display AND (date>=? AND creatorId!=?) "
@@ -63,7 +65,7 @@ public class EventDaoImpl {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT req.prenom AS prenom, "
 					+ "req.picturePath AS picturePath, event.idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN participant ON event.idEvent=participant.idevent "
 					+ "INNER JOIN (SELECT event.idEvent AS idEvent, users.idusers AS idusers, users.prenom AS prenom, "
@@ -95,7 +97,7 @@ public class EventDaoImpl {
 		List<Event> event = new ArrayList<>();		
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "WHERE creatorId=? and (display AND date>=?) "
@@ -119,7 +121,8 @@ public class EventDaoImpl {
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO `event`(date, timeAsString, hour, minutes,momentOfTheDay,"
-					+ "`duration`,`distance`,`place`,`creatorId`,details)VALUES(?,?,?,?,?,?,?,?,?,?);",
+					+ "`duration`,`distance`,`place`,latitude,longitude,`creatorId`,details) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?);",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setDate(1,Date.valueOf(newEvent.getDate()));
 			statement.setString(2, newEvent.getTimeAsString());
@@ -129,8 +132,10 @@ public class EventDaoImpl {
 			statement.setDouble(6,newEvent.getDuration());
 			statement.setDouble(7,newEvent.getDistance());
 			statement.setString(8,newEvent.getPlace());
-			statement.setLong(9,newEvent.getCreatorId());
-			statement.setString(10,newEvent.getDetails());
+			statement.setDouble(9,newEvent.getLatitude());
+			statement.setDouble(10,newEvent.getLongitude());
+			statement.setLong(11,newEvent.getCreatorId());
+			statement.setString(12,newEvent.getDetails());
 
 			statement.executeUpdate();
 
@@ -166,7 +171,7 @@ public class EventDaoImpl {
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "WHERE idEvent=? AND date>=? AND display")){
@@ -189,7 +194,7 @@ public class EventDaoImpl {
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
-					+ "momentOfTheDay, duration, distance, place, creatorId, details "
+					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
 					+ "WHERE idEvent=? AND display ")){

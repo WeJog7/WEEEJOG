@@ -218,6 +218,11 @@ iframe{
 }
 
 
+#coordonnees{
+	display: none;
+}
+
+
 /* Page Creation de compte */
 
 .check1{

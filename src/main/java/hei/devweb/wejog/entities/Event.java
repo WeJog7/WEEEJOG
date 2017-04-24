@@ -19,12 +19,14 @@ public class Event {
 	private String managerFirstName;
 	private String managerPicturePath;
 	private String details;
+	private Double latitude;
+	private Double longitude;
 
 	/** public Event
 	 * Constructor made for creating an event in database
 	 */
 	public Event (Long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
-			double duration, double distance,String place, Long creatorId, String details) {
+			double duration, double distance,String place, Double latitude, Double longitude, Long creatorId, String details) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.hour = hour;
@@ -36,13 +38,15 @@ public class Event {
 		this.place=place;
 		this.creatorId=creatorId;
 		this.details=details;
+		this.latitude=latitude;
+		this.longitude=longitude;
 	}
 
 	/**
 	 * Constructor made for creating a list of events
 	 */
 	public Event (Long idEvent, LocalDate date, String timeAsString, String momentOfTheDay, double duration, double distance,
-			String place, Long creatorId, String details, String managerFirstName, String managerPicturePath) {
+			String place, Double latitude, Double longitude, Long creatorId, String details, String managerFirstName, String managerPicturePath) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.timeAsString=timeAsString;
@@ -54,8 +58,26 @@ public class Event {
 		this.details=details;
 		this.managerFirstName= managerFirstName;
 		this.managerPicturePath=managerPicturePath;
+		this.latitude=latitude;
+		this.longitude=longitude;
 	}
 	
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
 
 	public String getDetails() {
 		return details;

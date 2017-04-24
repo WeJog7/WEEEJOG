@@ -139,25 +139,26 @@
 		   			<input type="radio" name="reponse" value="PM" />PM
 		   		</div>
 			</div>
+			
+			<div id="coordonnees">
+				<h3 >Lat</h3>
+				<input type="text/plain" id="lat" name="latitude" class="donnees" required />
+				<h3 >Long</h3>
+				<input type="text/plain" id="long" name="longitude" class="donnees" required />
+			</div>
 
 		    <div>
 		    	<h3>Address</h3>
 		    	<input id="pac-input" name="adress" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
     <script>
-      // This example adds a search box to a map, using the Google Place Autocomplete
-      // feature. People can enter geographical searches. The search box will return a
-      // pick list containing a mix of places and predicted search terms.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
+      
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 13,
           mapTypeId: 'roadmap'
+          
         });
 
         // Create the search box and link it to the UI element.
@@ -179,7 +180,7 @@
           if (places.length == 0) {
             return;
           }
-
+          
           // Clear out the old markers.
           markers.forEach(function(marker) {
             marker.setMap(null);
@@ -212,12 +213,17 @@
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
+              document.getElementById("lat").value = place.geometry.location.lat();
+              document.getElementById("long").value = place.geometry.location.lng();
             } else {
               bounds.extend(place.geometry.location);
             }
           });
           map.fitBounds(bounds);
+          
         });
+        
+        
       }
 
     </script>
