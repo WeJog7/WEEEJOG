@@ -137,6 +137,10 @@ footer{
 }
 
 
+#map{
+	height: 50%;
+}
+
 /* Page profil */
 
 #profil{
@@ -150,6 +154,15 @@ footer{
 	width: 100%;
 }
 
+
+#utilisateur img{
+	max-width:50%;
+}
+
+
+#photo{
+	padding-left:24%;
+}
 
 #description_profil{
 	width: 100%;
@@ -166,14 +179,18 @@ footer{
 
 .tableau_performance_totale {
 	display: block;
-	width: 100%;
+	width: 97%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 5px;
 }
 
 
 .tableau_performance {
 	display: block;
-	width: 100%;
+	width: 97%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 5px;
 }
 
@@ -278,6 +295,11 @@ div#sex input{
 }
 
 
+#sex{
+	width:20%;
+}
+
+
 #boutonsSex{
 	display: block;
 	margin-left: auto;
@@ -292,6 +314,11 @@ div#sex input{
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 15px;
+}
+
+
+input#pac-input {
+	width: 52%;
 }
 
 /*Page userList*/
