@@ -22,7 +22,7 @@ import hei.devweb.wejog.managers.EventService;
  * Servlet implementation class HomeServlet
  */
 @WebServlet(urlPatterns = {"/user/addevent", "/admin/addevent"})
-public class AddEventServlet extends AbstractGenericServlet{
+public class EventAddServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -54,6 +54,10 @@ public class AddEventServlet extends AbstractGenericServlet{
 		Double latitude = Double.parseDouble(req.getParameter("latitude"));
 		Double longitude = Double.parseDouble(req.getParameter("longitude"));
 		String details = req.getParameter("details");
+		
+		if(details.equals("")){
+			details = "None";
+		}
 		
 		String timeAsString = hourAsString+":"+minutesAsString;
 		

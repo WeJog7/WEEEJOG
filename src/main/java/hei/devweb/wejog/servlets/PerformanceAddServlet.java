@@ -19,11 +19,10 @@ import hei.devweb.wejog.managers.PerformanceService;
  * Servlet implementation class HomeServlet
  */
 @WebServlet(urlPatterns = {"/user/addperformance", "/admin/addperformance"})
-public class AddPerformanceServlet extends AbstractGenericServlet{
+public class PerformanceAddServlet extends AbstractGenericServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 

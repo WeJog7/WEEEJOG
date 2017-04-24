@@ -5,7 +5,7 @@ function validEvent(radio) {
 	var hourChoosed = hour.options[hour.selectedIndex].value;
 	var minutes = document.getElementById("minutes");
 	var minutesChoosed = minutes.options[minutes.selectedIndex].value;
-	var address = document.getElementById("adress").value; 
+	var address = document.getElementById("pac-input").value; 
 	var duration = document.getElementById("duration").value; 
 	var distance = document.getElementById("distance").value;
 	var flag=0;

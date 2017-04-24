@@ -23,7 +23,7 @@
 			<h2>Event</h2>
 
 				<div class="manageEvent">
-					<iframe  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" th:src="'https://maps.google.com/maps?q='+${event.latitude}+','+${event.longitude}+'&hl=es;z=14&amp;output=embed'" ></iframe>
+					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" th:src="'https://maps.google.com/maps?q='+${event.latitude}+','+${event.longitude}+'&hl=es;z=14&amp;output=embed'" ></iframe>
 				</div>
 
 				<div class="manageEvent">
@@ -37,8 +37,7 @@
 						<p th:text="'Distance of the route : '+${event.distance} "></p>
 						<p th:text="'Details : '+${event.details} "></p>
 						<div th:if="${administrator}=='yes'" class="boutonEventManagement">
-							<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
-							th:href="'addparticipant?idevent='+${event.idEvent}">Update the event</a>
+							<a class="boutons_ami" th:href="'updateEvent?idEvent='+${event.idEvent}">Update the event</a>
 							<a class="boutons_ami" onClick="deleteEvent('+${event.idEvent}+');return false;"
 							th:href="'deleteEvent?idEvent='+${event.idEvent}">Delete the Event</a>
 						</div>

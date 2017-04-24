@@ -34,17 +34,17 @@
 		<section id ="ajout_performance">
 			<h2>Add an Event</h2>
 
-			<form action="addevent" method="POST" id="formulaire_performance">
+			<form method="POST" id="formulaire_performance" th:each="updateEvent : ${event}">
 
 			<div>
 		    	<h3>Date</h3>
-		   		<input type="text" id="datepicker" name ="date_performance" class="donnees" required />
+		   		<input type="text" id="datepicker" name ="date_performance" class="donnees" th:value="${updateEvent.date}" required />
 		   	</div>
 		   	
 		   	<div>
 		    	<h3 class="alignement">Time</h3>
 		    	<select name = "hour"  id="hour" class="alignement">
-		    		<option value = ""></option>
+		    		<option th:value ="${updateEvent.hour}">[[${updateEvent.hour}]]</option>
 		    		<option value = "01">01</option>
 		    		<option value = "02">02</option>
 		    		<option value = "03">03</option>
@@ -60,7 +60,7 @@
 		    	</select>
 		    	<h3 id="hourLetter" class="alignement">H</h3>
 		    	<select name = "minutes"  id="minutes" class="alignement">
-		    		<option value = ""></option>
+		    		<option th:value ="${updateEvent.minutes}">[[${updateEvent.minutes}]]</option>	
 		    		<option value = "00">00</option>
 		    		<option value = "05">05</option>
 		    		<option value = "10">10</option>
@@ -98,17 +98,19 @@
 
 		    <div>
 		    	<h3>Duration</h3>
-		    	<input type="number" id="duration" name="duration" class="donnees" placeholder="Please enter the duration in minutes" required />
+		    	<input type="number" id="duration" name="duration" class="donnees" placeholder="Please enter the duration in minutes" 
+		    	th:value="${updateEvent.duration}" required />
 		    </div>
 
 		    <div>
 		    	<h3>Distance of the route</h3>
-		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" required />
+		    	<input type="number" id="distance" name="distance" class="donnees" placeholder="Please enter the distance in miles" 
+		    	th:value="${updateEvent.distance}" required />
 		    </div>
 		    
 		    <div>
 		    	<h3>More informations about your event</h3>
-		    	<textarea class="donnees" name="details" maxlength="500" placeholder="Add details here (500 carac max)"></textarea>
+		    	<textarea class="donnees" name="details" maxlength="500" placeholder="Add details here (500 carac max)" th:text="${updateEvent.details}"></textarea>
 		    </div>
 		    
 		    <div id="boutonValidation">
