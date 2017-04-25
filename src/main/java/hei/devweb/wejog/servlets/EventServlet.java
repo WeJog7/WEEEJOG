@@ -37,7 +37,7 @@ public class EventServlet extends AbstractGenericServlet {
 		
 		if(event!=null){
 			context.setVariable("event", event);
-			if(event.getCreatorId()==user.getIdusers()){
+			if(event.getCreatorId()==user.getIdusers() || user.isAdmin()){
 				context.setVariable("administrator", "yes");
 			}
 			templateEngine.process("event", context, response.getWriter());
