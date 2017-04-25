@@ -30,7 +30,6 @@ public class DescriptionServlet extends AbstractGenericServlet {
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		
-		context.setVariable("description", UserService.getDescription(user.getIdusers()));
 		context.setVariable("User", user);
 
 		templateEngine.process("description", context, resp.getWriter());
@@ -42,6 +41,7 @@ public class DescriptionServlet extends AbstractGenericServlet {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		UserService.updateDescription(user.getIdusers(), description);
+		user.setDescription(description);
 		
 		response.sendRedirect("profil");
 	}

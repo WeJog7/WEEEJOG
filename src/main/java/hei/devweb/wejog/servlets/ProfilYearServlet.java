@@ -16,7 +16,7 @@ import org.thymeleaf.context.WebContext;
 import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.CoupleAmiService;
 import hei.devweb.wejog.managers.PerformanceService;
-import hei.devweb.wejog.managers.UserService;
+
 
 /**
  * Servlet implementation class HomeServlet
@@ -29,16 +29,12 @@ public class ProfilYearServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		Date todayDate1week = Date.valueOf(LocalDate.now().minusYears(1));
-		
-		
-		context.setVariable("description", UserService.getDescription(user.getIdusers()));
 		
 	   context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(user.getIdusers()));
 	   context.setVariable("TotalTime",PerformanceService.getInstance().countTimePerformance(user.getIdusers()));

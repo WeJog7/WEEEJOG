@@ -110,7 +110,7 @@ public class PerformanceDaoImpl {
 		List<Performance> performance = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, date, duration, "
-					+ "distance, speed, calories "
+					+ "distance, speed, calories, creatorId "
 					+ "FROM performance "
 					+ "LEFT JOIN ami AS A1 ON performance.creatorId=A1.idusers1 "
 					+ "LEFT JOIN ami AS A2 ON performance.creatorId=A2.idusers2 "
@@ -127,7 +127,8 @@ public class PerformanceDaoImpl {
 							resultSet.getDouble("duration"),
 							resultSet.getDouble("distance"),
 							resultSet.getDouble("speed"),
-							resultSet.getDouble("calories")));
+							resultSet.getDouble("calories"),
+							resultSet.getLong("creatorId")));
 				}
 				statement.close();
 				connection.close();

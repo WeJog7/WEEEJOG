@@ -12,14 +12,7 @@ public class Performance {
 	private Long creatorId ;
 	private String prenom;
 	private String picturePath;
-	
-	public String getPicturePath() {
-		return picturePath;
-	}
 
-	public void setPicturePath(String picturePath) {
-		this.picturePath = picturePath;
-	}
 
 	public Performance(Long idPerformance, LocalDate date, double duration, double distance,
 			double speed, double calories, long creatorId) {
@@ -33,7 +26,7 @@ public class Performance {
 	}
 	
 	public Performance(String prenom, String picturePath, LocalDate date, double duration, double distance,
-			double speed, double calories) {
+			double speed, double calories, long creatorId) {
 		this.prenom=prenom;
 		this.picturePath=picturePath;
 		this.date = date;
@@ -41,6 +34,15 @@ public class Performance {
 		this.distance=distance;
 		this.speed=speed;
 		this.calories=calories;
+		this.creatorId=creatorId;
+	}
+	
+	public String getPicturePath() {
+		return picturePath;
+	}
+
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
 	}
 	
 	public String getPrenom() {

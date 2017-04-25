@@ -18,22 +18,17 @@
 
 		<header th:replace="~{fragments :: headerConnected('valueWithoutImportance')}"></header>
 
-		<section>
+		<section th:each="friend : ${friendUser}">
 
 			<div id="profil">
 				<div id="utilisateur">
-					<div><img th:src ="${member.picturePath}" alt="Photo de profil"></div>
-					<div class="boutons_profil"><a class="bouton_profil" href="picture">Picture</a></div>
-					<div class="boutons_profil"><a class="bouton_profil" href="description">Description</a></div>
-					<div><a class="bouton_profil" href="myNetwork">My Network</a></div>
-					<div><a class="bouton_profil" href="changePassword">Change my password</a></div>
-				    <div><a class="bouton_profil" href="AskingToBeFriend">Invitation(s) to be friend ([[${numberAsking}]])</a></div>
+					<div><img th:src ="${friend.picturePath}" alt="Photo de profil"></div>
 				</div>	
 
 				<div id="description_profil">
-					<h1 th:text="${member.prenom}+' '+${member.nom}"></h1>
+					<h1 th:text="${friend.prenom}+' '+${friend.nom}"></h1>
 					<h3>Description</h3>
-					<p th:text="${member.description}"></p>
+					<p th:text="${friend.description}"></p>
 				</div>
 					
 			</div>
