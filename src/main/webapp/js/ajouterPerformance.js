@@ -79,3 +79,13 @@ function CheckDate(datepicker) {
 
 	return flag;
 };
+
+function vitesse(){
+	
+	var duration = document.getElementById("duration").value;
+	var distance = document.getElementById("distance").value;
+	var average =  ((distance*60)/duration);
+	
+	
+	document.getElementById("average").value = average;
+};
