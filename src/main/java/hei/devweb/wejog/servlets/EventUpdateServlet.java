@@ -23,6 +23,8 @@ import hei.devweb.wejog.managers.EventService;
 @WebServlet(urlPatterns = {"/user/updateEvent", "/admin/updateEvent"})
 public class EventUpdateServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private Long idEvent=null;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(request);
@@ -33,7 +35,7 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 		context.setVariable("User", user);
 		
 		LocalDate todayDate = LocalDate.now();
-		Long idEvent = Long.parseLong(request.getParameter("idEvent"));
+		idEvent = Long.parseLong(request.getParameter("idEvent"));
 		Event event = EventService.getInstance().getEvent(idEvent,todayDate);
 		
 		String hourAsString = event.getTimeAsString().substring(0,2);
@@ -41,10 +43,9 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 		
 		if(event!=null && (event.getCreatorId() == user.getIdusers() || user.isAdmin())){
 			Event updateEvent = new Event(event.getIdEvent(), event.getDate(), hourAsString, minutesAsString, event.getMomentOfTheDay(), 
-					event.getDuration(), event.getDistance(), event.getPlace(), event.getDetails());
-			context.setVariable("event", updateEvent);
-			// faire la suite de la récupération des propriétés de l'événement pour pré-remplir les champs (voir update description)
+					event.getDuration(), event.getDistance(), event.getPlace(), event.getLatitude(), event.getLongitude(), event.getDetails());
 			
+			context.setVariable("event", updateEvent);			
 		}
 		
 		else{
@@ -71,7 +72,7 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 		Double longitude = Double.parseDouble(request.getParameter("longitude"));
 		String details = request.getParameter("details");
 		
-		/*if(details.equals("")){
+		if(details.equals("")){
 			details = "None";
 		}
 		
@@ -81,28 +82,14 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 				&& !"".equals(minutesAsString) && duration!=null && !"".equals(duration) && momentOfTheDay!=null && !"".equals(momentOfTheDay)
 				&& distance!=null && !"".equals(distance) && place!=null && !"".equals(place)){
 
-			HttpServletRequest httpRequest = (HttpServletRequest) request;
-			User user = (User) httpRequest.getSession().getAttribute("user");
-
-			Long userIdCreator = user.getIdusers();
-
-			Event newEvent = new Event(null,date, timeAsString, hour, minutes, momentOfTheDay,duration,distance,place, latitude, longitude, userIdCreator,
+			EventService.getInstance().updateEvent(idEvent,date, timeAsString, hour, minutes, momentOfTheDay,duration,distance,place, latitude, longitude,
 					details);
-			EventService.getInstance().addEvent(newEvent); 
+ 
 			response.sendRedirect("myEvents");
 		}
 
 		else{
 			response.sendRedirect("updateEvent");
-		}*/
-		
-		System.out.println("date "+date);
-		System.out.println("hour "+hour);
-		System.out.println("minutes "+minutes);
-		System.out.println("moment of the day "+momentOfTheDay);
-		System.out.println("duration "+duration);
-		System.out.println("distance "+distance);
-		System.out.println("place "+place);
-		System.out.println("details "+details);
+		}
 	}
 }

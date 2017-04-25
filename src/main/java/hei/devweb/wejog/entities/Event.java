@@ -43,6 +43,26 @@ public class Event {
 		this.latitude=latitude;
 		this.longitude=longitude;
 	}
+	
+	
+	/** public Event
+	 * Constructor made for updating an event in database
+	 */
+	public Event (Long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
+			double duration, double distance,String place, Double latitude, Double longitude, String details) {
+		this.idEvent = idEvent;
+		this.date = date;
+		this.hour = hour;
+		this.minutes = minutes;
+		this.timeAsString=timeAsString;
+		this.momentOfTheDay = momentOfTheDay;
+		this.duration = duration;
+		this.distance=distance;
+		this.place=place;
+		this.details=details;
+		this.latitude=latitude;
+		this.longitude=longitude;
+	}
 
 	/**
 	 * Constructor made for creating a list of events
@@ -68,7 +88,7 @@ public class Event {
 	 * Constructor made for creating an event with hour and minutes in String
 	 */
 	public Event (Long idEvent, LocalDate date, String hourAsString, String minutesAsString, String momentOfTheDay, double duration, double distance,
-			String place, String details) {
+			String place, Double latitude, Double longitude, String details) {
 		this.idEvent = idEvent;
 		this.date = date;
 		this.hourAsString = hourAsString;
@@ -77,6 +97,8 @@ public class Event {
 		this.duration = duration;
 		this.distance=distance;
 		this.place=place;
+		this.latitude=latitude;
+		this.longitude=longitude;
 		this.details=details;
 	}
 	

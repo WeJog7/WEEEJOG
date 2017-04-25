@@ -49,5 +49,10 @@ public class EventService {
 	public void deleteEvent(Long idEvent) {
 		eventDao.deleteEvent(idEvent);
 	}
+	
+	public void updateEvent(long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
+			double duration, double distance, String place, Double latitude, Double longitude, String details) {
+		eventDao.updateEvent(idEvent, date, timeAsString, hour, minutes, momentOfTheDay, duration, distance, place, latitude, longitude, details);
+	}
 
 }

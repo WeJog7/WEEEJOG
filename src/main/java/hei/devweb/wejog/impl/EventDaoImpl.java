@@ -210,4 +210,31 @@ public class EventDaoImpl {
 			}
 		return event;		
 	}
+	
+	
+	public void updateEvent(long idEvent, LocalDate date, String timeAsString, Integer hour, Integer minutes, String momentOfTheDay, 
+			double duration, double distance, String place, Double latitude, Double longitude, String details) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE event SET date= ?, timeAsString=?, hour=?, minutes=?,"
+					+ "momentOfTheDay=?, duration=?, distance=?, place=?, latitude=?, longitude=?, details=? "
+					+ "WHERE idEvent=?")){
+				statement.setDate(1, Date.valueOf(date));
+				statement.setString(2, timeAsString);
+				statement.setInt(3, hour);
+				statement.setInt(4, minutes);
+				statement.setString(5, momentOfTheDay);
+				statement.setDouble(6, duration);
+				statement.setDouble(7, distance);
+				statement.setString(8, place);
+				statement.setDouble(9, latitude);
+				statement.setDouble(10, longitude);
+				statement.setString(11, details);
+				statement.setLong(12, idEvent);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+	}
 }

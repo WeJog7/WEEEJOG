@@ -80,12 +80,7 @@
 		   		</div>
 			</div>
 			
-			<div>
-				<h3 class="alignement">Orginal Address : </h3>
-		    	<p class="alignement" th:text="${updateEvent.place}"></p>
-			</div>
-			
-			<div >
+			<div id="coordonnees">
 				<h3 >Original address</h3>
 				<input type="text/plain" id="place" name="place" class="donnees" th:value="${updateEvent.place}" required />
 				<h3 >Lat</h3>
@@ -97,7 +92,7 @@
 		    <div>
 		    	<h3 class="alignement">Change Address</h3>
 		    	<p class="alignement">(Please enter the address of your event in the Google Map Search Box right below if you change to change it)</p>
-		    	<input id="pac-input" name="adress" class="controls" type="text" placeholder="Search Box" >
+		    	<input id="pac-input" name="adress" class="controls" type="text" placeholder="Search Box" th:value="${updateEvent.place}">
    				<div id="map"></div>
     			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUj2STKgnMqwvPsl04D1gENvCY2xW41c&libraries=places&callback=initAutocomplete"
         		async defer></script>
