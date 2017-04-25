@@ -96,7 +96,10 @@ public class ArticleDaoImpl {
 	public Article getArticle(Long idarticle){
 		Article article = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM article WHERE idArticle=?")){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idArticle, name, postDate, content, link, creatorId, prenom, "
+					+ "picturePath "
+					+ "FROM article INNER JOIN users ON article.creatorId=users.idusers "
+					+ "WHERE idArticle=?")){
 				statement.setLong(1, idarticle);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
