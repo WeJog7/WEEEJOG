@@ -593,6 +593,7 @@ table.network td{
     border-color: white;
     padding : 5px 10px 9px 10px;
     font-weight: bold;
+    display: inline-block;
 }
 
 
