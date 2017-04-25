@@ -63,7 +63,7 @@ public class CommentEvent {
 		return idComment;
 	}
 
-	public void setIdComments(Long idComment) {
+	public void setIdComment(Long idComment) {
 		this.idComment = idComment;
 	}
 

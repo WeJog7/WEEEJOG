@@ -13,5 +13,20 @@ public class CommentEventService {
 	public List<CommentEvent> ListCommentEventToDo(Long idEvent){
 		return commentDao.ListCommentEventToDo(idEvent);
 	}
+	
+	
+	public CommentEvent addCommentEvent(CommentEvent newCommentEvent){
+		return commentDao.addCommentEvent(newCommentEvent);
+	}
+	
+	
+	public void deleteCommentEvent(long idComment) {
+		commentDao.deleteCommentEvent(idComment);
+	}
+	
+	
+	public CommentEvent getCommentEvent(Long idEvent){
+		return commentDao.getCommentEvent(idEvent);
+	}
 
 }
