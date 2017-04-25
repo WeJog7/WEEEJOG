@@ -44,7 +44,7 @@
 		   	<div>
 		    	<h3 class="alignement">Time</h3>
 		    	<select name = "hour"  id="hour" class="alignement">
-		    		<option th:value ="${updateEvent.hourAsString}"></option>
+		    		<option th:value ="${updateEvent.hourAsString}">[[${updateEvent.hourAsString}]] (Original)</option>
 		    		<option value = "01">01</option>
 		    		<option value = "02">02</option>
 		    		<option value = "03">03</option>
@@ -60,7 +60,7 @@
 		    	</select>
 		    	<h3 id="hourLetter" class="alignement">H</h3>
 		    	<select name = "minutes"  id="minutes" class="alignement">
-		    		<option th:value ="${updateEvent.minutesAsString}"></option>	
+		    		<option th:value ="${updateEvent.minutesAsString}">[[${updateEvent.minutesAsString}]] (Original)</option>	
 		    		<option value = "00">00</option>
 		    		<option value = "05">05</option>
 		    		<option value = "10">10</option>
