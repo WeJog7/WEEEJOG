@@ -348,4 +348,21 @@ form#changePassword input{
 	width: 95%;
 }
 
+
+/*Page evenement*/
+
+.manageEvent{
+	display: block;
+	width: 97%;
+	padding-left: 0;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#detailsEvent{
+	padding-left: 2%;
+}
+
 }

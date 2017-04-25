@@ -26,7 +26,7 @@
 					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" th:src="'https://maps.google.com/maps?q='+${event.latitude}+','+${event.longitude}+'&hl=es;z=14&amp;output=embed'" ></iframe>
 				</div>
 
-				<div class="manageEvent">
+				<div id="detailsEvent" class="manageEvent">
 						<h3 class="alignement">Organized by : </h3>
 						<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
 						<p class="alignement" th:text="${event.managerFirstName}"></p>
