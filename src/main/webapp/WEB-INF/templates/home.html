@@ -80,7 +80,6 @@
 						<p th:text="'During : '+${performance.duration}+'minutes'"></p>
 						<p th:text="'Calories: ' +${performance.calories}+ ' cal'"></p>
 						<p th:text="'Average: ' +${performance.speed}+ ' mph'"></p>
-						<p>More information : </p>
 						<div>
 							<a class="alignement" onClick="deletePerformance('+${performance.idPerformance}+');return false;"
 							th:href="'deletePerformance?idperformance='+${performance.idPerformance}">
@@ -101,8 +100,7 @@
 						<p th:text="'During : '+${friendPerformance.duration}+'minutes'"></p>
 						<p th:text="'Calories: ' +${friendPerformance.calories}+ ' cal'"></p>
 						<p th:text="'Average: ' +${friendPerformance.speed}+ ' mph'"></p>
-						<p>More information : </p>
-						<div id="ajout_ami"><a class="boutons_ami" th:href="'friendProfilMonth?idUser='+${friendPerformance.creatorId}">Access to the profil</a></div>
+						<div id="ajout_ami"><a class="boutons_ami" th:href="'friendProfil?idUser='+${friendPerformance.creatorId}">Access to the profil</a></div>
 					</div>
 				</div>
 			</div>

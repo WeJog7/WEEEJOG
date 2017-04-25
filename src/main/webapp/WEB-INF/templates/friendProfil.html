@@ -53,9 +53,9 @@
 
 			<div id="menu_home">
 				<div>
-					<div class="liens"><a class="boutons_performance" href="profilweek">Week</a></div>
-					<div class="liens"><a class="boutons_performance" href="profilmonth">Month</a></div>
-					<div class="liens"><a class="boutons_performance" href="profilyear">Year</a></div>
+					<div class="liens"><a class="boutons_performance" th:href="'friendProfil?idUser='+${friend.idusers}">Week</a></div>
+					<div class="liens"><a class="boutons_performance" th:href="'friendProfilMonth?idUser='+${friend.idusers}">Month</a></div>
+					<div class="liens"><a class="boutons_performance" th:href="'friendProfilYear?idUser='+${friend.idusers}">Year</a></div>
 				</div>
 			</div>
 
