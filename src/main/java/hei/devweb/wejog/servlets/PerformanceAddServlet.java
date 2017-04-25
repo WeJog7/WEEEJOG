@@ -37,7 +37,9 @@ public class PerformanceAddServlet extends AbstractGenericServlet{
 		LocalDate dateperformance = LocalDate.parse(dateAsString);
 		Double dureeperformance=Double.parseDouble(req.getParameter("duration"));
 		Double distanceperformance=Double.parseDouble(req.getParameter("distance"));
-		Double vitesseperformance=Double.parseDouble(req.getParameter("average"));
+		
+		Double vitesseperformance = ((distanceperformance*60)/dureeperformance);
+		System.out.println("vitesse:"+vitesseperformance);
 		Double calories=Double.parseDouble(req.getParameter("calories"));
 
 		if(dateAsString!=null && !"".equals(dateAsString) && dureeperformance!=null && !"".equals(dureeperformance) && distanceperformance!=null 
