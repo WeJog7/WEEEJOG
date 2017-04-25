@@ -22,9 +22,8 @@ import hei.devweb.wejog.managers.UserService;
  */
 
 @WebServlet(urlPatterns = {"/user/friendProfilMonth", "/admin/friendProfilMonth"})
-public class FriendProfilServlet extends AbstractGenericServlet {
+public class FriendProfilMonthServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
@@ -40,8 +39,6 @@ public class FriendProfilServlet extends AbstractGenericServlet {
 		User friend = UserService.getInstance().getUser(idUser);
 
 		if(CoupleAmiService.getInstance().getFriendCouple(user.getIdusers(), friend.getIdusers()) !=null){
-
-			context.setVariable("description", UserService.getDescription(friend.getIdusers()));
 
 			context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(friend.getIdusers()));
 			context.setVariable("TotalTime",PerformanceService.getInstance().countTimePerformance(friend.getIdusers()));

@@ -79,5 +79,4 @@ public class ProfilYearServlet extends AbstractGenericServlet{
 		templateEngine.process("profil", context, resp.getWriter());
 	}
 
-
 }
