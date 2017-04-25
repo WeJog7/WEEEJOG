@@ -170,7 +170,7 @@ public class EventDaoImpl {
 	public Event getEvent(long idevent, LocalDate todayDate){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, hour, minutes,"
 					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "
@@ -193,7 +193,7 @@ public class EventDaoImpl {
 	public Event getEvent(long idevent){
 		Event event = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT prenom, picturePath, idEvent, date, timeAsString, hour, minutes,"
 					+ "momentOfTheDay, duration, distance, place, latitude, longitude, creatorId, details "
 					+ "FROM event "
 					+ "INNER JOIN users ON event.creatorId=users.idusers "

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-501-629.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <meta name="viewport" content="height=device-height"/>
-    <script type="text/javascript" th:src="@{/js/ajouterEvenement.js}"></script>
+    <script type="text/javascript" th:src="@{/js/updateEvent.js}"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -44,7 +44,7 @@
 		   	<div>
 		    	<h3 class="alignement">Time</h3>
 		    	<select name = "hour"  id="hour" class="alignement">
-		    		<option th:value ="${updateEvent.hour}">[[${updateEvent.hour}]]</option>
+		    		<option th:value ="${updateEvent.hourAsString}"></option>
 		    		<option value = "01">01</option>
 		    		<option value = "02">02</option>
 		    		<option value = "03">03</option>
@@ -60,7 +60,7 @@
 		    	</select>
 		    	<h3 id="hourLetter" class="alignement">H</h3>
 		    	<select name = "minutes"  id="minutes" class="alignement">
-		    		<option th:value ="${updateEvent.minutes}">[[${updateEvent.minutes}]]</option>	
+		    		<option th:value ="${updateEvent.minutesAsString}"></option>	
 		    		<option value = "00">00</option>
 		    		<option value = "05">05</option>
 		    		<option value = "10">10</option>
@@ -75,22 +75,29 @@
 					<option value = "55">55</option>		
 		    	</select>
 		    	<div id="sex" class="alignement">
-		   			<input type="radio" name="reponse" value="AM" />AM
-		   			<input type="radio" name="reponse" value="PM" />PM
+		    		<div th:replace="~{fragments :: momentOfTheDay+${updateEvent.momentOfTheDay}}" >
+		   			</div>
 		   		</div>
 			</div>
 			
-			<div id="coordonnees">
+			<div>
+				<h3 class="alignement">Orginal Address : </h3>
+		    	<p class="alignement" th:text="${updateEvent.place}"></p>
+			</div>
+			
+			<div >
+				<h3 >Original address</h3>
+				<input type="text/plain" id="place" name="place" class="donnees" th:value="${updateEvent.place}" required />
 				<h3 >Lat</h3>
-				<input type="text/plain" id="lat" name="latitude" class="donnees" required />
+				<input type="text/plain" id="lat" name="latitude" class="donnees" th:value="${updateEvent.latitude}" required />
 				<h3 >Long</h3>
-				<input type="text/plain" id="long" name="longitude" class="donnees" required />
+				<input type="text/plain" id="long" name="longitude" class="donnees" th:value="${updateEvent.longitude}" required />
 			</div>
 
 		    <div>
-		    	<h3 class="alignement">Address</h3>
-		    	<p class="alignement">(Please enter the address of your event in the Google Map Search Box right below)</p>
-		    	<input id="pac-input" name="adress" class="controls" type="text" placeholder="Search Box">
+		    	<h3 class="alignement">Change Address</h3>
+		    	<p class="alignement">(Please enter the address of your event in the Google Map Search Box right below if you change to change it)</p>
+		    	<input id="pac-input" name="adress" class="controls" type="text" placeholder="Search Box" >
    				<div id="map"></div>
     			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUj2STKgnMqwvPsl04D1gENvCY2xW41c&libraries=places&callback=initAutocomplete"
         		async defer></script>

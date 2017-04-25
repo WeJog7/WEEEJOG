@@ -5,13 +5,12 @@ function validEvent(radio) {
 	var hourChoosed = hour.options[hour.selectedIndex].value;
 	var minutes = document.getElementById("minutes");
 	var minutesChoosed = minutes.options[minutes.selectedIndex].value;
-	var address = document.getElementById("pac-input").value; 
 	var duration = document.getElementById("duration").value; 
 	var distance = document.getElementById("distance").value;
 	var flag=0;
 
 	if((radio[0].checked || (radio[1].checked)) && datepicker.replace(/ /g,"")!="" && hourChoosed!="" && minutesChoosed!="" 
-		&& address.replace(/ /g,"")!=""	&& duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!=""){
+		&& duration.replace(/ /g,"")!="" && distance.replace(/ /g,"")!=""){
 		return true;
 	}
 	else{
@@ -36,11 +35,6 @@ function validEvent(radio) {
 
 		if (!radio[0].checked && !radio[1].checked && flag==0){
 			alert("Please enter the moment of the day.");
-			flag=1;
-		}
-
-		if(address.replace(/ /g,"")=="" && flag==0){
-			alert('Please enter an address.');
 			flag=1;
 		}
 
@@ -92,11 +86,12 @@ function CheckDate(datepicker) {
 	return flag;
 };
 
+
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 51.5073509, lng: -0.12775829999998223},
-    zoom: 13,
-    mapTypeId: 'roadmap'
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13,
+      mapTypeId: 'roadmap'
       
     });
 
@@ -163,4 +158,4 @@ function initAutocomplete() {
     });
     
     
-  }
+}

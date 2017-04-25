@@ -32,12 +32,17 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		
-		
+		LocalDate todayDate = LocalDate.now();
 		Long idEvent = Long.parseLong(request.getParameter("idEvent"));
-		Event event = EventService.getInstance().getEvent(idEvent);
+		Event event = EventService.getInstance().getEvent(idEvent,todayDate);
+		
+		String hourAsString = event.getTimeAsString().substring(0,2);
+		String minutesAsString = event.getTimeAsString().substring(3);
 		
 		if(event!=null && (event.getCreatorId() == user.getIdusers() || user.isAdmin())){
-			context.setVariable("event", event);
+			Event updateEvent = new Event(event.getIdEvent(), event.getDate(), hourAsString, minutesAsString, event.getMomentOfTheDay(), 
+					event.getDuration(), event.getDistance(), event.getPlace(), event.getDetails());
+			context.setVariable("event", updateEvent);
 			// faire la suite de la récupération des propriétés de l'événement pour pré-remplir les champs (voir update description)
 			
 		}
@@ -92,6 +97,9 @@ public class EventUpdateServlet extends AbstractGenericServlet {
 		}*/
 		
 		System.out.println("date "+date);
+		System.out.println("hour "+hour);
+		System.out.println("minutes "+minutes);
+		System.out.println("moment of the day "+momentOfTheDay);
 		System.out.println("duration "+duration);
 		System.out.println("distance "+distance);
 		System.out.println("place "+place);

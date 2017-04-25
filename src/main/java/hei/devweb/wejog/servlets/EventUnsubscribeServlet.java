@@ -1,6 +1,8 @@
 package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +25,9 @@ public class EventUnsubscribeServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 
 		Long idevent = Long.parseLong(req.getParameter("idevent"));
+		LocalDate todayDate = LocalDate.now();
 
-		if(EventService.getInstance().getEvent(idevent) != null){
+		if(EventService.getInstance().getEvent(idevent,todayDate) != null){
 			ParticipantService.getInstance().DesinscrireEvent(idevent, user.getIdusers());
 		}
 

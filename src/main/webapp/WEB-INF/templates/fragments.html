@@ -89,6 +89,16 @@
 		<h3 class="alignement">Delete your article</h3>
 	</div>
 	
+	<div th:fragment="momentOfTheDayAM">
+		<input type="radio" name="reponse" value="AM" checked/>AM
+		<input type="radio" name="reponse" value="PM" />PM
+	</div>
+	
+	<div th:fragment="momentOfTheDayPM">
+		<input type="radio" name="reponse" value="AM" />AM
+		<input type="radio" name="reponse" value="PM" checked/>PM
+	</div>
+	
   </body>
   
 </html>

@@ -10,6 +10,8 @@ public class Event {
 	private LocalDate date;
 	private Integer hour;
 	private Integer minutes;
+	private String hourAsString;
+	private String minutesAsString;
 	private String timeAsString;
 	private String momentOfTheDay;
 	private Double duration;
@@ -62,6 +64,38 @@ public class Event {
 		this.longitude=longitude;
 	}
 	
+	/**
+	 * Constructor made for creating an event with hour and minutes in String
+	 */
+	public Event (Long idEvent, LocalDate date, String hourAsString, String minutesAsString, String momentOfTheDay, double duration, double distance,
+			String place, String details) {
+		this.idEvent = idEvent;
+		this.date = date;
+		this.hourAsString = hourAsString;
+		this.minutesAsString = minutesAsString;
+		this.momentOfTheDay = momentOfTheDay;
+		this.duration = duration;
+		this.distance=distance;
+		this.place=place;
+		this.details=details;
+	}
+	
+
+	public String getHourAsString() {
+		return hourAsString;
+	}
+
+	public void setHourAsString(String hourString) {
+		this.hourAsString = hourString;
+	}
+
+	public String getMinutesAsString() {
+		return minutesAsString;
+	}
+
+	public void setMinutesAsString(String minutesString) {
+		this.minutesAsString = minutesString;
+	}
 
 	public Double getLatitude() {
 		return latitude;
