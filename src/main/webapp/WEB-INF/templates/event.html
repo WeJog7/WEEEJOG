@@ -58,7 +58,18 @@
 						<div class = "commentContent">
 							<p th:text="${comment.content}"><p>
 						</div>
-					</div>				
+					</div>
+					
+					<form method="POST" id="addComment">
+						<div id="newCommentary">
+	    					<h3>Add a commentary</h3>
+		    				<textarea id="newCommentaryContent" name="newCommentaryContent" maxlength="500" placeholder="Write your comment here (500 carac max)"></textarea>
+		    			</div>
+		    		
+		    			<div id="boutonValidation">
+		   					<input type="submit" id="validation" value="Post your comment" />
+		   				</div>		
+		   			</form>	
 				</div>
 
 		</section>
