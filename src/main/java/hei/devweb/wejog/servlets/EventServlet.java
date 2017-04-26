@@ -19,6 +19,7 @@ import hei.devweb.wejog.entities.User;
 import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.CommentEventService;
 import hei.devweb.wejog.managers.EventService;
+import hei.devweb.wejog.managers.ParticipantService;
 
 /**
  * Servlet implementation class EventServlet
@@ -41,6 +42,9 @@ public class EventServlet extends AbstractGenericServlet {
 		idEvent = Long.parseLong(request.getParameter("idEvent"));
 		LocalDate todayDate = LocalDate.now();
 		Event event = EventService.getInstance().getEvent(idEvent, todayDate);
+		
+		
+		context.setVariable("countUsersSubscribed", ParticipantService.getInstance().countUsersSubscribed(idEvent));
 		
 		if(event!=null){
 			context.setVariable("event", event);

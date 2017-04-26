@@ -67,7 +67,22 @@ public class ParticipantDaoImpl {
 				throw new WejogSQLException(e);
 			}
 }
-	
+	public int countUsersSubscribed(long idevent){
+		int count = 0;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT COUNT(idusers) AS total FROM participant WHERE idevent=?")){
+				statement.setLong(1, idevent);
+				ResultSet resultSet = statement.executeQuery();
+				while ( resultSet.next()){
+					count = resultSet.getInt("total");
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return count;	
+	}
 	
 }
 

@@ -28,4 +28,8 @@ public class ParticipantService {
 	public void DesinscrireEvent(long idevent, long idusers){
 		participantDao.DesinscrireEvent(idevent, idusers);
 	}
+	
+	public int countUsersSubscribed(long idevent){
+		return participantDao.countUsersSubscribed(idevent);
+	}
 }
