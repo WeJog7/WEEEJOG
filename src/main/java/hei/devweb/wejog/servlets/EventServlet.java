@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import hei.devweb.wejog.entities.CommentEvent;
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.CommentEventService;
 import hei.devweb.wejog.managers.EventService;
 
@@ -25,7 +27,9 @@ import hei.devweb.wejog.managers.EventService;
 @WebServlet(urlPatterns = {"/user/event", "/admin/event"})
 public class EventServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
-
+    
+	private Long idEvent=null;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(request);
 		WebContext context = new WebContext(request, response, request.getServletContext());
@@ -34,7 +38,7 @@ public class EventServlet extends AbstractGenericServlet {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		context.setVariable("User", user);
 		
-		Long idEvent = Long.parseLong(request.getParameter("idEvent"));
+		idEvent = Long.parseLong(request.getParameter("idEvent"));
 		LocalDate todayDate = LocalDate.now();
 		Event event = EventService.getInstance().getEvent(idEvent, todayDate);
 		
@@ -46,10 +50,6 @@ public class EventServlet extends AbstractGenericServlet {
 			
 			context.setVariable("commentList", CommentEventService.getInstance().ListCommentEventToDo(idEvent));
 			
-			/*LocalDateTime dateEssai = LocalDateTime.now();
-			
-			String date = dateEssai.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));*/
-			
 			templateEngine.process("event", context, response.getWriter());
 		}
 		
@@ -58,5 +58,22 @@ public class EventServlet extends AbstractGenericServlet {
 		}
 		
 	}
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		User user = (User) httpRequest.getSession().getAttribute("user");
+		
+		String content= request.getParameter("newCommentaryContent");
+		LocalDateTime dateEssai = LocalDateTime.now();
+		String date = dateEssai.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		
+		
+		
+		
+	CommentEvent newComment= new CommentEvent(null,idEvent,user.getIdusers(),date,content);
+	CommentEventService.getInstance().addCommentEvent(newComment); 
+		
+		
+	}
 }
