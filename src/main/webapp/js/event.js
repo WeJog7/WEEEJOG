@@ -6,3 +6,32 @@ function deleteEvent(idEvent) {
 	else{
 		return false;}
 }
+
+
+function validComment(){
+
+	var newCommentaryContent = document.getElementById("newCommentaryContent").value;
+
+	if(newCommentaryContent.replace(/ /g,"")!=""){
+		return true;
+	}
+
+	else{
+		alert('Please enter a commentary.');
+		return false;
+	}
+}
+
+
+function showComments() {
+	document.getElementById('oldComments').style.display = 'inline';
+    document.getElementById('buttonHideComments').style.display = 'inline';
+    document.getElementById('buttonShowComments').style.display = 'none';  
+}
+
+
+function hideComments() {
+    document.getElementById('oldComments').style.display = 'none';
+    document.getElementById('buttonHideComments').style.display = 'none';
+    document.getElementById('buttonShowComments').style.display = 'inline';
+}

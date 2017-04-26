@@ -677,9 +677,11 @@ a:hover.boutons_home{
 	border-style: solid;
     border-color: #1A7A50;
     border-radius: 5px;
-	width: 49%;
+	width: 45%;
 	display: inline-block;
 	margin-bottom: 10px;
+	padding-left: 15px;
+	padding-top: 10px;
 }
 
 
@@ -1050,5 +1052,34 @@ iframe{
 	text-align: center;
 }
 
+
+#oldComments{
+	display: none;
+}
+
+
+.buttonShowAndHide{
+	height : 40px;
+    border-radius: 10px;
+    background-color : #1A7A50;
+    color: white;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+
+#commentValidation{
+	margin-top: 10px;
+}
+
+
+#buttonHideComments{
+	display: none;
+}
+
+
+.alignButton{
+	text-align: center;
+}
 
 }

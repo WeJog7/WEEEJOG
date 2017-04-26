@@ -49,18 +49,46 @@
 				
 				<div id="commentList">
 					<h3 id="commentTitle" th:text="${commentTitle}"></h3>
-					<div class="comment" th:each="comment : ${commentList}">
-						<div class="informations">
-							<img id="littlePicture" th:src ="${comment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
-							<h4 id="commentManagerName" class="alignement" th:text="${comment.managerFirstName}"></h4>
-							<h4 id="commentPostDateTime">Post at : [[${comment.postDateTime}]]</h4>
-						</div>
+					
+					<div th:if="${isThereComments}=='yes'">
+					<div class="alignButton">
+						<button id="buttonShowComments" class="buttonShowAndHide" onclick="showComments()">Show previous commentaries</button>
+					</div>
+					
+					<div id="oldComments">
+						<div class="comment" th:each="comment : ${commentList}">
+							<div class="informations">
+								<img id="littlePicture" th:src ="${comment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+								<h4 id="commentManagerName" class="alignement" th:text="${comment.managerFirstName}"></h4>
+								<h4 id="commentPostDateTime">Post at : [[${comment.postDateTime}]]</h4>
+							</div>
 
-						<div class = "commentContent">
-							<p th:text="${comment.content}"><p>
+							<div class = "commentContent">
+								<p th:text="${comment.content}"><p>
+							</div>
 						</div>
 					</div>
 					
+					<div class="alignButton">
+						<button id="buttonHideComments" class="buttonShowAndHide" onclick="hideComments()">Hide previous commentaries</button>
+					</div>
+					
+					</div>
+					
+					<div>
+						<div class="comment" th:each="recentComment : ${recentCommentsList}">
+							<div class="informations">
+								<img id="littlePicture" th:src ="${recentComment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+								<h4 id="commentManagerName" class="alignement" th:text="${recentComment.managerFirstName}"></h4>
+								<h4 id="commentPostDateTime">Post at : [[${recentComment.postDateTime}]]</h4>
+							</div>
+
+							<div class = "commentContent">
+								<p th:text="${recentComment.content}"><p>
+							</div>
+						</div>
+					</div>
+										
 					<form method="POST" id="addComment">
 						<div id="newCommentary">
 	    					<h3>Add a commentary</h3>
@@ -68,7 +96,7 @@
 		    			</div>
 		    		
 		    			<div id="boutonValidation">
-		   					<input type="submit" id="validation" value="Post your comment" />
+		   					<input type="submit" id="commentValidation" value="Post your comment" onClick="return validComment();"/>
 		   				</div>		
 		   			</form>	
 				</div>
