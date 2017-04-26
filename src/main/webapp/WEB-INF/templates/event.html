@@ -22,6 +22,7 @@
 		<section id ="ajout_performance">
 			<h2>Event</h2>
 
+			<div>
 				<div class="manageEvent">
 					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" th:src="'https://maps.google.com/maps?q='+${event.latitude}+','+${event.longitude}+'&hl=es;z=14&amp;output=embed'" ></iframe>
 				</div>
@@ -43,10 +44,22 @@
 						</div>
 				</div>
 				
-				<div>
-					<!-- Mettre les commentaires ici -->
 				</div>
-			
+				
+				<div id="commentList">
+					<h3 id="commentTitle" >Commentaries</h3>
+					<div class="comment" >
+						<div class="informations">
+							<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+							<h4 id="commentManagerName" class="alignement" th:text="${event.managerFirstName}"></h4>
+							<h4 id="commentPostDate" >Post at : </h4>
+						</div>
+
+						<div class = "commentContent">
+							<p th:text="${commentaire.avis}"><p>
+						</div>
+					</div>				
+				</div>
 
 		</section>
 
