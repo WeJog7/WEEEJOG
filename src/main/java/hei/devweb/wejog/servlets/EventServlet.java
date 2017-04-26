@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +52,17 @@ public class EventServlet extends AbstractGenericServlet {
 				context.setVariable("administrator", "yes");
 			}
 			
-			context.setVariable("commentList", CommentEventService.getInstance().ListCommentEventToDo(idEvent));
+			List<CommentEvent> commentsList = CommentEventService.getInstance().ListCommentEventToDo(idEvent);
 			
+			if(!commentsList.isEmpty()){
+			context.setVariable("commentList", CommentEventService.getInstance().ListCommentEventToDo(idEvent));
+			context.setVariable("commentTitle", "Commentaries");
+			}
+			
+			else{
+				context.setVariable("commentTitle", "No commentaries to display");
+			}
+		
 			templateEngine.process("event", context, response.getWriter());
 		}
 		
