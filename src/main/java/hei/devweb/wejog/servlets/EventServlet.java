@@ -68,12 +68,12 @@ public class EventServlet extends AbstractGenericServlet {
 		LocalDateTime dateEssai = LocalDateTime.now();
 		String date = dateEssai.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		
+		if(content!=null && !"".equals(content)){
+			CommentEvent newComment= new CommentEvent(null,idEvent,user.getIdusers(),date,content);
+			CommentEventService.getInstance().addCommentEvent(newComment); 
+		}
 		
-		
-		
-	CommentEvent newComment= new CommentEvent(null,idEvent,user.getIdusers(),date,content);
-	CommentEventService.getInstance().addCommentEvent(newComment); 
-		
+		response.sendRedirect("event?idEvent="+idEvent);
 		
 	}
 }
