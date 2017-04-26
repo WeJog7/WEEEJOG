@@ -2,6 +2,8 @@ package hei.devweb.wejog.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,7 @@ import org.thymeleaf.context.WebContext;
 
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.User;
+import hei.devweb.wejog.managers.CommentEventService;
 import hei.devweb.wejog.managers.EventService;
 
 /**
@@ -40,6 +43,13 @@ public class EventServlet extends AbstractGenericServlet {
 			if(event.getCreatorId()==user.getIdusers() || user.isAdmin()){
 				context.setVariable("administrator", "yes");
 			}
+			
+			context.setVariable("commentList", CommentEventService.getInstance().ListCommentEventToDo(idEvent));
+			
+			/*LocalDateTime dateEssai = LocalDateTime.now();
+			
+			String date = dateEssai.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));*/
+			
 			templateEngine.process("event", context, response.getWriter());
 		}
 		

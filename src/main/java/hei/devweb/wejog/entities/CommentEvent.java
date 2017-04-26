@@ -1,13 +1,12 @@
 package hei.devweb.wejog.entities;
 
-import java.time.LocalDate;
 
 public class CommentEvent {
 	
 	private Long idComment;
 	private Long idEvent;
 	private Long creatorId;
-	private LocalDate postDate;
+	private String postDateTime;
 	private String content;
 	private String managerFirstName;
 	private String managerPicturePath;
@@ -15,11 +14,11 @@ public class CommentEvent {
 	/** public CommentEvent
 	 * Constructor made for creating an event comment in database
 	 */
-	public CommentEvent(Long idComment, Long idEvent, Long creatorId, LocalDate postDate, String content){
+	public CommentEvent(Long idComment, Long idEvent, Long creatorId, String postDateTime, String content){
 		this.idComment=idComment;
 		this.idEvent=idEvent;
 		this.creatorId=creatorId;
-		this.postDate=postDate;
+		this.postDateTime=postDateTime;
 		this.content=content;
 	}
 	
@@ -27,12 +26,12 @@ public class CommentEvent {
 	/** public CommentEvent
 	 * Constructor made for creating a list of event comment in database
 	 */
-	public CommentEvent(Long idComment, Long idEvent, Long creatorId, LocalDate postDate, String content, String managerFirstName,
+	public CommentEvent(Long idComment, Long idEvent, Long creatorId, String postDateTime, String content, String managerFirstName,
 			String managerPicturePath){
 		this.idComment=idComment;
 		this.idEvent=idEvent;
 		this.creatorId=creatorId;
-		this.postDate=postDate;
+		this.postDateTime=postDateTime;
 		this.content=content;
 		this.managerFirstName=managerFirstName;
 		this.managerPicturePath=managerPicturePath;
@@ -83,12 +82,12 @@ public class CommentEvent {
 		this.creatorId = creatorId;
 	}
 
-	public LocalDate getPostDate() {
-		return postDate;
+	public String getPostDateTime() {
+		return postDateTime;
 	}
 
-	public void setPostDate(LocalDate postDate) {
-		this.postDate = postDate;
+	public void setPostDateTime(String postDateTime) {
+		this.postDateTime = postDateTime;
 	}
 
 	public String getContent() {

@@ -5,9 +5,19 @@ import java.util.List;
 import hei.devweb.wejog.entities.CommentEvent;
 import hei.devweb.wejog.impl.CommentEventDaoImpl;
 
+
 public class CommentEventService {
 	
 	private static CommentEventDaoImpl commentDao = new CommentEventDaoImpl();
+	
+	
+	private static class CommentEventServiceHolder {
+		private static CommentEventService instance = new CommentEventService();
+	}
+
+	public static CommentEventService getInstance() {
+		return CommentEventServiceHolder.instance;
+	}
 	
 	
 	public List<CommentEvent> ListCommentEventToDo(Long idEvent){

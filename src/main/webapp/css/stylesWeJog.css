@@ -996,7 +996,7 @@ iframe{
     display: table;
     margin-left: auto;
 	margin-right: auto;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     width: 80%;
     border-style: solid;
     border-width: 3px;
@@ -1019,6 +1019,7 @@ iframe{
 .commentContent {
     display : table-cell;
     vertical-align: middle;
+    padding: 15px;
 }
 
 
@@ -1026,7 +1027,7 @@ iframe{
 	color: black;
 }
 
-#commentPostDate{
+#commentPostDateTime{
 	color: black;
 }
 

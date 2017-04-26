@@ -48,15 +48,15 @@
 				
 				<div id="commentList">
 					<h3 id="commentTitle" >Commentaries</h3>
-					<div class="comment" >
+					<div class="comment" th:each="comment : ${commentList}">
 						<div class="informations">
-							<img id="littlePicture" th:src ="${event.ManagerPicturePath}" alt="Photo de profil" class="alignement">
-							<h4 id="commentManagerName" class="alignement" th:text="${event.managerFirstName}"></h4>
-							<h4 id="commentPostDate" >Post at : </h4>
+							<img id="littlePicture" th:src ="${comment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
+							<h4 id="commentManagerName" class="alignement" th:text="${comment.managerFirstName}"></h4>
+							<h4 id="commentPostDateTime">Post at : [[${comment.postDateTime}]]</h4>
 						</div>
 
 						<div class = "commentContent">
-							<p th:text="${commentaire.avis}"><p>
+							<p th:text="${comment.content}"><p>
 						</div>
 					</div>				
 				</div>

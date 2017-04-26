@@ -11,12 +11,12 @@ import hei.devweb.wejog.impl.EventDaoImpl;
 public class EventService {
 	private EventDaoImpl eventDao = new EventDaoImpl();
 
-	private static class JoueurServiceHolder {
+	private static class EventServiceHolder {
 		private static EventService instance = new EventService();
 	}
 
 	public static EventService getInstance() {
-		return JoueurServiceHolder.instance;
+		return EventServiceHolder.instance;
 	}
 
 	private EventService() {

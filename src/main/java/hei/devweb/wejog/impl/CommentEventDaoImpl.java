@@ -1,7 +1,6 @@
 package hei.devweb.wejog.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ public class CommentEventDaoImpl {
 		return new CommentEvent (resultSet.getLong("idComment"),
 				resultSet.getLong("idEvent"),
 				resultSet.getLong("creatorId"),
-				resultSet.getDate("postDate").toLocalDate(),
+				resultSet.getString("postDateTime"),
 				resultSet.getString("content"),					
 				resultSet.getString("prenom"),
 				resultSet.getString("picturePath"));
@@ -29,12 +28,12 @@ public class CommentEventDaoImpl {
 	public List<CommentEvent> ListCommentEventToDo(Long idEvent){
 		List<CommentEvent> commentList = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idComment, idEvent, creatorId, postDate, content, prenom, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idComment, idEvent, creatorId, postDateTime, content, prenom, "
 					+ "picturePath "
 					+ "FROM comments "
 					+ "INNER JOIN users ON comments.creatorId=users.idusers "
 					+ "WHERE idEvent=? "
-					+ "ORDER BY postDate ASC, idComment ASC")){
+					+ "ORDER BY postDateTime ASC, idComment ASC")){
 				statement.setLong(1, idEvent);
 				ResultSet resultSet = statement.executeQuery();
 				while (resultSet.next()){
@@ -53,11 +52,11 @@ public class CommentEventDaoImpl {
 	public CommentEvent addCommentEvent(CommentEvent newCommentEvent){
 		try {
 			Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("INSERT INTO `comments`(`idEvent`, creatorId, postDate,`content`)VALUES(?,?,?,?);",
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO `comments`(`idEvent`, creatorId, postDateTime,`content`)VALUES(?,?,?,?);",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setLong(1,newCommentEvent.getIdEvent());
 			statement.setLong(2,newCommentEvent.getCreatorId());
-			statement.setDate(3, Date.valueOf(newCommentEvent.getPostDate()));
+			statement.setString(3, newCommentEvent.getPostDateTime());
 			statement.setString(4,newCommentEvent.getContent());
 			statement.executeUpdate();
 
@@ -92,7 +91,7 @@ public class CommentEventDaoImpl {
 	public CommentEvent getCommentEvent(Long idEvent){
 		CommentEvent comment = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("SELECT idComment, idEvent, creatorId, postDate, content, prenom, "
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idComment, idEvent, creatorId, postDateTime, content, prenom, "
 					+ "picturePath "
 					+ "FROM comments "
 					+ "INNER JOIN users ON comments.creatorId=users.idusers "
