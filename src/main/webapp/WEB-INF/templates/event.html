@@ -36,6 +36,7 @@
 						<h3 th:text="'Place : '+${event.place} "></h3>
 						<p th:text="'Duration : '+${event.duration} "></p>
 						<p th:text="'Distance of the route : '+${event.distance} "></p>
+						<p th:text="'Number of participant : '+${countUsersSubscribed} "></p>
 						<p th:text="'Details : '+${event.details} "></p>
 						<div th:if="${administrator}=='yes'" class="boutonEventManagement">
 							<a class="boutons_ami" th:href="'updateEvent?idEvent='+${event.idEvent}">Update the event</a>
