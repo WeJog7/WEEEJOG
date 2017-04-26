@@ -16,7 +16,6 @@ import org.thymeleaf.context.WebContext;
 import hei.devweb.wejog.entities.CommentEvent;
 import hei.devweb.wejog.entities.Event;
 import hei.devweb.wejog.entities.User;
-import hei.devweb.wejog.managers.ArticleService;
 import hei.devweb.wejog.managers.CommentEventService;
 import hei.devweb.wejog.managers.EventService;
 import hei.devweb.wejog.managers.ParticipantService;
