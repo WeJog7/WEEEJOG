@@ -44,11 +44,10 @@ public class EventServlet extends AbstractGenericServlet {
 		LocalDate todayDate = LocalDate.now();
 		Event event = EventService.getInstance().getEvent(idEvent, todayDate);
 
-
-		context.setVariable("countUsersSubscribed", ParticipantService.getInstance().countUsersSubscribed(idEvent));
-
 		if(event!=null){
 			context.setVariable("event", event);
+			context.setVariable("countUsersSubscribed", ParticipantService.getInstance().countUsersSubscribed(idEvent));
+
 			if(event.getCreatorId()==user.getIdusers() || user.isAdmin()){
 				context.setVariable("administrator", "yes");
 			}
@@ -57,7 +56,20 @@ public class EventServlet extends AbstractGenericServlet {
 			List<CommentEvent> oldCommentsList = new ArrayList<>();
 			List<CommentEvent> recentCommentsList = new ArrayList<>();
 
+
 			if(!commentsList.isEmpty()){
+
+				if(!user.isAdmin()){
+
+					int g = 0;
+
+					while(g<commentsList.size()){
+						if(commentsList.get(g).getCreatorId() == user.getIdusers()){
+							commentsList.get(g).setResponse(true);
+						}
+						g++;
+					}
+				}
 
 				if(commentsList.size()<=5){
 					context.setVariable("isThereComments", "No");
@@ -91,7 +103,13 @@ public class EventServlet extends AbstractGenericServlet {
 				context.setVariable("isThereComments", "No");
 			}
 
-			templateEngine.process("event", context, response.getWriter());
+			if(user.isAdmin()){
+				templateEngine.process("eventAdmin", context, response.getWriter());
+			}
+			
+			else{
+				templateEngine.process("event", context, response.getWriter());
+			}
 		}
 
 		else{

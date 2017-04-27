@@ -35,8 +35,8 @@ public class CommentEventService {
 	}
 	
 	
-	public CommentEvent getCommentEvent(Long idEvent){
-		return commentDao.getCommentEvent(idEvent);
+	public CommentEvent getCommentEvent(Long idComment){
+		return commentDao.getCommentEvent(idComment);
 	}
 
 }

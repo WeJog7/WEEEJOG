@@ -8,6 +8,16 @@ function deleteEvent(idEvent) {
 }
 
 
+function deleteComment(idComment,eventId) {
+	if (confirm("Do you want to delete this comment ?")) {
+		window.location("deleteComment?idComment="+idComment+'&idEvent='+eventId);
+		return true;
+	}
+	else{
+		return false;}
+}
+
+
 function validComment(){
 
 	var newCommentaryContent = document.getElementById("newCommentaryContent").value;

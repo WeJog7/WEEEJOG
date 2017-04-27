@@ -32,7 +32,7 @@ public class CommentEventDaoImpl {
 					+ "picturePath "
 					+ "FROM comments "
 					+ "INNER JOIN users ON comments.creatorId=users.idusers "
-					+ "WHERE idEvent=? "
+					+ "WHERE idEvent=? AND display "
 					+ "ORDER BY postDateTime ASC, idComment ASC")){
 				statement.setLong(1, idEvent);
 				ResultSet resultSet = statement.executeQuery();
@@ -88,15 +88,15 @@ public class CommentEventDaoImpl {
 	}
 	
 	
-	public CommentEvent getCommentEvent(Long idEvent){
+	public CommentEvent getCommentEvent(Long idComment){
 		CommentEvent comment = null ;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idComment, idEvent, creatorId, postDateTime, content, prenom, "
 					+ "picturePath "
 					+ "FROM comments "
 					+ "INNER JOIN users ON comments.creatorId=users.idusers "
-					+ "WHERE idEvent=? ")){
-				statement.setLong(1, idEvent);
+					+ "WHERE idComment=?")){
+				statement.setLong(1, idComment);
 				ResultSet resultSet = statement.executeQuery();
 				while ( resultSet.next()){
 					comment = mapperVersCommentEvent(resultSet);

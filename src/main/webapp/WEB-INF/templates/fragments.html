@@ -99,6 +99,12 @@
 		<input type="radio" name="reponse" value="PM" checked/>PM
 	</div>
 	
+	<div th:fragment="DeleteComment(commentId,eventId)">
+		<a class="alignement" onClick="deleteComment('${commentId}','${eventId}');return false;" 
+		th:href="'deleteComment?idComment='+${commentId}+'&idEvent='+${eventId}"><img id="suppressionAdmin"
+		th:src ="@{/Images/icone_suppression.png}" alt="DeletePower"></a>
+	</div>
+	
   </body>
   
 </html>

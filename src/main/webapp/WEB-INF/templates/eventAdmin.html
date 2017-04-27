@@ -61,9 +61,7 @@
 								<img id="littlePicture" th:src ="${comment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
 								<h4 id="commentManagerName" class="alignement" th:text="${comment.managerFirstName}"></h4>
 								<h4 id="commentPostDateTime">Post at : [[${comment.postDateTime}]]</h4>
-								<div th:if="${comment.response}==true">
-									<div th:replace="~{fragments :: DeleteComment(${comment.idComment},${event.idEvent})}"></div>
-								</div>
+								<div th:replace="~{fragments :: DeleteComment(${comment.idComment},${event.idEvent})}"></div>
 							</div>
 
 							<div class = "commentContent">
@@ -84,9 +82,7 @@
 								<img id="littlePicture" th:src ="${recentComment.ManagerPicturePath}" alt="Photo de profil" class="alignement">
 								<h4 id="commentManagerName" class="alignement" th:text="${recentComment.managerFirstName}"></h4>
 								<h4 id="commentPostDateTime">Post at : [[${recentComment.postDateTime}]]</h4>
-								<div th:if="${recentComment.response}== true">
-									<div th:replace="~{fragments :: DeleteComment(${recentComment.idComment},${event.idEvent})}"></div>
-								</div>
+								<div th:replace="~{fragments :: DeleteComment(${recentComment.idComment},${event.idEvent})}"></div>
 							</div>
 
 							<div class = "commentContent">

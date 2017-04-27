@@ -10,6 +10,7 @@ public class CommentEvent {
 	private String content;
 	private String managerFirstName;
 	private String managerPicturePath;
+	private boolean response;
 	
 	/** public CommentEvent
 	 * Constructor made for creating an event comment in database
@@ -37,6 +38,32 @@ public class CommentEvent {
 		this.managerPicturePath=managerPicturePath;
 	}
 	
+	
+	/** public CommentEvent
+	 * Constructor made for creating a list of event comment in database with a response
+	 */
+	public CommentEvent(Long idComment, Long idEvent, Long creatorId, String postDateTime, String content, String managerFirstName,
+			String managerPicturePath, boolean response){
+		this.idComment=idComment;
+		this.idEvent=idEvent;
+		this.creatorId=creatorId;
+		this.postDateTime=postDateTime;
+		this.content=content;
+		this.managerFirstName=managerFirstName;
+		this.managerPicturePath=managerPicturePath;
+		this.response=response;
+	}
+	
+
+	public boolean isResponse() {
+		return response;
+	}
+
+
+	public void setResponse(boolean response) {
+		this.response = response;
+	}
+
 
 	public String getManagerFirstName() {
 		return managerFirstName;
