@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/responsive-500.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/RecoveryPassword.css}"/>
     <meta name="viewport" content="height=device-height"/>
+    <script src="../js/ckeditor/ckeditor.js"></script>
     <title>AboutChangeDescription</title>
    </head>
 
@@ -22,11 +23,16 @@
 			<h1>Change about description</h1>
 			
 			<form method="POST">
-
-			<div>
-		    	<textarea th:text="${description}" name="description" maxlength="1000" 
-		    	placeholder="Write you description here (1,000 carac max)"></textarea>
-		    </div>
+		    
+		    <div>
+			    <textarea th:text="${description}" name="description" id="editor1" rows="10" cols="80"  required maxlength="1000">
+			    </textarea>
+			            <script>
+			                // Replace the <textarea id="editor1"> with a CKEditor
+			                // instance, using default configuration.
+			                CKEDITOR.replace( 'editor1');
+			            </script>					
+			         </div>
 
 		    <div>
 		   		<input type="submit" value="Post your description"/>
