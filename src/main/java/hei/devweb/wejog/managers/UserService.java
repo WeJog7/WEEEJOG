@@ -116,5 +116,25 @@ public class UserService {
 	public void unblockUser(long idusers){
 		UserDao.unblockUser(idusers);
 	}
+	
+	public User addTemporaryUser(User newuser, String activationKey) {
+		return UserDao.addTemporaryUser(newuser, activationKey);
+	}
+	
+	public User getTemporaryUser(Long idAccountNotActivated) {
+		return UserDao.getTemporaryUser(idAccountNotActivated);
+	}
+	
+	public void deleteTemporaryUser(long idAccountNotActivated) {
+		UserDao.deleteTemporaryUser(idAccountNotActivated);
+	}
+	
+	public String generateActivationKey() {
+		return UserDao.generateActivationKey();
+	}
+	
+	public User getTemporaryUser(String mail) {
+		return UserDao.getTemporaryUser(mail);
+	}
 
 }

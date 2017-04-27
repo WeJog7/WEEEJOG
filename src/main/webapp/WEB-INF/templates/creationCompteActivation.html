@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/RecoveryPassword.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive-500.css"/>
     <meta name="viewport" content="height=device-height"/>
-    <title>Account Error</title>
+    <title>Account Activation</title>
     
    </head>
 
@@ -15,13 +15,12 @@
 		<header th:replace="~{fragments :: headerNotConnected}"></header>
 
 		<section class="recovery">
-			<h1>Impossible to create your account !</h1>
-			<p>This mail address is already used !</p>
-			<a id="back_home" href="connexion">Back to connexion</a>
+			<h1>Your account has been activated. Welcome among us !</h1>
+			<p>You have received an e-mail with your informations of connection.</p>
+			<a id="back_home" href="connexion">Connexion</a>
 		</section>
 
-
-		<footer th:replace="~{fragments :: footer(contact)}"></footer>
+		<footer th:replace="~{fragments :: footer(contactUser)}"></footer>
 		
 	</body>
 

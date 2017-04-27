@@ -36,4 +36,14 @@ public interface Userdao {
 	
 	void unblockUser(long idusers);
 	
+	User addTemporaryUser(User newuser, String activationKey);
+	
+	User getTemporaryUser(Long idAccountNotActivated);
+	
+	void deleteTemporaryUser(long idAccountNotActivated);
+	
+	String generateActivationKey();
+	
+	User getTemporaryUser(String mail);
+	
 }

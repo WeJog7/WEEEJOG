@@ -30,7 +30,6 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
@@ -64,6 +63,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 		if(sex!=null && firstName!=null && !"".equals(firstName) && lastName!=null && !"".equals(lastName) 
 				&& dateOfBirth!=null && !"".equals(dateOfBirth) && email != null && !"".equals(email) 
 				&& password != null && !"".equals(password) && UserService.getInstance().getUser(email) == null
+				&& UserService.getInstance().getTemporaryUser(email) == null
 				&& email.equals(confirmEmail) && password.equals(confirmPassword) && verify){
 
 			//System.out.println("Informations accepted and the user is not a robot. Permission to create an account granted.");
@@ -97,19 +97,24 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 			try {
 				password = UserService.getInstance().genererMotDePasse(password);
 			} catch (NoSuchAlgorithmException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (InvalidKeySpecException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
 			User newUser = new User(correctLastName, correctFirstName, email, date, password, sexBoolean);
 
 			try{
-				UserService.addUser(newUser);
+				String activationKey = UserService.getInstance().generateActivationKey();
+				UserService.getInstance().addTemporaryUser(newUser, activationKey);
 				String typeOfMail = "createAccount";
-				EnvoiMessage.main(email, correctFirstName, correctLastName, confirmPassword, typeOfMail);
+				
+				User temporaryUser = UserService.getInstance().getTemporaryUser(newUser.getMail());
+				
+				String activationLink = "https://wejog.herokuapp.com/createAccountActivation?idUser="+temporaryUser.getIdAccountNotActivated()+
+						"&idEvent="+activationKey;
+				
+				EnvoiMessage.main(email, correctFirstName, correctLastName, activationLink, typeOfMail);
 			}catch (IllegalArgumentException e) {
 				System.out.println("Impossible to add the new user");
 			}
@@ -118,7 +123,7 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 
 		else{
 			System.out.println("Incorrect informations or user not verified, permission to create an account not granted.");
-			if(UserService.getInstance().getUser(email)!=null){
+			if(UserService.getInstance().getUser(email)!=null || UserService.getInstance().getTemporaryUser(email) != null){
 				response.sendRedirect("CreateAccountError");
 			}
 			else{

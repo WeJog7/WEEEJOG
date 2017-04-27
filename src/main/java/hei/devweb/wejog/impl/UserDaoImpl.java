@@ -34,6 +34,7 @@ public class UserDaoImpl implements Userdao {
 		return users;
 	}
 
+	
 	private User mapperVersUser(ResultSet resultSet) throws SQLException {
 
 		return new User (resultSet.getLong("idusers"),
@@ -67,6 +68,7 @@ public class UserDaoImpl implements Userdao {
 		return user;
 	}
 
+	
 	public User getUser(String mail) {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -119,6 +121,7 @@ public class UserDaoImpl implements Userdao {
 			}
 	}
 
+	
 	@Override
 	public void deleteUser(long idusers) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -285,6 +288,99 @@ public class UserDaoImpl implements Userdao {
 					throw new WejogSQLException(e);
 				}
 		return users;
+	}
+	
+	
+	public User addTemporaryUser(User newuser, String activationKey) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO accountnotactivated(lastName, firstName, dateOfBirth, "
+					+ "mail, sexe, password, activationKey) VALUES(?, ?, ?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS)){
+				{
+					statement.setString(1, newuser.getNom());
+					statement.setString(2, newuser.getPrenom());
+					statement.setDate(3,Date.valueOf(newuser.getDatedenaissance()));
+					statement.setString(4, newuser.getMail());
+					statement.setBoolean(5, newuser.isSexe());
+					statement.setString(6, newuser.getMotdepasse());
+					statement.setString(7, newuser.getActivationKey());
+					statement.executeUpdate();
+					try (ResultSet idAccountNotActivated = statement.getGeneratedKeys()) {
+						if (idAccountNotActivated.next()) {
+							newuser.setIdAccountNotActivated(idAccountNotActivated.getLong(1));
+						}
+					}
+				}
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return newuser;
+	}
+	
+	
+	public String generateActivationKey() {
+		int length = 10;
+		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
+		StringBuffer pass = new StringBuffer();
+		for(int x=0;x<length;x++)   {
+			int i = (int)Math.floor(Math.random() * (chars.length() -1));
+			pass.append(chars.charAt(i));
+		}
+		return pass.toString();
+	}
+	
+	
+	public User getTemporaryUser(Long idAccountNotActivated) {
+		User user = null;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idAccountNotActivated, lastName, firstName, dateOfBirth, mail,"
+					+ "sexe, password, activationKey FROM accountnotactivated "
+					+ "WHERE idAccountNotActivated=?")){
+				statement.setLong(1, idAccountNotActivated);
+				ResultSet resultSet = statement.executeQuery();
+				if (resultSet.next()) {
+					user = mapperVersUser(resultSet);
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+		return user;
+	}
+	
+	
+	public User getTemporaryUser(String mail) {
+		User user = null;
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("SELECT idAccountNotActivated, lastName, firstName, dateOfBirth, mail,"
+					+ "sexe, password, activationKey FROM accountnotactivated "
+					+ "WHERE mail=?")){
+				statement.setString(1, mail);
+				ResultSet resultSet = statement.executeQuery();
+				if (resultSet.next()) {
+					user = mapperVersUser(resultSet);
+				}
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
+
+		return user;
+	}
+	
+	
+	public void deleteTemporaryUser(long idAccountNotActivated) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
+			try(PreparedStatement statement = connection.prepareStatement("DELETE FROM accountnotactivated WHERE idAccountNotActivated=?")){
+				statement.setLong(1, idAccountNotActivated);
+				statement.executeUpdate();
+				statement.close();
+				connection.close();
+			}} catch (SQLException e) {
+				throw new WejogSQLException(e);
+			}
 	}
 
 }

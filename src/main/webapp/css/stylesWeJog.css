@@ -874,6 +874,8 @@ input#image{
 
 #presentation{
     text-align: center;
+    margin-left : 15%;
+    margin-right: 15%;
 }
 
 /* Page description */

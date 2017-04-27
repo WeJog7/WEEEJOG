@@ -18,9 +18,24 @@ public class User implements Serializable {
 	private String description;
 	private String picturePath;
 	private boolean block;
+	private String activationKey;
+	private Long idAccountNotActivated;
+	
+	
+	public User(Long idAccountNotActivated, String nom, String prenom, String mail, LocalDate datedenaissance, String motdepasse, boolean sexe, String activationKey) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.datedenaissance = datedenaissance;
+		this.motdepasse= motdepasse;
+		this.sexe=sexe;
+		this.activationKey=activationKey;
+		this.idAccountNotActivated=idAccountNotActivated;
+	}
 
 
-	public User(String nom, String prenom, String mail, LocalDate datedenaissance,String motdepasse,boolean sexe) {
+	public User(String nom, String prenom, String mail, LocalDate datedenaissance, String motdepasse, boolean sexe) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -30,7 +45,7 @@ public class User implements Serializable {
 		this.sexe=sexe;
 	}
 	
-	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance,boolean sexe, boolean admin, String description,
+	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance, boolean sexe, boolean admin, String description,
 			String picturePath, boolean block) {
 		super();
 		this.idusers = idusers;
@@ -43,6 +58,26 @@ public class User implements Serializable {
 		this.description = description;
 		this.picturePath = picturePath;
 		this.block=block;
+	}
+	
+	
+	public Long getIdAccountNotActivated() {
+		return idAccountNotActivated;
+	}
+
+
+	public void setIdAccountNotActivated(Long idAccountNotActivated) {
+		this.idAccountNotActivated = idAccountNotActivated;
+	}
+	
+	
+	public String getActivationKey() {
+		return activationKey;
+	}
+
+
+	public void setActivationKey(String activationKey) {
+		this.activationKey = activationKey;
 	}
 	
 	
