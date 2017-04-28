@@ -125,7 +125,7 @@ public class UserService {
 		return UserDao.getTemporaryUser(idAccountNotActivated);
 	}
 	
-	public void deleteTemporaryUser(long idAccountNotActivated) {
+	public static void deleteTemporaryUser(long idAccountNotActivated) {
 		UserDao.deleteTemporaryUser(idAccountNotActivated);
 	}
 	

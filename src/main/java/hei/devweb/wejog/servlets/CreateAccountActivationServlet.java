@@ -24,10 +24,10 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		Long idUser = Long.parseLong(req.getParameter("idUser"));
+		Long IdAccountNotActivated = Long.parseLong(req.getParameter("idUser"));
 		String idKey = req.getParameter("idKey");
 		
-		User temporaryUser = UserService.getInstance().getTemporaryUser(idUser);
+		User temporaryUser = UserService.getInstance().getTemporaryUser(IdAccountNotActivated);
 
 		if(temporaryUser!=null){
 			if(idKey == temporaryUser.getActivationKey()){
@@ -40,14 +40,13 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 					String typeOfMail = "activateAccount";
 					EnvoiMessage.main(temporaryUser.getMail(), temporaryUser.getPrenom(), temporaryUser.getNom(), temporaryUser.getMotdepasse(),
 							typeOfMail);
+					UserService.deleteTemporaryUser(IdAccountNotActivated);
 				}catch (IllegalArgumentException e) {
 					System.out.println("Impossible to add the new user");
 				}
-				
-				UserService.getInstance().deleteTemporaryUser(temporaryUser.getIdAccountNotActivated());
 			}
 			
-			templateEngine.process("creationCompteConfirmation", context, resp.getWriter());
+			templateEngine.process("creationCompteActivation", context, resp.getWriter());
 		}
 		
 		else{
