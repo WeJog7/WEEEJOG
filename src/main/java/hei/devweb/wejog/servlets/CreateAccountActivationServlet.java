@@ -38,8 +38,8 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 				try{
 					UserService.addUser(newUser);
 					String typeOfMail = "activateAccount";
-					EnvoiMessage.main(temporaryUser.getMail(), temporaryUser.getPrenom(), temporaryUser.getNom(), temporaryUser.getMotdepasse(),
-							typeOfMail);
+					String contenu = "If you have connection problem, please contact us by way of our website.";
+					EnvoiMessage.main(temporaryUser.getMail(), temporaryUser.getPrenom(), temporaryUser.getNom(), contenu, typeOfMail);
 				}catch (IllegalArgumentException e) {
 					System.out.println("Impossible to add the new user");
 				}
