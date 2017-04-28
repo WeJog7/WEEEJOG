@@ -291,6 +291,19 @@ public class UserDaoImpl implements Userdao {
 	}
 	
 	
+	private User mapperVersTemporaryUser(ResultSet resultSet) throws SQLException {
+
+		return new User (resultSet.getLong("idAccountNotActivated"),
+				resultSet.getString("lastName"),
+				resultSet.getString("firstName"),
+				resultSet.getString("mail"),
+				resultSet.getDate("datedOfBirth").toLocalDate(),
+				resultSet.getString("password"),
+				resultSet.getBoolean("sexe"),
+				resultSet.getString("activationKey"));
+	}
+	
+	
 	@Override
 	public User addTemporaryUser(User newuser, String activationKey) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
@@ -304,7 +317,7 @@ public class UserDaoImpl implements Userdao {
 					statement.setString(4, newuser.getMail());
 					statement.setBoolean(5, newuser.isSexe());
 					statement.setString(6, newuser.getMotdepasse());
-					statement.setString(7, newuser.getActivationKey());
+					statement.setString(7, activationKey);
 					statement.executeUpdate();
 					try (ResultSet idAccountNotActivated = statement.getGeneratedKeys()) {
 						if (idAccountNotActivated.next()) {
@@ -341,7 +354,7 @@ public class UserDaoImpl implements Userdao {
 				statement.setLong(1, idAccountNotActivated);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
-					user = mapperVersUser(resultSet);
+					user = mapperVersTemporaryUser(resultSet);
 				}
 				statement.close();
 				connection.close();
@@ -361,7 +374,7 @@ public class UserDaoImpl implements Userdao {
 				statement.setString(1, mail);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
-					user = mapperVersUser(resultSet);
+					user = mapperVersTemporaryUser(resultSet);
 				}
 				statement.close();
 				connection.close();
