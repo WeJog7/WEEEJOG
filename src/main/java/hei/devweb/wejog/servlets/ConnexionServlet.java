@@ -60,14 +60,14 @@ public class ConnexionServlet extends GenericWejogServlet {
 				}
 
 			} else {
-				if(UserService.getInstance().getUser(identifiant).isBlock()){
-					this.ajouterMessageErreur(request, "User blocked by Admin.");
-					block = true;
+				if(UserService.getInstance().getUser(identifiant)==null){
+					this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
+					error = true;
 				}
 
 				else{
-					this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
-					error = true;
+					this.ajouterMessageErreur(request, "User blocked by Admin.");
+					block = true;
 				}
 				response.sendRedirect("connexion");
 			}
