@@ -30,7 +30,7 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 		User temporaryUser = UserService.getInstance().getTemporaryUser(IdAccountNotActivated);
 
 		if(temporaryUser!=null){
-			if(idKey == temporaryUser.getActivationKey()){
+			if(idKey.equals(temporaryUser.getActivationKey())){
 				
 				User newUser = new User(temporaryUser.getNom(),temporaryUser.getPrenom(),temporaryUser.getMail(),temporaryUser.getDatedenaissance(),
 						temporaryUser.getMotdepasse(),temporaryUser.isSexe());
@@ -40,10 +40,11 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 					String typeOfMail = "activateAccount";
 					EnvoiMessage.main(temporaryUser.getMail(), temporaryUser.getPrenom(), temporaryUser.getNom(), temporaryUser.getMotdepasse(),
 							typeOfMail);
-					UserService.deleteTemporaryUser(IdAccountNotActivated);
 				}catch (IllegalArgumentException e) {
 					System.out.println("Impossible to add the new user");
 				}
+				
+				UserService.deleteTemporaryUser(IdAccountNotActivated);
 			}
 			
 			templateEngine.process("creationCompteActivation", context, resp.getWriter());
