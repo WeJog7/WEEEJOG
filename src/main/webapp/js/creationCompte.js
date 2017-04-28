@@ -213,7 +213,7 @@ function testerRadio(radio) {
 		}
 		
 		if(mail != confirmMail && flag==0){
-			alert('Mails address are not the same.');
+			alert('Mail addresses are not the same.');
 			flag=1;
 		}
 

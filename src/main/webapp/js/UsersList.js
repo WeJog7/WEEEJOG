@@ -18,7 +18,7 @@ function blockUser(idUser){
 }
 
 
-function suppressionusers(id) {
+function deleteUser(id) {
 	if (confirm("Would you like to delete this user ?")) {
 		window.location("deleteuser?idusers="+id);
 		return true;

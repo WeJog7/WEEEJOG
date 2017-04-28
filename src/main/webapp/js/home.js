@@ -19,7 +19,7 @@ function deletePerformance(idPerformance){
 
 
 function deleteEvent(idEvent) {
-	if (confirm("Would you like to delete this Event ?")) {
+	if (confirm("Do you want to delete this Event ?")) {
 		window.location("deleteEvent?idEvent="+idEvent);
 		return true;
 	}
@@ -29,7 +29,7 @@ function deleteEvent(idEvent) {
 
 
 function deleteArticle(idArticle) {
-	if (confirm("Would you like to delete this article ?")) {
+	if (confirm("Do you want to delete this article ?")) {
 		window.location("deleteArticle?idarticle="+idArticle);
 		return true;
 	}
