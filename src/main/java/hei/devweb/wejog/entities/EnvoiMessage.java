@@ -84,8 +84,8 @@ public class EnvoiMessage {
 				mess.setSubject("Welcome to WeJog");
 
 		         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"
-		        		 +"Here are your account informations : "+"\n"
-		        		 +"Your login : "+email+"\n"
+		        		 +"Here are your account informations : "+"\n"+"\n"
+		        		 +"Your login : "+email+"\n"+"\n"
 		        		 +contenu+"\n"+"\n"
 		        		 +"Please do not answer to this message.");
 		         break;

@@ -55,7 +55,7 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 		}
 		
 		else{
-			resp.sendRedirect("createAccount");
+			resp.sendRedirect("connexion");
 		}
 	}
 
