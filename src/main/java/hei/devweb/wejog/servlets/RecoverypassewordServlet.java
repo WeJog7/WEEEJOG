@@ -29,7 +29,6 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse resp)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
@@ -54,7 +53,6 @@ public class RecoverypassewordServlet extends AbstractGenericServlet{
 			try {
 				UserService.getInstance().updatePassword(member.getIdusers(), newRandomPassword);
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			EnvoiMessage.main(member.getMail(), member.getPrenom(), member.getNom(), newRandomPassword, typeOfMail);
