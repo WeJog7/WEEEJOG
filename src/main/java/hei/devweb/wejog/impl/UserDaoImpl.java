@@ -291,6 +291,7 @@ public class UserDaoImpl implements Userdao {
 	}
 	
 	
+	@Override
 	public User addTemporaryUser(User newuser, String activationKey) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO accountnotactivated(lastName, firstName, dateOfBirth, "
@@ -318,6 +319,7 @@ public class UserDaoImpl implements Userdao {
 	}
 	
 	
+	@Override
 	public String generateActivationKey() {
 		int length = 10;
 		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 

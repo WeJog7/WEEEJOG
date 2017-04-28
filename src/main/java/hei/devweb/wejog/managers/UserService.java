@@ -117,8 +117,8 @@ public class UserService {
 		UserDao.unblockUser(idusers);
 	}
 	
-	public User addTemporaryUser(User newuser, String activationKey) {
-		return UserDao.addTemporaryUser(newuser, activationKey);
+	public static void addTemporaryUser(User newuser, String activationKey) {
+		UserDao.addTemporaryUser(newuser, activationKey);
 	}
 	
 	public User getTemporaryUser(Long idAccountNotActivated) {

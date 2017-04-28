@@ -104,9 +104,9 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 
 			User newUser = new User(correctLastName, correctFirstName, email, date, password, sexBoolean);
 			String activationKey = UserService.getInstance().generateActivationKey();
-
+			
 			try{
-				UserService.getInstance().addTemporaryUser(newUser, activationKey);
+				UserService.addTemporaryUser(newUser, activationKey);
 				String typeOfMail = "createAccount";
 				
 				User temporaryUser = UserService.getInstance().getTemporaryUser(newUser.getMail());
