@@ -14,7 +14,20 @@ public class test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException{
 		
-		String recherche ="gui po";
+		
+		String brouillage1 = UserService.getInstance().generateActivationKey();
+		String key = UserService.getInstance().generateActivationKey();
+		String brouillage3 = UserService.getInstance().generateActivationKey();
+		
+		String falseKey = brouillage1+key+brouillage3;
+		
+		String trueKey = falseKey.substring(10, 20);
+		
+		System.out.println("la clé : "+ key);
+		System.out.println("la fausse clé : "+falseKey);
+		System.out.println("la clé récupérée : "+trueKey);
+		
+		/*String recherche ="gui po";
 		
 		Long id = (long) 23;
 		
@@ -56,7 +69,7 @@ public class test {
 			listUsersIdFound = UserService.getInstance().listUsersIdFound(recherche, id);
 			// envoyer dans context
 			System.out.println(listUsersIdFound);
-		}
+		}*/
 				
 		
 		/*System.out.println(UserService.getInstance().genererMotDePasse("0000"));

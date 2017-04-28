@@ -24,13 +24,17 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		Long IdAccountNotActivated = Long.parseLong(req.getParameter("idUser"));
-		String idKey = req.getParameter("idKey");
+		String idAccountNotActivated = req.getParameter("rdg534d");
+		String idKey = req.getParameter("sefrby45");
 		
-		User temporaryUser = UserService.getInstance().getTemporaryUser(IdAccountNotActivated);
+		Long trueIdAccountNotActivated = Long.parseLong(idAccountNotActivated.substring(0, 2));
+		
+		String trueIdKey = idKey.substring(10, 20);
+		
+		User temporaryUser = UserService.getInstance().getTemporaryUser(trueIdAccountNotActivated);
 
 		if(temporaryUser!=null){
-			if(idKey.equals(temporaryUser.getActivationKey())){
+			if(trueIdKey.equals(temporaryUser.getActivationKey())){
 				
 				User newUser = new User(temporaryUser.getNom(),temporaryUser.getPrenom(),temporaryUser.getMail(),temporaryUser.getDatedenaissance(),
 						temporaryUser.getMotdepasse(),temporaryUser.isSexe());
@@ -44,7 +48,7 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 					System.out.println("Impossible to add the new user");
 				}
 				
-				UserService.deleteTemporaryUser(IdAccountNotActivated);
+				UserService.deleteTemporaryUser(trueIdAccountNotActivated);
 			}
 			
 			templateEngine.process("creationCompteActivation", context, resp.getWriter());
