@@ -27,7 +27,7 @@ public class CreateAccountActivationServlet extends AbstractGenericServlet {
 		String idAccountNotActivated = req.getParameter("rdg534d");
 		String idKey = req.getParameter("sefrby45");
 		
-		Long trueIdAccountNotActivated = Long.parseLong(idAccountNotActivated.substring(0, 2));
+		Long trueIdAccountNotActivated = Long.parseLong(idAccountNotActivated.substring(10));
 		
 		String trueIdKey = idKey.substring(10, 20);
 		

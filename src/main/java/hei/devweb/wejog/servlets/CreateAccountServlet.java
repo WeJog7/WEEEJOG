@@ -115,8 +115,8 @@ public class CreateAccountServlet extends AbstractGenericServlet{
 				
 				User temporaryUser = UserService.getInstance().getTemporaryUser(newUser.getMail());
 				
-				String activationLink = "https://wejog.herokuapp.com/createAccountActivation?rdg534d="+temporaryUser.getIdAccountNotActivated()+
-						brouillage1+"&sefrby45="+brouillage2+activationKey+brouillage3;
+				String activationLink = "https://wejog.herokuapp.com/createAccountActivation?rdg534d="+brouillage1+
+						temporaryUser.getIdAccountNotActivated()+"&sefrby45="+brouillage2+activationKey+brouillage3;
 				
 				EnvoiMessage.main(email, correctFirstName, correctLastName, activationLink, typeOfMail);
 			}catch (IllegalArgumentException e) {

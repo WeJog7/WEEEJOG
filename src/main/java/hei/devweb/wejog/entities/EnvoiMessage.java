@@ -72,10 +72,10 @@ public class EnvoiMessage {
 				break;
 				
 			case "createAccount" :
-				mess.setSubject("Welcome to WeJog");
+				mess.setSubject("Activate your account");
 
 		         mess.setText("Hi "+firstName+", welcome to WeJog !"+"\n"+"\n"
-		        		 +"To complete your inscription and activate your account, please click on the link below : "+"\n"
+		        		 +"To complete your inscription and activate your account, please click on the link below : "+"\n"+"\n"
 		        		 +"Activation Link : "+contenu+"\n"+"\n"
 		        		 +"Please do not answer to this message.");
 		         break;
