@@ -297,7 +297,7 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getString("lastName"),
 				resultSet.getString("firstName"),
 				resultSet.getString("mail"),
-				resultSet.getDate("datedOfBirth").toLocalDate(),
+				resultSet.getDate("dateOfBirth").toLocalDate(),
 				resultSet.getString("password"),
 				resultSet.getBoolean("sexe"),
 				resultSet.getString("activationKey"));
