@@ -1,9 +1,22 @@
-@media screen and (min-width: 630px) and (max-width: 769px)
+@media screen and (min-width: 629px) and (max-width: 769px)
 {
+	
+#connexionCompte {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 10%;
+}
+
+
+#sectionCreationCompte {
+	height: 70%;
+}
+
 
 #logo{
 	width: 25%;
 }
+
 
 nav{
     width: 35%;
@@ -15,5 +28,6 @@ nav{
     margin-left: 9%;
     margin-right: 9%;
 }
+
 
 }

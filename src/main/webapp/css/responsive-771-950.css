@@ -1,5 +1,17 @@
-@media screen and (min-width: 770px) and (max-width: 950px)
+@media screen and (min-width: 769px) and (max-width: 950px)
 {
+	
+#connexionCompte {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 10%;
+}
+
+
+#sectionCreationCompte {
+	height: 70%;
+}
+
 
 #logo{
 	width: 25%;

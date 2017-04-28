@@ -1,20 +1,47 @@
 @media screen and (min-width: 501px) and (max-width: 629px)
 {
+	
+form#connexionCompte label {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+
+#sectionCreationCompte {
+	height: 100%;
+}
+
+
+#connexionCompte {
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 40%;
+	margin-bottom: 0;
+}
+
 
 #logo{
 	width: 25%;
 }
 
+
 nav{
     display: block;
     width: 100%;
-    
 }
 
 
 #creationCompte{
     margin-left: 0;
     margin-right: 0;
+}
+
+
+#ajout_performance{
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 }
