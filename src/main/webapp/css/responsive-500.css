@@ -125,8 +125,9 @@ footer{
 
 
 #validation{
-	width: 80%;
+	width: 100%;
 	display : block;
+	margin-left: 0;
 }
 
 
