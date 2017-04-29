@@ -238,16 +238,16 @@ form#connexionCompte label {
 }
 
 
-#sectionCreationCompte {
-	height: 100%;
-}
-
-
 #connexionCompte {
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 40%;
 	margin-bottom: 0;
+}
+
+
+#sectionConnexionCompte{
+	height: 100%;
 }
 
 

@@ -22,6 +22,11 @@ form#connexionCompte label {
 }
 
 
+#sectionConnexionCompte{
+	height: 100%;
+}
+
+
 #logo{
 	width: 25%;
 }

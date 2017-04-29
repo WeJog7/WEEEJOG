@@ -387,6 +387,15 @@ form#creationCompte input{
     background-position: center;  
     padding-top: 5%;
     padding-bottom: 5%;
+}
+
+
+#sectionConnexionCompte{
+    background-image: url("../Images/fondConnexion.jpg");
+    background-size: cover;
+    background-position: center;  
+    padding-top: 5%;
+    padding-bottom: 5%;
     height: 50%;
 }
 
