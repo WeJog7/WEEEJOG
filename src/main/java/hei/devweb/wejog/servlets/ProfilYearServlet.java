@@ -36,6 +36,8 @@ public class ProfilYearServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		Date todayDate1week = Date.valueOf(LocalDate.now().minusYears(1));
 		
+		context.setVariable("performanceSelected", "Year");
+		
 	   context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(user.getIdusers()));
 	   context.setVariable("TotalTime",PerformanceService.getInstance().countTimePerformance(user.getIdusers()));
 	   context.setVariable("TotalDistance",PerformanceService.getInstance().countDistancePerformance(user.getIdusers()));

@@ -1,5 +1,45 @@
 @media screen and (min-width: 769px) and (max-width: 951px)
 {
+	
+#changePassword{
+	margin-left: 15%;
+	margin-right: 15%;
+}	
+
+
+label {
+	display: block;
+	text-align: center;
+	margin: 0;
+}
+
+
+form#changePassword label {
+    width: 100%;
+}
+	
+
+.network{
+	width: 49%;
+}
+	
+	
+.tableau_performance_totale{
+	margin-bottom: 5px;
+}	
+	
+
+#profil{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+	
+	
+.tableaux_performance{
+	margin-left: 10%;
+	margin-right: 10%;
+}	
+
 
 #menu_home{
 	margin-left: 10%;
@@ -8,8 +48,8 @@
 	
 	
 .actuality{
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 	

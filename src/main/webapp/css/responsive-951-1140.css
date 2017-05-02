@@ -1,6 +1,12 @@
 @media screen and (min-width: 951px) and (max-width: 1210px)
 {
 
+#changePassword{
+	margin-left: 20%;
+	margin-right: 20%;
+}	
+	
+
 #menu_home{
 	margin-left: 10%;
 	margin-right: 10%;

@@ -841,6 +841,17 @@ a:hover.boutons_home{
     display: inline-block;
 }
 
+
+a:hover.boutons_performance{
+    color : #1A7A50;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    border-style: solid;
+    border-color: #1A7A50;
+}
+
+
 /* Page Ajout Ami */
 
 #liste_utilisateurs{
@@ -946,8 +957,8 @@ table#userList{
 #changePassword{
     text-align: center;
     background-color: white;
-    margin-left: 29%;
-    margin-right: 29%;
+    margin-left: 25%;
+    margin-right: 25%;
     border-style: solid;
     border-color: #1A7A50;
     border-width: 2px;

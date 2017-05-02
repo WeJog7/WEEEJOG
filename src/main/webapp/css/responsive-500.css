@@ -89,12 +89,18 @@ nav input{
 
 
 #Contact_Us{
-	display: none;
+	display: block;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	width: 20%;
+	margin-top: 0;
 }
 
 
 footer{
 	position: relative;
+	padding-bottom: 10px;
 }
 
 
@@ -319,7 +325,7 @@ table#userList{
 /*Page changePassword*/
 
 #changePassword{
-	width:100%;
+	
 	margin-left: 0;
 	margin-right: 0;
 	padding-left: 0;

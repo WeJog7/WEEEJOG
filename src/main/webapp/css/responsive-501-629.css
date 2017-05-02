@@ -1,6 +1,61 @@
 @media screen and (min-width: 501px) and (max-width: 629px)
 {
 
+#changePassword{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+
+label {
+	display: block;
+	text-align: center;
+	margin: 0;
+}
+
+
+form#changePassword label {
+    width: 100%;
+}	
+	
+
+table.network{
+	width: 49%;
+}	
+	
+
+#profil{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+	
+
+.tableau_performance_totale{
+	margin-bottom: 5px;
+	width: 35%;
+}	
+	
+
+.tableau_performance{
+	width: 30%;
+	margin-bottom: 10px;
+}
+
+
+.tableaux_performance{
+	margin-left: 5%;
+	margin-right: 5%;
+}	
+	
+	
+#Contact_Us{
+	float: right;
+	text-align: center;
+	margin-left: auto;
+	margin-right: 15%;	
+}
+
+
 #menu_home{
 	margin-left: 2%;
 	margin-right: 2%;

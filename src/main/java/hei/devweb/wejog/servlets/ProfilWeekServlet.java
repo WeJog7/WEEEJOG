@@ -35,6 +35,9 @@ public class ProfilWeekServlet extends AbstractGenericServlet{
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		Date todayDate1week = Date.valueOf(LocalDate.now().minusWeeks(1));
 		
+		context.setVariable("User", user);
+		context.setVariable("performanceSelected", "Week");
+		
 	   context.setVariable("numberAsking",CoupleAmiService.getInstance().countAsking(user.getIdusers()));
 	   context.setVariable("TotalTime",PerformanceService.getInstance().countTimePerformance(user.getIdusers()));
 	   context.setVariable("TotalDistance",PerformanceService.getInstance().countDistancePerformance(user.getIdusers()));
@@ -73,11 +76,8 @@ public class ProfilWeekServlet extends AbstractGenericServlet{
 	   
 	   context.setVariable("longuestdistance", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[0]+ " Km");
 	   context.setVariable("longuestduration", PerformanceService.getInstance().getperformancelonguest(user.getIdusers(), todayDate1week)[1]+ " Min");
-	   
-	  
-		context.setVariable("User", user);
 		
-		templateEngine.process("profil", context, resp.getWriter());
+	   templateEngine.process("profil", context, resp.getWriter());
 	}
 
 
