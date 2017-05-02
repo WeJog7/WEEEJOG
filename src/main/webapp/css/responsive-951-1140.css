@@ -1,14 +1,26 @@
 @media screen and (min-width: 951px) and (max-width: 1210px)
 {
 
+#menu_home{
+	margin-left: 10%;
+	margin-right: 10%;
+}		
+	
+	
 nav{
-    width: 60%;
+    width: 58%;
 }
 
 
 #creationCompte{
     margin-left: 20%;
     margin-right: 20%;
+}
+
+
+.actuality{
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 

@@ -1,5 +1,17 @@
 @media screen and (min-width: 501px) and (max-width: 629px)
 {
+
+#menu_home{
+	margin-left: 2%;
+	margin-right: 2%;
+}	
+
+	
+.event{
+	display: block;
+	width: 100%;
+}
+
 	
 form#connexionCompte label {
 	display: block;

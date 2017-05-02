@@ -1,5 +1,17 @@
-@media screen and (min-width: 769px) and (max-width: 950px)
+@media screen and (min-width: 769px) and (max-width: 951px)
 {
+
+#menu_home{
+	margin-left: 10%;
+	margin-right: 10%;
+}		
+	
+	
+.actuality{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 	
 #connexionCompte {
 	margin-left: 10%;
@@ -19,7 +31,7 @@
 
 
 nav{
-    width: 45%;
+    width: 42%;
 }
 
 
