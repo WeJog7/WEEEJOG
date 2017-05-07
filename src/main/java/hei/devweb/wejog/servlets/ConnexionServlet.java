@@ -60,7 +60,7 @@ public class ConnexionServlet extends GenericWejogServlet {
 				}
 
 			} else {
-				if(UserService.getInstance().getUser(identifiant)==null){
+				if(UserService.getInstance().getUser(identifiant)==null || !UserService.getInstance().validerMotDePasse(identifiant, motDePasse)){
 					this.ajouterMessageErreur(request, "L'identifiant et/ou le mot de passe renseigné est incorrect.");
 					error = true;
 				}
