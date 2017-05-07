@@ -13,7 +13,7 @@ import hei.devweb.wejog.managers.UserService;
  * Servlet implementation class UserBlock
  */
 @WebServlet("/admin/blockUser")
-public class UserBlock extends HttpServlet {
+public class UserBlockServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

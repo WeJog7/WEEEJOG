@@ -13,7 +13,7 @@ import hei.devweb.wejog.managers.UserService;
  * Servlet implementation class UserUnblock
  */
 @WebServlet("/admin/unblockUser")
-public class UserUnblock extends HttpServlet {
+public class UserUnblockServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
