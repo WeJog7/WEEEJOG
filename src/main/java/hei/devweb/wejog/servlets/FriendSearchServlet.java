@@ -54,7 +54,7 @@ public class FriendSearchServlet extends AbstractGenericServlet{
 			
 			List<Long> listUsersIdFoundCompleteIdentity = new LinkedList<Long>();
 			
-			if(completeIdentity.size()==2){
+			if(completeIdentity.size()>=2){
 				for (int i=0;i<2;i++){
 					listUsersIdFoundCompleteIdentity = UserService.getInstance().listUsersIdFound(completeIdentity.get(i), user.getIdusers());
 					

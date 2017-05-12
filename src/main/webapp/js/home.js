@@ -1,6 +1,6 @@
 function subscribeEvent(idEvent){
 	if (confirm("Do you want to subscribe to this event ?")) {
-		window.location("addparticipant?idevent="+idEvent);
+		window.location("addparticipant?idEvent="+idEvent);
 		return true;
 	}
 	else{

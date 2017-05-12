@@ -39,7 +39,7 @@
 						<p th:text="'Place: '+${event.place} "></p>
 						<div class="boutonEventManagement">
 							<a class="boutons_ami" onClick="subscribeEvent('+${event.idEvent}+');return false;"
-							th:href="'addparticipant?idevent='+${event.idEvent}">Subscribe to the event</a>
+							th:href="'addparticipant?idEvent='+${event.idEvent}">Subscribe to the event</a>
 							<a class="boutons_ami" th:href="'event?idEvent='+${event.idEvent}">See more</a>
 						</div>
 					</div>
