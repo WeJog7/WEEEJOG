@@ -396,7 +396,7 @@ form#creationCompte input{
     background-position: center;  
     padding-top: 5%;
     padding-bottom: 5%;
-    height: 50%;
+    height: 48%;
 }
 
 
@@ -479,7 +479,6 @@ div#register input{
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-bottom: 100px;
 }
 
 

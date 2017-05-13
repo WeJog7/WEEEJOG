@@ -255,6 +255,7 @@ form#connexionCompte label {
 
 #sectionConnexionCompte{
 	height: 100%;
+	min-height: 450px;
 }
 
 
