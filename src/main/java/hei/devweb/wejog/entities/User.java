@@ -18,6 +18,7 @@ public class User implements Serializable {
 	private String description;
 	private String picturePath;
 	private boolean block;
+	private boolean deleted;
 	private String activationKey;
 	private Long idAccountNotActivated;
 	
@@ -46,7 +47,7 @@ public class User implements Serializable {
 	}
 	
 	public User(Long idusers, String nom, String prenom, String mail, LocalDate datedenaissance, boolean sexe, boolean admin, String description,
-			String picturePath, boolean block) {
+			String picturePath, boolean block, boolean deleted) {
 		super();
 		this.idusers = idusers;
 		this.nom = nom;
@@ -58,9 +59,20 @@ public class User implements Serializable {
 		this.description = description;
 		this.picturePath = picturePath;
 		this.block=block;
+		this.deleted=deleted;
 	}
 	
 	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+
 	public Long getIdAccountNotActivated() {
 		return idAccountNotActivated;
 	}

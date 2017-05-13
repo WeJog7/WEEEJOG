@@ -46,7 +46,7 @@ public class ConnexionServlet extends GenericWejogServlet {
 		String motDePasse = request.getParameter("password");
 		try {
 			if (UserService.getInstance().getUser(identifiant)!=null && UserService.getInstance().validerMotDePasse(identifiant, motDePasse)
-					&& !UserService.getInstance().getUser(identifiant).isBlock()){
+					&& !UserService.getInstance().getUser(identifiant).isBlock() && !UserService.getInstance().getUser(identifiant).isDeleted()){
 				request.getSession().setAttribute("user", UserService.getInstance().getUser(identifiant));
 
 				error = false;

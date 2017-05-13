@@ -22,7 +22,8 @@ public class UserDaoImpl implements Userdao {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
-						+ "admin, description, picturePath, block FROM users WHERE admin=false and block=false ORDER BY mail ")){
+						+ "admin, description, picturePath, block, deleted "
+						+ "FROM users WHERE admin=false and (block=false and deleted=false) ORDER BY mail ")){
 					while (resultSet.next()) {
 						users.add(mapperVersUser(resultSet));
 					}
@@ -46,7 +47,8 @@ public class UserDaoImpl implements Userdao {
 				resultSet.getBoolean("admin"),
 				resultSet.getString("description"),
 				resultSet.getString("picturePath"),
-				resultSet.getBoolean("block"));
+				resultSet.getBoolean("block"),
+				resultSet.getBoolean("deleted"));
 	}
 
 
@@ -54,7 +56,7 @@ public class UserDaoImpl implements Userdao {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
-					+ " admin, description, picturePath, block FROM users WHERE idusers=?")){
+					+ " admin, description, picturePath, block, deleted FROM users WHERE idusers=?")){
 				statement.setLong(1, idusers);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
@@ -73,7 +75,7 @@ public class UserDaoImpl implements Userdao {
 		User user = null;
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(PreparedStatement statement = connection.prepareStatement("SELECT idusers, nom, prenom,datedenaissance, mail, sexe,"
-					+ "admin, description, picturePath, block FROM users WHERE mail=?")){
+					+ "admin, description, picturePath, block, deleted FROM users WHERE mail=?")){
 				statement.setString(1, mail);
 				ResultSet resultSet = statement.executeQuery();
 				if (resultSet.next()) {
@@ -125,7 +127,7 @@ public class UserDaoImpl implements Userdao {
 	@Override
 	public void deleteUser(long idusers) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
-			try(PreparedStatement statement = connection.prepareStatement("DELETE  FROM  users WHERE idusers=?")){
+			try(PreparedStatement statement = connection.prepareStatement("UPDATE users SET deleted=true WHERE idusers=?")){
 				statement.setLong(1, idusers);
 				statement.executeUpdate();
 				statement.close();
@@ -278,7 +280,8 @@ public class UserDaoImpl implements Userdao {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
 				try(ResultSet resultSet = statement.executeQuery("SELECT idusers, nom, prenom, datedenaissance, mail, sexe, "
-						+ "admin, description, picturePath, block FROM users WHERE admin=false and block=true ORDER BY nom ")){
+						+ "admin, description, picturePath, block, deleted FROM users WHERE admin=false and (block=true and deleted=false) "
+						+ "ORDER BY nom ")){
 					while (resultSet.next()) {
 						users.add(mapperVersUser(resultSet));
 					}
